@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Prakhar Shekhar Parthasarthi — Java Software Engineer</title>
-  <meta name="description" content="Resume of Prakhar Shekhar Parthasarthi — Java Software Engineer (ex-Amazon, 3+ years). Spring Boot, JVM concurrency, event-driven AWS.">
+  <title>Prakhar Shekhar Parthasarthi — Software Engineer · Java / JVM / Distributed Systems</title>
+  <meta name="description" content="Resume of Prakhar Shekhar Parthasarthi — Java-focused Software Engineer (ex-Amazon, 3+ years) specializing in Spring Boot, JVM concurrency, and event-driven AWS systems.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -18,8 +18,8 @@
 
     <header class="masthead">
       <h1 class="name">Prakhar Shekhar Parthasarthi</h1>
-      <p class="tagline">Java Software Engineer &middot; Backend &amp; Distributed Systems &middot; Ex-Amazon (3+ yrs)</p>
-      <ul class="contact" aria-label="Contact">
+      <p class="tagline">Software Engineer &middot; Java &middot; JVM &middot; Distributed Systems</p>
+      <ul class="contact" aria-label="Contact information">
         <li><a href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></li>
         <li>Bengaluru, India</li>
         <li><a href="https://github.com/praxstack" rel="noopener">github.com/praxstack</a></li>
@@ -30,14 +30,49 @@
     <section class="block" aria-labelledby="summary-h">
       <h2 id="summary-h" class="block__title">Summary</h2>
       <p class="summary">
-        Java engineer with <strong>3&plus; years at Amazon</strong> shipping production Spring Boot services across
-        Payments and Travel &mdash; <strong>owned 4 microservices end-to-end</strong> through design, deploy, and on-call.
-        Depth in JVM concurrency (<code>CompletableFuture</code>, bounded <code>ExecutorService</code>,
-        <code>ConcurrentHashMap</code>), idempotent event-driven architecture over <strong>SQS &#43; Step Functions</strong>,
-        and typed IaC in <strong>AWS CDK (Java)</strong>. Customer impact:
-        <span class="metric">47&percnt;</span> p90 reduction, <span class="metric">&plus;33&percnt;</span> conversion,
-        <span class="metric">20&#43; &rarr; &tilde;5</span> on-call tickets per shift.
+        Backend engineer with <strong>3&plus; years shipping production Java at Amazon</strong> across Payments and Travel &mdash;
+        <strong>owned 4 microservices end-to-end</strong> through design, build, deploy, and on-call. Depth in
+        <strong>Java 17 / Spring Boot</strong>, JVM concurrency (<code>CompletableFuture</code>, bounded
+        <code>ExecutorService</code>, <code>ConcurrentHashMap</code>), idempotent event-driven architecture over
+        <strong>SQS &#43; Step Functions</strong>, and typed infrastructure in <strong>AWS CDK (Java)</strong>.
+        Customer-facing impact: <span class="metric">47&percnt;</span> p90 reduction on booking surfaces,
+        <span class="metric">33&percnt;</span> conversion lift, <span class="metric">43&nbsp;bps CPT</span> reduction via
+        idempotent schedule-change automation, on-call tickets cut
+        <span class="metric">20&plus; &rarr; &tilde;5</span> per shift.
       </p>
+    </section>
+
+    <section class="block" aria-labelledby="skills-h">
+      <h2 id="skills-h" class="block__title">Core Technical Stack</h2>
+      <dl class="skills">
+        <dt>Java &amp; JVM</dt>
+        <dd>
+          <strong>Java 17</strong>, Spring Boot, Spring MVC, Spring DI, Google Guice, JUnit 5, Mockito, SLF4J, Lombok, Maven, Gradle &middot;
+          <code>ExecutorService</code>, <code>CompletableFuture</code>, <code>ConcurrentHashMap</code>, <code>ScheduledExecutorService</code>,
+          thread-pool tuning, atomic primitives, JVM profiling, GC analysis
+        </dd>
+
+        <dt>Distributed Systems</dt>
+        <dd>
+          Microservices, REST, GraphQL, event-driven architecture, idempotency &amp; dedup keys, state machines, retry with
+          exponential backoff, DLQ handling, at-least-once semantics, TDD
+        </dd>
+
+        <dt>AWS</dt>
+        <dd>
+          Lambda (Java), DynamoDB, SQS, Step Functions, API Gateway, AppSync, CloudWatch, ECS, <strong>CDK (Java)</strong> &mdash;
+          typed IaC for all service infrastructure
+        </dd>
+
+        <dt>Data &amp; Storage</dt>
+        <dd>DynamoDB, Redis, NoSQL modelling, SQL, caching strategies</dd>
+
+        <dt>Other Languages</dt>
+        <dd>JavaScript / TypeScript, Python, C&plus;&plus;, VTL, HTML / CSS</dd>
+
+        <dt>Tooling &amp; Process</dt>
+        <dd>Git, GitHub, CI/CD, Gradle JaCoCo coverage gates, Agile / Scrum, on-call, code review, incident response</dd>
+      </dl>
     </section>
 
     <section class="block" aria-labelledby="experience-h">
@@ -54,43 +89,51 @@
         </p>
         <ul class="bullets">
           <li>
-            <strong>Service ownership</strong> &mdash; Owned 4 Spring Boot microservices (search, listing, room selection, order
-            review) end-to-end: REST controllers, service layer, <code>&#64;Repository</code> DynamoDB DAOs on Spring DI;
-            design &rarr; deploy &rarr; on-call.
+            <span class="bullet-label">Service ownership &mdash; Spring Boot, Spring MVC.</span>
+            Owned <strong>4 customer-facing microservices</strong> powering the hotel booking platform &mdash; search, listing, room
+            selection, order review &mdash; across design, code review, deploy, and on-call.
+            Built REST controllers, service-layer logic, and <code>&#64;Repository</code> DynamoDB DAOs wired through Spring DI.
+            Shipped Prime-exclusive discount flow and partner-discount integration with tuned cache logic &rarr;
+            <span class="metric">&tilde;30&nbsp;bps</span> drop in funnel churn.
           </li>
           <li>
-            Shipped Prime-exclusive discount flow and partner-discount integration in flight search with tuned cache logic
-            &rarr; <span class="metric">&tilde;30&nbsp;bps</span> drop in funnel churn.
-          </li>
-          <li>
+            <span class="bullet-label">JVM concurrency &mdash; CompletableFuture, bounded executors.</span>
             Refactored sequential downstream calls into <code>CompletableFuture.allOf()</code> on a bounded
-            <code>ExecutorService</code>, parallelising 6 partner-API lookups. Hotel landing p90
-            <span class="metric">1.1s &rarr; 0.59s</span>; conversion <span class="metric">&plus;33&percnt;</span>.
-            GZIP on 150&ndash;200&nbsp;MB catalog payloads cut wire size <span class="metric">95&percnt;</span>.
+            <code>ExecutorService</code>; parallelised 6 partner-API lookups &rarr; hotel landing p90 cut
+            <span class="metric">47&percnt;</span> (<span class="metric">1.1s &rarr; 0.59s</span>), conversion up
+            <span class="metric">&plus;33&percnt;</span>.
+            GZIP on 150&ndash;200&nbsp;MB catalog payloads cut wire size <span class="metric">95&percnt;</span>,
+            eliminating network-timeout failures.
           </li>
           <li>
-            Designed idempotent Java webhook for real-time flight schedule changes &mdash; SQS ingestion, DynamoDB dedup,
-            automated offline modifications &rarr; addressed top customer-pain category
-            (<span class="metric">43&nbsp;bps CPT</span>) and cut support cost.
+            <span class="bullet-label">Event-driven &mdash; SQS &#43; Step Functions.</span>
+            Designed idempotent Java webhook for real-time flight schedule changes (cancellations, date-changes, non-operational flights)
+            &mdash; SQS ingestion, DynamoDB-backed dedup keys, audit logging, automated offline modifications &rarr;
+            addressed the highest-impact customer-pain category (<span class="metric">43&nbsp;bps CPT</span>),
+            reduced support cost. Orchestrated end-to-end booking state machine (confirm / cancel / retry) on Step Functions
+            with Java Lambda handlers.
           </li>
           <li>
-            Orchestrated booking state machine (confirm / cancel / retry) on Step Functions with Java Lambda handlers.
+            <span class="bullet-label">Infrastructure as code &mdash; AWS CDK (Java).</span>
             Authored all service IaC in <strong>Java CDK</strong> &mdash; Lambdas, DynamoDB, SQS, Step Functions, API Gateway,
-            CloudWatch alarms; migrated 2 services from hand-rolled CloudFormation &rarr; rollback incidents halved.
+            CloudWatch alarms. Migrated 2 services from hand-rolled CloudFormation to typed CDK stacks &rarr;
+            compile-time infrastructure checks, <span class="metric">halved</span> rollback incidents.
           </li>
           <li>
-            Held <span class="metric">80&percnt;&plus;</span> line coverage (JUnit 5, Mockito argument captors,
-            <code>&#64;SpringBootTest</code> against in-memory DynamoDB). Introduced Gradle JaCoCo coverage gates in CI.
+            <span class="bullet-label">Testing &mdash; JUnit 5, Mockito, Spring Boot.</span>
+            Held <span class="metric">80&percnt;&plus;</span> line coverage; Mockito argument captors for downstream contract
+            verification; <code>&#64;SpringBootTest</code> integration tests against in-memory DynamoDB.
+            Introduced Gradle JaCoCo coverage gates in CI.
           </li>
           <li>
-            Dove deep into multi-year on-call corpus &rarr; tickets <span class="metric">20&plus; &rarr; &tilde;5 per shift</span>
-            (<span class="metric">&tilde;2 SDE-weeks / week</span> reclaimed). Java email automation for stale WebLab experiments
-            &rarr; <span class="metric">zero</span> config-hygiene incidents per on-call. Resolved
-            <span class="metric">150&plus;</span> production incidents; authored COEs to closure.
-          </li>
-          <li>
+            <span class="bullet-label">Operational excellence &amp; high-bar automation.</span>
+            Dove deep into multi-year on-call corpus &rarr; tickets cut from
+            <span class="metric">20&plus; &rarr; &tilde;5 per shift</span>
+            (<span class="metric">&tilde;2 SDE-weeks / week</span> reclaimed). Java email-automation service deprecated stale
+            WebLab experiments &rarr; config-hygiene incidents from 5&ndash;6 to <span class="metric">0</span> per on-call.
+            Resolved <span class="metric">150&plus;</span> production incidents; authored COEs and drove action items to closure.
             Built auto-insurance purchase flow (Java &#43; React) with milestone persistence and auto-fill &rarr;
-            <span class="metric">&plus;60&percnt;</span> renewal completion.
+            <span class="metric">60&percnt;&plus;</span> lift in renewals.
           </li>
         </ul>
       </article>
@@ -98,31 +141,31 @@
       <article class="role">
         <header class="role__head">
           <h3 class="role__title">Software Development Engineer, Intern</h3>
-          <span class="role__dates">Feb &mdash; Jul 2022</span>
+          <span class="role__dates">May 2021 &ndash; Jul 2021 &middot; Feb 2022 &ndash; Jul 2022</span>
         </header>
         <p class="role__company">
           Amazon
-          <span class="role__loc">&middot; Bengaluru &middot; (prior internship May &mdash; Jul 2021)</span>
+          <span class="role__loc">&middot; Bengaluru</span>
         </p>
         <ul class="bullets">
           <li>
-            Migrated legacy GraphQL resolvers to Java &mdash; rebuilt resolvers, wired DynamoDB via Spring-injected DAOs,
-            exposed through API Gateway &#43; Lambda.
+            Migrated legacy GraphQL resolvers to <strong>Java</strong> &mdash; rebuilt resolver classes, wired them to DynamoDB via
+            Spring-injected DAOs, exposed through API Gateway &#43; Lambda.
           </li>
           <li>
-            Shipped <strong>One-Click Renewal</strong> for auto-insurance using past-purchase data; async Java pre-fill
-            simplified the renewal funnel.
+            Shipped <strong>One-Click Renewal</strong> for auto-insurance using past-purchase data &mdash; async Java pre-fill workflow
+            that materially simplified the funnel.
           </li>
           <li>
-            Applied OO design with <strong>Google Guice DI</strong>; landed a clean, testable codebase at
-            <span class="metric">90&percnt;&plus;</span> unit-test coverage.
+            Applied OO design and <strong>Google Guice DI</strong> throughout; landed a clean, testable codebase with
+            <span class="metric">90&percnt;&plus;</span> unit-test coverage (JUnit 5 &#43; Mockito).
           </li>
         </ul>
       </article>
     </section>
 
     <section class="block block--page2" aria-labelledby="projects-h">
-      <h2 id="projects-h" class="block__title">Featured Projects</h2>
+      <h2 id="projects-h" class="block__title">Selected Projects</h2>
       <div class="projects">
         <article class="project">
           <h3 class="project__title">Redis Server in Java</h3>
@@ -130,18 +173,24 @@
             <a href="https://github.com/praxstack/redis-server-java" rel="noopener">github.com/praxstack/redis-server-java</a>
           </p>
           <ul class="chips">
-            <li>Java 17</li><li>Maven</li><li>JUnit 5</li><li>Mockito</li><li>RESP2</li>
+            <li>Java 17</li>
+            <li>Maven</li>
+            <li>JUnit 5</li>
+            <li>Mockito</li>
+            <li>ConcurrentHashMap</li>
+            <li>ScheduledExecutorService</li>
           </ul>
           <p class="project__desc">
-            RESP2-compatible Redis server from scratch. Thread-per-client on a bounded <code>ExecutorService</code>;
-            lock-free reads via <code>ConcurrentHashMap</code>; hybrid TTL eviction (lazy check on <code>GET</code>
-            &#43; active <code>ScheduledExecutor</code> sweep); graceful shutdown via
-            <code>Runtime.addShutdownHook</code>; integration tests over real TCP sockets.
+            RESP2-compatible Redis server built from scratch. Thread-per-client on a bounded <code>ExecutorService</code>;
+            lock-free reads via <code>ConcurrentHashMap</code>; hybrid TTL eviction (lazy check on <code>GET</code> plus active
+            <code>ScheduledExecutor</code> sweep); graceful shutdown via <code>Runtime.addShutdownHook</code>;
+            integration tests over real TCP sockets.
           </p>
           <p class="project__metrics">
-            <strong>redis-benchmark, 100 clients:</strong> SET <span class="metric">154k rps</span> &middot;
-            GET <span class="metric">195k rps</span> &middot; INCR <span class="metric">128k rps</span> &middot;
-            p50 &lt; <span class="metric">0.3 ms</span> &middot; <strong>42 tests, 100&percnt; pass</strong>.
+            <strong>Benchmarks</strong> (redis-benchmark, 100 concurrent clients):
+            SET <span class="metric">154k rps</span> &middot; GET <span class="metric">195k rps</span> &middot;
+            INCR <span class="metric">128k rps</span> &middot; p50 &lt; <span class="metric">0.3 ms</span>.
+            <strong>42 tests, 100&percnt; pass.</strong>
           </p>
         </article>
 
@@ -151,7 +200,11 @@
             <a href="https://github.com/praxstack/markdown-viewer-pro" rel="noopener">github.com/praxstack/markdown-viewer-pro</a>
           </p>
           <ul class="chips">
-            <li>Vite</li><li>Vanilla JS</li><li>Marked.js</li><li>PrismJS</li><li>Vitest</li>
+            <li>Vite</li>
+            <li>Vanilla JS</li>
+            <li>Marked.js</li>
+            <li>PrismJS</li>
+            <li>Vitest</li>
           </ul>
           <p class="project__desc">
             Production-ready markdown editor with real-time preview, 12&plus; professional themes, and PDF / HTML export.
@@ -165,68 +218,36 @@
       </div>
     </section>
 
-    <section class="block block--page2" aria-labelledby="skills-h">
-      <h2 id="skills-h" class="block__title">Technical Skills</h2>
-      <dl class="skills">
-        <dt>Languages</dt>
-        <dd><strong>Java (17)</strong>, JavaScript / TypeScript, Python, C&plus;&plus;, HTML / CSS, VTL</dd>
+    <section class="block block--page2 block--split" aria-labelledby="education-h">
+      <div class="split">
+        <div class="split__col">
+          <h2 id="education-h" class="block__title">Education</h2>
+          <div class="row">
+            <p class="row__left">
+              <strong>M.C.A., Computer Science</strong> &middot; MNNIT Prayagraj
+              <span class="gpa">GPA 9.25</span>
+            </p>
+            <p class="row__right">2019 &mdash; 2022</p>
+          </div>
+          <div class="row">
+            <p class="row__left">
+              <strong>B.Sc. (Hons), Computer Science</strong> &middot; Bhaskaracharya College, Univ. of Delhi
+            </p>
+            <p class="row__right">2015 &mdash; 2018</p>
+          </div>
+        </div>
 
-        <dt>Java &amp; JVM</dt>
-        <dd>
-          Spring Boot, Spring MVC, Spring DI, Google Guice, JUnit 5, Mockito, SLF4J, Lombok, Maven, Gradle &middot;
-          <code>ExecutorService</code>, <code>CompletableFuture</code>, <code>ConcurrentHashMap</code>,
-          <code>ScheduledExecutorService</code>, thread pools, atomic primitives, JVM profiling
-        </dd>
-
-        <dt>Architecture</dt>
-        <dd>Microservices, REST, GraphQL, event-driven (SQS), idempotency patterns, state-machine orchestration, TDD</dd>
-
-        <dt>AWS</dt>
-        <dd>Lambda (Java), DynamoDB, SQS, Step Functions, API Gateway, AppSync, CloudWatch, ECS, <strong>CDK in Java</strong></dd>
-
-        <dt>Front-end</dt>
-        <dd>React.js (SSR &amp; CSR), Redux &mdash; production experience in customer-facing Amazon flows</dd>
-
-        <dt>Tools &amp; Data</dt>
-        <dd>DynamoDB, Redis, NoSQL, SQL &middot; Git / GitHub, CI/CD, Agile / Scrum, on-call, code review, operational excellence</dd>
-      </dl>
-    </section>
-
-    <section class="block block--page2" aria-labelledby="education-h">
-      <h2 id="education-h" class="block__title">Education</h2>
-      <div class="row">
-        <p class="row__left">
-          <strong>M.C.A., Computer Science</strong> &middot;
-          Motilal Nehru National Institute of Technology (MNNIT), Prayagraj
-          <span class="gpa">GPA 9.25</span>
-        </p>
-        <p class="row__right">2019 &mdash; 2022</p>
-      </div>
-      <div class="row">
-        <p class="row__left">
-          <strong>B.Sc. (Hons), Computer Science</strong> &middot;
-          Bhaskaracharya College of Applied Sciences, University of Delhi
-          <span class="gpa">GPA 7.00</span>
-        </p>
-        <p class="row__right">2015 &mdash; 2018</p>
-      </div>
-    </section>
-
-    <section class="block block--page2" aria-labelledby="awards-h">
-      <h2 id="awards-h" class="block__title">Awards &amp; Extracurricular</h2>
-      <div class="row">
-        <p class="row__left">
-          <strong>Amazon Pay Merchants Categories Champion</strong> &mdash;
-          100&plus; hotel trust-buster bugs resolved; on-call tickets cut 20&plus; &rarr; &tilde;5 per shift.
-        </p>
-        <p class="row__right">2023</p>
-      </div>
-      <div class="row">
-        <p class="row__left">
-          <strong>Department President, CS Society, Bhaskaracharya College</strong> &mdash;
-          Led 500&plus; students; organised annual tech fest; managed cross-functional committees.
-        </p>
-        <p class="row__right">2017</p>
+        <div class="split__col">
+          <h2 class="block__title">Awards</h2>
+          <div class="row">
+            <p class="row__left">
+              <strong>Amazon Pay Merchants Categories Champion</strong> &mdash;
+              100&plus; hotel trust-buster bugs resolved; on-call tickets cut
+              <span class="metric">20&plus; &rarr; &tilde;5</span> per shift.
+            </p>
+            <p class="row__right">2023</p>
+          </div>
+        </div>
       </div>
     </section>
 
