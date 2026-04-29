@@ -13,6 +13,9 @@ Prax-Resume/
 │   ├── reset.css         # Minimal reset + base typography
 │   ├── resume.css        # Screen styles (editorial / engineering)
 │   └── print.css         # @page + print refinements (A4)
+├── scripts/
+│   └── build-pdf.mjs     # Headless Chromium → resume.pdf
+├── package.json
 └── README.md
 ```
 
@@ -34,7 +37,15 @@ python3 -m http.server 5173
 
 ## Export to PDF
 
-Chromium-based browsers give the cleanest output:
+One-command headless build (recommended):
+
+```sh
+npm install
+npx playwright install chromium   # first time only
+npm run pdf                       # → resume.pdf
+```
+
+Or from the browser:
 
 1. Open `index.html`
 2. ⌘P / Ctrl-P
@@ -42,13 +53,6 @@ Chromium-based browsers give the cleanest output:
 4. Paper size → **A4**
 5. Margins → **Default** (print.css defines `@page` margins)
 6. Background graphics → **On** (preserves accent colour)
-
-Headless alternative:
-
-```sh
-npx playwright install chromium
-node -e "const{chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage();await p.goto('file://'+process.cwd()+'/index.html',{waitUntil:'networkidle'});await p.pdf({path:'resume.pdf',format:'A4',printBackground:true});await b.close()})()"
-```
 
 ## License
 

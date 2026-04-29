@@ -1,0 +1,13 @@
+{
+  "name": "prax-resume",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Resume — Prakhar Shekhar Parthasarthi. Static HTML + CSS with headless PDF export.",
+  "scripts": {
+    "pdf": "node scripts/build-pdf.mjs",
+    "serve": "python3 -m http.server 5173"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}
