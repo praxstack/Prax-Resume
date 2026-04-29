@@ -2,7 +2,7 @@
 
 @page {
   size: A4;
-  margin: 13mm 15mm;
+  margin: 10mm 12mm;
 }
 
 @media print {
@@ -11,8 +11,8 @@
   }
 
   body {
-    font-size: 9.6pt;
-    line-height: 1.4;
+    font-size: 9.1pt;
+    line-height: 1.36;
     color: #0B1524;
   }
 
@@ -25,12 +25,11 @@
     border-radius: 0;
   }
 
-  /* Page-break hygiene */
-  .block,
-  .role,
+  /* Page-break hygiene: only keep atomic units intact (project cards, edu rows).
+     Let roles and blocks flow freely so page 1 is fully used. */
   .project,
   .row,
-  .skills {
+  .bullets li {
     break-inside: avoid;
     page-break-inside: avoid;
   }
@@ -58,50 +57,66 @@
     print-color-adjust: exact;
   }
 
-  /* Tighter type for print density without pushing to page 3 */
-  .name { font-size: 22pt; }
-  .tagline { font-size: 9.4pt; margin-bottom: 7px; }
-  .contact { font-size: 8.6pt; }
-  .masthead { padding-bottom: 9px; margin-bottom: 12px; }
+  /* Print density — land 2 pages */
+  .name { font-size: 20pt; }
+  .tagline { font-size: 8.8pt; margin-bottom: 5px; }
+  .contact { font-size: 8.2pt; gap: 2px 12px; }
+  .masthead { padding-bottom: 7px; margin-bottom: 9px; }
 
-  .block__title { font-size: 8.6pt; margin-bottom: 7px; padding-bottom: 4px; }
+  .block { margin-bottom: 9px; }
+  .block--page2 { margin-bottom: 9px; }
+  .block__title { font-size: 8.4pt; margin-bottom: 5px; padding-bottom: 3px; letter-spacing: 0.12em; }
 
-  .summary { font-size: 9.4pt; line-height: 1.46; }
+  .summary { font-size: 8.8pt; line-height: 1.42; }
 
-  .role { margin-bottom: 10px; }
-  .role__title { font-size: 10pt; }
-  .role__dates { font-size: 8.6pt; }
-  .role__company { font-size: 9.2pt; margin-bottom: 3px; }
+  .role { margin-bottom: 8px; }
+  .role__title { font-size: 9.6pt; }
+  .role__dates { font-size: 8.2pt; }
+  .role__company { font-size: 8.8pt; margin-bottom: 2px; }
 
+  .bullets { margin-top: 2px; }
   .bullets li {
-    font-size: 9pt;
-    line-height: 1.42;
-    margin-bottom: 2.5px;
+    font-size: 8.6pt;
+    line-height: 1.36;
+    margin-bottom: 2px;
+    padding-left: 12px;
   }
+  .bullets li::before { top: 0.58em; width: 3px; height: 3px; }
   .bullets code,
   .skills dd code,
-  .project__desc code { font-size: 7.9pt; }
+  .project__desc code,
+  .summary code { font-size: 7.6pt; padding: 0 3px; }
+  .bullet-label { font-size: inherit; }
 
-  .project { padding: 9px 11px; }
-  .project__title { font-size: 10.2pt; }
-  .project__repo { font-size: 7.5pt; margin-bottom: 5px; }
-  .chips { margin-bottom: 6px; gap: 3px; }
-  .chips li { font-size: 7pt; padding: 0.5px 5px; }
-  .project__desc { font-size: 8.8pt; line-height: 1.4; margin-bottom: 5px; }
-  .project__metrics { font-size: 8.2pt; padding-top: 4px; }
+  .project { padding: 8px 10px; border-radius: 3px; }
+  .project__title { font-size: 9.8pt; }
+  .project__repo { font-size: 7.2pt; margin-bottom: 4px; }
+  .chips { margin-bottom: 4px; gap: 3px; }
+  .chips li { font-size: 6.8pt; padding: 0 4px; }
+  .project__desc { font-size: 8.4pt; line-height: 1.36; margin-bottom: 4px; }
+  .project__metrics { font-size: 7.9pt; padding-top: 3px; line-height: 1.36; }
+  .projects { gap: 10px; }
 
   .skills {
-    font-size: 9pt;
-    line-height: 1.42;
-    row-gap: 4px;
-    column-gap: 12px;
-    grid-template-columns: 100px 1fr;
+    font-size: 8.6pt;
+    line-height: 1.36;
+    row-gap: 3px;
+    column-gap: 11px;
+    grid-template-columns: 96px 1fr;
   }
-  .skills dt { font-size: 8.8pt; }
+  .skills dt { font-size: 8.4pt; }
 
-  .row { font-size: 9pt; line-height: 1.42; margin-bottom: 4px; }
-  .row__right { font-size: 8.6pt; }
-  .gpa { font-size: 7.8pt; }
+  .row { font-size: 8.6pt; line-height: 1.36; margin-bottom: 3px; }
+  .row__right { font-size: 8.2pt; }
+  .gpa { font-size: 7.4pt; padding: 0 4px; margin-left: 4px; }
+
+  /* Force side-by-side split to hold in print */
+  .split {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 20px;
+    break-inside: auto;
+  }
 
   a { color: #8C2B12; }
 }
