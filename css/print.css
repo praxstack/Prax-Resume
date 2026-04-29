@@ -52,7 +52,8 @@
   .chips li,
   .gpa,
   code,
-  .project {
+  .project,
+  .metric {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -63,9 +64,21 @@
   .contact { font-size: 8.2pt; gap: 2px 12px; }
   .masthead { padding-bottom: 7px; margin-bottom: 9px; }
 
-  .block { margin-bottom: 9px; }
-  .block--page2 { margin-bottom: 9px; }
-  .block__title { font-size: 8.4pt; margin-bottom: 5px; padding-bottom: 3px; letter-spacing: 0.12em; }
+  .block { margin-bottom: 13px; }
+  .block--page2 { margin-bottom: 13px; }
+  .block__title {
+    font-size: 8.4pt;
+    margin-bottom: 8px;
+    padding: 4px 8px 5px 10px;
+    letter-spacing: 0.15em;
+    border-left-width: 3px;
+  }
+
+  /* Force intern role to start on page 2 so its heading + body stay together */
+  .role--intern {
+    break-before: page;
+    page-break-before: always;
+  }
 
   .summary { font-size: 8.8pt; line-height: 1.42; }
 

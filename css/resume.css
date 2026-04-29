@@ -118,19 +118,23 @@ body {
 
 /* ---------- Block primitives ---------- */
 
-.block { margin-bottom: 14px; }
+.block { margin-bottom: 18px; }
 .block:last-child { margin-bottom: 0; }
 
+/* Section heading — accent pill on the left, subtle warm band, thin rule under */
 .block__title {
   font-family: var(--sans);
   font-size: 9pt;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  padding-bottom: 5px;
-  margin-bottom: 9px;
+  letter-spacing: 0.18em;
+  padding: 5px 10px 6px 12px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, var(--accent-soft) 0%, var(--accent-soft) 55%, transparent 100%);
+  border-left: 3px solid var(--accent);
   border-bottom: 1px solid var(--rule);
+  border-radius: 0 2px 2px 0;
 }
 
 /* ---------- Summary ---------- */
