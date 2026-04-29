@@ -1,225 +1,107 @@
-/* ---------- Print — A4, single page target ---------- */
+/* ---------- Print — A4, target 2 pages ---------- */
 
 @page {
   size: A4;
-  margin: 7mm 10mm;
+  margin: 13mm 15mm;
 }
 
 @media print {
-  html,
-  body {
+  html, body {
     background: #fff;
   }
 
   body {
-    font-size: 8.7pt;
-    line-height: 1.32;
-    color: #111;
+    font-size: 9.6pt;
+    line-height: 1.4;
+    color: #0B1524;
   }
 
-  .sheet {
-    width: auto;
-    min-height: 0;
+  .page {
+    max-width: none;
     margin: 0;
     padding: 0;
     background: transparent;
     box-shadow: none;
+    border-radius: 0;
   }
 
-  .sheet::before {
-    display: none;
-  }
-
-  /* ---- Density pass: print-only tightening to land a 2-page fit ---- */
-
-  .masthead {
-    padding-bottom: 6px;
-    margin-bottom: 9px;
-  }
-
-  .masthead::after {
-    bottom: -2px;
-    width: 64px;
-  }
-
-  .name {
-    font-size: 21pt;
-    margin-bottom: 2px;
-  }
-
-  .tagline {
-    font-size: 8.2pt;
-    margin-bottom: 4px;
-  }
-
-  .contact {
-    font-size: 8.1pt;
-    gap: 0 11px;
-  }
-
-  .section {
-    margin-bottom: 10px;
-  }
-
-  .section__title {
-    font-size: 9.2pt;
-    margin-bottom: 5px;
-    padding-bottom: 2px;
-    letter-spacing: 0.12em;
-  }
-
-  .section__title::before {
-    font-size: 9.4pt;
-    margin-right: 3px;
-  }
-
-  .summary {
-    font-size: 8.7pt;
-    line-height: 1.38;
-  }
-
-  .skills {
-    row-gap: 3px;
-  }
-
-  .skills__row {
-    grid-template-columns: 115px 1fr;
-    gap: 10px;
-    font-size: 8.3pt;
-    line-height: 1.34;
-  }
-
-  .skills__row dt {
-    font-size: 8pt;
-    padding-right: 8px;
-  }
-
-  .skills__row code {
-    font-size: 7.4pt;
-    padding: 0 2px;
-  }
-
-  .role {
-    margin-bottom: 10px;
-  }
-
-  .role__header {
-    margin-bottom: 4px;
-  }
-
-  .role__title h3 {
-    font-size: 10pt;
-  }
-
-  .role__org {
-    font-size: 8.4pt;
-  }
-
-  .role__meta {
-    font-size: 7.4pt;
-    line-height: 1.28;
-  }
-
-  .bullets {
-    row-gap: 3px;
-  }
-
-  .bullets li {
-    font-size: 8.5pt;
-    line-height: 1.36;
-    padding-left: 11px;
-  }
-
-  .bullets li::before {
-    top: 0.5em;
-  }
-
-  .bullets code {
-    font-size: 7.4pt;
-    padding: 0 2px;
-  }
-
-  .project {
-    margin-bottom: 8px;
-    padding-left: 10px;
-  }
-
-  .project__title {
-    font-size: 9.4pt;
-  }
-
-  .project__link,
-  .project__stack {
-    font-size: 7.6pt;
-  }
-
-  .project__desc {
-    font-size: 8.4pt;
-    line-height: 1.36;
-    margin-bottom: 2px;
-  }
-
-  .project__desc code {
-    font-size: 7.4pt;
-    padding: 0 2px;
-  }
-
-  .project__metrics {
-    font-size: 8.2pt;
-    line-height: 1.34;
-  }
-
-  .edu {
-    margin-bottom: 5px;
-  }
-
-  .edu__degree {
-    font-size: 9pt;
-  }
-
-  .edu__school {
-    font-size: 8.2pt;
-  }
-
-  .awards li {
-    font-size: 8.4pt;
-    line-height: 1.36;
-    padding-left: 11px;
-  }
-
-  .split {
-    gap: 22px;
-  }
-
-  /* Avoid awkward splits */
+  /* Page-break hygiene */
+  .block,
   .role,
   .project,
-  .edu,
-  .awards li {
+  .row,
+  .skills {
     break-inside: avoid;
     page-break-inside: avoid;
   }
-
-  .section__title {
+  .block__title,
+  .role__head,
+  .role__company {
     break-after: avoid;
     page-break-after: avoid;
   }
 
-  /* Print-friendly: hide decorative paper shadow; keep accent colour */
-  a {
-    color: #8C2B12;
-  }
+  /* Second-page sections get a touch more room */
+  .block--page2 { margin-bottom: 16px; }
+  .block--page2:last-child { margin-bottom: 0; }
 
-  a[href]::after {
-    content: "";
-  }
-
-  /* Force accent/ink to print */
-  .name__last,
-  .role__org,
-  .section__title,
-  .project__link {
+  /* Keep accent/backgrounds on print */
+  .masthead,
+  .block__title,
+  .masthead::after,
+  .bullets li::before,
+  .chips li,
+  .gpa,
+  code,
+  .project {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+
+  /* Tighter type for print density without pushing to page 3 */
+  .name { font-size: 22pt; }
+  .tagline { font-size: 9.4pt; margin-bottom: 7px; }
+  .contact { font-size: 8.6pt; }
+  .masthead { padding-bottom: 9px; margin-bottom: 12px; }
+
+  .block__title { font-size: 8.6pt; margin-bottom: 7px; padding-bottom: 4px; }
+
+  .summary { font-size: 9.4pt; line-height: 1.46; }
+
+  .role { margin-bottom: 10px; }
+  .role__title { font-size: 10pt; }
+  .role__dates { font-size: 8.6pt; }
+  .role__company { font-size: 9.2pt; margin-bottom: 3px; }
+
+  .bullets li {
+    font-size: 9pt;
+    line-height: 1.42;
+    margin-bottom: 2.5px;
+  }
+  .bullets code,
+  .skills dd code,
+  .project__desc code { font-size: 7.9pt; }
+
+  .project { padding: 9px 11px; }
+  .project__title { font-size: 10.2pt; }
+  .project__repo { font-size: 7.5pt; margin-bottom: 5px; }
+  .chips { margin-bottom: 6px; gap: 3px; }
+  .chips li { font-size: 7pt; padding: 0.5px 5px; }
+  .project__desc { font-size: 8.8pt; line-height: 1.4; margin-bottom: 5px; }
+  .project__metrics { font-size: 8.2pt; padding-top: 4px; }
+
+  .skills {
+    font-size: 9pt;
+    line-height: 1.42;
+    row-gap: 4px;
+    column-gap: 12px;
+    grid-template-columns: 100px 1fr;
+  }
+  .skills dt { font-size: 8.8pt; }
+
+  .row { font-size: 9pt; line-height: 1.42; margin-bottom: 4px; }
+  .row__right { font-size: 8.6pt; }
+  .gpa { font-size: 7.8pt; }
+
+  a { color: #8C2B12; }
 }
