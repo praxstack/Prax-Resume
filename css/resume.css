@@ -79,12 +79,13 @@ body {
   position: relative;
 }
 
+/* Rust segment overlays the left portion of the ink rule → single unified accent divider */
 .masthead::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -5px;
-  width: 56px;
+  bottom: -2px;
+  width: 72px;
   height: 2px;
   background: var(--accent);
 }
