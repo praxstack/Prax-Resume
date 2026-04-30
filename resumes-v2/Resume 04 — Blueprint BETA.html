@@ -29,7 +29,7 @@
   --dim:     #7FA1BA;
   --grid:    rgba(232,236,239,0.10);
   --grid2:   rgba(232,236,239,0.20);
-  --pencil:  #FF5B5B;
+  --pencil:  #FFB4A8;  /* bumped from #FF5B5B for WCAG AA on --blue (6.46:1) */
   --pencil2: #C94040;
   --rule:    rgba(232,236,239,0.35);
   --rule2:   rgba(232,236,239,0.55);
@@ -233,7 +233,7 @@ body {
   margin-top: 1.5mm;
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 6.6pt;
-  color: var(--dim);
+  color: var(--ivory2);  /* was --dim; carries data → lifted to AA body tone */
   letter-spacing: 0.04em;
 }
 .stat .arrow {
@@ -250,7 +250,7 @@ body {
 /* === SECTION HEADING ==================================================== */
 .section-head {
   display:grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto auto 1fr auto;  /* 4 cols = hno | htitle | hline | hmeta */
   align-items:center;
   gap: 3mm;
   margin-top: 5mm;
@@ -315,7 +315,7 @@ body {
   margin-top: 0.6mm;
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 7pt;
-  color: var(--dim);
+  color: var(--ivory2);  /* was --dim; location is data */
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -407,7 +407,7 @@ body {
 }
 .titleblock .cell:last-child { border-right: 0; }
 .titleblock .cell .k {
-  color: var(--dim);
+  color: var(--ivory2);  /* was --dim; label text must meet AA */
   font-size: 6pt;
   letter-spacing: 0.16em;
   margin-bottom: 0.8mm;
@@ -647,13 +647,13 @@ body {
 
 <!-- =======================  PAGE 1  ======================================= -->
 <article class="resume-page">
-  <div class="grid-bg"></div>
-  <div class="frame"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="frame" aria-hidden="true"></div>
 
-  <div class="reg tl">&#x2554;</div>
-  <div class="reg tr">&#x2557;</div>
-  <div class="reg bl">&#x255A;</div>
-  <div class="reg br">&#x255D;</div>
+  <div class="reg tl" aria-hidden="true">&#x2554;</div>
+  <div class="reg tr" aria-hidden="true">&#x2557;</div>
+  <div class="reg bl" aria-hidden="true">&#x255A;</div>
+  <div class="reg br" aria-hidden="true">&#x255D;</div>
 
   <div class="sheet">
 
@@ -665,7 +665,7 @@ body {
     </div>
 
     <!-- Dimension arrow above name -->
-    <div class="dim center" style="margin-top: 4mm;">
+    <div class="dim center" aria-hidden="true" style="margin-top: 4mm;">
       <span class="tick">├</span><div class="line"></div>
       <span class="label">— 42 PT · DISPLAY —</span>
       <div class="line"></div><span class="tick">┤</span>
@@ -673,9 +673,9 @@ body {
 
     <!-- NAME BLOCK -->
     <div class="name-block">
-      <div class="name">Prakhar&nbsp;Shekhar<br/>Parthasarthi</div>
+      <h1 class="name">Prakhar&nbsp;Shekhar<br/>Parthasarthi</h1>
 
-      <div class="dim" style="margin-top: 2mm;">
+      <div class="dim" aria-hidden="true" style="margin-top: 2mm;">
         <span class="tick">├</span><div class="line short"></div>
         <span class="label">— 210mm —</span>
         <div class="line"></div><span class="tick">┤</span>
@@ -691,31 +691,31 @@ body {
     <div class="section-head" style="margin-top: 5mm;">
       <span class="hno">DIM · 01</span>
       <span class="htitle">HEADLINE DIMENSIONS</span>
-      <div class="hline"></div>
+      <div class="hline" aria-hidden="true"></div>
       <span class="hmeta">MEASURED FY23–FY25 · IN-PROD</span>
     </div>
 
     <div class="stat-strip">
       <div class="stat">
-        <span class="arrow">&larr; −47% &rarr;</span>
+        <span class="arrow" aria-hidden="true">&larr; −47% &rarr;</span>
         <div class="tag">§1 · P90 LATENCY</div>
         <div class="val">0.59 s</div>
         <div class="sub">from 1.10 s · search fan-out</div>
       </div>
       <div class="stat">
-        <span class="arrow">&larr; +33% &rarr;</span>
+        <span class="arrow" aria-hidden="true">&larr; +33% &rarr;</span>
         <div class="tag">§2 · CONVERSION</div>
         <div class="val">+33%</div>
         <div class="sub">traveler funnel uplift</div>
       </div>
       <div class="stat">
-        <span class="arrow">&larr; −43 bps &rarr;</span>
+        <span class="arrow" aria-hidden="true">&larr; −43 bps &rarr;</span>
         <div class="tag">§3 · CPT</div>
         <div class="val">−43 bps</div>
         <div class="sub">cost-per-txn · payments</div>
       </div>
       <div class="stat">
-        <span class="arrow">&larr; ÷4 &rarr;</span>
+        <span class="arrow" aria-hidden="true">&larr; ÷4 &rarr;</span>
         <div class="tag">§4 · ON-CALL</div>
         <div class="val">~5 / shift</div>
         <div class="sub">from 20+ · alarm hygiene</div>
@@ -726,7 +726,7 @@ body {
     <div class="section-head">
       <span class="hno">ASM · N.01</span>
       <span class="htitle">ASSEMBLY · BOOKING FUNNEL</span>
-      <div class="hline"></div>
+      <div class="hline" aria-hidden="true"></div>
       <span class="hmeta">SEE NOTE §3 · CRITICAL PATH</span>
     </div>
 
@@ -738,7 +738,7 @@ body {
           <div class="loc">Bengaluru, IN</div>
         </div>
         <div class="meta">
-          <div class="date">JUL 2023 — SEP 2025</div>
+          <div class="date"><time datetime="2023-07">JUL 2023</time> — <time datetime="2025-09">SEP 2025</time></div>
           <div>TENURE · 2Y 2M</div>
           <div class="stamp">REV R4 · PROD STABLE</div>
         </div>
@@ -770,14 +770,14 @@ body {
 
 <!-- =======================  PAGE 2  ======================================= -->
 <article class="resume-page">
-  <div class="grid-bg"></div>
-  <div class="frame"></div>
-  <div class="draft-watermark">DRAFT</div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="frame" aria-hidden="true"></div>
+  <div class="draft-watermark" aria-hidden="true">DRAFT</div>
 
-  <div class="reg tl">&#x2554;</div>
-  <div class="reg tr">&#x2557;</div>
-  <div class="reg bl">&#x255A;</div>
-  <div class="reg br">&#x255D;</div>
+  <div class="reg tl" aria-hidden="true">&#x2554;</div>
+  <div class="reg tr" aria-hidden="true">&#x2557;</div>
+  <div class="reg bl" aria-hidden="true">&#x255A;</div>
+  <div class="reg br" aria-hidden="true">&#x255D;</div>
 
   <div class="sheet">
 
@@ -792,7 +792,7 @@ body {
     <div class="section-head" style="margin-top: 3mm;">
       <span class="hno">ASM · N.02</span>
       <span class="htitle">PRIOR ASSEMBLIES</span>
-      <div class="hline"></div>
+      <div class="hline" aria-hidden="true"></div>
       <span class="hmeta">REV HISTORY · AMZN TRAVEL</span>
     </div>
 
@@ -804,11 +804,11 @@ body {
             <div class="org">Bengaluru, IN</div>
           </div>
           <div class="date">
-            JUL 2022 — JUL 2023<br/>
+            <time datetime="2022-07">JUL 2022</time> — <time datetime="2023-07">JUL 2023</time><br/>
             <span class="stamp">REV R2</span>
           </div>
         </div>
-        <p>Delivered <strong>REST</strong> services and <strong>@Repository DynamoDB DAOs</strong> wired via Spring DI. Shipped auto-insurance renewal with retry/idempotency — attach-rate <em>+60%</em>. Lifted test bar to <em>80%+ JUnit</em> coverage with JaCoCo gated on CI.</p>
+        <p>Delivered <strong>REST</strong> services and <strong>@Repository DynamoDB DAOs</strong> wired via Spring DI. Shipped auto-insurance renewal with retry/idempotency — renewal completion <em>+60%</em>. Lifted test bar to <em>80%+ JUnit</em> coverage with JaCoCo gated on CI.</p>
       </div>
 
       <div class="role-mini">
@@ -818,7 +818,7 @@ body {
             <div class="org">Bengaluru, IN</div>
           </div>
           <div class="date">
-            MAY 2021 — FEB 2022<br/>
+            <time datetime="2021-05">MAY 2021</time> — <time datetime="2022-02">FEB 2022</time><br/>
             <span class="stamp">REV R1</span>
           </div>
         </div>
@@ -830,48 +830,48 @@ body {
     <div class="section-head">
       <span class="hno">DIM · 02</span>
       <span class="htitle">STACK · BILL OF MATERIALS</span>
-      <div class="hline"></div>
+      <div class="hline" aria-hidden="true"></div>
       <span class="hmeta">8 TILES · SCALE 1:1</span>
     </div>
 
     <div class="stack-grid">
       <div class="stack-tile">
-        <span class="dimmark">T-01</span>
+        <span class="dimmark" aria-hidden="true">T-01</span>
         <div class="k">JVM · Core</div>
         <div class="v">Java 17 · Spring Boot · Spring MVC · Spring DI · Guice · Maven · Gradle</div>
       </div>
       <div class="stack-tile">
-        <span class="dimmark">T-02</span>
+        <span class="dimmark" aria-hidden="true">T-02</span>
         <div class="k">Concurrency</div>
         <div class="v">ExecutorService · CompletableFuture · ConcurrentHashMap · ScheduledExecutor · bulkheads</div>
       </div>
       <div class="stack-tile">
-        <span class="dimmark">T-03</span>
+        <span class="dimmark" aria-hidden="true">T-03</span>
         <div class="k">AWS</div>
         <div class="v">Lambda · DynamoDB · SQS · Step Functions · API Gateway · AppSync · CloudWatch · ECS · CDK (Java)</div>
       </div>
       <div class="stack-tile">
-        <span class="dimmark">T-04</span>
+        <span class="dimmark" aria-hidden="true">T-04</span>
         <div class="k">Quality</div>
         <div class="v">JUnit 5 · Mockito · JaCoCo · integration harnesses · contract tests</div>
       </div>
       <div class="stack-tile">
-        <span class="dimmark">T-05</span>
+        <span class="dimmark" aria-hidden="true">T-05</span>
         <div class="k">Front-End</div>
         <div class="v">React (SSR &amp; CSR) · Redux · TypeScript · Vitest</div>
       </div>
       <div class="stack-tile">
-        <span class="dimmark">T-06</span>
+        <span class="dimmark" aria-hidden="true">T-06</span>
         <div class="k">Data</div>
         <div class="v">DynamoDB single-table · idempotency keys · dedupe queues</div>
       </div>
       <div class="stack-tile">
-        <span class="dimmark">T-07</span>
+        <span class="dimmark" aria-hidden="true">T-07</span>
         <div class="k">Ops</div>
         <div class="v">Runbooks · alarm hygiene · SEV pages · on-call</div>
       </div>
       <div class="stack-tile">
-        <span class="dimmark">T-08</span>
+        <span class="dimmark" aria-hidden="true">T-08</span>
         <div class="k">Method</div>
         <div class="v">Trunk-based · code-review · postmortems · SLO-first</div>
       </div>
@@ -881,7 +881,7 @@ body {
     <div class="section-head">
       <span class="hno">ASM · N.03</span>
       <span class="htitle">SIDE DRAWINGS · PROJECTS</span>
-      <div class="hline"></div>
+      <div class="hline" aria-hidden="true"></div>
       <span class="hmeta">DIMENSIONED · MEASURED LOCAL</span>
     </div>
 
@@ -920,15 +920,15 @@ body {
     <div class="section-head">
       <span class="hno">DIM · 03</span>
       <span class="htitle">EDUCATION · RECOGNITION</span>
-      <div class="hline"></div>
+      <div class="hline" aria-hidden="true"></div>
       <span class="hmeta">CERTIFIED · ON FILE</span>
     </div>
 
     <div class="foot-row">
       <div class="foot-cell">
         <div class="k">Education</div>
-        <div class="line"><span class="lbl">M.C.A. · CS</span> &nbsp; <strong>MNNIT Prayagraj</strong> · 2019 — 2022 · GPA <strong>9.25 / 10</strong></div>
-        <div class="line"><span class="lbl">B.Sc. (Hons) · CS</span> &nbsp; <strong>Bhaskaracharya College · DU</strong> · 2015 — 2018</div>
+        <div class="line"><span class="lbl">M.C.A. · CS</span> &nbsp; <strong>MNNIT Prayagraj</strong> · <time datetime="2019">2019</time> — <time datetime="2022">2022</time> · GPA <strong>9.25 / 10</strong></div>
+        <div class="line"><span class="lbl">B.Sc. (Hons) · CS</span> &nbsp; <strong>Bhaskaracharya College · DU</strong> · <time datetime="2015">2015</time> — <time datetime="2018">2018</time></div>
       </div>
       <div class="foot-cell">
         <div class="k">Recognition</div>

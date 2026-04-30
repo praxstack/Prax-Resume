@@ -440,7 +440,7 @@
     font-size: 18pt;
     color: var(--ink);
     letter-spacing: 0.18em;
-    margin-top: 0.6mm;
+    margin: 0.6mm 0 0 0;
     text-transform: uppercase;
   }
   .act2-head .title .verm { color: var(--verm); }
@@ -807,7 +807,7 @@
   <article class="resume-page pg1">
 
     <!-- MARQUEE BAR -->
-    <header class="marquee">
+    <header class="marquee" aria-hidden="true">
       <span class="side">Track 01 / 02</span>
       <span class="title-text">PLAYBILL <b>·</b> OPENING NIGHT <b>·</b> APR 2026</span>
       <span class="side">₹ 00 · free</span>
@@ -818,7 +818,7 @@
 
       <!-- EYEBROW -->
       <div class="eyebrow">
-        Tonight's Programme <span class="orn">❦</span> In Three Acts <span class="orn">❦</span> Presenting…
+        Tonight's Programme <span class="orn" aria-hidden="true">❦</span> In Three Acts <span class="orn" aria-hidden="true">❦</span> Presenting…
       </div>
 
       <!-- GIANT MARQUEE TITLE -->
@@ -852,7 +852,6 @@
 
       <!-- STAT PLATES / RUNTIME NOTES -->
       <ul class="stats">
-        <div>
           <li>
             <span class="lbl">Runtime Note · Act I</span>
             <span class="num">−47<span class="u">%</span></span>
@@ -873,11 +872,10 @@
             <span class="num">20→<span class="u">~5</span></span>
             <span class="note">on-call pages / shift</span>
           </li>
-        </div>
       </ul>
 
       <!-- CURTAIN RULE · ACT I -->
-      <div class="curtain">
+      <div class="curtain" aria-hidden="true">
         <span class="rod"></span>
         <span class="fleuron">❦</span>
         <span class="act-badge">ACT I</span>
@@ -893,7 +891,7 @@
       <!-- SETTING / DIRECTOR CREDIT -->
       <div class="set-line">
         <span class="setting"><b>Setting:</b> Amazon Travel, Bengaluru, 2023–25 · hotels, flights &amp; insurance under one proscenium.</span>
-        <span class="when">SDE II · Jul 2023 — Sep 2025</span>
+        <span class="when">SDE II · <time datetime="2023-07">Jul 2023</time> — <time datetime="2025-09">Sep 2025</time></span>
       </div>
       <div class="credits-line">
         <b>Shipping:</b> PSP — payments, pricing &amp; pipelines &nbsp; <b>Supporting:</b> The full booking funnel · 4 microservices · on-call rotation
@@ -901,7 +899,6 @@
 
       <!-- SCENES -->
       <ul class="scenes">
-        <div>
           <li>
             <span class="scene-title">Scene 1 <span class="dot">·</span> The Pricing Fan-Out</span>
             <i>Enter PRAKHAR, stage left, Java 17 in hand.</i> Re-architected the traveler's pricing call on <b>CompletableFuture.allOf</b> with bulkhead <b>ExecutorService</b> pools — cut p90 from <span class="hit">1.10s → 0.59s (−47%)</span>, lifting traveler conversion <span class="hit">+33%</span> across three sustained quarters.
@@ -918,12 +915,11 @@
             <span class="scene-title">Scene 4 <span class="dot">·</span> The Quiet Rotation</span>
             <i>Pager goes dark. Enter sleep.</i> Dragged on-call from <span class="hit">20+ → ~5 pages/shift</span>, config-hygiene <span class="hit">5–6 → 0</span>; resolved <span class="hit">150+ incidents</span> and stopped an est. <span class="hit">~30 bps</span> funnel-churn on insurance attach.
           </li>
-        </div>
       </ul>
 
       <!-- INTERMISSION -->
       <div class="intermission">
-        <span class="orn">❦ ✦ ❦</span> Intermission <span class="orn">·</span> Act II after the break <span class="orn">❦ ✦ ❦</span>
+        <span class="orn" aria-hidden="true">❦ ✦ ❦</span> Intermission <span class="orn" aria-hidden="true">·</span> Act II after the break <span class="orn" aria-hidden="true">❦ ✦ ❦</span>
       </div>
 
     </div>
@@ -940,7 +936,7 @@
   <article class="resume-page pg2">
 
     <!-- MARQUEE BAR -->
-    <header class="marquee">
+    <header class="marquee" aria-hidden="true">
       <span class="side">Track 02 / 02</span>
       <span class="title-text">ACT II <b>·</b> AFTER THE BREAK <b>·</b> APR 2026</span>
       <span class="side">Row J · Seat 7</span>
@@ -948,7 +944,7 @@
     </header>
 
     <!-- SOLD OUT STAMP -->
-    <div class="sold-out">
+    <div class="sold-out" aria-hidden="true">
       SOLD OUT
       <span class="stamp-small">Opening Night · Apr 2026</span>
     </div>
@@ -956,7 +952,7 @@
     <div class="sheet">
 
       <!-- CURTAIN · ACT II -->
-      <div class="curtain" style="margin-top:0;">
+      <div class="curtain" style="margin-top:0;" aria-hidden="true">
         <span class="rod"></span>
         <span class="fleuron">❦</span>
         <span class="act-badge">ACT II</span>
@@ -966,33 +962,31 @@
 
       <div class="act2-head">
         <div class="kicker">…wherein prior engagements are recounted…</div>
-        <div class="title">ACT II <span class="verm">—</span> Prior Engagements</div>
+        <h1 class="title">ACT II <span class="verm">—</span> Prior Engagements</h1>
       </div>
 
       <!-- CAST-LIST ROLES -->
       <ul class="cast-roles">
-        <div>
           <li>
             <div class="as-the">as the TRAVEL SDE</div>
             <span class="role-name">Software Dev Engineer I</span>
             <div class="venue">Amazon Travel · Bengaluru</div>
-            <div class="when">Jul 2022 — Jul 2023 · the second season</div>
+            <div class="when"><time datetime="2022-07">Jul 2022</time> — <time datetime="2023-07">Jul 2023</time> · the second season</div>
             <div class="synopsis">
               <span class="dir">(stage direction: PRAKHAR writes controllers by candlelight, Spring DI glowing softly.)</span>
-              Authored REST controllers and <b>@Repository</b> DynamoDB DAOs atop Spring DI; steered an auto-insurance renewal flow to <span class="hit">+60% uptake</span>. Held the unit-test line above <span class="hit">80% coverage</span> with JUnit 5 and JaCoCo gates in CI.
+              Authored REST controllers and <b>@Repository</b> DynamoDB DAOs atop Spring DI; steered an auto-insurance renewal flow to <span class="hit">+60% renewal completion</span>. Held the unit-test line above <span class="hit">80% coverage</span> with JUnit 5 and JaCoCo gates in CI.
             </div>
           </li>
           <li>
             <div class="as-the">as the TRAVEL INTERN</div>
             <span class="role-name">Software Dev Engineer, Intern</span>
             <div class="venue">Amazon Travel · Bengaluru</div>
-            <div class="when">May 2021 — Feb 2022 · the opening season</div>
+            <div class="when"><time datetime="2021-05">May 2021</time> — <time datetime="2022-02">Feb 2022</time> · the opening season</div>
             <div class="synopsis">
               <span class="dir">(stage direction: GraphQL exits stage right; JAVA enters, bowing.)</span>
               Migrated a GraphQL façade to pure <b>Java</b>; engineered a <b>One-Click Renewal</b> atop Guice DI; kept the test ledger above <span class="hit">90% coverage</span> throughout. Earned a full-time return offer at the close of the run.
             </div>
           </li>
-        </div>
       </ul>
 
       <!-- ENSEMBLE / STACK -->
@@ -1004,7 +998,6 @@
       </div>
 
       <ul class="ensemble">
-        <div>
           <li>
             <span class="as">as the LEAD</span><span class="cat">JVM</span>
             <span class="items">Java 17 · Spring Boot · Spring MVC · Spring DI · Guice · Maven · Gradle</span>
@@ -1037,7 +1030,6 @@
             <span class="as">as the DIRECTOR</span><span class="cat">Method</span>
             <span class="items">trunk-based · code-review discipline · postmortems · SLO-first</span>
           </li>
-        </div>
       </ul>
 
       <!-- ENCORES / PROJECTS -->
@@ -1049,7 +1041,6 @@
       </div>
 
       <ul class="encores">
-        <div>
           <li>
             <div class="pname">Redis Server — in Java</div>
             <div class="purl">github.com/praxstack/redis-server-java</div>
@@ -1072,7 +1063,6 @@
               <span class="pill"><b>0</b> runtime deps</span>
             </div>
           </li>
-        </div>
       </ul>
 
       <!-- CREDITS -->
@@ -1087,33 +1077,29 @@
         <div class="col">
           <h6>Schooling — the early reviews</h6>
           <ul>
-            <div>
               <li>
                 <span class="name">M.C.A., Computer Science <em>— MNNIT Prayagraj</em></span>
                 <span class="detail">grade-book 9.25 / 10 · dept. among the upper billing</span>
-                <span class="meta">2019 — 2022 · Prayagraj, IN</span>
+                <span class="meta"><time datetime="2019">2019</time> — <time datetime="2022">2022</time> · Prayagraj, IN</span>
               </li>
               <li>
                 <span class="name">B.Sc. (Hons.), Computer Science <em>— Bhaskaracharya College, DU</em></span>
                 <span class="detail">a first engagement with the trade</span>
-                <span class="meta">2015 — 2018 · New Delhi, IN</span>
+                <span class="meta"><time datetime="2015">2015</time> — <time datetime="2018">2018</time> · New Delhi, IN</span>
               </li>
-            </div>
           </ul>
         </div>
         <div class="col">
           <h6>Accolades — the curtain calls</h6>
           <ul>
-            <div>
               <li>
-                <span class="name">Amazon Pay <em>— Categories Champion, 2023</em></span>
+                <span class="name">Amazon Pay <em>— Merchants Categories Champion, 2023</em></span>
                 <span class="detail">commended for stewardship of the merchant-category domain across a full fiscal run.</span>
               </li>
               <li>
                 <span class="name">Trust-Buster Sprints <em>— 100+ bugs retired</em></span>
                 <span class="detail">resolved <span class="hit">100+</span> trust-buster defects across travel-quality sprints — small cuts, quietly healed.</span>
               </li>
-            </div>
           </ul>
         </div>
       </div>

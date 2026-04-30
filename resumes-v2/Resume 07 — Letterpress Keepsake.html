@@ -235,13 +235,15 @@ body {
   text-align:center;
 }
 .chapter .caput {
+  margin: 0;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-style: italic;
   font-size: 8.2pt;
   color: var(--gold2);
   letter-spacing: 0.14em;
+  font-weight: 400;
 }
-.chapter h2 {
+.chapter h3 {
   margin: 0.3mm 0 0;
   font-family: "Playfair Display SC", Georgia, serif;
   font-weight: 700;
@@ -382,13 +384,15 @@ ul.numerals .sidehead {
   margin-top: 1mm; margin-bottom: 2mm;
 }
 .p2-title .caput {
+  margin: 0;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-style: italic;
   font-size: 8pt;
   color: var(--gold2);
   letter-spacing: 0.14em;
+  font-weight: 400;
 }
-.p2-title h2 {
+.p2-title h3 {
   margin: 0.3mm 0 0;
   font-family: "Playfair Display SC", Georgia, serif;
   font-weight: 700;
@@ -663,22 +667,22 @@ ul.numerals .sidehead {
      PAGE I
      ====================================================================== -->
 <article class="resume-page">
-  <div class="linen"></div>
-  <div class="deckle"></div>
+  <div class="linen" aria-hidden="true"></div>
+  <div class="deckle" aria-hidden="true"></div>
   <div class="page-inner">
 
     <div class="runhead">
       <span>PRAKHAR · SHEKHAR · PARTHASARTHI</span>
-      <span class="flo">❦</span>
+      <span class="flo" aria-hidden="true">❦</span>
       <span class="pg">Folio · I</span>
     </div>
 
     <section class="title-block">
-      <div class="ornament-top">✦ ❦ ✦</div>
+      <div class="ornament-top" aria-hidden="true">✦ ❦ ✦</div>
       <h1>Prakhar Shekhar Parthasarthi</h1>
       <div class="sub">Senior Software Engineer &mdash; Java · Distributed Systems · AWS</div>
       <div class="tag">BEING AN ACCOUNT OF THREE SEASONS AT AMAZON TRAVEL</div>
-      <div class="divider">❧</div>
+      <div class="divider" aria-hidden="true">❧</div>
       <div class="contact">
         prakhar.mnnit.2022@gmail.com
         <span class="dot">·</span>github.com/praxstack
@@ -720,15 +724,15 @@ ul.numerals .sidehead {
     </section>
 
     <section class="chapter">
-      <div class="caput">Chapter the First</div>
-      <h2>SDE II &mdash; Amazon Travel</h2>
-      <div class="rule">❦</div>
+      <h2 class="caput">Chapter the First</h2>
+      <h3>SDE II &mdash; Amazon Travel</h3>
+      <div class="rule" aria-hidden="true">❦</div>
     </section>
 
     <div class="role">
       <div class="role-head">
         <div class="role-title">AMAZON TRAVEL <span class="amp">&mdash; Hotels · Flights · Insurance</span></div>
-        <div class="role-meta">JUL 2023 &mdash; SEP 2025 · BENGALURU</div>
+        <div class="role-meta"><time datetime="2023-07/2025-09">JUL 2023 &mdash; SEP 2025</time> · BENGALURU</div>
       </div>
       <div class="role-sub">Owner of four Java microservices across the booking funnel — pricing, checkout, payment webhooks, insurance attach.</div>
 
@@ -768,7 +772,7 @@ ul.numerals .sidehead {
     </div>
 
     <div class="overleaf">
-      <span class="flo">❦ ❧ ❦</span>
+      <span class="flo" aria-hidden="true">❦ ❧ ❦</span>
       <span>continued overleaf</span>
       <span class="pgnum"> · Pg.&nbsp;II</span>
     </div>
@@ -780,36 +784,36 @@ ul.numerals .sidehead {
      PAGE II
      ====================================================================== -->
 <article class="resume-page">
-  <div class="linen"></div>
-  <div class="deckle"></div>
+  <div class="linen" aria-hidden="true"></div>
+  <div class="deckle" aria-hidden="true"></div>
   <div class="page-inner">
 
     <div class="runhead">
       <span>PRAKHAR · SHEKHAR · PARTHASARTHI</span>
-      <span class="flo">❧</span>
+      <span class="flo" aria-hidden="true">❧</span>
       <span class="pg">Folio · II</span>
     </div>
 
     <section class="p2-title">
-      <div class="caput">Chapter the Second</div>
-      <h2>Previous Chapters</h2>
-      <div class="rule">❦</div>
+      <h2 class="caput">Chapter the Second</h2>
+      <h3>Previous Chapters</h3>
+      <div class="rule" aria-hidden="true">❦</div>
     </section>
 
     <div class="prev-roles">
       <div class="prev-card">
         <div class="ttl">SDE I &mdash; Amazon Travel</div>
-        <div class="meta">JUL 2022 &mdash; JUL 2023 · BENGALURU</div>
+        <div class="meta"><time datetime="2022-07/2023-07">JUL 2022 &mdash; JUL 2023</time> · BENGALURU</div>
         <p>
           Built REST endpoints and <code>@Repository</code> DynamoDB DAOs wired with
           <b>Spring DI</b>; shipped auto-insurance renewal contributing
-          <b>+60%</b> renewal volume. Held the line at <b>80%+ JUnit coverage</b> with
+          <b>+60% renewal completion</b>. Held the line at <b>80%+ JUnit coverage</b> with
           <b>JaCoCo</b> enforced in CI.
         </p>
       </div>
       <div class="prev-card">
         <div class="ttl">SDE Intern &mdash; Amazon Travel</div>
-        <div class="meta">MAY 2021 &mdash; FEB 2022 · BENGALURU</div>
+        <div class="meta"><time datetime="2021-05/2022-02">MAY 2021 &mdash; FEB 2022</time> · BENGALURU</div>
         <p>
           Led the <b>GraphQL &rarr; Java</b> migration of a checkout surface; delivered the
           One-Click Renewal flow with <code>Guice</code> DI and an end-to-end harness at
@@ -818,7 +822,7 @@ ul.numerals .sidehead {
       </div>
     </div>
 
-    <div class="sect-head"><span class="flo">❦</span><h3>THE APPARATUS</h3><span class="flo">❦</span></div>
+    <div class="sect-head"><span class="flo" aria-hidden="true">❦</span><h3>THE APPARATUS</h3><span class="flo" aria-hidden="true">❦</span></div>
 
     <div class="apparatus">
       <div class="row">
@@ -863,7 +867,7 @@ ul.numerals .sidehead {
       </div>
     </div>
 
-    <div class="sect-head"><span class="flo">❧</span><h3>SUNDRY DEVICES</h3><span class="flo">❧</span></div>
+    <div class="sect-head"><span class="flo" aria-hidden="true">❧</span><h3>SUNDRY DEVICES</h3><span class="flo" aria-hidden="true">❧</span></div>
 
     <div class="devices">
       <div class="device">
@@ -898,18 +902,18 @@ ul.numerals .sidehead {
       </div>
     </div>
 
-    <div class="sect-head"><span class="flo">❦</span><h3>LETTERS OF REFERENCE</h3><span class="flo">❦</span></div>
+    <div class="sect-head"><span class="flo" aria-hidden="true">❦</span><h3>LETTERS OF REFERENCE</h3><span class="flo" aria-hidden="true">❦</span></div>
 
     <div class="letters">
       <div class="col">
         <h4>of formal instruction</h4>
         <div class="edu-row">
           <div class="inst"><b>M.C.A.</b> &mdash; Computer Science · MNNIT · Prayagraj</div>
-          <div class="yr">2019–2022 · GPA 9.25/10</div>
+          <div class="yr"><time datetime="2019/2022">2019&ndash;2022</time> · GPA 9.25/10</div>
         </div>
         <div class="edu-row">
           <div class="inst"><b>B.Sc. (Hons)</b> &mdash; Computer Science · Bhaskaracharya College · Delhi University</div>
-          <div class="yr">2015–2018</div>
+          <div class="yr"><time datetime="2015/2018">2015&ndash;2018</time></div>
         </div>
       </div>
       <div class="col">
@@ -924,7 +928,7 @@ ul.numerals .sidehead {
     </div>
 
     <div class="colophon">
-      <div class="flo">❦ ✦ ❦</div>
+      <div class="flo" aria-hidden="true">❦ ✦ ❦</div>
       <div class="words">PRINTED BY HAND &nbsp;·&nbsp; ONE OF ONE</div>
       <div class="tiny">a keepsake program &mdash; PSP &middot; MMXXVI</div>
     </div>

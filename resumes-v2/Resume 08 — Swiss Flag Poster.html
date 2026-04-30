@@ -340,7 +340,6 @@ body {
 .footer .arrow { color: var(--red); font-weight: 700; }
 
 /* === PAGE 2 ============================================================== */
-.p2-masthead { }
 
 .p2-title-block {
   grid-column: 1 / -1;
@@ -497,7 +496,6 @@ body {
   grid-column: 1 / -1;
   margin-top: 5mm;
 }
-.proj-head { composes: stack-head; }
 .proj-grid {
   margin-top: 4mm;
   display: grid;
@@ -666,7 +664,7 @@ body {
 
     <!-- ROLE LINE -->
     <div class="role-line">
-      <b>Senior Software Engineer.</b><span class="dot">·</span>Java.<span class="dot">·</span>Distributed Systems.<span class="dot">·</span>AWS.<span class="dot">·</span>Amazon.
+      <b>Senior Software Engineer</b> &mdash; Java<span class="dot">·</span>Distributed Systems<span class="dot">·</span>AWS
     </div>
 
     <!-- BIO -->
@@ -706,7 +704,7 @@ body {
       <span class="sep">/</span>
       <span>Bengaluru, IN</span>
       <span class="sep">/</span>
-      <span>Open to Staff IC</span>
+      <span>Open to Sr SWE roles</span>
     </div>
 
     <!-- DIVIDER -->
@@ -716,30 +714,28 @@ body {
     <section class="role1">
       <div class="role1-head">
         <div class="r-title tight">SDE II <em>/</em> Amazon Travel &mdash; Hotels · Flights · Insurance</div>
-        <div class="r-dates">Jul 2023 &mdash; Sep 2025 · Bengaluru</div>
+        <div class="r-dates"><time datetime="2023-07/2025-09">Jul 2023 &mdash; Sep 2025</time> · Bengaluru</div>
       </div>
       <div class="role1-summary">
         <b>Owned four Java microservices across the funnel.</b> Latency, resilience, quiet on-call. Java 17 · Spring · AWS · CDK.
       </div>
       <ul class="bullets">
-        <div>
-          <li>
-            <span class="lead tight">Parallelized the hot path.</span>
-            Refactored serial service fan-out to <b>CompletableFuture.allOf</b> with <b>bulkhead ExecutorService pools</b> per downstream. p90 fell <span class="hit">1.10s &rarr; 0.59s (&minus;47%)</span>; conversion lifted <span class="hit">+33%</span>. No new hardware.
-          </li>
-          <li>
-            <span class="lead tight">Idempotent capture on SQS + Step Functions.</span>
-            Dedupe via <b>DynamoDB idempotency keys</b> with TTL; dropped double-capture in renewals. CPT <span class="hit">&minus;43 bps</span>; saved <b>~30 bps</b> of funnel-churn across insurance.
-          </li>
-          <li>
-            <span class="lead tight">CDK-Java rewrite of deploys.</span>
-            Replaced bespoke Python scripts with typed <b>CDK-Java</b> stacks and staged rollouts. Rollbacks <b>halved</b>, MTTR down <span class="hit">~1 day</span>, new services bootstrapped in hours.
-          </li>
-          <li>
-            <span class="lead tight">Drained the pager.</span>
-            Rewrote alarms, killed config-hygiene SEVs <b>5&ndash;6 &rarr; 0</b>, on-call pages <b>20+ &rarr; ~5 / shift</b>. <span class="hit">150+ incidents</span> authored; stopped ~30 bps of funnel-churn tied to silent failures.
-          </li>
-        </div>
+        <li>
+          <span class="lead tight">Parallelized the hot path.</span>
+          Refactored serial service fan-out to <b>CompletableFuture.allOf</b> with <b>bulkhead ExecutorService pools</b> per downstream. p90 fell <span class="hit">1.10s &rarr; 0.59s (&minus;47%)</span>; conversion lifted <span class="hit">+33%</span>. No new hardware.
+        </li>
+        <li>
+          <span class="lead tight">Idempotent capture on SQS + Step Functions.</span>
+          Dedupe via <b>DynamoDB idempotency keys</b> with TTL; dropped double-capture in renewals. CPT <span class="hit">&minus;43 bps</span>; saved <b>~30 bps</b> of funnel-churn across insurance.
+        </li>
+        <li>
+          <span class="lead tight">CDK-Java rewrite of deploys.</span>
+          Replaced bespoke Python scripts with typed <b>CDK-Java</b> stacks and staged rollouts. Rollbacks <b>halved</b>, MTTR down <span class="hit">~1 day</span>, new services bootstrapped in hours.
+        </li>
+        <li>
+          <span class="lead tight">Drained the pager.</span>
+          Rewrote alarms, killed config-hygiene SEVs <b>5&ndash;6 &rarr; 0</b>, on-call pages <b>20+ &rarr; ~5 / shift</b>. <span class="hit">150+ incidents</span> authored; stopped ~30 bps of funnel-churn tied to silent failures.
+        </li>
       </ul>
     </section>
 
@@ -778,15 +774,15 @@ body {
       <div class="r">
         <div class="idx">Role 02 / SDE I</div>
         <div class="t tight">SDE I &mdash; Amazon Travel</div>
-        <div class="d">Jul 2022 &mdash; Jul 2023 · Bengaluru</div>
+        <div class="d"><time datetime="2022-07/2023-07">Jul 2022 &mdash; Jul 2023</time> · Bengaluru</div>
         <div class="s">
-          Shipped REST services with <b>@Repository DynamoDB</b> + <b>Spring DI</b>. Owned the auto-insurance renewal path; <span class="hit">+60% renewal conversion</span>. Held unit coverage at <b>80%+</b> across JUnit / JaCoCo. Quiet code, loud coverage.
+          Shipped REST services with <b>@Repository DynamoDB</b> + <b>Spring DI</b>. Owned the auto-insurance renewal path; <span class="hit">+60% renewal completion</span>. Held unit coverage at <b>80%+</b> across JUnit / JaCoCo. Quiet code, loud coverage.
         </div>
       </div>
       <div class="r">
         <div class="idx">Role 03 / Intern</div>
         <div class="t tight">SDE Intern &mdash; Amazon Travel</div>
-        <div class="d">May 2021 &mdash; Feb 2022 · Bengaluru</div>
+        <div class="d"><time datetime="2021-05/2022-02">May 2021 &mdash; Feb 2022</time> · Bengaluru</div>
         <div class="s">
           Led the <b>GraphQL &rarr; Java</b> migration on the renewals surface. Built <b>One-Click Renewal</b> end-to-end with <b>Guice DI</b>. Coverage held at <span class="hit">90%+</span>. Converted to full-time on the strength of it.
         </div>
@@ -875,31 +871,27 @@ body {
       <div class="col">
         <div class="h">Education · Training</div>
         <ul class="edu">
-          <div>
-            <li>
-              <span class="deg tight">M.C.A. &mdash; Computer Science</span>
-              <span class="sch">Motilal Nehru National Institute of Technology, Prayagraj</span>
-              <span class="mt">2019 &mdash; 2022 · GPA 9.25 / 10</span>
-            </li>
-            <li>
-              <span class="deg tight">B.Sc. (Hons) &mdash; Computer Science</span>
-              <span class="sch">Bhaskaracharya College of Applied Sciences, Univ. of Delhi</span>
-              <span class="mt">2015 &mdash; 2018</span>
-            </li>
-          </div>
+          <li>
+            <span class="deg tight">M.C.A. &mdash; Computer Science</span>
+            <span class="sch">Motilal Nehru National Institute of Technology, Prayagraj</span>
+            <span class="mt"><time datetime="2019/2022">2019 &mdash; 2022</time> · GPA 9.25 / 10</span>
+          </li>
+          <li>
+            <span class="deg tight">B.Sc. (Hons) &mdash; Computer Science</span>
+            <span class="sch">Bhaskaracharya College of Applied Sciences, Univ. of Delhi</span>
+            <span class="mt"><time datetime="2015/2018">2015 &mdash; 2018</time></span>
+          </li>
         </ul>
       </div>
       <div class="col">
         <div class="h">Recognition · Citations</div>
         <ul class="rec">
-          <div>
-            <li>
-              <b>Amazon Pay &mdash; Merchants Categories Champion 2023.</b> Awarded for owning the renewals funnel across the merchant insurance line.
-            </li>
-            <li>
-              <b>100+ trust-buster bugs</b> closed across travel quality sprints &mdash; contributed to <span class="hit">~30 bps of funnel-churn</span> stopped at source.
-            </li>
-          </div>
+          <li>
+            <b>Amazon Pay &mdash; Merchants Categories Champion 2023.</b> Awarded for owning the renewals funnel across the merchant insurance line.
+          </li>
+          <li>
+            <b>100+ trust-buster bugs</b> closed across travel quality sprints &mdash; contributed to <span class="hit">~30 bps of funnel-churn</span> stopped at source.
+          </li>
         </ul>
       </div>
     </div>
