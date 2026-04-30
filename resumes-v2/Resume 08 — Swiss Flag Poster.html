@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Resume 08 · Swiss Flag Poster — Prakhar Shekhar Parthasarthi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=block"
+  rel="stylesheet"
+/>
+<style>
+/* ======================================================================
+   RESUME 08 — SWISS FLAG POSTER
+   Three colors. Twelve columns. One flag.
+   #FDFDFD paper · #DC2626 vermilion · #111111 graphite.
+   ====================================================================== */
+
+*,*::before,*::after { box-sizing: border-box; }
+
+:root {
+  --paper:   #FDFDFD;
+  --ink:     #111111;
+  --red:     #DC2626;
+  --rule:    #111111;
+}
+
+@page { size: A4 portrait; margin: 0; }
+
+html, body { margin:0; padding:0; background:#1a1a1a; }
+body {
+  font-family: "Inter", "Inter Tight", system-ui, sans-serif;
+  color: var(--ink);
+  font-size: 9pt;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.deck {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 18mm; padding: 18mm 0;
+}
+
+/* === PAGE ================================================================ */
+.resume-page {
+  width: 210mm; height: 297mm;
+  position: relative;
+  background: var(--paper);
+  overflow: hidden;
+  color: var(--ink);
+  box-shadow: 0 2mm 6mm rgba(0,0,0,0.35), 0 10mm 30mm rgba(0,0,0,0.45);
+  page-break-after: always;
+}
+.resume-page:last-child { page-break-after: auto; }
+
+/* === SHEET =============================================================== */
+.sheet {
+  position: absolute; inset: 0;
+  padding: 14mm 14mm 12mm;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 4mm;
+  row-gap: 0;
+  align-content: start;
+}
+
+/* === TYPOGRAPHY UTILITIES =============================================== */
+.mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.tight {
+  font-family: "Inter Tight", "Inter", sans-serif;
+}
+
+/* === MASTHEAD ============================================================ */
+.masthead {
+  grid-column: 1 / -1;
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 6.5pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-bottom: 3mm;
+  border-bottom: 0.4pt solid var(--ink);
+  margin-bottom: 8mm;
+}
+.masthead .m-left  { font-weight: 700; }
+.masthead .m-mid   { opacity: 0.7; }
+.masthead .m-right { font-weight: 500; }
+
+/* === NAME BLOCK ========================================================= */
+.name-block {
+  grid-column: 1 / span 7;
+  margin-top: 0;
+}
+.name {
+  font-family: "Inter Tight", "Inter", sans-serif;
+  font-weight: 900;
+  font-size: 72pt;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  margin: 0;
+  text-transform: uppercase;
+}
+.name span { display: block; }
+
+/* === RED FLAG ============================================================ */
+.flag {
+  grid-column: 9 / span 4;
+  grid-row: 2 / span 1;
+  width: 60mm; height: 60mm;
+  background: var(--red);
+  position: relative;
+  justify-self: end;
+  align-self: start;
+  margin-top: 0;
+}
+.flag .num {
+  position: absolute;
+  top: 12mm; left: 6mm;
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 800;
+  font-size: 56pt;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--paper);
+}
+.flag .cap {
+  position: absolute;
+  bottom: 5mm; left: 6mm;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6pt;
+  letter-spacing: 0.14em;
+  color: var(--paper);
+  text-transform: uppercase;
+}
+.flag .corner {
+  position: absolute;
+  top: 4mm; right: 4mm;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6pt;
+  letter-spacing: 0.14em;
+  color: var(--paper);
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* === ROLE LINE =========================================================== */
+.role-line {
+  grid-column: 1 / span 10;
+  margin-top: 4mm;
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 500;
+  font-size: 12pt;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.role-line b { font-weight: 700; }
+.role-line .dot { color: var(--red); padding: 0 3pt; font-weight: 700; }
+
+/* === BIO ================================================================= */
+.bio {
+  grid-column: 1 / span 7;
+  margin-top: 6mm;
+  font-size: 10pt;
+  line-height: 1.5;
+  color: var(--ink);
+  font-weight: 400;
+}
+.bio p { margin: 0; }
+.bio .lead { font-weight: 600; }
+
+/* === STATS STRIP ========================================================= */
+.stats {
+  grid-column: 9 / span 4;
+  margin-top: 6mm;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3mm;
+  row-gap: 2mm;
+}
+.stat-cell .k {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.5pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.7;
+  display: block;
+}
+.stat-cell .v {
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 800;
+  font-size: 14pt;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  display: block;
+  margin-top: 0.5mm;
+}
+.stat-cell.red .v { color: var(--red); }
+
+/* === CONTACT ROW ========================================================= */
+.contact {
+  grid-column: 1 / -1;
+  margin-top: 8mm;
+  padding-top: 2.5mm;
+  border-top: 0.4pt solid var(--ink);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7pt;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-transform: uppercase;
+  flex-wrap: nowrap;
+}
+.contact span { white-space: nowrap; }
+.contact .sep {
+  color: var(--red);
+  padding: 0 2pt;
+  font-weight: 700;
+}
+
+/* === DIVIDER ============================================================= */
+.divider {
+  grid-column: 1 / -1;
+  margin-top: 6mm;
+  height: 0;
+  border-top: 0.6pt solid var(--ink);
+}
+
+/* === ROLE CARD (PAGE 1) ================================================== */
+.role1 {
+  grid-column: 1 / -1;
+  margin-top: 7mm;
+}
+.role1-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  padding-bottom: 3mm;
+  border-bottom: 0.4pt solid var(--ink);
+}
+.role1-head .r-title {
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 700;
+  font-size: 14pt;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.role1-head .r-title em {
+  font-style: normal;
+  color: var(--red);
+  font-weight: 700;
+}
+.role1-head .r-dates {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 500;
+}
+.role1-summary {
+  margin-top: 3mm;
+  font-size: 9pt;
+  font-style: italic;
+  color: var(--ink);
+  opacity: 0.85;
+  font-weight: 400;
+}
+.role1-summary b { font-style: normal; font-weight: 600; }
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 4mm 0 0 0;
+  counter-reset: b;
+}
+.bullets li {
+  position: relative;
+  padding-left: 14mm;
+  padding-bottom: 2.8mm;
+  padding-top: 0;
+  margin-bottom: 2.8mm;
+  font-size: 8.6pt;
+  line-height: 1.45;
+  border-bottom: 0.25pt solid rgba(17,17,17,0.25);
+  color: var(--ink);
+  counter-increment: b;
+}
+.bullets li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.bullets li::before {
+  content: counter(b, decimal-leading-zero);
+  position: absolute;
+  left: 0; top: 0.4mm;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7pt;
+  letter-spacing: 0.12em;
+  color: var(--red);
+  font-weight: 700;
+}
+.bullets li b { font-weight: 700; }
+.bullets li .hit {
+  color: var(--red);
+  font-weight: 700;
+}
+.bullets li .lead {
+  display: block;
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 700;
+  font-size: 9pt;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin-bottom: 1mm;
+  text-transform: uppercase;
+}
+
+/* === FOOTER ============================================================== */
+.footer {
+  position: absolute;
+  left: 14mm; right: 14mm; bottom: 8mm;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.5pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-top: 2.5mm;
+  border-top: 0.4pt solid var(--ink);
+}
+.footer .f-left  { font-weight: 500; }
+.footer .f-right { font-weight: 700; }
+.footer .arrow { color: var(--red); font-weight: 700; }
+
+/* === PAGE 2 ============================================================== */
+.p2-masthead { }
+
+.p2-title-block {
+  grid-column: 1 / -1;
+  margin-top: 4mm;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 8mm;
+  align-items: start;
+  padding-bottom: 4mm;
+  border-bottom: 0.6pt solid var(--ink);
+}
+.p2-title-block .num02 {
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 900;
+  font-size: 54pt;
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.p2-title-block .meta {
+  padding-top: 4mm;
+  border-left: 0.4pt solid var(--ink);
+  padding-left: 6mm;
+}
+.p2-title-block .meta .eb {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.5pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 700;
+}
+.p2-title-block .meta .sec {
+  margin-top: 2mm;
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 800;
+  font-size: 16pt;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.p2-title-block .meta .sub {
+  margin-top: 2mm;
+  font-size: 8.6pt;
+  color: var(--ink);
+  opacity: 0.85;
+  font-style: italic;
+  max-width: 110mm;
+}
+
+/* === PRIOR ROLES (2-COL) ================================================= */
+.prior {
+  grid-column: 1 / -1;
+  margin-top: 5mm;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 8mm;
+  padding-bottom: 4mm;
+  border-bottom: 0.4pt solid var(--ink);
+}
+.prior .r {
+  position: relative;
+}
+.prior .r + .r { padding-left: 8mm; border-left: 0.25pt solid var(--ink); }
+
+.prior .r .idx {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.5pt;
+  letter-spacing: 0.14em;
+  color: var(--red);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.prior .r .t {
+  margin-top: 1.5mm;
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 700;
+  font-size: 12pt;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.prior .r .d {
+  margin-top: 1mm;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.5pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.75;
+}
+.prior .r .s {
+  margin-top: 3mm;
+  font-size: 8.6pt;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.prior .r .s b { font-weight: 700; }
+.prior .r .s .hit { color: var(--red); font-weight: 700; }
+
+/* === STACK GRID ========================================================== */
+.stack-section {
+  grid-column: 1 / -1;
+  margin-top: 5mm;
+}
+.stack-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 2.5mm;
+  border-bottom: 0.4pt solid var(--ink);
+}
+.stack-head .t {
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 800;
+  font-size: 14pt;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.stack-head .c {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.5pt;
+  letter-spacing: 0.14em;
+  color: var(--red);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.stack-grid {
+  margin-top: 3mm;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 5mm;
+  row-gap: 3mm;
+}
+.stack-cell .lab {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.5pt;
+  letter-spacing: 0.14em;
+  color: var(--red);
+  text-transform: uppercase;
+  font-weight: 700;
+  padding-bottom: 1.2mm;
+  border-bottom: 0.3pt solid var(--ink);
+  margin-bottom: 1.6mm;
+  display: block;
+}
+.stack-cell .bd {
+  font-size: 7.8pt;
+  line-height: 1.42;
+  color: var(--ink);
+}
+
+/* === PROJECTS ============================================================ */
+.projects {
+  grid-column: 1 / -1;
+  margin-top: 5mm;
+}
+.proj-head { composes: stack-head; }
+.proj-grid {
+  margin-top: 4mm;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 8mm;
+}
+.proj {
+  position: relative;
+}
+.proj + .proj { padding-left: 8mm; border-left: 0.25pt solid var(--ink); }
+.proj .pn {
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 700;
+  font-size: 11pt;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.proj .pu {
+  margin-top: 1mm;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.5pt;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  opacity: 0.7;
+}
+.proj .pb {
+  margin-top: 2.5mm;
+  font-size: 8.2pt;
+  line-height: 1.42;
+  color: var(--ink);
+}
+.proj .pc {
+  margin-top: 3mm;
+  display: flex; gap: 2mm; flex-wrap: wrap;
+}
+.proj .pc .chip {
+  background: var(--red);
+  color: var(--paper);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.5pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 1mm 2mm;
+}
+.proj .pc .chip.out {
+  background: transparent;
+  color: var(--ink);
+  border: 0.4pt solid var(--ink);
+}
+
+/* === EDU + RECOG ========================================================= */
+.bottom-row {
+  grid-column: 1 / -1;
+  margin-top: 5mm;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 8mm;
+  padding-top: 3mm;
+  border-top: 0.4pt solid var(--ink);
+}
+.bottom-row .col + .col { padding-left: 8mm; border-left: 0.25pt solid var(--ink); }
+.bottom-row .col .h {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.5pt;
+  letter-spacing: 0.14em;
+  color: var(--red);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 2.5mm;
+}
+.bottom-row ul.edu, .bottom-row ul.rec {
+  list-style: none; padding: 0; margin: 0;
+}
+.bottom-row ul.edu li, .bottom-row ul.rec li {
+  position: relative;
+  padding-left: 6mm;
+  padding-bottom: 2.5mm;
+  padding-top: 0;
+  font-size: 8pt;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.bottom-row ul.edu li::before, .bottom-row ul.rec li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 1.6mm;
+  width: 3mm; height: 0;
+  border-top: 0.6pt solid var(--red);
+}
+.bottom-row ul.edu li .deg {
+  display: block;
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 700;
+  font-size: 9pt;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+.bottom-row ul.edu li .sch {
+  display: block;
+  margin-top: 0.4mm;
+  font-size: 7.8pt;
+  color: var(--ink);
+  opacity: 0.85;
+}
+.bottom-row ul.edu li .mt {
+  display: block;
+  margin-top: 0.6mm;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.5pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.75;
+}
+.bottom-row ul.rec li b { font-weight: 700; }
+.bottom-row ul.rec li .hit { color: var(--red); font-weight: 700; }
+
+/* === COLOPHON / END ======================================================= */
+.colophon {
+  grid-column: 1 / -1;
+  margin-top: 3mm;
+  padding-top: 2mm;
+  border-top: 0.4pt solid var(--ink);
+  display: flex; justify-content: space-between;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.5pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.colophon .r { color: var(--red); font-weight: 700; }
+
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+<!-- ============================== PAGE 1 ============================== -->
+<article class="resume-page">
+  <div class="sheet">
+
+    <!-- MASTHEAD -->
+    <header class="masthead">
+      <span class="m-left">Prakhar Shekhar Parthasarthi</span>
+      <span class="m-mid">CV · APR 2026 · SENIOR SOFTWARE ENGINEER</span>
+      <span class="m-right">Sheet 1 / 2</span>
+    </header>
+
+    <!-- NAME -->
+    <div class="name-block">
+      <h1 class="name tight">
+        <span>Prakhar</span>
+        <span>Shekhar</span>
+        <span>Parthasarthi</span>
+      </h1>
+    </div>
+
+    <!-- RED FLAG -->
+    <div class="flag" aria-hidden="true">
+      <div class="corner">Latency</div>
+      <div class="num tight">&minus;47%</div>
+      <div class="cap">P90 · Amazon Travel</div>
+    </div>
+
+    <!-- ROLE LINE -->
+    <div class="role-line">
+      <b>Senior Software Engineer.</b><span class="dot">·</span>Java.<span class="dot">·</span>Distributed Systems.<span class="dot">·</span>AWS.<span class="dot">·</span>Amazon.
+    </div>
+
+    <!-- BIO -->
+    <div class="bio">
+      <p class="lead">Three years at Amazon Travel.</p>
+      <p>Java microservices on AWS. Hotels, Flights, Insurance.</p>
+      <p>Ship services. Monitor p90. Keep on-call quiet.</p>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat-cell red">
+        <span class="k">Conv.</span>
+        <span class="v tight">+33%</span>
+      </div>
+      <div class="stat-cell">
+        <span class="k">CPT</span>
+        <span class="v tight">&minus;43 bps</span>
+      </div>
+      <div class="stat-cell">
+        <span class="k">On-call</span>
+        <span class="v tight">20+ &rarr; 5</span>
+      </div>
+      <div class="stat-cell red">
+        <span class="k">Services</span>
+        <span class="v tight">4 shipped</span>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="contact">
+      <span>prakhar.mnnit.2022@gmail.com</span>
+      <span class="sep">/</span>
+      <span>github.com/praxstack</span>
+      <span class="sep">/</span>
+      <span>linkedin.com/in/prakharshekhar</span>
+      <span class="sep">/</span>
+      <span>Bengaluru, IN</span>
+      <span class="sep">/</span>
+      <span>Open to Staff IC</span>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider"></div>
+
+    <!-- ROLE 1 -->
+    <section class="role1">
+      <div class="role1-head">
+        <div class="r-title tight">SDE II <em>/</em> Amazon Travel &mdash; Hotels · Flights · Insurance</div>
+        <div class="r-dates">Jul 2023 &mdash; Sep 2025 · Bengaluru</div>
+      </div>
+      <div class="role1-summary">
+        <b>Owned four Java microservices across the funnel.</b> Latency, resilience, quiet on-call. Java 17 · Spring · AWS · CDK.
+      </div>
+      <ul class="bullets">
+        <div>
+          <li>
+            <span class="lead tight">Parallelized the hot path.</span>
+            Refactored serial service fan-out to <b>CompletableFuture.allOf</b> with <b>bulkhead ExecutorService pools</b> per downstream. p90 fell <span class="hit">1.10s &rarr; 0.59s (&minus;47%)</span>; conversion lifted <span class="hit">+33%</span>. No new hardware.
+          </li>
+          <li>
+            <span class="lead tight">Idempotent capture on SQS + Step Functions.</span>
+            Dedupe via <b>DynamoDB idempotency keys</b> with TTL; dropped double-capture in renewals. CPT <span class="hit">&minus;43 bps</span>; saved <b>~30 bps</b> of funnel-churn across insurance.
+          </li>
+          <li>
+            <span class="lead tight">CDK-Java rewrite of deploys.</span>
+            Replaced bespoke Python scripts with typed <b>CDK-Java</b> stacks and staged rollouts. Rollbacks <b>halved</b>, MTTR down <span class="hit">~1 day</span>, new services bootstrapped in hours.
+          </li>
+          <li>
+            <span class="lead tight">Drained the pager.</span>
+            Rewrote alarms, killed config-hygiene SEVs <b>5&ndash;6 &rarr; 0</b>, on-call pages <b>20+ &rarr; ~5 / shift</b>. <span class="hit">150+ incidents</span> authored; stopped ~30 bps of funnel-churn tied to silent failures.
+          </li>
+        </div>
+      </ul>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="f-left">Prakhar Shekhar Parthasarthi · CV · Swiss Flag Poster</div>
+    <div class="f-right">Page 01 / 02 <span class="arrow">&rarr;</span> Cont.</div>
+  </div>
+</article>
+
+<!-- ============================== PAGE 2 ============================== -->
+<article class="resume-page">
+  <div class="sheet">
+
+    <!-- MASTHEAD -->
+    <header class="masthead">
+      <span class="m-left">Prakhar Shekhar Parthasarthi</span>
+      <span class="m-mid">CV · APR 2026 · LEDGER, ARCHIVE, EVIDENCE</span>
+      <span class="m-right">Sheet 2 / 2</span>
+    </header>
+
+    <!-- TITLE BLOCK -->
+    <div class="p2-title-block">
+      <div class="num02 tight">02</div>
+      <div class="meta">
+        <div class="eb">Section Two / Record</div>
+        <div class="sec tight">Ledger · Archive · Evidence</div>
+        <div class="sub">Prior roles, stack, projects, education, recognition. Terse. Load-bearing. Nothing decorative.</div>
+      </div>
+    </div>
+
+    <!-- PRIOR ROLES -->
+    <section class="prior">
+      <div class="r">
+        <div class="idx">Role 02 / SDE I</div>
+        <div class="t tight">SDE I &mdash; Amazon Travel</div>
+        <div class="d">Jul 2022 &mdash; Jul 2023 · Bengaluru</div>
+        <div class="s">
+          Shipped REST services with <b>@Repository DynamoDB</b> + <b>Spring DI</b>. Owned the auto-insurance renewal path; <span class="hit">+60% renewal conversion</span>. Held unit coverage at <b>80%+</b> across JUnit / JaCoCo. Quiet code, loud coverage.
+        </div>
+      </div>
+      <div class="r">
+        <div class="idx">Role 03 / Intern</div>
+        <div class="t tight">SDE Intern &mdash; Amazon Travel</div>
+        <div class="d">May 2021 &mdash; Feb 2022 · Bengaluru</div>
+        <div class="s">
+          Led the <b>GraphQL &rarr; Java</b> migration on the renewals surface. Built <b>One-Click Renewal</b> end-to-end with <b>Guice DI</b>. Coverage held at <span class="hit">90%+</span>. Converted to full-time on the strength of it.
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section class="stack-section">
+      <div class="stack-head">
+        <div class="t tight">The Stack</div>
+        <div class="c">Instruments · Eight Categories</div>
+      </div>
+      <div class="stack-grid">
+        <div class="stack-cell">
+          <span class="lab">JVM</span>
+          <div class="bd">Java 17 · Spring Boot, MVC, DI · Guice · Maven · Gradle · strict nullability · pattern matching.</div>
+        </div>
+        <div class="stack-cell">
+          <span class="lab">Concurrency</span>
+          <div class="bd">ExecutorService · CompletableFuture · ConcurrentHashMap · ScheduledExecutor · bulkhead pools.</div>
+        </div>
+        <div class="stack-cell">
+          <span class="lab">AWS</span>
+          <div class="bd">Lambda · DynamoDB · SQS · Step Functions · API Gateway · AppSync · CloudWatch · ECS · CDK-Java.</div>
+        </div>
+        <div class="stack-cell">
+          <span class="lab">Quality</span>
+          <div class="bd">JUnit 5 · Mockito · JaCoCo · integration harnesses · contract tests · golden-path fixtures.</div>
+        </div>
+        <div class="stack-cell">
+          <span class="lab">Front-End</span>
+          <div class="bd">React SSR &amp; CSR · Redux · TypeScript · Vitest · accessible forms · edge-rendered bundles.</div>
+        </div>
+        <div class="stack-cell">
+          <span class="lab">Data Patterns</span>
+          <div class="bd">DynamoDB single-table · idempotency keys with TTL · dedupe queues · outbox writes.</div>
+        </div>
+        <div class="stack-cell">
+          <span class="lab">Ops</span>
+          <div class="bd">Runbooks · alarm hygiene · SEV pages · on-call rotations · graceful degradation.</div>
+        </div>
+        <div class="stack-cell">
+          <span class="lab">Method</span>
+          <div class="bd">Trunk-based · code-review discipline · blameless postmortems · SLO-first design.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects">
+      <div class="stack-head">
+        <div class="t tight">Projects</div>
+        <div class="c">Out of Hours · Evidence</div>
+      </div>
+      <div class="proj-grid">
+        <div class="proj">
+          <div class="pn tight">Redis Server · in Java</div>
+          <div class="pu">github.com/praxstack/redis-server-java</div>
+          <div class="pb">
+            Single-binary Redis-wire implementation &mdash; SET / GET / INCR / EXPIRE over RESP, event loop, AOF persistence. Benchmarks on commodity laptop; ~78% of C-Redis on my box.
+          </div>
+          <div class="pc">
+            <span class="chip">SET 154k rps</span>
+            <span class="chip">GET 195k rps</span>
+            <span class="chip out">INCR 128k</span>
+            <span class="chip out">42 tests</span>
+          </div>
+        </div>
+        <div class="proj">
+          <div class="pn tight">Markdown Viewer Pro</div>
+          <div class="pu">github.com/praxstack/markdown-viewer-pro</div>
+          <div class="pb">
+            Tiny Markdown reader. <b>Zero runtime dependencies.</b> Bundle &lt;100 KB gzipped. Held by <b>155+ Vitest tests</b>; CI gate won't ship below threshold.
+          </div>
+          <div class="pc">
+            <span class="chip">155+ tests</span>
+            <span class="chip out">&lt;100 KB gz</span>
+            <span class="chip out">Zero deps</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDU + RECOG -->
+    <div class="bottom-row">
+      <div class="col">
+        <div class="h">Education · Training</div>
+        <ul class="edu">
+          <div>
+            <li>
+              <span class="deg tight">M.C.A. &mdash; Computer Science</span>
+              <span class="sch">Motilal Nehru National Institute of Technology, Prayagraj</span>
+              <span class="mt">2019 &mdash; 2022 · GPA 9.25 / 10</span>
+            </li>
+            <li>
+              <span class="deg tight">B.Sc. (Hons) &mdash; Computer Science</span>
+              <span class="sch">Bhaskaracharya College of Applied Sciences, Univ. of Delhi</span>
+              <span class="mt">2015 &mdash; 2018</span>
+            </li>
+          </div>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="h">Recognition · Citations</div>
+        <ul class="rec">
+          <div>
+            <li>
+              <b>Amazon Pay &mdash; Merchants Categories Champion 2023.</b> Awarded for owning the renewals funnel across the merchant insurance line.
+            </li>
+            <li>
+              <b>100+ trust-buster bugs</b> closed across travel quality sprints &mdash; contributed to <span class="hit">~30 bps of funnel-churn</span> stopped at source.
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+
+    <!-- COLOPHON -->
+    <div class="colophon">
+      <div>Set in Inter Tight · Inter · JetBrains Mono.</div>
+      <div><span class="r">&bull;</span> Three colors. Twelve columns. One flag. <span class="r">&bull;</span></div>
+      <div>PSP · MMXXVI · Bengaluru</div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="f-left">Prakhar Shekhar Parthasarthi · CV · Swiss Flag Poster</div>
+    <div class="f-right">Page 02 / 02 <span class="arrow">·</span> End</div>
+  </div>
+</article>
+
+</div>
+</body>
+</html>

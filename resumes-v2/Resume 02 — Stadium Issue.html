@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Resume 02 · Stadium Issue — Prakhar Shekhar Parthasarthi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=VT323&display=block"
+  rel="stylesheet"
+/>
+<style>
+/* ======================================================================
+   RESUME 02 — STADIUM ISSUE
+   Ink-field black + acidic lime. Bebas Neue + Oswald + VT323 scoreboard.
+   Jersey number, player card, season stats, highlight reel.
+   ====================================================================== */
+
+*,*::before,*::after { box-sizing: border-box; }
+
+:root {
+  --field:   #0B1411;        /* black ink, slightly green-biased */
+  --field2:  #13201C;
+  --chalk:   #E8EEE6;        /* off-white like chalked line */
+  --chalk2:  #C7CFBF;
+  --lime:    #C3FF00;        /* acid lime / highlighter */
+  --lime2:   #9BCF00;
+  --dim:     #4A5A50;
+  --fire:    #FF4127;        /* goal-red accent */
+  --amber:   #FFC107;
+  --line:    rgba(232,238,230,0.14);
+}
+
+@page { size: A4 portrait; margin: 0; }
+
+html, body { margin:0; padding:0; background:#060909; }
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  color: var(--chalk);
+  font-size: 9.6pt;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* deck = screen-only scroll wrapper */
+.deck {
+  display:flex; flex-direction:column; align-items:center;
+  gap: 22mm; padding: 22mm 0;
+}
+
+/* === PAGE ================================================================ */
+.resume-page {
+  width: 210mm; height: 297mm;
+  position: relative;
+  background: var(--field);
+  overflow: hidden;
+  box-shadow: 0 1mm 3mm rgba(0,0,0,0.5), 0 10mm 30mm rgba(0,0,0,0.6);
+  color: var(--chalk);
+}
+
+/* pitch-lines background: thin grid + center circle + crosshair */
+.pitch {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 100% 8mm,
+    linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 8mm 100%;
+  opacity: 0.6;
+  z-index: 0;
+}
+.pitch::before {
+  content:""; position:absolute;
+  top: 50%; left: 50%;
+  width: 60mm; height: 60mm;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+}
+
+/* film grain via turbulence SVG */
+.grain-2 {
+  position:absolute; inset:0; pointer-events:none;
+  mix-blend-mode: overlay; opacity: 0.25; z-index: 1;
+}
+
+/* inner frame */
+.frame {
+  position:absolute; inset:0;
+  padding: 10mm 12mm 9mm 12mm;
+  z-index: 3;
+  display:flex; flex-direction:column;
+}
+
+/* ============================================================
+   MASTHEAD
+   ============================================================ */
+.masthead {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 6mm;
+  padding-bottom: 3mm;
+  border-bottom: 1.5px solid var(--chalk);
+}
+.crest {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 10pt;
+  letter-spacing: 0.26em;
+  color: var(--lime);
+  border: 2px solid var(--lime);
+  padding: 1.2mm 2mm;
+  display: inline-block;
+}
+.league {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7pt;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--chalk2);
+  text-align: center;
+  line-height: 1.35;
+}
+.league b { color: var(--lime); letter-spacing: 0.3em; font-weight: 500; }
+.issue {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7pt;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--chalk2);
+  text-align: right;
+  line-height: 1.35;
+}
+.issue b { color: var(--lime); font-weight: 500; }
+
+/* ============================================================
+   HERO — jersey + name + spec
+   ============================================================ */
+.hero {
+  display: grid;
+  grid-template-columns: 52mm 1fr;
+  gap: 6mm;
+  align-items: end;
+  margin-top: 4mm;
+  padding-bottom: 3mm;
+  border-bottom: 1px dashed var(--dim);
+}
+
+.jersey {
+  position: relative;
+  aspect-ratio: 1 / 1.15;
+  background: var(--field2);
+  border: 1.5px solid var(--chalk);
+  padding: 3mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.jersey::after {
+  content:"";
+  position:absolute; inset: 3mm;
+  border: 1px dashed var(--dim);
+  pointer-events: none;
+}
+.jersey-top {
+  display:flex; justify-content:space-between; align-items:baseline;
+  font-family:"Bebas Neue", sans-serif;
+  letter-spacing: 0.1em;
+  font-size: 9pt;
+  color: var(--lime);
+  position: relative; z-index: 1;
+}
+.jersey-num {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 60pt;
+  line-height: 0.82;
+  color: var(--lime);
+  text-align: center;
+  letter-spacing: -0.02em;
+  position: relative; z-index: 1;
+  text-shadow: 0.8mm 0.8mm 0 rgba(195,255,0,0.15);
+}
+.jersey-name {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  font-size: 10pt;
+  text-transform: uppercase;
+  color: var(--chalk);
+  text-align: center;
+  position: relative; z-index: 1;
+  padding-top: 2mm;
+  border-top: 1px solid var(--dim);
+}
+.jersey-bottom {
+  display:flex; justify-content:space-between;
+  font-family:"JetBrains Mono", monospace;
+  font-size: 6.2pt;
+  letter-spacing: 0.2em;
+  color: var(--chalk2);
+  text-transform: uppercase;
+  position: relative; z-index: 1;
+}
+
+.hero-copy .kicker {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7.5pt;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 2mm;
+}
+.hero-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 34pt;
+  line-height: 0.88;
+  letter-spacing: 0.008em;
+  text-transform: uppercase;
+  color: var(--chalk);
+  margin: 0 0 1.4mm 0;
+}
+.hero-name .acc { color: var(--lime); }
+.hero-role {
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  font-size: 10pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--chalk);
+  margin-bottom: 2.4mm;
+}
+.hero-role em {
+  font-style: normal;
+  color: var(--lime);
+  border-bottom: 1.5px solid var(--lime);
+  padding-bottom: 0.5mm;
+}
+.hero-bio {
+  font-family: "Inter", sans-serif;
+  font-size: 8.4pt;
+  line-height: 1.45;
+  color: var(--chalk2);
+  max-width: 120mm;
+}
+.hero-bio b { color: var(--chalk); font-weight: 700; }
+.hero-bio u {
+  text-decoration: none;
+  color: var(--lime);
+  border-bottom: 1px solid var(--lime);
+  padding-bottom: 0.4mm;
+}
+
+/* ============================================================
+   SCORE STRIP — scoreboard LCD readouts
+   ============================================================ */
+.score-strip {
+  margin-top: 4mm;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4mm;
+  align-items: stretch;
+}
+.score-label {
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 2mm 0;
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  font-size: 8pt;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--chalk);
+  border-right: 1.5px solid var(--lime);
+  padding-right: 4mm;
+}
+.score-label b {
+  display: block;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  color: var(--lime);
+  font-size: 16pt;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-top: 1.6mm;
+}
+.score-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1.5px solid var(--chalk);
+  background: #000;
+}
+.sb-cell {
+  padding: 2mm 2.2mm 2mm 2.2mm;
+  border-right: 1px solid var(--line);
+  position: relative;
+}
+.sb-cell:last-child { border-right: none; }
+.sb-cell .stat-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.2pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--chalk2);
+  margin-bottom: 1.2mm;
+}
+.sb-cell .stat-val {
+  font-family: "VT323", "JetBrains Mono", monospace;
+  font-size: 17pt;
+  line-height: 0.9;
+  color: var(--lime);
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 0.8mm rgba(195,255,0,0.55);
+}
+.sb-cell .stat-sub {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.2pt;
+  color: var(--chalk2);
+  letter-spacing: 0.1em;
+  margin-top: 1mm;
+}
+
+/* ============================================================
+   SECTION HEAD — scoreboard tab
+   ============================================================ */
+.sec {
+  margin-top: 3mm;
+}
+.sec-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 3mm;
+  background: var(--lime);
+  color: var(--field);
+  padding: 1.4mm 3mm 1.4mm 3mm;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 13pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 3mm) 100%, 0 100%);
+  padding-right: 6mm;
+}
+.sec-tab .n {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  font-size: 8pt;
+  letter-spacing: 0.1em;
+  color: var(--field);
+  background: rgba(11,20,17,0.15);
+  padding: 0.5mm 1.4mm;
+}
+.sec-rule {
+  border-top: 1.5px solid var(--lime);
+  flex: 1;
+  margin-left: -1mm;
+  position: relative;
+  top: -0.1mm;
+}
+.sec-head {
+  display: flex; align-items: center; gap: 3mm;
+  margin-bottom: 2mm;
+}
+
+/* ============================================================
+   ROLE CARD — stats panel
+   ============================================================ */
+.card {
+  border: 1.5px solid var(--chalk);
+  background: var(--field2);
+  padding: 3.5mm 4mm 3.2mm 4mm;
+  position: relative;
+  margin-top: 2.5mm;
+}
+.card + .card { margin-top: 3mm; }
+
+.card-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3mm;
+  align-items: start;
+  padding-bottom: 1.8mm;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2.2mm;
+}
+.card-title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  font-size: 11pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--chalk);
+  line-height: 1.15;
+}
+.card-title .team {
+  color: var(--lime);
+  font-weight: 700;
+}
+.card-meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.8pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--chalk2);
+  text-align: right;
+  line-height: 1.4;
+}
+.card-meta .tenure {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 14pt;
+  letter-spacing: 0.02em;
+  color: var(--lime);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.5mm;
+}
+
+.card-sub {
+  font-family: "Inter", sans-serif;
+  font-size: 8pt;
+  line-height: 1.4;
+  color: var(--chalk2);
+  font-style: italic;
+  margin-bottom: 2.2mm;
+}
+.card-sub mark {
+  background: var(--lime);
+  color: var(--field);
+  padding: 0 1mm;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.hilite {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: grid;
+  gap: 1.2mm;
+}
+.hilite li {
+  display: grid;
+  grid-template-columns: 8mm 1fr;
+  gap: 1.6mm;
+  font-size: 8pt;
+  line-height: 1.4;
+  color: var(--chalk);
+}
+.hilite li::before {
+  content: attr(data-play);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 10pt;
+  letter-spacing: 0.08em;
+  color: var(--lime);
+  line-height: 1;
+  padding-top: 0.3mm;
+}
+.hilite b { color: var(--chalk); font-weight: 700; }
+.hilite .goal {
+  background: var(--lime);
+  color: var(--field);
+  padding: 0 0.8mm;
+  font-weight: 700;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7.2pt;
+  letter-spacing: 0.02em;
+}
+
+/* bottom tick marker — appears only on page 1 */
+.page-tick {
+  margin-top: auto;
+  padding-top: 2.4mm;
+  border-top: 1.5px solid var(--chalk);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.4pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--chalk2);
+}
+.page-tick .r {
+  background: var(--lime);
+  color: var(--field);
+  padding: 0.8mm 2mm;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 11pt;
+  letter-spacing: 0.14em;
+}
+
+/* ============================================================
+   PAGE 2
+   ============================================================ */
+
+.p2-hero {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: end;
+  gap: 6mm;
+  padding-bottom: 2.4mm;
+  border-bottom: 1.5px solid var(--chalk);
+}
+.p2-hero .arena {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 30pt;
+  line-height: 0.88;
+  color: var(--chalk);
+  letter-spacing: 0.01em;
+}
+.p2-hero .arena .acc { color: var(--lime); }
+.p2-hero .sub {
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  font-size: 10pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--chalk2);
+  line-height: 1.35;
+}
+.p2-hero .side {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: right;
+  color: var(--chalk2);
+  line-height: 1.4;
+}
+.p2-hero .side b {
+  color: var(--lime);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 11pt;
+  letter-spacing: 0.1em;
+  display: block;
+  font-weight: 400;
+}
+
+/* compact cards p2 */
+.card.sm {
+  padding: 2.6mm 3mm 2.2mm 3mm;
+  margin-top: 2mm;
+}
+.card + .card.sm { margin-top: 2.5mm; }
+.card.sm .card-title { font-size: 9.6pt; }
+.card.sm .card-sub { font-size: 7.4pt; margin-bottom: 1.2mm; line-height: 1.35; }
+.card.sm .hilite li { font-size: 7.4pt; line-height: 1.35; }
+.card.sm .hilite { gap: 0.8mm; }
+.card.sm .card-meta .tenure { font-size: 10pt; }
+.card.sm .card-head { padding-bottom: 1.2mm; margin-bottom: 1.6mm; }
+
+/* roster grid — skills */
+.roster {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1.5px solid var(--chalk);
+  margin-top: 1.6mm;
+}
+.roster-cell {
+  padding: 1.4mm 1.8mm 1.3mm 1.8mm;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.roster-cell:nth-child(4n) { border-right: none; }
+.roster-cell:nth-last-child(-n+4) { border-bottom: none; }
+.roster-cell.wide { grid-column: span 1; }
+.roster-cell.hot { background: var(--lime); color: var(--field); }
+.roster-cell h5 {
+  margin: 0 0 0.5mm 0;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: 6.6pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+.roster-cell.hot h5 { color: var(--field); }
+.roster-cell p {
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 5.6pt;
+  letter-spacing: 0.02em;
+  color: var(--chalk2);
+  line-height: 1.3;
+}
+.roster-cell.hot p { color: var(--field); }
+
+/* highlight reel — projects */
+.reel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5mm;
+  margin-top: 2.4mm;
+}
+.reel-card {
+  position: relative;
+  border: 1.5px solid var(--chalk);
+  background: var(--field);
+  padding: 3mm 3.4mm 2.6mm 3.4mm;
+}
+.reel-card::before {
+  content: "REC";
+  position: absolute;
+  top: -3mm; left: 3mm;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.4pt;
+  letter-spacing: 0.25em;
+  background: var(--fire);
+  color: var(--chalk);
+  padding: 0.6mm 1.6mm;
+}
+.reel-card h3 {
+  margin: 0 0 0.6mm 0;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: 10.5pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--chalk);
+}
+.reel-card .repo {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6pt;
+  letter-spacing: 0.06em;
+  color: var(--lime);
+  margin-bottom: 1.2mm;
+  word-break: break-all;
+}
+.reel-card p {
+  margin: 0 0 1mm 0;
+  font-size: 7.2pt;
+  line-height: 1.35;
+  color: var(--chalk2);
+}
+.reel-card .line {
+  display: flex;
+  gap: 0;
+  border-top: 1px dashed var(--dim);
+  padding-top: 1.2mm;
+  flex-wrap: wrap;
+  row-gap: 1.2mm;
+}
+.reel-card .line span {
+  font-family: "VT323", "JetBrains Mono", monospace;
+  font-size: 10pt;
+  color: var(--lime);
+  letter-spacing: 0.02em;
+  margin-right: 2.6mm;
+  line-height: 1;
+}
+.reel-card .line span small {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 5pt;
+  color: var(--chalk2);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: block;
+  line-height: 1.1;
+  margin-top: 0.4mm;
+}
+
+/* HOF + acad footer row */
+.footer-cols {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3mm;
+  margin-top: 2mm;
+}
+.fc {
+  border: 1px solid var(--dim);
+  padding: 1.8mm 2.4mm 1.6mm 2.4mm;
+  background: var(--field);
+}
+.fc h5 {
+  margin: 0 0 1mm 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 9.5pt;
+  letter-spacing: 0.14em;
+  color: var(--lime);
+}
+.fc-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2mm;
+  padding: 0.6mm 0;
+  border-bottom: 1px dashed var(--dim);
+  font-size: 7pt;
+  line-height: 1.25;
+  color: var(--chalk);
+}
+.fc-row:last-child { border-bottom: none; }
+.fc-row b { color: var(--chalk); font-weight: 700; display: block; }
+.fc-row .inst { color: var(--chalk2); font-size: 6.4pt; }
+.fc-row .m {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.2pt;
+  letter-spacing: 0.1em;
+  color: var(--lime);
+  text-align: right;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.fc ul {
+  list-style: none; padding: 0; margin: 0;
+}
+.fc ul li {
+  padding: 0.6mm 0;
+  border-bottom: 1px dashed var(--dim);
+  font-size: 7pt;
+  line-height: 1.3;
+  color: var(--chalk);
+  display: grid; grid-template-columns: 3mm 1fr; gap: 2mm;
+}
+.fc ul li:last-child { border-bottom: none; }
+.fc ul li::before {
+  content: "★";
+  color: var(--lime);
+  font-size: 9pt;
+  line-height: 1.3;
+}
+.fc ul li b { color: var(--chalk); font-weight: 700; }
+
+/* end stamp — instead of a flow footer */
+.end-stamp {
+  margin-top: auto;
+  padding-top: 2mm;
+  border-top: 1.5px solid var(--chalk);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.4pt;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--chalk2);
+}
+.end-stamp .final {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 13pt;
+  letter-spacing: 0.14em;
+  color: var(--lime);
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print {
+  html, body { background: #fff; }
+  .deck { padding:0; gap:0; }
+  .resume-page { box-shadow:none; page-break-after: always; break-after: page; }
+  .resume-page:last-child { page-break-after: auto; break-after: auto; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <filter id="grain-2">
+    <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix values="0 0 0 0 0.91
+                           0 0 0 0 0.93
+                           0 0 0 0 0.9
+                           0 0 0 0.35 0"/>
+  </filter>
+</svg>
+
+<div class="deck">
+
+<!-- ============================================================ -->
+<!-- PAGE 1                                                       -->
+<!-- ============================================================ -->
+<article class="resume-page">
+  <div class="pitch"></div>
+  <svg class="grain-2" preserveAspectRatio="none"><rect width="100%" height="100%" filter="url(#grain-2)"/></svg>
+
+  <div class="frame">
+
+    <header class="masthead">
+      <span class="crest">PSP · № 07</span>
+      <div class="league">
+        <b>THE JAVA LEAGUE</b><br/>
+        OFFICIAL MATCH PROGRAMME · APR 2026
+      </div>
+      <div class="issue">
+        <b>VOL 01 / ISSUE 26</b><br/>
+        BENGALURU ARENA
+      </div>
+    </header>
+
+    <!-- Hero: jersey card + name block -->
+    <section class="hero">
+      <div class="jersey">
+        <div class="jersey-top">
+          <span>HOME KIT</span>
+          <span>SZN 2026</span>
+        </div>
+        <div class="jersey-num">07</div>
+        <div class="jersey-name">PRAKHAR &nbsp;S·P</div>
+        <div class="jersey-bottom">
+          <span>POS · SR SWE</span>
+          <span>HT · JVM</span>
+        </div>
+      </div>
+      <div class="hero-copy">
+        <div class="kicker">Player · № 07 · Match Programme</div>
+        <h1 class="hero-name">Prakhar<br/>Shekhar <span class="acc">Parthasarthi</span></h1>
+        <div class="hero-role">Senior Software Engineer · <em>Java / Distributed Systems / AWS</em></div>
+        <p class="hero-bio">
+          Three seasons at <b>Amazon Travel</b>. <u>Reliability-first midfielder</u> between SQS,
+          Step Functions, and DynamoDB. Headline wins on <b>latency (−47%)</b> and
+          <b>conversion (+33%)</b>. On-call press release: <b>quiet shifts.</b>
+        </p>
+      </div>
+    </section>
+
+    <!-- Score-strip -->
+    <section class="score-strip">
+      <div class="score-board" style="grid-column: span 2;">
+        <div class="sb-cell">
+          <div class="stat-label">P90 Latency</div>
+          <div class="stat-val">-47%</div>
+          <div class="stat-sub">1.10s → 0.59s</div>
+        </div>
+        <div class="sb-cell">
+          <div class="stat-label">Conversion</div>
+          <div class="stat-val">+33%</div>
+          <div class="stat-sub">Traveler funnel</div>
+        </div>
+        <div class="sb-cell">
+          <div class="stat-label">CPT</div>
+          <div class="stat-val">-43bps</div>
+          <div class="stat-sub">Cost / txn</div>
+        </div>
+        <div class="sb-cell">
+          <div class="stat-label">On-call</div>
+          <div class="stat-val">~5</div>
+          <div class="stat-sub">Pages/shift</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main role -->
+    <section class="sec">
+      <div class="sec-head">
+        <span class="sec-tab"><span class="n">01</span> On the Roster</span>
+        <span class="sec-rule"></span>
+      </div>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="card-title">Software Development Engineer II <span class="team">@ Amazon Travel</span> — Hotels · Flights · Insurance</div>
+          <div class="card-meta">
+            <span class="tenure">S23–S25</span>
+            Jul 2023 · Sep 2025<br/>
+            Bengaluru · IN
+          </div>
+        </div>
+        <div class="card-sub">
+          Captained <mark>four Java microservices</mark> across the hotel and flight booking funnel — from
+          frontend-facing search APIs down to idempotent webhook processors — and ran point on team
+          reliability and on-call health.
+        </div>
+        <ul class="hilite">
+          <li data-play="GOAL"><div>Re-architected pricing fan-out with <b>CompletableFuture.allOf</b> + bulkhead
+            <b>ExecutorService</b> pools — cut p90 <span class="goal">1.1s → 0.59s (−47%)</span>,
+            lifted traveler conversion <span class="goal">+33%</span>.</div></li>
+          <li data-play="ASST"><div>Shipped idempotent payment webhook on <b>SQS + Step Functions</b> with DynamoDB dedupe —
+            <span class="goal">−43 bps</span> CPT, killed double-capture incidents.</div></li>
+          <li data-play="CLEAN"><div>Rewrote six legacy pipelines into <b>Java CDK</b>; halved rollback count,
+            dropped MTTR by a full day.</div></li>
+          <li data-play="MOTM"><div>Dragged on-call <b>20+ pages → ~5</b>/shift, config-hygiene <b>5–6 → 0</b>;
+            resolved <b>150+ incidents</b>, stopped a <span class="goal">~30 bps</span> funnel-churn.</div></li>
+        </ul>
+      </article>
+    </section>
+
+    <div class="page-tick">
+      <span>— Match continues on Leg 2 — Bench · Season Stats · Highlight Reel · HOF —</span>
+      <span class="r">LEG 1 / 2</span>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============================================================ -->
+<!-- PAGE 2                                                       -->
+<!-- ============================================================ -->
+<article class="resume-page">
+  <div class="pitch"></div>
+  <svg class="grain-2" preserveAspectRatio="none"><rect width="100%" height="100%" filter="url(#grain-2)"/></svg>
+
+  <div class="frame">
+
+    <header class="p2-hero">
+      <div class="arena">Leg <span class="acc">02</span></div>
+      <div class="sub">
+        Bench depth · season stats<br/>
+        highlight reel · hall of fame
+      </div>
+      <div class="side">
+        OFFICIAL<br/>
+        <b>PSP-26</b>
+        MATCH CARD
+      </div>
+    </header>
+
+    <!-- Bench / back roles -->
+    <section class="sec">
+      <div class="sec-head">
+        <span class="sec-tab"><span class="n">02</span> On the Bench</span>
+        <span class="sec-rule"></span>
+      </div>
+
+      <article class="card sm">
+        <div class="card-head">
+          <div class="card-title">Software Development Engineer I <span class="team">@ Amazon Travel</span></div>
+          <div class="card-meta">
+            <span class="tenure">S22–S23</span>
+            Jul 2022 · Jul 2023
+          </div>
+        </div>
+        <div class="card-sub">
+          First pro contract: wrote REST controllers and <b>@Repository</b>-backed DynamoDB DAOs with
+          Spring DI; shipped auto-insurance renewal flow that lifted renewals <mark>+60%</mark>.
+        </div>
+        <ul class="hilite">
+          <li data-play="GOAL"><div>End-to-end auto-insurance renewal flow on a cold-start funnel — <b>+60%</b> renewal completion.</div></li>
+          <li data-play="CLEAN"><div><b>80%+</b> JUnit line coverage with <b>JaCoCo</b> gates enforced in CI; regression escapes ≈ 0 for the year.</div></li>
+        </ul>
+      </article>
+
+      <article class="card sm">
+        <div class="card-head">
+          <div class="card-title">SDE Intern <span class="team">@ Amazon Travel</span></div>
+          <div class="card-meta">
+            <span class="tenure">S21–S22</span>
+            May 2021 · Feb 2022
+          </div>
+        </div>
+        <div class="card-sub">
+          Migrated a GraphQL integration layer onto the Java stack; shipped One-Click Renewal with
+          <b>Guice</b> DI and <b>90%+</b> coverage.
+        </div>
+      </article>
+    </section>
+
+    <!-- Roster skills -->
+    <section class="sec">
+      <div class="sec-head">
+        <span class="sec-tab"><span class="n">03</span> Full Roster · Tools</span>
+        <span class="sec-rule"></span>
+      </div>
+
+      <div class="roster">
+        <div class="roster-cell wide hot">
+          <h5>Starting XI · JVM</h5>
+          <p>Java 17 · Spring Boot · Spring MVC · Spring DI · Guice · Maven · Gradle</p>
+        </div>
+        <div class="roster-cell wide">
+          <h5>Concurrency</h5>
+          <p>ExecutorService · CompletableFuture · ConcurrentHashMap · ScheduledExecutor · bulkheads</p>
+        </div>
+        <div class="roster-cell wide">
+          <h5>AWS Backline</h5>
+          <p>Lambda · DynamoDB · SQS · Step Functions · API Gateway · AppSync · CloudWatch · ECS · CDK (Java)</p>
+        </div>
+        <div class="roster-cell wide">
+          <h5>Quality</h5>
+          <p>JUnit 5 · Mockito · JaCoCo · integration harnesses · contract tests</p>
+        </div>
+        <div class="roster-cell wide">
+          <h5>Front-End</h5>
+          <p>React (SSR &amp; CSR) · Redux · TypeScript · Vitest</p>
+        </div>
+        <div class="roster-cell wide">
+          <h5>Data Patterns</h5>
+          <p>DynamoDB single-table · idempotency keys · dedupe queues</p>
+        </div>
+        <div class="roster-cell wide">
+          <h5>Ops</h5>
+          <p>Runbooks · alarm hygiene · SEV pages · on-call rotations</p>
+        </div>
+        <div class="roster-cell wide">
+          <h5>Method</h5>
+          <p>Trunk-based · code-review discipline · postmortems · SLO-first</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlight reel -->
+    <section class="sec">
+      <div class="sec-head">
+        <span class="sec-tab"><span class="n">04</span> Highlight Reel</span>
+        <span class="sec-rule"></span>
+      </div>
+
+      <div class="reel">
+        <article class="reel-card">
+          <h3>Redis Server · Java</h3>
+          <div class="repo">github.com/praxstack/redis-server-java</div>
+          <p>From-scratch <b>RESP2</b> protocol, event-loop I/O, tiny hashmap engine. SET/GET/INCR
+          fast enough to blush next to the C implementation.</p>
+          <div class="line">
+            <span>154k<small>SET rps</small></span>
+            <span>195k<small>GET rps</small></span>
+            <span>128k<small>INCR rps</small></span>
+            <span>42<small>TESTS</small></span>
+            <span>78%<small>OF C</small></span>
+          </div>
+        </article>
+        <article class="reel-card">
+          <h3>Markdown Viewer Pro</h3>
+          <div class="repo">github.com/praxstack/markdown-viewer-pro</div>
+          <p>Zero-config markdown reader with live plugin architecture, keyboard-first command
+          palette, test suite that makes refactors feel routine.</p>
+          <div class="line">
+            <span>155<small>VITEST TESTS</small></span>
+            <span>&lt;100k<small>KB GZ</small></span>
+            <span>0<small>RUNTIME DEPS</small></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+      <!-- Hall of Fame + Academy -->
+      <section class="sec">
+        <div class="sec-head">
+          <span class="sec-tab"><span class="n">05</span> Academy &amp; Hall of Fame</span>
+          <span class="sec-rule"></span>
+        </div>
+
+        <div class="footer-cols">
+          <div class="fc">
+            <h5>Academy · Education</h5>
+            <div class="fc-row">
+              <div><b>M.C.A. · Computer Science</b><div class="inst">MNNIT · Prayagraj</div></div>
+              <div class="m">2019–22 · 9.25/10</div>
+            </div>
+            <div class="fc-row">
+              <div><b>B.Sc. (Hons) · CS</b><div class="inst">Bhaskaracharya · DU</div></div>
+              <div class="m">2015–18</div>
+            </div>
+          </div>
+          <div class="fc">
+            <h5>Hall of Fame</h5>
+            <ul>
+              <li><div><b>Amazon Pay · Categories Champion 2023.</b></div></li>
+              <li><div><b>100+ trust-buster bugs</b> across quality sprints.</div></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    <div class="end-stamp">
+      <span>— FINAL WHISTLE —</span>
+      <span class="final">FULL-TIME</span>
+      <span>LEG 2 / 2 · PSP-26</span>
+    </div>
+
+  </div>
+</article>
+
+</div>
+</body>
+</html>

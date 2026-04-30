@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Resume 07 · Letterpress Keepsake — Prakhar Shekhar Parthasarthi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Playfair+Display+SC:wght@400;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=block"
+  rel="stylesheet"
+/>
+<style>
+/* ======================================================================
+   RESUME 07 — LETTERPRESS KEEPSAKE
+   A hand-sewn program, letterpress-printed on tea-stained linen.
+   Oxblood ink · graphite body · single gold-leaf accent. One of one.
+   ====================================================================== */
+
+*,*::before,*::after { box-sizing: border-box; }
+
+:root {
+  --paper:    #F2E8D0;
+  --paper2:   #EADFC2;
+  --ink:      #2A2825;
+  --ink2:     #3E3A35;
+  --ox:       #6B1E1F;
+  --ox2:      #551515;
+  --gold:     #B07A2A;
+  --gold2:    #8E5F1E;
+  --rule:     rgba(42,40,37,0.28);
+  --rule2:    rgba(107,30,31,0.35);
+  --deb-hi:   rgba(255,250,235,0.80);
+  --deb-lo:   rgba(42,40,37,0.28);
+}
+
+@page { size: A4 portrait; margin: 0; }
+
+html, body { margin:0; padding:0; background:#1a1612; }
+body {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  color: var(--ink);
+  font-size: 8.8pt;
+  line-height: 1.38;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.deck {
+  display:flex; flex-direction:column; align-items:center;
+  gap: 22mm; padding: 22mm 0;
+}
+
+/* === PAGE ================================================================ */
+.resume-page {
+  width: 210mm; height: 297mm;
+  position: relative;
+  background: var(--paper);
+  overflow: hidden;
+  color: var(--ink);
+  box-shadow: 0 10mm 30mm rgba(0,0,0,0.4);
+  page-break-after: always;
+}
+.resume-page:last-child { page-break-after: auto; }
+
+@media print {
+  html, body { background: #fff; }
+  .deck { gap: 0; padding: 0; }
+  .resume-page { box-shadow: none; }
+}
+
+/* === TEXTURE ============================================================= */
+.linen {
+  position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(circle at 14% 10%, rgba(133,88,40,0.10), transparent 20%),
+    radial-gradient(circle at 86% 16%, rgba(133,88,40,0.08), transparent 22%),
+    radial-gradient(circle at 22% 90%, rgba(133,88,40,0.07), transparent 24%),
+    radial-gradient(circle at 82% 84%, rgba(133,88,40,0.09), transparent 20%),
+    radial-gradient(ellipse at 50% 50%, transparent 58%, rgba(60,40,20,0.14) 88%, rgba(60,40,20,0.22) 100%),
+    repeating-linear-gradient(90deg, rgba(107,79,38,0.035) 0 0.4mm, transparent 0.4mm 0.8mm),
+    repeating-linear-gradient(0deg,  rgba(107,79,38,0.030) 0 0.4mm, transparent 0.4mm 0.9mm);
+}
+.deckle {
+  position:absolute; inset: 7mm;
+  pointer-events:none; z-index:1;
+  border: 1px solid rgba(107,30,31,0.38);
+  box-shadow: inset 0 0 0 1px rgba(176,122,42,0.28), inset 0 0 2mm rgba(107,30,31,0.08);
+}
+
+/* === PAGE FRAME ========================================================== */
+.page-inner {
+  position:relative; z-index:2;
+  height: 100%;
+  padding: 14mm 16mm 10mm;
+  display:flex; flex-direction:column;
+}
+
+/* running head */
+.runhead {
+  display:flex; align-items:center; justify-content:space-between;
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-size: 6.6pt; letter-spacing: 0.22em;
+  color: var(--ox);
+  padding-bottom: 2mm;
+  border-bottom: 1px solid var(--rule2);
+  margin-bottom: 4mm;
+}
+.runhead .flo { color: var(--gold); font-size: 9pt; letter-spacing: 0; }
+.runhead .pg  {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.6pt; letter-spacing: 0.14em; color: var(--ink2);
+}
+
+/* === TITLE BLOCK (PAGE 1) ================================================ */
+.title-block {
+  text-align:center;
+  margin-top: 1mm;
+  padding-bottom: 3mm;
+}
+.title-block .ornament-top {
+  color: var(--gold);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 14pt; letter-spacing: 0.5em;
+  margin-bottom: 1mm;
+}
+.title-block h1 {
+  margin: 0;
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-weight: 700;
+  color: var(--ox);
+  font-size: 26pt;
+  letter-spacing: 0.08em;
+  line-height: 1.05;
+}
+.title-block .sub {
+  margin-top: 1.5mm;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 10.5pt;
+  color: var(--ink2);
+  letter-spacing: 0.01em;
+}
+.title-block .tag {
+  margin-top: 0.5mm;
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-size: 7.6pt;
+  letter-spacing: 0.30em;
+  color: var(--ox);
+}
+.title-block .divider {
+  margin: 3mm auto 2mm;
+  width: 120mm;
+  display:flex; align-items:center; justify-content:center; gap: 3mm;
+  color: var(--gold); font-size: 10pt;
+}
+.title-block .divider::before, .title-block .divider::after {
+  content:""; flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 40%, var(--gold) 60%, transparent);
+}
+.contact {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.8pt;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  margin-top: 1mm;
+}
+.contact .dot { color: var(--ox); margin: 0 1.6mm; }
+
+/* === ELEVATOR PITCH ====================================================== */
+.pitch {
+  margin: 4mm 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 9.4pt;
+  line-height: 1.48;
+  color: var(--ink);
+  padding: 0 4mm;
+  text-align: justify;
+}
+.pitch .drop {
+  float:left;
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-size: 26pt;
+  line-height: 0.88;
+  color: var(--ox);
+  padding: 1.2mm 2mm 0 0;
+  margin-right: 0.5mm;
+}
+.pitch em { color: var(--ox); font-style: italic; }
+
+/* === STAT PLATES ========================================================= */
+.stats {
+  margin-top: 4mm;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3mm;
+}
+.stat {
+  padding: 2.4mm 2.6mm 2.2mm;
+  background: var(--paper2);
+  border: 1px solid var(--rule2);
+  box-shadow:
+    inset 1px 1px 0 var(--deb-hi),
+    inset -1px -1px 0 var(--deb-lo);
+  text-align: center;
+}
+.stat .lbl {
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-size: 6.2pt;
+  letter-spacing: 0.24em;
+  color: var(--ink2);
+}
+.stat .num {
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-weight: 900;
+  font-size: 18pt;
+  color: var(--ox);
+  line-height: 1.0;
+  margin: 1mm 0 0.6mm;
+  letter-spacing: 0.02em;
+}
+.stat .foot {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 7.2pt;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+/* === CHAPTER HEADING ===================================================== */
+.chapter {
+  margin-top: 5mm;
+  display:flex; flex-direction:column; align-items:center;
+  text-align:center;
+}
+.chapter .caput {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 8.2pt;
+  color: var(--gold2);
+  letter-spacing: 0.14em;
+}
+.chapter h2 {
+  margin: 0.3mm 0 0;
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-weight: 700;
+  font-size: 14pt;
+  letter-spacing: 0.08em;
+  color: var(--ox);
+}
+.chapter .rule {
+  margin-top: 1.6mm;
+  width: 70mm;
+  display:flex; align-items:center; justify-content:center; gap: 2mm;
+  color: var(--gold); font-size: 8.4pt;
+}
+.chapter .rule::before, .chapter .rule::after {
+  content:""; flex:1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+}
+
+/* === ROLE HEADER ========================================================= */
+.role {
+  margin-top: 3mm;
+}
+.role-head {
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap: 4mm;
+  padding-bottom: 1.4mm;
+  border-bottom: 1px solid var(--rule2);
+  margin-bottom: 2mm;
+}
+.role-title {
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-weight: 700;
+  font-size: 11.2pt;
+  letter-spacing: 0.05em;
+  color: var(--ox);
+}
+.role-title .amp {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--ink2);
+  font-size: 9.6pt;
+  letter-spacing: 0.01em;
+}
+.role-meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.6pt;
+  letter-spacing: 0.10em;
+  color: var(--ink2);
+  white-space: nowrap;
+}
+.role-sub {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 8.6pt;
+  color: var(--ink2);
+  margin-top: -1mm;
+  margin-bottom: 2mm;
+}
+
+/* === ROMAN-NUMERAL BULLETS =============================================== */
+ul.numerals {
+  list-style: none;
+  margin: 0; padding: 0;
+  display:flex; flex-direction:column; gap: 1.8mm;
+}
+ul.numerals li {
+  display:grid;
+  grid-template-columns: 8mm 1fr;
+  align-items: start;
+  column-gap: 2mm;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 8.4pt;
+  line-height: 1.38;
+  color: var(--ink);
+}
+ul.numerals li::before {
+  content: attr(data-ch);
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-weight: 700;
+  font-size: 10pt;
+  color: var(--ox);
+  letter-spacing: 0.04em;
+  padding-top: 0.2mm;
+}
+ul.numerals li > div { min-width: 0; }
+ul.numerals li b {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  color: var(--ox2);
+}
+ul.numerals li code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7.4pt;
+  color: var(--ox);
+  background: rgba(107,30,31,0.06);
+  padding: 0.2mm 0.8mm;
+  border: 1px solid rgba(107,30,31,0.18);
+}
+ul.numerals .sidehead {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--ink2);
+}
+
+/* === PAGE 1 FOOTER ORNAMENT ============================================== */
+.overleaf {
+  margin-top: auto;
+  padding-top: 3mm;
+  text-align:center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 8.2pt;
+  color: var(--ink2);
+  letter-spacing: 0.04em;
+}
+.overleaf .flo {
+  display:block;
+  color: var(--gold);
+  font-size: 11pt;
+  letter-spacing: 0.6em;
+  margin-bottom: 1mm;
+}
+.overleaf .pgnum {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.8pt;
+  letter-spacing: 0.18em;
+  color: var(--ox);
+}
+
+/* =========================================================================
+   PAGE 2
+   ========================================================================= */
+
+.p2-title {
+  text-align:center;
+  margin-top: 1mm; margin-bottom: 2mm;
+}
+.p2-title .caput {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 8pt;
+  color: var(--gold2);
+  letter-spacing: 0.14em;
+}
+.p2-title h2 {
+  margin: 0.3mm 0 0;
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-weight: 700;
+  font-size: 12.5pt;
+  letter-spacing: 0.08em;
+  color: var(--ox);
+}
+.p2-title .rule {
+  margin: 1mm auto 0;
+  width: 60mm;
+  display:flex; align-items:center; justify-content:center; gap: 2mm;
+  color: var(--gold); font-size: 8.2pt;
+}
+.p2-title .rule::before, .p2-title .rule::after {
+  content:""; flex:1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+}
+
+/* compact role cards */
+.prev-roles {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3mm;
+  margin-top: 2.4mm;
+}
+.prev-card {
+  padding: 2.6mm 2.8mm;
+  background: var(--paper2);
+  border: 1px solid var(--rule2);
+  box-shadow: inset 1px 1px 0 var(--deb-hi), inset -1px -1px 0 var(--deb-lo);
+}
+.prev-card .ttl {
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-weight: 700;
+  font-size: 8.8pt;
+  letter-spacing: 0.06em;
+  color: var(--ox);
+}
+.prev-card .meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.2pt;
+  letter-spacing: 0.10em;
+  color: var(--ink2);
+  margin-top: 0.4mm;
+  padding-bottom: 1mm;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 1.4mm;
+}
+.prev-card p {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 8pt;
+  line-height: 1.38;
+  color: var(--ink);
+}
+.prev-card p b { color: var(--ox2); font-weight: 700; }
+.prev-card code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.8pt;
+  color: var(--ox);
+  background: rgba(107,30,31,0.06);
+  padding: 0.1mm 0.6mm;
+  border: 1px solid rgba(107,30,31,0.18);
+}
+
+/* === SECTION HEADING (page 2) ============================================ */
+.sect-head {
+  display:flex; align-items:baseline; justify-content:center;
+  margin-top: 4mm;
+  gap: 3mm;
+  color: var(--gold);
+}
+.sect-head::before, .sect-head::after {
+  content:""; flex:1; height:1px; max-width: 30mm;
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+}
+.sect-head h3 {
+  margin: 0;
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-weight: 700;
+  font-size: 10pt;
+  letter-spacing: 0.14em;
+  color: var(--ox);
+}
+.sect-head .flo { color: var(--gold); font-size: 8.4pt; }
+
+/* === APPARATUS (stack) =================================================== */
+.apparatus {
+  margin-top: 2mm;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 4mm; row-gap: 1.4mm;
+  counter-reset: app;
+}
+.apparatus .row {
+  display:grid;
+  grid-template-columns: 6mm 28mm 1fr;
+  align-items: baseline;
+  column-gap: 1.6mm;
+  padding: 0.6mm 0;
+  border-bottom: 1px dotted var(--rule);
+}
+.apparatus .row .let {
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-weight: 700;
+  font-size: 8.4pt;
+  color: var(--ox);
+  letter-spacing: 0.04em;
+}
+.apparatus .row .cat {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 8.2pt;
+  color: var(--ink2);
+}
+.apparatus .row .items {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.4pt;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+/* === SUNDRY DEVICES (projects) =========================================== */
+.devices {
+  margin-top: 2mm;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3mm;
+}
+.device {
+  padding: 2.6mm 2.8mm;
+  background: var(--paper2);
+  border: 1px solid var(--rule2);
+  box-shadow: inset 1px 1px 0 var(--deb-hi), inset -1px -1px 0 var(--deb-lo);
+}
+.device .ttl {
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-weight: 700;
+  font-size: 9pt;
+  letter-spacing: 0.04em;
+  color: var(--ox);
+}
+.device .repo {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.2pt;
+  letter-spacing: 0.06em;
+  color: var(--ink2);
+  margin-top: 0.3mm;
+  padding-bottom: 1mm;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 1.2mm;
+}
+.device p {
+  margin: 0 0 1.4mm;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 8pt;
+  line-height: 1.36;
+  color: var(--ink);
+}
+.device .nums {
+  display:flex; flex-wrap:wrap; gap: 1.2mm;
+}
+.device .chip {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.2pt;
+  letter-spacing: 0.06em;
+  color: var(--ox);
+  background: rgba(107,30,31,0.07);
+  border: 1px solid rgba(107,30,31,0.22);
+  padding: 0.4mm 1mm;
+}
+
+/* === LETTERS OF REFERENCE (edu + recognition) ============================ */
+.letters {
+  margin-top: 2mm;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm;
+}
+.letters .col h4 {
+  margin: 0 0 1mm;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 7.8pt;
+  letter-spacing: 0.10em;
+  color: var(--gold2);
+}
+.edu-row {
+  display:grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 3mm;
+  padding: 1mm 0;
+  border-bottom: 1px dotted var(--rule);
+}
+.edu-row .inst {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 8pt;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.edu-row .inst b {
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-weight: 700;
+  font-size: 7.8pt;
+  letter-spacing: 0.04em;
+  color: var(--ox);
+}
+.edu-row .yr {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 6.4pt;
+  letter-spacing: 0.08em;
+  color: var(--ink2);
+  white-space: nowrap;
+}
+.rec-row {
+  display:grid;
+  grid-template-columns: 6mm 1fr;
+  align-items: baseline;
+  gap: 2mm;
+  padding: 1mm 0;
+  border-bottom: 1px dotted var(--rule);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 8pt;
+  line-height: 1.32;
+  color: var(--ink);
+}
+.rec-row::before {
+  content: attr(data-ch);
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-weight: 700;
+  font-size: 8.2pt;
+  color: var(--ox);
+}
+.rec-row b { color: var(--ox2); font-weight: 700; }
+
+/* === COLOPHON ============================================================ */
+.colophon {
+  margin-top: auto;
+  padding-top: 3mm;
+  text-align:center;
+  border-top: 1px solid var(--rule2);
+}
+.colophon .flo {
+  color: var(--gold);
+  font-size: 10pt;
+  letter-spacing: 0.5em;
+}
+.colophon .words {
+  margin-top: 0.6mm;
+  font-family: "Playfair Display SC", Georgia, serif;
+  font-size: 6.8pt;
+  letter-spacing: 0.28em;
+  color: var(--ox);
+}
+.colophon .tiny {
+  margin-top: 0.3mm;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 7.2pt;
+  color: var(--ink2);
+}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ======================================================================
+     PAGE I
+     ====================================================================== -->
+<article class="resume-page">
+  <div class="linen"></div>
+  <div class="deckle"></div>
+  <div class="page-inner">
+
+    <div class="runhead">
+      <span>PRAKHAR · SHEKHAR · PARTHASARTHI</span>
+      <span class="flo">❦</span>
+      <span class="pg">Folio · I</span>
+    </div>
+
+    <section class="title-block">
+      <div class="ornament-top">✦ ❦ ✦</div>
+      <h1>Prakhar Shekhar Parthasarthi</h1>
+      <div class="sub">Senior Software Engineer &mdash; Java · Distributed Systems · AWS</div>
+      <div class="tag">BEING AN ACCOUNT OF THREE SEASONS AT AMAZON TRAVEL</div>
+      <div class="divider">❧</div>
+      <div class="contact">
+        prakhar.mnnit.2022@gmail.com
+        <span class="dot">·</span>github.com/praxstack
+        <span class="dot">·</span>linkedin.com/in/prakharshekhar
+        <span class="dot">·</span>Bengaluru, IN
+        <span class="dot">·</span>Open to Sr SWE roles
+      </div>
+    </section>
+
+    <p class="pitch">
+      <span class="drop">W</span>herein are recounted the principal achievements of a Java-first
+      backend engineer presently shipping pricing, checkout, and payment infrastructure for
+      <em>Amazon Travel</em> &mdash; hotels, flights, and insurance. Partial to
+      <em>CompletableFuture</em>, idempotent webhooks, small blast radii, and runbooks written
+      before the incident. Three seasons completed; a fourth solicited.
+    </p>
+
+    <section class="stats">
+      <div class="stat">
+        <div class="lbl">P90 LATENCY</div>
+        <div class="num">&minus;47%</div>
+        <div class="foot">1.10s → 0.59s on pricing fan-out</div>
+      </div>
+      <div class="stat">
+        <div class="lbl">CONVERSION</div>
+        <div class="num">+33%</div>
+        <div class="foot">traveler booking funnel</div>
+      </div>
+      <div class="stat">
+        <div class="lbl">COST&nbsp;/&nbsp;TXN</div>
+        <div class="num">&minus;43<span style="font-size:10pt;">bps</span></div>
+        <div class="foot">idempotent payment pipeline</div>
+      </div>
+      <div class="stat">
+        <div class="lbl">ON-CALL</div>
+        <div class="num">20+ → 5</div>
+        <div class="foot">pages&nbsp;/&nbsp;shift · 150+ incidents resolved</div>
+      </div>
+    </section>
+
+    <section class="chapter">
+      <div class="caput">Chapter the First</div>
+      <h2>SDE II &mdash; Amazon Travel</h2>
+      <div class="rule">❦</div>
+    </section>
+
+    <div class="role">
+      <div class="role-head">
+        <div class="role-title">AMAZON TRAVEL <span class="amp">&mdash; Hotels · Flights · Insurance</span></div>
+        <div class="role-meta">JUL 2023 &mdash; SEP 2025 · BENGALURU</div>
+      </div>
+      <div class="role-sub">Owner of four Java microservices across the booking funnel — pricing, checkout, payment webhooks, insurance attach.</div>
+
+      <ul class="numerals">
+        <li data-ch="I.">
+          <div>
+            <span class="sidehead">On the matter of latency. &nbsp;</span>
+            Re-architected pricing fan-out with <code>CompletableFuture.allOf</code> and
+            bulkhead <code>ExecutorService</code> pools, isolating slow suppliers from the hot path.
+            <b>P90 1.10s &rarr; 0.59s (&minus;47%)</b>; traveler conversion <b>+33%</b>.
+          </div>
+        </li>
+        <li data-ch="II.">
+          <div>
+            <span class="sidehead">Of payments &amp; idempotence. &nbsp;</span>
+            Idempotent payment webhook on <code>SQS + Step Functions</code> with DynamoDB dedupe
+            keys — cost-per-transaction <b>&minus;43 bps</b> and the double-capture incident
+            class extinguished.
+          </div>
+        </li>
+        <li data-ch="III.">
+          <div>
+            <span class="sidehead">A matter of infrastructure. &nbsp;</span>
+            Rewrote six legacy pipelines into <code>Java CDK</code> with versioned stacks and
+            blue/green cutovers; rollback rate <b>halved</b> and MTTR reduced by <b>one day</b>.
+          </div>
+        </li>
+        <li data-ch="IV.">
+          <div>
+            <span class="sidehead">Of stewardship. &nbsp;</span>
+            Pruned on-call load from <b>20+ to ~5 pages per shift</b>; config-hygiene violations
+            <b>5–6 &rarr; 0</b>; resolved <b>150+ incidents</b>; stopped an estimated
+            <b>~30 bps</b> funnel-churn on insurance attach.
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="overleaf">
+      <span class="flo">❦ ❧ ❦</span>
+      <span>continued overleaf</span>
+      <span class="pgnum"> · Pg.&nbsp;II</span>
+    </div>
+
+  </div>
+</article>
+
+<!-- ======================================================================
+     PAGE II
+     ====================================================================== -->
+<article class="resume-page">
+  <div class="linen"></div>
+  <div class="deckle"></div>
+  <div class="page-inner">
+
+    <div class="runhead">
+      <span>PRAKHAR · SHEKHAR · PARTHASARTHI</span>
+      <span class="flo">❧</span>
+      <span class="pg">Folio · II</span>
+    </div>
+
+    <section class="p2-title">
+      <div class="caput">Chapter the Second</div>
+      <h2>Previous Chapters</h2>
+      <div class="rule">❦</div>
+    </section>
+
+    <div class="prev-roles">
+      <div class="prev-card">
+        <div class="ttl">SDE I &mdash; Amazon Travel</div>
+        <div class="meta">JUL 2022 &mdash; JUL 2023 · BENGALURU</div>
+        <p>
+          Built REST endpoints and <code>@Repository</code> DynamoDB DAOs wired with
+          <b>Spring DI</b>; shipped auto-insurance renewal contributing
+          <b>+60%</b> renewal volume. Held the line at <b>80%+ JUnit coverage</b> with
+          <b>JaCoCo</b> enforced in CI.
+        </p>
+      </div>
+      <div class="prev-card">
+        <div class="ttl">SDE Intern &mdash; Amazon Travel</div>
+        <div class="meta">MAY 2021 &mdash; FEB 2022 · BENGALURU</div>
+        <p>
+          Led the <b>GraphQL &rarr; Java</b> migration of a checkout surface; delivered the
+          One-Click Renewal flow with <code>Guice</code> DI and an end-to-end harness at
+          <b>90%+ coverage</b>.
+        </p>
+      </div>
+    </div>
+
+    <div class="sect-head"><span class="flo">❦</span><h3>THE APPARATUS</h3><span class="flo">❦</span></div>
+
+    <div class="apparatus">
+      <div class="row">
+        <div class="let">A.</div>
+        <div class="cat">JVM Core</div>
+        <div class="items">Java 17 · Spring Boot · Spring MVC · Spring DI · Guice · Maven · Gradle</div>
+      </div>
+      <div class="row">
+        <div class="let">B.</div>
+        <div class="cat">Concurrency</div>
+        <div class="items">ExecutorService · CompletableFuture · ConcurrentHashMap · ScheduledExecutor · bulkheads</div>
+      </div>
+      <div class="row">
+        <div class="let">C.</div>
+        <div class="cat">AWS</div>
+        <div class="items">Lambda · DynamoDB · SQS · Step Functions · API Gateway · AppSync · CloudWatch · ECS · CDK (Java)</div>
+      </div>
+      <div class="row">
+        <div class="let">D.</div>
+        <div class="cat">Quality</div>
+        <div class="items">JUnit 5 · Mockito · JaCoCo · integration harnesses · contract tests</div>
+      </div>
+      <div class="row">
+        <div class="let">E.</div>
+        <div class="cat">Front-End</div>
+        <div class="items">React (SSR &amp; CSR) · Redux · TypeScript · Vitest</div>
+      </div>
+      <div class="row">
+        <div class="let">F.</div>
+        <div class="cat">Data Patterns</div>
+        <div class="items">DynamoDB single-table · idempotency keys · dedupe queues</div>
+      </div>
+      <div class="row">
+        <div class="let">G.</div>
+        <div class="cat">Ops</div>
+        <div class="items">runbooks · alarm hygiene · SEV pages · on-call rotations</div>
+      </div>
+      <div class="row">
+        <div class="let">H.</div>
+        <div class="cat">Method</div>
+        <div class="items">trunk-based · code-review discipline · postmortems · SLO-first</div>
+      </div>
+    </div>
+
+    <div class="sect-head"><span class="flo">❧</span><h3>SUNDRY DEVICES</h3><span class="flo">❧</span></div>
+
+    <div class="devices">
+      <div class="device">
+        <div class="ttl">Redis Server &mdash; in Java</div>
+        <div class="repo">github.com/praxstack/redis-server-java</div>
+        <p>
+          From-scratch <b>RESP2 protocol</b> with event-loop I/O and a hashmap engine.
+          Written for sport &amp; study; benchmarked against the C implementation to keep
+          one honest about what the JVM can actually do.
+        </p>
+        <div class="nums">
+          <span class="chip">SET 154k rps</span>
+          <span class="chip">GET 195k rps</span>
+          <span class="chip">INCR 128k rps</span>
+          <span class="chip">42 tests</span>
+          <span class="chip">~78% of C</span>
+        </div>
+      </div>
+      <div class="device">
+        <div class="ttl">Markdown Viewer Pro</div>
+        <div class="repo">github.com/praxstack/markdown-viewer-pro</div>
+        <p>
+          Zero-config Markdown reader with a plugin architecture and a keyboard-first
+          command palette. Built to fit in a browser tab and stay there — dependency-free
+          at runtime, tested obsessively.
+        </p>
+        <div class="nums">
+          <span class="chip">155+ Vitest tests</span>
+          <span class="chip">&lt;100KB gzipped</span>
+          <span class="chip">0 runtime deps</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sect-head"><span class="flo">❦</span><h3>LETTERS OF REFERENCE</h3><span class="flo">❦</span></div>
+
+    <div class="letters">
+      <div class="col">
+        <h4>of formal instruction</h4>
+        <div class="edu-row">
+          <div class="inst"><b>M.C.A.</b> &mdash; Computer Science · MNNIT · Prayagraj</div>
+          <div class="yr">2019–2022 · GPA 9.25/10</div>
+        </div>
+        <div class="edu-row">
+          <div class="inst"><b>B.Sc. (Hons)</b> &mdash; Computer Science · Bhaskaracharya College · Delhi University</div>
+          <div class="yr">2015–2018</div>
+        </div>
+      </div>
+      <div class="col">
+        <h4>of recognitions received</h4>
+        <div class="rec-row" data-ch="★">
+          <div><b>Amazon Pay Merchants</b> &mdash; Categories Champion, 2023</div>
+        </div>
+        <div class="rec-row" data-ch="★">
+          <div><b>100+ trust-buster bugs</b> resolved across travel-funnel quality sprints</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="colophon">
+      <div class="flo">❦ ✦ ❦</div>
+      <div class="words">PRINTED BY HAND &nbsp;·&nbsp; ONE OF ONE</div>
+      <div class="tiny">a keepsake program &mdash; PSP &middot; MMXXVI</div>
+    </div>
+
+  </div>
+</article>
+
+</div>
+</body>
+</html>

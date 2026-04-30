@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Resume 04 · Blueprint Beta Draft — Prakhar Shekhar Parthasarthi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=block"
+  rel="stylesheet"
+/>
+<style>
+/* ======================================================================
+   RESUME 04 — BLUEPRINT BETA DRAFT
+   Architect's blueprint: cyan field, ivory technical ink, pencil-red
+   annotations. Dimension arrows, registration marks, title-blocks, a
+   rubber-stamped REVISION R4, and a DRAFT watermark on page 2.
+   ====================================================================== */
+
+*,*::before,*::after { box-sizing: border-box; }
+
+:root {
+  --blue:    #0B3E66;
+  --blue2:   #0F4A78;
+  --blueDk:  #082E4D;
+  --ivory:   #E8ECEF;
+  --ivory2:  #C9D3DA;
+  --dim:     #7FA1BA;
+  --grid:    rgba(232,236,239,0.10);
+  --grid2:   rgba(232,236,239,0.20);
+  --pencil:  #FF5B5B;
+  --pencil2: #C94040;
+  --rule:    rgba(232,236,239,0.35);
+  --rule2:   rgba(232,236,239,0.55);
+}
+
+@page { size: A4 portrait; margin: 0; }
+
+html, body { margin:0; padding:0; background:#0a1a2a; }
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  color: var(--ivory);
+  font-size: 8.8pt;
+  line-height: 1.42;
+  -webkit-font-smoothing: antialiased;
+}
+
+.deck {
+  display:flex; flex-direction:column; align-items:center;
+  gap: 22mm; padding: 22mm 0;
+}
+
+/* === PAGE ================================================================ */
+.resume-page {
+  width: 210mm; height: 297mm;
+  position: relative;
+  background: var(--blue);
+  overflow: hidden;
+  box-shadow: 0 1mm 3mm rgba(0,0,0,0.55), 0 10mm 30mm rgba(0,0,0,0.55);
+  color: var(--ivory);
+}
+
+/* orthographic dotted grid underlay @ 5mm */
+.grid-bg {
+  position:absolute; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    radial-gradient(circle, rgba(232,236,239,0.18) 0.35mm, transparent 0.36mm),
+    linear-gradient(var(--grid) 0.15mm, transparent 0.15mm),
+    linear-gradient(90deg, var(--grid) 0.15mm, transparent 0.15mm);
+  background-size: 5mm 5mm, 5mm 5mm, 5mm 5mm;
+  background-position: 0 0, 0 0, 0 0;
+}
+/* every 25mm a slightly heavier rule */
+.grid-bg::after {
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(var(--grid2) 0.2mm, transparent 0.2mm),
+    linear-gradient(90deg, var(--grid2) 0.2mm, transparent 0.2mm);
+  background-size: 25mm 25mm, 25mm 25mm;
+  opacity: 0.9;
+}
+
+/* inner drawing frame */
+.frame {
+  position:absolute; inset:6mm;
+  border: 0.3mm solid var(--rule);
+  pointer-events:none; z-index:1;
+}
+.frame::before,
+.frame::after {
+  content:""; position:absolute;
+  left:0; right:0; height:0; border-top:0.2mm solid var(--rule);
+}
+.frame::before { top: 12mm; }
+.frame::after  { bottom: 22mm; }
+
+/* Corner registration marks (SVG via mask of box-drawing glyphs) */
+.reg {
+  position:absolute; z-index:3;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 14pt; color: var(--ivory);
+  line-height: 1;
+  letter-spacing: 0;
+  opacity: 0.95;
+}
+.reg.tl { top: 3mm; left: 3mm; }
+.reg.tr { top: 3mm; right: 3mm; }
+.reg.bl { bottom: 3mm; left: 3mm; }
+.reg.br { bottom: 3mm; right: 3mm; }
+
+/* Page gutter (content holder) */
+.sheet {
+  position:absolute; inset: 6mm 6mm 6mm 6mm;
+  z-index: 2;
+  padding: 7mm 7mm 7mm 7mm;
+  display:flex; flex-direction:column;
+}
+
+/* === MASTHEAD (top bar) ================================================== */
+.masthead {
+  display:grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items:center;
+  gap: 6mm;
+  padding-bottom: 3mm;
+  border-bottom: 0.2mm solid var(--rule);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 7pt;
+  letter-spacing: 0.08em;
+  color: var(--ivory2);
+  text-transform: uppercase;
+}
+.masthead .mh-l { text-align:left; }
+.masthead .mh-c {
+  text-align:center;
+  color: var(--ivory);
+  font-weight:700;
+  letter-spacing: 0.14em;
+}
+.masthead .mh-r { text-align:right; }
+.masthead .rev {
+  display:inline-block;
+  padding: 0.4mm 1.6mm;
+  border: 0.25mm solid var(--pencil);
+  color: var(--pencil);
+  margin-left: 2mm;
+  letter-spacing: 0.16em;
+}
+
+/* === DIMENSION ARROWS (reusable) ======================================== */
+.dim {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 7pt;
+  color: var(--ivory2);
+  letter-spacing: 0.06em;
+  display:flex; align-items:center; gap: 1.5mm;
+  white-space: nowrap;
+}
+.dim .line { flex: 1 1 auto; height: 0.2mm; background: var(--rule2); }
+.dim .line.short { flex: 0 0 12mm; }
+.dim .tick { color: var(--ivory); font-weight: 700; }
+.dim.center { justify-content:center; }
+.dim .label { padding: 0 1.5mm; color: var(--ivory); }
+
+.dim-red { color: var(--pencil); }
+.dim-red .line { background: rgba(255,91,91,0.55); }
+.dim-red .label { color: var(--pencil); }
+
+/* === NAME BLOCK ========================================================= */
+.name-block {
+  margin-top: 5mm;
+  padding: 2mm 0 2mm 0;
+}
+.name-block .name {
+  font-family: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 42pt;
+  line-height: 0.95;
+  letter-spacing: -0.012em;
+  color: var(--ivory);
+  margin: 2mm 0 1mm 0;
+  text-transform: uppercase;
+}
+.name-block .subtitle {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 8.5pt;
+  letter-spacing: 0.14em;
+  color: var(--ivory2);
+  text-transform: uppercase;
+  margin-top: 1.5mm;
+}
+.name-block .subtitle .sep { color: var(--dim); margin: 0 2mm; }
+.name-block .contact {
+  margin-top: 2.5mm;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 7.4pt;
+  letter-spacing: 0.06em;
+  color: var(--ivory2);
+}
+.name-block .contact .sep { color: var(--dim); margin: 0 1.6mm; }
+
+/* === STAT STRIP (dimensioned) =========================================== */
+.stat-strip {
+  margin-top: 4mm;
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3mm;
+}
+.stat {
+  position:relative;
+  border: 0.25mm solid var(--rule2);
+  padding: 3mm 3mm 3mm 3mm;
+  background: rgba(232,236,239,0.03);
+}
+.stat .tag {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 6.4pt;
+  letter-spacing: 0.18em;
+  color: var(--ivory2);
+  text-transform: uppercase;
+  margin-bottom: 1mm;
+}
+.stat .val {
+  font-family: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 18pt;
+  line-height: 1;
+  color: var(--ivory);
+  letter-spacing: -0.01em;
+}
+.stat .sub {
+  margin-top: 1.5mm;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 6.6pt;
+  color: var(--dim);
+  letter-spacing: 0.04em;
+}
+.stat .arrow {
+  position:absolute;
+  top: -2.4mm; right: 2mm;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 6.4pt;
+  color: var(--pencil);
+  background: var(--blue);
+  padding: 0 1mm;
+  letter-spacing: 0.08em;
+}
+
+/* === SECTION HEADING ==================================================== */
+.section-head {
+  display:grid;
+  grid-template-columns: auto 1fr auto;
+  align-items:center;
+  gap: 3mm;
+  margin-top: 5mm;
+  margin-bottom: 2.5mm;
+}
+.section-head .hno {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 7pt;
+  color: var(--pencil);
+  letter-spacing: 0.16em;
+  padding: 0.4mm 1.4mm;
+  border: 0.25mm solid var(--pencil);
+}
+.section-head .htitle {
+  font-family: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 11pt;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  white-space: nowrap;
+}
+.section-head .hline { height: 0.25mm; background: var(--rule2); }
+.section-head .hmeta {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 6.8pt;
+  color: var(--ivory2);
+  letter-spacing: 0.12em;
+}
+
+/* === ROLE (ASSEMBLY) CARD ============================================== */
+.assembly {
+  border: 0.3mm solid var(--rule2);
+  padding: 4mm 4.5mm 4.5mm 4.5mm;
+  position: relative;
+  background: rgba(232,236,239,0.03);
+}
+.assembly .head {
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap: 3mm;
+  align-items:flex-start;
+  padding-bottom: 2.5mm;
+  border-bottom: 0.2mm dashed var(--rule);
+}
+.assembly .role {
+  font-family: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 12.5pt;
+  color: var(--ivory);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.assembly .org {
+  margin-top: 0.8mm;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 9pt;
+  color: var(--ivory2);
+}
+.assembly .loc {
+  margin-top: 0.6mm;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 7pt;
+  color: var(--dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.assembly .meta {
+  text-align:right;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 7pt;
+  color: var(--ivory2);
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+}
+.assembly .meta .date { color: var(--ivory); font-weight: 700; }
+.assembly .meta .stamp {
+  display:inline-block;
+  margin-top: 1.2mm;
+  padding: 0.6mm 1.8mm;
+  border: 0.35mm solid var(--pencil);
+  color: var(--pencil);
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  transform: rotate(-4deg);
+  transform-origin: right center;
+}
+
+.assembly .summary {
+  margin-top: 2.5mm;
+  font-size: 8.4pt;
+  color: var(--ivory2);
+}
+.assembly .summary strong { color: var(--ivory); }
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 2.5mm 0 0 0;
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 2mm;
+}
+.bullets li {
+  display:grid;
+  grid-template-columns: 12mm 1fr;
+  gap: 2mm;
+  align-items:flex-start;
+  position: relative;
+  padding-left: 0;
+}
+.bullets li::before {
+  content: attr(data-n);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 7pt;
+  color: var(--pencil);
+  letter-spacing: 0.12em;
+  padding-top: 0.6mm;
+  border-right: 0.2mm dashed var(--rule);
+  padding-right: 2mm;
+  text-align: left;
+}
+.bullets li > div {
+  font-size: 8.6pt;
+  line-height: 1.42;
+  color: var(--ivory);
+}
+.bullets li > div strong { color: var(--ivory); font-weight: 700; }
+.bullets li > div em {
+  font-style: normal;
+  color: var(--pencil);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 7.6pt;
+  letter-spacing: 0.04em;
+  padding: 0 0.6mm;
+}
+
+/* === TITLE-BLOCK (bottom right) ========================================= */
+.titleblock {
+  margin-top: auto;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  border: 0.3mm solid var(--rule2);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 6.6pt;
+  color: var(--ivory2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.titleblock .cell {
+  padding: 2mm 2.5mm;
+  border-right: 0.25mm solid var(--rule);
+}
+.titleblock .cell:last-child { border-right: 0; }
+.titleblock .cell .k {
+  color: var(--dim);
+  font-size: 6pt;
+  letter-spacing: 0.16em;
+  margin-bottom: 0.8mm;
+}
+.titleblock .cell .v {
+  color: var(--ivory);
+  font-weight: 700;
+  font-size: 7.6pt;
+  letter-spacing: 0.06em;
+}
+.titleblock .cell.red .v { color: var(--pencil); }
+
+/* === PAGE 2 SPECIFIC ==================================================== */
+.draft-watermark {
+  position:absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) rotate(12deg);
+  font-family: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 140pt;
+  letter-spacing: 0.08em;
+  color: transparent;
+  -webkit-text-stroke: 0.6mm rgba(255,91,91,0.18);
+  pointer-events:none;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+/* compact role row on page 2 */
+.role-row {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm;
+  margin-top: 1mm;
+}
+.role-mini {
+  border: 0.3mm solid var(--rule2);
+  padding: 3mm 3.5mm 3.5mm 3.5mm;
+  position: relative;
+  background: rgba(232,236,239,0.03);
+}
+.role-mini .rh {
+  display:flex; justify-content:space-between; align-items:flex-start;
+  gap: 2mm;
+  padding-bottom: 2mm;
+  border-bottom: 0.2mm dashed var(--rule);
+}
+.role-mini .role {
+  font-family: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 10pt;
+  text-transform: uppercase;
+  color: var(--ivory);
+  letter-spacing: 0.01em;
+}
+.role-mini .org {
+  margin-top: 0.6mm;
+  font-size: 8pt;
+  color: var(--ivory2);
+  font-weight: 600;
+}
+.role-mini .date {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 6.6pt;
+  color: var(--ivory2);
+  letter-spacing: 0.1em;
+  text-align:right;
+  line-height: 1.4;
+}
+.role-mini .date .stamp {
+  display:inline-block;
+  margin-top: 1.2mm;
+  padding: 0.4mm 1.4mm;
+  border: 0.3mm solid var(--pencil);
+  color: var(--pencil);
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  transform: rotate(-3deg);
+}
+.role-mini p {
+  margin: 2.2mm 0 0 0;
+  font-size: 8.2pt;
+  line-height: 1.4;
+  color: var(--ivory);
+}
+.role-mini p strong { color: var(--ivory); font-weight:700; }
+.role-mini p em {
+  font-style:normal;
+  color: var(--pencil);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 7.4pt;
+}
+
+/* === STACK GRID ========================================================= */
+.stack-grid {
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5mm;
+  margin-top: 1mm;
+}
+.stack-tile {
+  border: 0.25mm solid var(--rule2);
+  padding: 2.5mm 3mm 3mm 3mm;
+  background: rgba(232,236,239,0.03);
+  position:relative;
+}
+.stack-tile .k {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 6.4pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pencil);
+  margin-bottom: 1.2mm;
+}
+.stack-tile .v {
+  font-size: 7.6pt;
+  color: var(--ivory);
+  line-height: 1.38;
+}
+.stack-tile .dimmark {
+  position:absolute;
+  top: -2mm; right: 2mm;
+  background: var(--blue);
+  padding: 0 1mm;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 6.2pt;
+  color: var(--ivory2);
+  letter-spacing: 0.08em;
+}
+
+/* === PROJECT CARDS ====================================================== */
+.projects-row {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm;
+  margin-top: 1mm;
+}
+.project {
+  border: 0.3mm solid var(--rule2);
+  padding: 3mm 3.5mm 3.5mm 3.5mm;
+  background: rgba(232,236,239,0.03);
+}
+.project .ph {
+  display:flex; justify-content:space-between; align-items:baseline;
+  gap: 2mm;
+}
+.project .name {
+  font-family: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 10pt;
+  text-transform: uppercase;
+  color: var(--ivory);
+  letter-spacing: 0.01em;
+}
+.project .url {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 6.6pt;
+  color: var(--ivory2);
+  letter-spacing: 0.04em;
+}
+.project p {
+  margin: 1.8mm 0 2mm 0;
+  font-size: 8pt;
+  color: var(--ivory);
+  line-height: 1.4;
+}
+.project .specs {
+  display:flex; flex-wrap:wrap; gap: 1.5mm;
+}
+.project .spec {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 6.8pt;
+  letter-spacing: 0.06em;
+  padding: 0.6mm 1.6mm;
+  border: 0.25mm solid var(--rule2);
+  color: var(--ivory);
+}
+.project .spec.red {
+  color: var(--pencil);
+  border-color: var(--pencil);
+}
+
+/* === EDU + RECOG FOOTER ================================================= */
+.foot-row {
+  display:grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 4mm;
+  margin-top: 1mm;
+}
+.foot-cell {
+  border: 0.25mm solid var(--rule2);
+  padding: 3mm 3.5mm;
+  background: rgba(232,236,239,0.03);
+}
+.foot-cell .k {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 6.4pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pencil);
+  margin-bottom: 1.4mm;
+}
+.foot-cell .line {
+  font-size: 7.8pt;
+  color: var(--ivory);
+  line-height: 1.38;
+  margin-bottom: 0.8mm;
+}
+.foot-cell .line .lbl {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 6.8pt;
+  color: var(--ivory2);
+  letter-spacing: 0.06em;
+}
+.foot-cell .line strong { color: var(--ivory); font-weight: 700; }
+
+/* utility */
+.row-gap-sm { height: 2mm; }
+.row-gap-md { height: 3mm; }
+
+/* === PRINT ============================================================== */
+@media print {
+  html, body { background: #fff; }
+  .deck { display:block; padding:0; gap:0; }
+  .resume-page {
+    box-shadow: none;
+    page-break-after: always;
+    margin: 0;
+  }
+  .resume-page:last-child { page-break-after: auto; }
+}
+
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- =======================  PAGE 1  ======================================= -->
+<article class="resume-page">
+  <div class="grid-bg"></div>
+  <div class="frame"></div>
+
+  <div class="reg tl">&#x2554;</div>
+  <div class="reg tr">&#x2557;</div>
+  <div class="reg bl">&#x255A;</div>
+  <div class="reg br">&#x255D;</div>
+
+  <div class="sheet">
+
+    <!-- MASTHEAD -->
+    <div class="masthead">
+      <div class="mh-l">PSP · Drawing № 26 · Senior SWE · Java / Distributed / AWS</div>
+      <div class="mh-c">BLUEPRINT · BETA DRAFT</div>
+      <div class="mh-r">Sheet 1/2 · Scale 1:1 <span class="rev">REV R4</span></div>
+    </div>
+
+    <!-- Dimension arrow above name -->
+    <div class="dim center" style="margin-top: 4mm;">
+      <span class="tick">├</span><div class="line"></div>
+      <span class="label">— 42 PT · DISPLAY —</span>
+      <div class="line"></div><span class="tick">┤</span>
+    </div>
+
+    <!-- NAME BLOCK -->
+    <div class="name-block">
+      <div class="name">Prakhar&nbsp;Shekhar<br/>Parthasarthi</div>
+
+      <div class="dim" style="margin-top: 2mm;">
+        <span class="tick">├</span><div class="line short"></div>
+        <span class="label">— 210mm —</span>
+        <div class="line"></div><span class="tick">┤</span>
+      </div>
+
+      <div class="subtitle">Senior Software Engineer<span class="sep">·</span>Java<span class="sep">·</span>Distributed Systems<span class="sep">·</span>AWS</div>
+      <div class="contact">
+        prakhar.mnnit.2022@gmail.com<span class="sep">·</span>github.com/praxstack<span class="sep">·</span>linkedin.com/in/prakharshekhar<span class="sep">·</span>Bengaluru, IN
+      </div>
+    </div>
+
+    <!-- STAT STRIP -->
+    <div class="section-head" style="margin-top: 5mm;">
+      <span class="hno">DIM · 01</span>
+      <span class="htitle">HEADLINE DIMENSIONS</span>
+      <div class="hline"></div>
+      <span class="hmeta">MEASURED FY23–FY25 · IN-PROD</span>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat">
+        <span class="arrow">&larr; −47% &rarr;</span>
+        <div class="tag">§1 · P90 LATENCY</div>
+        <div class="val">0.59 s</div>
+        <div class="sub">from 1.10 s · search fan-out</div>
+      </div>
+      <div class="stat">
+        <span class="arrow">&larr; +33% &rarr;</span>
+        <div class="tag">§2 · CONVERSION</div>
+        <div class="val">+33%</div>
+        <div class="sub">traveler funnel uplift</div>
+      </div>
+      <div class="stat">
+        <span class="arrow">&larr; −43 bps &rarr;</span>
+        <div class="tag">§3 · CPT</div>
+        <div class="val">−43 bps</div>
+        <div class="sub">cost-per-txn · payments</div>
+      </div>
+      <div class="stat">
+        <span class="arrow">&larr; ÷4 &rarr;</span>
+        <div class="tag">§4 · ON-CALL</div>
+        <div class="val">~5 / shift</div>
+        <div class="sub">from 20+ · alarm hygiene</div>
+      </div>
+    </div>
+
+    <!-- ASSEMBLY N.01 -->
+    <div class="section-head">
+      <span class="hno">ASM · N.01</span>
+      <span class="htitle">ASSEMBLY · BOOKING FUNNEL</span>
+      <div class="hline"></div>
+      <span class="hmeta">SEE NOTE §3 · CRITICAL PATH</span>
+    </div>
+
+    <div class="assembly">
+      <div class="head">
+        <div>
+          <div class="role">SDE II · Amazon Travel</div>
+          <div class="org">Hotels · Flights · Insurance &nbsp;—&nbsp; Owner: 4 Java microservices, search → webhook</div>
+          <div class="loc">Bengaluru, IN</div>
+        </div>
+        <div class="meta">
+          <div class="date">JUL 2023 — SEP 2025</div>
+          <div>TENURE · 2Y 2M</div>
+          <div class="stamp">REV R4 · PROD STABLE</div>
+        </div>
+      </div>
+
+      <div class="summary">
+        <strong>Brief —</strong> Owned the critical-path from first pricing fan-out to post-booking webhook reconciliation. Re-cut concurrency model, hardened idempotency across payments, and moved six legacy pipelines onto Java CDK. On-call load collapsed; traveler conversion lifted.
+      </div>
+
+      <ol class="bullets">
+        <li data-n="N.01 ·"><div>Re-architected pricing fan-out with <strong>CompletableFuture.allOf</strong> + bulkhead <strong>ExecutorService</strong> pools, replacing serial supplier calls. p90 <em>1.10 s → 0.59 s (−47%)</em> · traveler <em>conversion +33%</em> sustained across 3 quarters.</div></li>
+        <li data-n="N.02 ·"><div>Built an idempotent payment webhook on <strong>SQS + Step Functions</strong> with a <strong>DynamoDB dedupe</strong> table keyed by correlation id. Killed the double-capture SEV class and drove <em>CPT −43 bps</em>.</div></li>
+        <li data-n="N.03 ·"><div>Rewrote 6 legacy deploy pipelines into <strong>Java CDK</strong> with typed constructs &amp; contract tests; rollbacks <em>halved</em>, <em>MTTR −1 day</em>, and config drift traced to a single source of truth.</div></li>
+        <li data-n="N.04 ·"><div>On-call from <em>20+ → ~5 pages / shift</em>; config-hygiene misses <em>5–6 → 0</em>; resolved <strong>150+ incidents</strong> and stopped an est. <em>~30 bps</em> funnel-churn on insurance attach via renewal-flow patching.</div></li>
+      </ol>
+    </div>
+
+    <!-- TITLE-BLOCK -->
+    <div class="titleblock" style="margin-top: auto;">
+      <div class="cell"><div class="k">Drawn by</div><div class="v">PSP</div></div>
+      <div class="cell"><div class="k">Checked</div><div class="v">N / A</div></div>
+      <div class="cell red"><div class="k">Approved</div><div class="v">REV · R4</div></div>
+      <div class="cell"><div class="k">Date</div><div class="v">04 · 26</div></div>
+      <div class="cell"><div class="k">Scale</div><div class="v">1 : 1 · A4</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- =======================  PAGE 2  ======================================= -->
+<article class="resume-page">
+  <div class="grid-bg"></div>
+  <div class="frame"></div>
+  <div class="draft-watermark">DRAFT</div>
+
+  <div class="reg tl">&#x2554;</div>
+  <div class="reg tr">&#x2557;</div>
+  <div class="reg bl">&#x255A;</div>
+  <div class="reg br">&#x255D;</div>
+
+  <div class="sheet">
+
+    <!-- MASTHEAD -->
+    <div class="masthead">
+      <div class="mh-l">PSP · Drawing № 26 · Sheet 2/2 — Addenda</div>
+      <div class="mh-c">BLUEPRINT · BETA DRAFT</div>
+      <div class="mh-r">Scale 1:1 <span class="rev">REV R4</span></div>
+    </div>
+
+    <!-- ROLE ROW -->
+    <div class="section-head" style="margin-top: 3mm;">
+      <span class="hno">ASM · N.02</span>
+      <span class="htitle">PRIOR ASSEMBLIES</span>
+      <div class="hline"></div>
+      <span class="hmeta">REV HISTORY · AMZN TRAVEL</span>
+    </div>
+
+    <div class="role-row">
+      <div class="role-mini">
+        <div class="rh">
+          <div>
+            <div class="role">SDE I · Amazon Travel</div>
+            <div class="org">Bengaluru, IN</div>
+          </div>
+          <div class="date">
+            JUL 2022 — JUL 2023<br/>
+            <span class="stamp">REV R2</span>
+          </div>
+        </div>
+        <p>Delivered <strong>REST</strong> services and <strong>@Repository DynamoDB DAOs</strong> wired via Spring DI. Shipped auto-insurance renewal with retry/idempotency — attach-rate <em>+60%</em>. Lifted test bar to <em>80%+ JUnit</em> coverage with JaCoCo gated on CI.</p>
+      </div>
+
+      <div class="role-mini">
+        <div class="rh">
+          <div>
+            <div class="role">SDE Intern · Amazon Travel</div>
+            <div class="org">Bengaluru, IN</div>
+          </div>
+          <div class="date">
+            MAY 2021 — FEB 2022<br/>
+            <span class="stamp">REV R1</span>
+          </div>
+        </div>
+        <p>Led <strong>GraphQL → Java</strong> migration for a slice of the insurance quote path; built <strong>One-Click Renewal</strong> with <strong>Guice DI</strong> and per-module factories. Coverage landed at <em>90%+</em>; converted to FTE on the back of it.</p>
+      </div>
+    </div>
+
+    <!-- STACK GRID -->
+    <div class="section-head">
+      <span class="hno">DIM · 02</span>
+      <span class="htitle">STACK · BILL OF MATERIALS</span>
+      <div class="hline"></div>
+      <span class="hmeta">8 TILES · SCALE 1:1</span>
+    </div>
+
+    <div class="stack-grid">
+      <div class="stack-tile">
+        <span class="dimmark">T-01</span>
+        <div class="k">JVM · Core</div>
+        <div class="v">Java 17 · Spring Boot · Spring MVC · Spring DI · Guice · Maven · Gradle</div>
+      </div>
+      <div class="stack-tile">
+        <span class="dimmark">T-02</span>
+        <div class="k">Concurrency</div>
+        <div class="v">ExecutorService · CompletableFuture · ConcurrentHashMap · ScheduledExecutor · bulkheads</div>
+      </div>
+      <div class="stack-tile">
+        <span class="dimmark">T-03</span>
+        <div class="k">AWS</div>
+        <div class="v">Lambda · DynamoDB · SQS · Step Functions · API Gateway · AppSync · CloudWatch · ECS · CDK (Java)</div>
+      </div>
+      <div class="stack-tile">
+        <span class="dimmark">T-04</span>
+        <div class="k">Quality</div>
+        <div class="v">JUnit 5 · Mockito · JaCoCo · integration harnesses · contract tests</div>
+      </div>
+      <div class="stack-tile">
+        <span class="dimmark">T-05</span>
+        <div class="k">Front-End</div>
+        <div class="v">React (SSR &amp; CSR) · Redux · TypeScript · Vitest</div>
+      </div>
+      <div class="stack-tile">
+        <span class="dimmark">T-06</span>
+        <div class="k">Data</div>
+        <div class="v">DynamoDB single-table · idempotency keys · dedupe queues</div>
+      </div>
+      <div class="stack-tile">
+        <span class="dimmark">T-07</span>
+        <div class="k">Ops</div>
+        <div class="v">Runbooks · alarm hygiene · SEV pages · on-call</div>
+      </div>
+      <div class="stack-tile">
+        <span class="dimmark">T-08</span>
+        <div class="k">Method</div>
+        <div class="v">Trunk-based · code-review · postmortems · SLO-first</div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section-head">
+      <span class="hno">ASM · N.03</span>
+      <span class="htitle">SIDE DRAWINGS · PROJECTS</span>
+      <div class="hline"></div>
+      <span class="hmeta">DIMENSIONED · MEASURED LOCAL</span>
+    </div>
+
+    <div class="projects-row">
+      <div class="project">
+        <div class="ph">
+          <div class="name">Redis Server · Java</div>
+          <div class="url">github.com/praxstack/redis-server-java</div>
+        </div>
+        <p>RESP2 protocol parser over a single-thread <strong>event-loop I/O</strong> core with a bespoke hashmap engine; structured for O(1) commands and correct expiry semantics.</p>
+        <div class="specs">
+          <span class="spec red">&#x2B9E; SET 154k rps</span>
+          <span class="spec red">&#x2B9E; GET 195k rps</span>
+          <span class="spec">INCR 128k rps</span>
+          <span class="spec">42 tests</span>
+          <span class="spec">~78% of C</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="ph">
+          <div class="name">Markdown Viewer Pro</div>
+          <div class="url">github.com/praxstack/markdown-viewer-pro</div>
+        </div>
+        <p>Zero-config reader with a plugin architecture — drop-in transforms for diagrams, math, and syntax. Ships tiny and dependency-free.</p>
+        <div class="specs">
+          <span class="spec red">&#x2B9E; 155+ Vitest tests</span>
+          <span class="spec">&lt; 100KB gz</span>
+          <span class="spec">zero deps</span>
+          <span class="spec">plugin API</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDU + RECOGNITION -->
+    <div class="section-head">
+      <span class="hno">DIM · 03</span>
+      <span class="htitle">EDUCATION · RECOGNITION</span>
+      <div class="hline"></div>
+      <span class="hmeta">CERTIFIED · ON FILE</span>
+    </div>
+
+    <div class="foot-row">
+      <div class="foot-cell">
+        <div class="k">Education</div>
+        <div class="line"><span class="lbl">M.C.A. · CS</span> &nbsp; <strong>MNNIT Prayagraj</strong> · 2019 — 2022 · GPA <strong>9.25 / 10</strong></div>
+        <div class="line"><span class="lbl">B.Sc. (Hons) · CS</span> &nbsp; <strong>Bhaskaracharya College · DU</strong> · 2015 — 2018</div>
+      </div>
+      <div class="foot-cell">
+        <div class="k">Recognition</div>
+        <div class="line"><strong>Amazon Pay · Merchants Categories Champion 2023</strong></div>
+        <div class="line"><span class="lbl">QA</span> <strong>100+ trust-buster bugs</strong> across travel quality sprints</div>
+      </div>
+    </div>
+
+    <!-- TITLE-BLOCK -->
+    <div class="titleblock" style="margin-top:auto;">
+      <div class="cell"><div class="k">Drawn by</div><div class="v">PSP</div></div>
+      <div class="cell"><div class="k">Checked</div><div class="v">N / A</div></div>
+      <div class="cell red"><div class="k">Approved</div><div class="v">REV · R4</div></div>
+      <div class="cell"><div class="k">Sheet</div><div class="v">2 OF 2</div></div>
+      <div class="cell"><div class="k">Drawing №</div><div class="v">PSP-26</div></div>
+    </div>
+
+  </div>
+</article>
+
+</div>
+</body>
+</html>

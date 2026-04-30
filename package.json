@@ -7,6 +7,8 @@
     "pdf": "node scripts/build-pdf.mjs \"Prakhar Shekhar Parthasarthi Resume Apr 2026.html\" \"Prakhar Shekhar Parthasarthi Resume Apr 2026.pdf\"",
     "pdf:anon": "node scripts/build-pdf.mjs \"Ex-SDE Resume.html\" \"Ex-SDE Resume.pdf\"",
     "pdf:all": "npm run pdf && npm run pdf:anon",
+    "pdf:v2": "node scripts/build-all-pdfs.mjs",
+    "audit:v2": "node scripts/audit-overflow.mjs",
     "serve": "python3 -m http.server 5173"
   },
   "devDependencies": {

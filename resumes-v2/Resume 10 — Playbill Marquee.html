@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prakhar Shekhar Parthasarthi — Playbill · Opening Night · Apr 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500;700&display=block" rel="stylesheet">
+<style>
+  /* ================================================================
+     RESUME 10 — PLAYBILL MARQUEE
+     Cream program stock. Vermilion marquee. Gold curtain rules.
+     A three-act programme, opening night, Apr MMXXVI.
+     ================================================================ */
+
+  *, *::before, *::after { box-sizing: border-box; }
+  @page { size: A4 portrait; margin: 0; }
+
+  :root {
+    --cream:    #F6EFD9;
+    --cream2:   #EFE6C9;
+    --ink:      #1A1512;
+    --ink2:     #3A2E26;
+    --verm:     #B7261A;
+    --verm2:    #8E1A10;
+    --gold:     #B28647;
+    --gold2:    #8F6A32;
+    --rule:     rgba(26,21,18,0.22);
+  }
+
+  html, body { margin: 0; padding: 0; background: #1f140e; }
+  body {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .deck {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 16mm; padding: 16mm 0;
+  }
+
+  .resume-page {
+    width: 210mm; height: 297mm;
+    position: relative;
+    overflow: hidden;
+    background: var(--cream);
+    color: var(--ink);
+    box-shadow: 0 4mm 18mm rgba(0,0,0,0.55);
+    page-break-after: always;
+  }
+  .resume-page:last-child { page-break-after: auto; }
+
+  /* paper grain */
+  .resume-page::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      radial-gradient(circle at 18% 14%, rgba(178,134,71,0.06) 0 3mm, transparent 4mm),
+      radial-gradient(circle at 84% 22%, rgba(183,38,26,0.05) 0 2mm, transparent 3mm),
+      radial-gradient(circle at 72% 78%, rgba(178,134,71,0.05) 0 3mm, transparent 4mm),
+      repeating-linear-gradient(0deg, rgba(26,21,18,0.018) 0 0.4mm, transparent 0.4mm 1.1mm);
+    mix-blend-mode: multiply;
+  }
+
+  @media print {
+    html, body { background: #fff; }
+    .deck { padding: 0; gap: 0; }
+    .resume-page { box-shadow: none; }
+  }
+
+  /* ============ MARQUEE TOP BAR ============ */
+  .marquee {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 10mm;
+    background: var(--verm);
+    color: var(--cream);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 10mm;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 10pt;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    z-index: 3;
+    border-bottom: 1.6pt solid var(--gold);
+  }
+  .marquee::before, .marquee::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 0.6mm;
+  }
+  .marquee::before { top: 1.2mm; border-top: 0.3pt solid rgba(246,239,217,0.55); border-bottom: 0.3pt solid rgba(246,239,217,0.55); height: 0.9mm; }
+  .marquee::after  { bottom: 1.2mm; border-top: 0.3pt solid rgba(246,239,217,0.55); border-bottom: 0.3pt solid rgba(246,239,217,0.55); height: 0.9mm; }
+  .marquee .bulbs {
+    position: absolute; left: 0; right: 0; bottom: -1.6mm; height: 1.6mm;
+    background:
+      radial-gradient(circle at 2mm 50%, var(--gold) 0 0.7mm, transparent 0.9mm) 0 0 / 4mm 100% repeat-x;
+    opacity: 0.9;
+  }
+  .marquee .title-text { color: var(--gold); font-weight: 700; letter-spacing: 0.38em; }
+  .marquee .title-text b { color: var(--cream); font-weight: 900; }
+  .marquee .side { font-family: 'JetBrains Mono', monospace; font-size: 7.6pt; color: var(--cream); letter-spacing: 0.2em; font-weight: 500; }
+
+  /* ============ PAGE 1 LAYOUT ============ */
+  .sheet {
+    position: absolute;
+    top: 10mm; left: 0; right: 0; bottom: 0;
+    padding: 8mm 12mm 14mm;
+    z-index: 2;
+    display: flex; flex-direction: column;
+  }
+
+  /* ---- HEADER / TITLE BLOCK ---- */
+  .eyebrow {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 9pt;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--verm);
+    text-align: center;
+    margin-top: 1mm;
+  }
+  .eyebrow .orn { color: var(--gold); padding: 0 1.2mm; }
+
+  .marquee-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 58pt;
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: var(--verm);
+    text-shadow:
+      2.4pt 2.4pt 0 rgba(26,21,18,0.12),
+      -0.6pt -0.6pt 0 rgba(246,239,217,1),
+      0 0 0 var(--verm);
+    -webkit-text-stroke: 0.3pt var(--verm2);
+    margin-top: 2mm;
+  }
+  .marquee-title .ghost {
+    position: relative;
+    display: inline-block;
+  }
+  .marquee-title .ghost::before {
+    content: attr(data-ghost);
+    position: absolute;
+    left: 1.2pt; top: 1.2pt;
+    color: transparent;
+    -webkit-text-stroke: 0.4pt var(--gold);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .role-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 17pt;
+    text-align: center;
+    color: var(--ink2);
+    margin-top: 3mm;
+  }
+  .role-sub .in { color: var(--gold); font-style: normal; letter-spacing: 0.08em; text-transform: uppercase; font-size: 10pt; font-weight: 600; }
+  .role-sub .role-name { color: var(--ink); font-weight: 600; }
+
+  .three-act {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 8.8pt;
+    letter-spacing: 0.36em;
+    text-align: center;
+    color: var(--ink);
+    text-transform: uppercase;
+    margin-top: 2.6mm;
+  }
+  .three-act .sep { color: var(--verm); padding: 0 1.6mm; }
+
+  /* ---- CAST / CONTACT CHIPS ---- */
+  .cast-chips {
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 2mm 2.4mm;
+    margin-top: 4mm;
+  }
+  .chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.2pt;
+    letter-spacing: 0.12em;
+    color: var(--verm);
+    background: var(--cream);
+    border: 0.6pt solid var(--verm);
+    padding: 1.4mm 3mm;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .chip .k { color: var(--gold); font-weight: 700; letter-spacing: 0.2em; padding-right: 1.2mm; border-right: 0.3pt solid rgba(178,134,71,0.5); margin-right: 1.2mm; }
+
+  /* ---- STAGE DIRECTION LEDE ---- */
+  .stage-dir {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 10.4pt;
+    line-height: 1.42;
+    color: var(--ink2);
+    text-align: center;
+    margin: 5mm 6mm 0;
+    padding: 2mm 4mm;
+    border-left: 0.4pt solid var(--gold);
+    border-right: 0.4pt solid var(--gold);
+  }
+  .stage-dir b { color: var(--verm); font-weight: 700; font-style: normal; letter-spacing: 0.06em; font-family: 'Playfair Display', serif; font-size: 9.2pt; }
+
+  /* ---- STAT PLATES (runtime notes) ---- */
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 3mm;
+    margin-top: 5.4mm;
+    list-style: none; padding: 0;
+  }
+  .stats > div { display: contents; }
+  .stats li {
+    position: relative;
+    padding: 2.4mm 3mm 2.6mm 4mm;
+    background: rgba(246,239,217,0.65);
+    border-left: 1.4pt solid var(--verm);
+    border-top: 0.3pt solid var(--rule);
+    border-bottom: 0.3pt solid var(--rule);
+  }
+  .stats li .lbl {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 6.6pt;
+    letter-spacing: 0.22em;
+    color: var(--ink2);
+    text-transform: uppercase;
+  }
+  .stats li .num {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 20pt;
+    color: var(--verm);
+    line-height: 1;
+    margin-top: 1.2mm;
+    letter-spacing: 0.01em;
+  }
+  .stats li .num .u { font-size: 11pt; color: var(--ink2); font-weight: 700; }
+  .stats li .note {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 7.6pt;
+    color: var(--ink2);
+    margin-top: 1mm;
+    line-height: 1.28;
+  }
+
+  /* ---- CURTAIN RULE ---- */
+  .curtain {
+    display: flex; align-items: center; justify-content: center;
+    gap: 3mm;
+    margin-top: 5mm;
+  }
+  .curtain .rod {
+    flex: 1 1 auto;
+    height: 0;
+    border-top: 0.6pt solid var(--gold);
+    position: relative;
+  }
+  .curtain .rod::before, .curtain .rod::after {
+    content: "";
+    position: absolute; top: -1mm;
+    width: 1.4mm; height: 1.8mm;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+  .curtain .rod::before { left: 0; }
+  .curtain .rod::after { right: 0; }
+  .curtain .rod.dash { border-top: 0.6pt dashed var(--gold); }
+  .curtain .fleuron {
+    color: var(--gold);
+    font-size: 11pt;
+    letter-spacing: 0.3em;
+  }
+  .curtain .act-badge {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 10pt;
+    letter-spacing: 0.28em;
+    color: var(--verm);
+    padding: 0 2mm;
+  }
+
+  /* ---- ACT I HEADER ---- */
+  .act-head {
+    text-align: center;
+    margin-top: 3mm;
+  }
+  .act-head .kicker {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 9.2pt;
+    color: var(--gold2);
+    letter-spacing: 0.08em;
+  }
+  .act-head .title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 17pt;
+    color: var(--ink);
+    letter-spacing: 0.18em;
+    margin-top: 0.6mm;
+    text-transform: uppercase;
+  }
+  .act-head .title .verm { color: var(--verm); }
+
+  /* ---- SETTING + DIRECTOR CREDIT ---- */
+  .set-line {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-top: 2.6mm;
+    padding: 1.4mm 0 1mm;
+    border-top: 0.3pt solid var(--rule);
+    border-bottom: 0.3pt solid var(--rule);
+    gap: 4mm;
+  }
+  .set-line .setting {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 9.6pt;
+    color: var(--ink2);
+  }
+  .set-line .setting b { color: var(--verm); font-style: normal; font-weight: 700; font-family: 'Playfair Display', serif; font-size: 8.4pt; letter-spacing: 0.18em; text-transform: uppercase; padding-right: 1.2mm; }
+  .set-line .when {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.2pt;
+    color: var(--verm);
+    letter-spacing: 0.16em;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .credits-line {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 9pt;
+    color: var(--ink2);
+    margin-top: 1.4mm;
+  }
+  .credits-line b { color: var(--verm); font-style: normal; font-weight: 700; font-family: 'Playfair Display', serif; font-size: 7.8pt; letter-spacing: 0.2em; text-transform: uppercase; padding: 0 1mm; }
+
+  /* ---- SCENES / BULLETS ---- */
+  ul.scenes {
+    list-style: none; padding: 0;
+    margin: 2.4mm 0 0;
+    display: grid; grid-template-columns: 1fr; gap: 1.6mm;
+    counter-reset: scenect;
+  }
+  ul.scenes > div { display: contents; }
+  ul.scenes li {
+    position: relative;
+    padding: 1.2mm 2mm 1.4mm 13mm;
+    counter-increment: scenect;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9.4pt;
+    line-height: 1.38;
+    color: var(--ink);
+    border-bottom: 0.3pt dotted rgba(26,21,18,0.18);
+  }
+  ul.scenes li:last-child { border-bottom: 0; }
+  ul.scenes li::before {
+    content: counter(scenect, upper-roman);
+    position: absolute;
+    left: 0; top: 1.4mm;
+    width: 11mm;
+    text-align: right;
+    padding-right: 2mm;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 14pt;
+    color: var(--verm);
+    letter-spacing: 0.04em;
+    border-right: 0.6pt solid var(--gold);
+    line-height: 1;
+  }
+  ul.scenes li .scene-title {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 8.2pt;
+    letter-spacing: 0.22em;
+    color: var(--verm);
+    text-transform: uppercase;
+    margin-bottom: 0.6mm;
+  }
+  ul.scenes li .scene-title .dot { color: var(--gold); padding: 0 1mm; }
+  ul.scenes li .hit { color: var(--verm); font-weight: 700; font-style: italic; }
+  ul.scenes li i { color: var(--ink2); }
+  ul.scenes li b {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+
+  /* ---- INTERMISSION FOOTER ---- */
+  .intermission {
+    margin-top: auto;
+    padding-top: 2mm;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 8.6pt;
+    letter-spacing: 0.22em;
+    color: var(--verm);
+    text-transform: uppercase;
+  }
+  .intermission .orn { color: var(--gold); padding: 0 2mm; letter-spacing: 0.4em; }
+
+  /* ============ PAGE 2 ============ */
+  .pg2 .sheet { padding-top: 8mm; }
+
+  .act2-head {
+    text-align: center;
+    margin-top: 2mm;
+  }
+  .act2-head .kicker {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 9.4pt;
+    color: var(--gold2);
+    letter-spacing: 0.08em;
+  }
+  .act2-head .title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 18pt;
+    color: var(--ink);
+    letter-spacing: 0.18em;
+    margin-top: 0.6mm;
+    text-transform: uppercase;
+  }
+  .act2-head .title .verm { color: var(--verm); }
+
+  /* cast-list style 2-col for prior roles */
+  .cast-roles {
+    list-style: none; padding: 0; margin: 3mm 0 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4mm;
+  }
+  .cast-roles > div { display: contents; }
+  .cast-roles li {
+    position: relative;
+    padding: 3mm 3.4mm 3mm 4.4mm;
+    border-top: 0.6pt solid var(--verm);
+    border-bottom: 0.6pt solid var(--verm);
+    background: rgba(246,239,217,0.55);
+  }
+  .cast-roles li::before {
+    content: "";
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1.4pt;
+    background: var(--verm);
+  }
+  .cast-roles li .as-the {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 8.6pt;
+    letter-spacing: 0.18em;
+    color: var(--gold2);
+    text-transform: uppercase;
+    margin-bottom: 0.6mm;
+  }
+  .cast-roles li .role-name {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 12.8pt;
+    color: var(--verm);
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+  .cast-roles li .venue {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 9pt;
+    color: var(--ink2);
+    margin-top: 0.6mm;
+  }
+  .cast-roles li .when {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 6.8pt;
+    letter-spacing: 0.2em;
+    color: var(--verm);
+    font-weight: 600;
+    margin-top: 1mm;
+    text-transform: uppercase;
+  }
+  .cast-roles li .synopsis {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8.8pt;
+    line-height: 1.36;
+    color: var(--ink);
+    margin-top: 1.6mm;
+    padding-top: 1.2mm;
+    border-top: 0.3pt dotted rgba(26,21,18,0.22);
+  }
+  .cast-roles li .synopsis .dir {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold2);
+    font-size: 8.4pt;
+    margin-bottom: 0.6mm;
+  }
+  .cast-roles li .hit { color: var(--verm); font-weight: 700; font-style: italic; }
+
+  /* ---- SECTION HEAD ---- */
+  .sect-head {
+    margin-top: 5mm;
+    display: flex; align-items: center; gap: 3mm;
+  }
+  .sect-head .line {
+    flex: 0 0 auto;
+    width: 8mm;
+    height: 0;
+    border-top: 0.6pt solid var(--gold);
+  }
+  .sect-head .line.grow { flex: 1 1 auto; width: auto; }
+  .sect-head .label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 10.4pt;
+    letter-spacing: 0.28em;
+    color: var(--verm);
+    text-transform: uppercase;
+  }
+  .sect-head .label .sep { color: var(--gold); padding: 0 1.2mm; font-weight: 400; }
+  .sect-head .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 8.6pt;
+    color: var(--ink2);
+    white-space: nowrap;
+  }
+
+  /* ---- ENSEMBLE (stack) ---- */
+  .ensemble {
+    list-style: none; padding: 0; margin: 2.2mm 0 0;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8mm 4mm;
+  }
+  .ensemble > div { display: contents; }
+  .ensemble li {
+    position: relative;
+    padding: 0.4mm 0 1mm 0;
+    border-bottom: 0.3pt dotted rgba(26,21,18,0.26);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8.6pt;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .ensemble li .as {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 7pt;
+    letter-spacing: 0.16em;
+    color: var(--gold2);
+    text-transform: uppercase;
+    padding-right: 1mm;
+  }
+  .ensemble li .cat {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 8.4pt;
+    letter-spacing: 0.12em;
+    color: var(--verm);
+    text-transform: uppercase;
+  }
+  .ensemble li .items {
+    display: block;
+    font-style: italic;
+    font-size: 8.4pt;
+    color: var(--ink2);
+    margin-top: 0.4mm;
+  }
+
+  /* ---- ENCORES / PROJECTS ---- */
+  .encores {
+    list-style: none; padding: 0; margin: 2.2mm 0 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4mm;
+  }
+  .encores > div { display: contents; }
+  .encores li {
+    position: relative;
+    padding: 2.6mm 3mm 2.6mm 4.4mm;
+    background: rgba(246,239,217,0.55);
+    border: 0.3pt solid var(--rule);
+  }
+  .encores li::before {
+    content: "";
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1.4pt;
+    background: var(--verm);
+  }
+  .encores li .pname {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 14pt;
+    color: var(--verm);
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+  .encores li .purl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 6.6pt;
+    letter-spacing: 0.14em;
+    color: var(--gold2);
+    text-transform: uppercase;
+    margin-top: 0.8mm;
+  }
+  .encores li .pbody {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8.6pt;
+    line-height: 1.34;
+    color: var(--ink);
+    margin-top: 1.4mm;
+  }
+  .encores li .pstats {
+    display: flex; flex-wrap: wrap; gap: 1mm;
+    margin-top: 1.6mm;
+  }
+  .encores li .pstats .pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 6.4pt;
+    letter-spacing: 0.1em;
+    color: var(--cream);
+    background: var(--ink);
+    padding: 0.6mm 1.6mm;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .encores li .pstats .pill b { color: var(--gold); font-weight: 700; }
+
+  /* ---- CREDITS (edu + recognition) ---- */
+  .credits {
+    margin-top: 4mm;
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 5mm;
+  }
+  .credits .col h6 {
+    margin: 0 0 1.6mm;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 8.8pt;
+    letter-spacing: 0.26em;
+    color: var(--verm);
+    text-transform: uppercase;
+    border-bottom: 0.6pt solid var(--gold);
+    padding-bottom: 0.8mm;
+  }
+  .credits ul {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; gap: 1.6mm;
+  }
+  .credits ul > div { display: contents; }
+  .credits ul li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8.8pt;
+    line-height: 1.34;
+    color: var(--ink);
+  }
+  .credits ul li .name {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 9.4pt;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+  .credits ul li .name em { color: var(--verm); font-style: italic; font-weight: 400; }
+  .credits ul li .detail {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--ink2);
+    font-size: 8.4pt;
+  }
+  .credits ul li .meta {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 6.6pt;
+    letter-spacing: 0.14em;
+    color: var(--gold2);
+    margin-top: 0.4mm;
+    text-transform: uppercase;
+  }
+  .credits ul li .hit { color: var(--verm); font-weight: 700; font-style: italic; }
+
+  /* ---- CURTAIN CALL ---- */
+  .curtain-call {
+    margin-top: auto;
+    padding-top: 3mm;
+    text-align: center;
+    border-top: 0.6pt solid var(--gold);
+    position: relative;
+  }
+  .curtain-call::before {
+    content: "❦ ✦ ❦";
+    position: absolute; top: -2.6mm; left: 50%;
+    transform: translateX(-50%);
+    background: var(--cream);
+    padding: 0 2.4mm;
+    color: var(--gold);
+    font-size: 9pt;
+    letter-spacing: 0.5em;
+  }
+  .curtain-call .end {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 14pt;
+    letter-spacing: 0.32em;
+    color: var(--verm);
+    text-transform: uppercase;
+    margin-top: 2mm;
+  }
+  .curtain-call .end .dot { color: var(--gold); padding: 0 2mm; font-weight: 400; }
+  .curtain-call .cap {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 8.8pt;
+    color: var(--ink2);
+    margin-top: 1mm;
+  }
+  .curtain-call .run-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    letter-spacing: 0.22em;
+    color: var(--gold2);
+    margin-top: 1mm;
+    text-transform: uppercase;
+  }
+  .curtain-call .run-time b { color: var(--verm); font-weight: 700; }
+
+  /* ---- SOLD OUT STAMP ---- */
+  .sold-out {
+    position: absolute;
+    top: 130mm; right: 12mm;
+    transform: rotate(-8deg);
+    border: 2.4pt solid var(--verm);
+    padding: 2.6mm 4.4mm 2.2mm;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 20pt;
+    letter-spacing: 0.22em;
+    color: var(--verm);
+    background: transparent;
+    text-transform: uppercase;
+    z-index: 4;
+    box-shadow:
+      inset 0 0 0 1pt var(--verm),
+      inset 0 0 0 1.4pt rgba(246,239,217,1),
+      inset 0 0 0 2pt var(--verm);
+    opacity: 0.9;
+    text-align: center;
+  }
+  .sold-out::before, .sold-out::after {
+    content: "";
+    position: absolute; left: 1mm; right: 1mm;
+    height: 0;
+  }
+  .sold-out::before { top: 1mm; border-top: 0.6pt solid var(--verm); }
+  .sold-out::after  { bottom: 1mm; border-top: 0.6pt solid var(--verm); }
+  .sold-out .stamp-small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 6pt;
+    letter-spacing: 0.32em;
+    color: var(--verm);
+    margin-top: 1mm;
+  }
+
+  /* track numbers */
+  .track {
+    position: absolute;
+    bottom: 4mm; left: 12mm; right: 12mm;
+    display: flex; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    letter-spacing: 0.22em;
+    color: var(--gold2);
+    text-transform: uppercase;
+    z-index: 3;
+  }
+  .track .mid { color: var(--verm); }
+
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- ======================================== PAGE 1 ======================================== -->
+  <article class="resume-page pg1">
+
+    <!-- MARQUEE BAR -->
+    <header class="marquee">
+      <span class="side">Track 01 / 02</span>
+      <span class="title-text">PLAYBILL <b>·</b> OPENING NIGHT <b>·</b> APR 2026</span>
+      <span class="side">₹ 00 · free</span>
+      <span class="bulbs"></span>
+    </header>
+
+    <div class="sheet">
+
+      <!-- EYEBROW -->
+      <div class="eyebrow">
+        Tonight's Programme <span class="orn">❦</span> In Three Acts <span class="orn">❦</span> Presenting…
+      </div>
+
+      <!-- GIANT MARQUEE TITLE -->
+      <h1 class="marquee-title">
+        <span class="ghost" data-ghost="PRAKHAR">PRAKHAR</span><br>
+        <span class="ghost" data-ghost="SHEKHAR">SHEKHAR</span>
+      </h1>
+
+      <!-- SUBTITLE -->
+      <div class="role-sub">
+        <span class="in">in the role of:</span> <span class="role-name">Senior Software Engineer</span>
+      </div>
+
+      <!-- THREE ACT STRAPLINE -->
+      <div class="three-act">
+        A Three-Act Play <span class="sep">·</span> Java <span class="sep">·</span> AWS <span class="sep">·</span> Amazon Travel
+      </div>
+
+      <!-- CAST CHIPS / CONTACT -->
+      <div class="cast-chips">
+        <span class="chip"><span class="k">Email</span>prakhar.mnnit.2022@gmail.com</span>
+        <span class="chip"><span class="k">GitHub</span>praxstack</span>
+        <span class="chip"><span class="k">LinkedIn</span>prakharshekhar</span>
+        <span class="chip"><span class="k">Stage</span>Bengaluru IN</span>
+      </div>
+
+      <!-- STAGE DIRECTION -->
+      <div class="stage-dir">
+        <b>[STAGE DIRECTION]</b> &nbsp; (Lights dim. Curtain up. On a stage of SQS queues and DynamoDB tables, PRAKHAR enters stage left with a fresh Spring Boot pod in hand, Java 17 in the other. Lambdas warm in the wings. Somewhere a Step Function clock ticks down toward opening night…)
+      </div>
+
+      <!-- STAT PLATES / RUNTIME NOTES -->
+      <ul class="stats">
+        <div>
+          <li>
+            <span class="lbl">Runtime Note · Act I</span>
+            <span class="num">−47<span class="u">%</span></span>
+            <span class="note">p90 latency · 1.10s → 0.59s</span>
+          </li>
+          <li>
+            <span class="lbl">Runtime Note · Act II</span>
+            <span class="num">+33<span class="u">%</span></span>
+            <span class="note">traveler conversion lift</span>
+          </li>
+          <li>
+            <span class="lbl">Runtime Note · Act III</span>
+            <span class="num">−43<span class="u">bps</span></span>
+            <span class="note">cost-per-transaction</span>
+          </li>
+          <li>
+            <span class="lbl">Runtime Note · Encore</span>
+            <span class="num">20→<span class="u">~5</span></span>
+            <span class="note">on-call pages / shift</span>
+          </li>
+        </div>
+      </ul>
+
+      <!-- CURTAIN RULE · ACT I -->
+      <div class="curtain">
+        <span class="rod"></span>
+        <span class="fleuron">❦</span>
+        <span class="act-badge">ACT I</span>
+        <span class="fleuron">❦</span>
+        <span class="rod"></span>
+      </div>
+
+      <div class="act-head">
+        <div class="kicker">…in which our player takes the stage…</div>
+        <div class="title">ACT I <span class="verm">—</span> The Main Feature</div>
+      </div>
+
+      <!-- SETTING / DIRECTOR CREDIT -->
+      <div class="set-line">
+        <span class="setting"><b>Setting:</b> Amazon Travel, Bengaluru, 2023–25 · hotels, flights &amp; insurance under one proscenium.</span>
+        <span class="when">SDE II · Jul 2023 — Sep 2025</span>
+      </div>
+      <div class="credits-line">
+        <b>Shipping:</b> PSP — payments, pricing &amp; pipelines &nbsp; <b>Supporting:</b> The full booking funnel · 4 microservices · on-call rotation
+      </div>
+
+      <!-- SCENES -->
+      <ul class="scenes">
+        <div>
+          <li>
+            <span class="scene-title">Scene 1 <span class="dot">·</span> The Pricing Fan-Out</span>
+            <i>Enter PRAKHAR, stage left, Java 17 in hand.</i> Re-architected the traveler's pricing call on <b>CompletableFuture.allOf</b> with bulkhead <b>ExecutorService</b> pools — cut p90 from <span class="hit">1.10s → 0.59s (−47%)</span>, lifting traveler conversion <span class="hit">+33%</span> across three sustained quarters.
+          </li>
+          <li>
+            <span class="scene-title">Scene 2 <span class="dot">·</span> The Idempotent Ledger</span>
+            <i>A Step Function clock chimes; a webhook arrives twice.</i> Designed an idempotent payment webhook on <b>SQS + Step Functions</b> with DynamoDB dedupe keys — reclaimed <span class="hit">−43 bps CPT</span> and silenced the double-capture SEV class for good.
+          </li>
+          <li>
+            <span class="scene-title">Scene 3 <span class="dot">·</span> The CDK Rewrite</span>
+            <i>Six legacy pipelines, blocking the wings.</i> Rewrote six deploy pipelines into <b>Java CDK</b> with typed constructs and contract tests — <span class="hit">rollbacks halved</span>, <span class="hit">MTTR −1 full day</span>, config drift traced to a single source of truth.
+          </li>
+          <li>
+            <span class="scene-title">Scene 4 <span class="dot">·</span> The Quiet Rotation</span>
+            <i>Pager goes dark. Enter sleep.</i> Dragged on-call from <span class="hit">20+ → ~5 pages/shift</span>, config-hygiene <span class="hit">5–6 → 0</span>; resolved <span class="hit">150+ incidents</span> and stopped an est. <span class="hit">~30 bps</span> funnel-churn on insurance attach.
+          </li>
+        </div>
+      </ul>
+
+      <!-- INTERMISSION -->
+      <div class="intermission">
+        <span class="orn">❦ ✦ ❦</span> Intermission <span class="orn">·</span> Act II after the break <span class="orn">❦ ✦ ❦</span>
+      </div>
+
+    </div>
+
+    <div class="track">
+      <span>PSP · Vol. I · MMXXVI</span>
+      <span class="mid">— Track 01 —</span>
+      <span>Opening Night · Apr '26</span>
+    </div>
+
+  </article>
+
+  <!-- ======================================== PAGE 2 ======================================== -->
+  <article class="resume-page pg2">
+
+    <!-- MARQUEE BAR -->
+    <header class="marquee">
+      <span class="side">Track 02 / 02</span>
+      <span class="title-text">ACT II <b>·</b> AFTER THE BREAK <b>·</b> APR 2026</span>
+      <span class="side">Row J · Seat 7</span>
+      <span class="bulbs"></span>
+    </header>
+
+    <!-- SOLD OUT STAMP -->
+    <div class="sold-out">
+      SOLD OUT
+      <span class="stamp-small">Opening Night · Apr 2026</span>
+    </div>
+
+    <div class="sheet">
+
+      <!-- CURTAIN · ACT II -->
+      <div class="curtain" style="margin-top:0;">
+        <span class="rod"></span>
+        <span class="fleuron">❦</span>
+        <span class="act-badge">ACT II</span>
+        <span class="fleuron">❦</span>
+        <span class="rod"></span>
+      </div>
+
+      <div class="act2-head">
+        <div class="kicker">…wherein prior engagements are recounted…</div>
+        <div class="title">ACT II <span class="verm">—</span> Prior Engagements</div>
+      </div>
+
+      <!-- CAST-LIST ROLES -->
+      <ul class="cast-roles">
+        <div>
+          <li>
+            <div class="as-the">as the TRAVEL SDE</div>
+            <span class="role-name">Software Dev Engineer I</span>
+            <div class="venue">Amazon Travel · Bengaluru</div>
+            <div class="when">Jul 2022 — Jul 2023 · the second season</div>
+            <div class="synopsis">
+              <span class="dir">(stage direction: PRAKHAR writes controllers by candlelight, Spring DI glowing softly.)</span>
+              Authored REST controllers and <b>@Repository</b> DynamoDB DAOs atop Spring DI; steered an auto-insurance renewal flow to <span class="hit">+60% uptake</span>. Held the unit-test line above <span class="hit">80% coverage</span> with JUnit 5 and JaCoCo gates in CI.
+            </div>
+          </li>
+          <li>
+            <div class="as-the">as the TRAVEL INTERN</div>
+            <span class="role-name">Software Dev Engineer, Intern</span>
+            <div class="venue">Amazon Travel · Bengaluru</div>
+            <div class="when">May 2021 — Feb 2022 · the opening season</div>
+            <div class="synopsis">
+              <span class="dir">(stage direction: GraphQL exits stage right; JAVA enters, bowing.)</span>
+              Migrated a GraphQL façade to pure <b>Java</b>; engineered a <b>One-Click Renewal</b> atop Guice DI; kept the test ledger above <span class="hit">90% coverage</span> throughout. Earned a full-time return offer at the close of the run.
+            </div>
+          </li>
+        </div>
+      </ul>
+
+      <!-- ENSEMBLE / STACK -->
+      <div class="sect-head">
+        <span class="line"></span>
+        <span class="label">The Company <span class="sep">·</span> Ensemble of Tools</span>
+        <span class="line grow"></span>
+        <span class="sub">with special appearances by…</span>
+      </div>
+
+      <ul class="ensemble">
+        <div>
+          <li>
+            <span class="as">as the LEAD</span><span class="cat">JVM</span>
+            <span class="items">Java 17 · Spring Boot · Spring MVC · Spring DI · Guice · Maven · Gradle</span>
+          </li>
+          <li>
+            <span class="as">as the PACE</span><span class="cat">Concurrency</span>
+            <span class="items">ExecutorService · CompletableFuture · ConcurrentHashMap · ScheduledExecutor · bulkheads</span>
+          </li>
+          <li>
+            <span class="as">as the VENUE</span><span class="cat">AWS</span>
+            <span class="items">Lambda · DynamoDB · SQS · Step Functions · API Gateway · AppSync · CloudWatch · ECS · CDK (Java)</span>
+          </li>
+          <li>
+            <span class="as">as the CRITIC</span><span class="cat">Quality</span>
+            <span class="items">JUnit 5 · Mockito · JaCoCo · integration harnesses · contract tests</span>
+          </li>
+          <li>
+            <span class="as">as the STAGE</span><span class="cat">Front-End</span>
+            <span class="items">React (SSR &amp; CSR) · Redux · TypeScript · Vitest</span>
+          </li>
+          <li>
+            <span class="as">as the LEDGER</span><span class="cat">Data</span>
+            <span class="items">DynamoDB single-table · idempotency keys · dedupe queues</span>
+          </li>
+          <li>
+            <span class="as">as the CREW</span><span class="cat">Ops</span>
+            <span class="items">runbooks · alarm hygiene · SEV pages · on-call rotations</span>
+          </li>
+          <li>
+            <span class="as">as the DIRECTOR</span><span class="cat">Method</span>
+            <span class="items">trunk-based · code-review discipline · postmortems · SLO-first</span>
+          </li>
+        </div>
+      </ul>
+
+      <!-- ENCORES / PROJECTS -->
+      <div class="sect-head">
+        <span class="line"></span>
+        <span class="label">Encores <span class="sep">·</span> B-Sides</span>
+        <span class="line grow"></span>
+        <span class="sub">works performed after hours…</span>
+      </div>
+
+      <ul class="encores">
+        <div>
+          <li>
+            <div class="pname">Redis Server — in Java</div>
+            <div class="purl">github.com/praxstack/redis-server-java</div>
+            <div class="pbody">A from-scratch study of the RESP2 protocol, event-loop I/O, and a hand-rolled hashmap engine — built in the evenings, benchmarked in the small hours.</div>
+            <div class="pstats">
+              <span class="pill">SET <b>154k</b> rps</span>
+              <span class="pill">GET <b>195k</b> rps</span>
+              <span class="pill">INCR <b>128k</b> rps</span>
+              <span class="pill"><b>42</b> tests</span>
+              <span class="pill">~<b>78%</b> of C</span>
+            </div>
+          </li>
+          <li>
+            <div class="pname">Markdown Viewer — Pro</div>
+            <div class="purl">github.com/praxstack/markdown-viewer-pro</div>
+            <div class="pbody">A zero-config reader with a live plugin architecture and keyboard-first command palette — lean gzipped payload, no runtime baggage.</div>
+            <div class="pstats">
+              <span class="pill"><b>155+</b> vitest tests</span>
+              <span class="pill"><b>&lt;100KB</b> gzipped</span>
+              <span class="pill"><b>0</b> runtime deps</span>
+            </div>
+          </li>
+        </div>
+      </ul>
+
+      <!-- CREDITS -->
+      <div class="sect-head">
+        <span class="line"></span>
+        <span class="label">Credits <span class="sep">·</span> Education &amp; Accolades</span>
+        <span class="line grow"></span>
+        <span class="sub">with special thanks to…</span>
+      </div>
+
+      <div class="credits">
+        <div class="col">
+          <h6>Schooling — the early reviews</h6>
+          <ul>
+            <div>
+              <li>
+                <span class="name">M.C.A., Computer Science <em>— MNNIT Prayagraj</em></span>
+                <span class="detail">grade-book 9.25 / 10 · dept. among the upper billing</span>
+                <span class="meta">2019 — 2022 · Prayagraj, IN</span>
+              </li>
+              <li>
+                <span class="name">B.Sc. (Hons.), Computer Science <em>— Bhaskaracharya College, DU</em></span>
+                <span class="detail">a first engagement with the trade</span>
+                <span class="meta">2015 — 2018 · New Delhi, IN</span>
+              </li>
+            </div>
+          </ul>
+        </div>
+        <div class="col">
+          <h6>Accolades — the curtain calls</h6>
+          <ul>
+            <div>
+              <li>
+                <span class="name">Amazon Pay <em>— Categories Champion, 2023</em></span>
+                <span class="detail">commended for stewardship of the merchant-category domain across a full fiscal run.</span>
+              </li>
+              <li>
+                <span class="name">Trust-Buster Sprints <em>— 100+ bugs retired</em></span>
+                <span class="detail">resolved <span class="hit">100+</span> trust-buster defects across travel-quality sprints — small cuts, quietly healed.</span>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CURTAIN CALL -->
+      <footer class="curtain-call">
+        <div class="end">The End <span class="dot">·</span> Curtain Call</div>
+        <div class="cap">Starring Prakhar Shekhar Parthasarthi · With Special Appearances By Java 17, SQS, DynamoDB &amp; A Very Quiet Pager.</div>
+        <div class="run-time">Running Time: <b>3 Years</b> · Opening Night: <b>Apr MMXXVI</b> · Bengaluru, IN</div>
+      </footer>
+
+    </div>
+
+    <div class="track">
+      <span>PSP · Vol. II · MMXXVI</span>
+      <span class="mid">— Track 02 —</span>
+      <span>Fin · Exeunt Omnes</span>
+    </div>
+
+  </article>
+
+</div>
+</body>
+</html>

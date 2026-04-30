@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prakhar Shekhar Parthasarthi — resume.md</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&family=VT323&display=block" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #050705; }
+  body {
+    font-family: 'JetBrains Mono','IBM Plex Mono', ui-monospace, monospace;
+    color: #33FF66;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .deck { display: flex; flex-direction: column; align-items: center; gap: 6mm; padding: 6mm 0; background: #050705; }
+
+  .resume-page {
+    position: relative;
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    background: #0A0E0A;
+    color: #33FF66;
+    padding: 11mm 12mm 10mm 12mm;
+    page-break-after: always;
+    box-shadow: 0 0 40px rgba(51,255,102,0.08), 0 0 0 1px rgba(51,255,102,0.25);
+    /* CRT vignette */
+    background-image:
+      radial-gradient(ellipse at center, rgba(10,14,10,0) 55%, rgba(0,0,0,0.55) 100%);
+  }
+  .resume-page::before {
+    /* scanlines */
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(51,255,102,0.045) 0px,
+      rgba(51,255,102,0.045) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    mix-blend-mode: screen;
+    z-index: 2;
+  }
+  .resume-page::after {
+    /* phosphor glow overlay / vignette ring */
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(51,255,102,0.06), transparent 60%),
+      radial-gradient(ellipse at 50% 100%, rgba(51,255,102,0.05), transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .page-inner {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-shadow: 0 0 1px rgba(51,255,102,0.65), 0 0 6px rgba(51,255,102,0.18);
+  }
+  .resume-page:last-of-type { page-break-after: auto; }
+
+  /* Color helpers */
+  .amber { color: #FFB000; text-shadow: 0 0 1px rgba(255,176,0,0.6), 0 0 6px rgba(255,176,0,0.18); }
+  .dim { color: #1F7A3A; text-shadow: none; }
+  .mid { color: #2FCC5A; }
+  .hi { color: #B8FFC9; }
+  .redact { background: #33FF66; color: #0A0E0A; padding: 0 4pt; font-weight: 700; text-shadow: none; }
+
+  /* Prompt line */
+  .prompt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5pt;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+  }
+  .prompt .user { color: #33FF66; }
+  .prompt .at { color: #1F7A3A; }
+  .prompt .host { color: #2FCC5A; }
+  .prompt .path { color: #FFB000; }
+  .prompt .cmd { color: #B8FFC9; }
+
+  .caret {
+    display: inline-block;
+    width: 7pt; height: 10pt;
+    background: #33FF66;
+    vertical-align: -1pt;
+    margin-left: 3pt;
+    box-shadow: 0 0 4px rgba(51,255,102,0.7);
+  }
+
+  /* Top banner */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px dashed rgba(51,255,102,0.35);
+    padding-bottom: 2.5mm;
+    margin-bottom: 3mm;
+  }
+  .top-bar .left, .top-bar .right { font-size: 7.5pt; letter-spacing: 0.04em; }
+  .top-bar .right { color: #1F7A3A; }
+
+  /* NAME block (man-page style) */
+  .man-name {
+    margin-top: 2.5mm;
+    margin-bottom: 2.5mm;
+  }
+  .man-heading {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 9pt;
+    letter-spacing: 0.22em;
+    color: #33FF66;
+    margin-bottom: 1.4mm;
+  }
+  .man-heading .hash { color: #1F7A3A; margin-right: 2pt; }
+
+  .name-big {
+    font-family: 'VT323', 'JetBrains Mono', monospace;
+    font-size: 38pt;
+    line-height: 1;
+    color: #B8FFC9;
+    text-shadow: 0 0 2px rgba(51,255,102,0.8), 0 0 12px rgba(51,255,102,0.35), 0 0 22px rgba(51,255,102,0.18);
+    letter-spacing: 0.02em;
+    margin-left: 6mm;
+    padding-top: 1mm;
+  }
+  .name-sub {
+    margin-left: 6mm;
+    margin-top: 1.2mm;
+    font-size: 8.5pt;
+    color: #33FF66;
+    letter-spacing: 0.02em;
+  }
+
+  /* Synopsis */
+  .block { margin-top: 3mm; }
+  .block-body { margin-left: 6mm; font-size: 8.5pt; line-height: 1.45; }
+  .block-body.small { font-size: 8pt; }
+  .kv { display: grid; grid-template-columns: 28mm 1fr; gap: 0 3mm; font-size: 8pt; row-gap: 0.6mm; }
+  .kv dt { color: #1F7A3A; }
+  .kv dd { color: #33FF66; }
+
+  /* Stat tiles with ASCII border */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3mm;
+    margin-top: 2mm;
+  }
+  .stat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    line-height: 1.15;
+    color: #33FF66;
+    white-space: pre;
+    padding: 0;
+  }
+  .stat .value {
+    display: block;
+    font-family: 'VT323', monospace;
+    font-size: 22pt;
+    line-height: 1;
+    color: #B8FFC9;
+    text-shadow: 0 0 2px rgba(51,255,102,0.8), 0 0 10px rgba(51,255,102,0.3);
+    letter-spacing: 0.02em;
+    margin: 1pt 0 1pt 0;
+  }
+  .stat .label {
+    display: block;
+    font-size: 6.5pt;
+    color: #1F7A3A;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .stat .sub {
+    display: block;
+    font-size: 6.5pt;
+    color: #2FCC5A;
+    margin-top: 0.5mm;
+  }
+  .ascii-card {
+    border: 1px solid transparent;
+    position: relative;
+    padding: 2mm 3mm 2mm 3mm;
+  }
+  .ascii-card::before {
+    content: '┌─────────────────────────┐';
+    display: block;
+    color: #1F7A3A;
+    font-size: 7pt;
+    line-height: 1;
+    letter-spacing: 0;
+    font-family: 'JetBrains Mono', monospace;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ascii-card::after {
+    content: '└─────────────────────────┘';
+    display: block;
+    color: #1F7A3A;
+    font-size: 7pt;
+    line-height: 1;
+    letter-spacing: 0;
+    font-family: 'JetBrains Mono', monospace;
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ascii-card .side-l,
+  .ascii-card .side-r {
+    position: absolute;
+    top: 7pt; bottom: 7pt;
+    width: 1px;
+    background: #1F7A3A;
+  }
+  .ascii-card .side-l { left: 0; }
+  .ascii-card .side-r { right: 0; }
+  .ascii-card .inner { position: relative; z-index: 2; padding: 1.5mm 0.5mm; }
+
+  /* Section headers */
+  .section {
+    margin-top: 4mm;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 3mm;
+    margin-bottom: 1.8mm;
+  }
+  .section-head .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 9pt;
+    letter-spacing: 0.22em;
+    color: #33FF66;
+  }
+  .section-head .rule {
+    flex: 1;
+    height: 0;
+    border-top: 1px dashed rgba(51,255,102,0.35);
+    transform: translateY(-2pt);
+  }
+  .section-head .meta {
+    font-size: 7pt;
+    color: #1F7A3A;
+    letter-spacing: 0.08em;
+  }
+
+  /* Role / position block */
+  .role-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4mm;
+    margin: 0 0 1.2mm 6mm;
+  }
+  .role-head .title {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #B8FFC9;
+    letter-spacing: 0.02em;
+  }
+  .role-head .title .company { color: #33FF66; font-weight: 600; }
+  .role-head .title .at { color: #1F7A3A; margin: 0 2pt; }
+  .role-head .date {
+    font-size: 7.5pt;
+    color: #FFB000;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .role-note {
+    margin-left: 6mm;
+    font-size: 7.8pt;
+    color: #1F7A3A;
+    margin-bottom: 1.5mm;
+    letter-spacing: 0.02em;
+  }
+
+  /* Bullet list with [OK] markers */
+  ul.ok-list { list-style: none; margin-left: 6mm; padding: 0; }
+  ul.ok-list li {
+    position: relative;
+    padding-left: 14mm;
+    font-size: 8.3pt;
+    line-height: 1.45;
+    color: #33FF66;
+    margin-bottom: 1.6mm;
+  }
+  ul.ok-list li::before {
+    content: '[ OK ]';
+    position: absolute;
+    left: 0; top: 0;
+    color: #33FF66;
+    font-weight: 700;
+    font-size: 7.5pt;
+    letter-spacing: 0.04em;
+    background: rgba(51,255,102,0.08);
+    padding: 0 2pt;
+    border: 1px solid rgba(51,255,102,0.35);
+    line-height: 1.45;
+  }
+  ul.ok-list li .metric { color: #FFB000; font-weight: 700; }
+  ul.ok-list li .code { color: #B8FFC9; }
+
+  /* Status bar bottom */
+  .status-bar {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px dashed rgba(51,255,102,0.35);
+    padding-top: 2mm;
+    font-size: 7.5pt;
+    letter-spacing: 0.08em;
+  }
+  .status-bar .more {
+    background: #33FF66;
+    color: #0A0E0A;
+    padding: 1pt 5pt;
+    font-weight: 700;
+    text-shadow: none;
+    letter-spacing: 0.1em;
+  }
+  .status-bar .left { color: #1F7A3A; }
+  .status-bar .right { color: #1F7A3A; }
+
+  /* PAGE 2 */
+  .prev-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm 5mm;
+    margin-left: 6mm;
+  }
+  .prev-card {
+    font-size: 8pt;
+    line-height: 1.45;
+  }
+  .prev-card .head {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: #B8FFC9;
+    margin-bottom: 0.7mm;
+  }
+  .prev-card .date {
+    font-size: 7pt;
+    color: #FFB000;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.2mm;
+  }
+  .prev-card p { color: #33FF66; }
+
+  /* Stack trace cards */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.2mm;
+    margin-left: 6mm;
+  }
+  .stack-card {
+    position: relative;
+    padding: 2.2mm 2.5mm 2.2mm 2.5mm;
+    border: 1px solid rgba(51,255,102,0.32);
+    background: rgba(51,255,102,0.03);
+  }
+  .stack-card .cat {
+    font-size: 7pt;
+    font-weight: 700;
+    color: #FFB000;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.8mm;
+    text-transform: uppercase;
+  }
+  .stack-card .items {
+    font-size: 7.3pt;
+    color: #33FF66;
+    line-height: 1.35;
+  }
+  .stack-card::before {
+    content: '├─';
+    position: absolute;
+    top: -0.5mm; left: 1mm;
+    background: #0A0E0A;
+    color: #1F7A3A;
+    font-size: 7pt;
+    padding: 0 2pt;
+  }
+
+  /* Project / example cards */
+  .ex-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+    margin-left: 6mm;
+  }
+  .ex-card {
+    padding: 2.5mm 3mm;
+    border: 1px solid rgba(51,255,102,0.32);
+    background: rgba(51,255,102,0.03);
+    font-size: 7.8pt;
+    line-height: 1.4;
+    position: relative;
+  }
+  .ex-card .title {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #B8FFC9;
+    margin-bottom: 0.4mm;
+  }
+  .ex-card .repo {
+    font-size: 7pt;
+    color: #1F7A3A;
+    margin-bottom: 1.2mm;
+  }
+  .ex-card .desc { color: #33FF66; margin-bottom: 1.4mm; }
+  .ex-card .bench {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    color: #FFB000;
+    white-space: pre;
+    line-height: 1.35;
+    border-top: 1px dashed rgba(255,176,0,0.35);
+    padding-top: 1mm;
+  }
+
+  /* SEE ALSO */
+  .see-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4mm;
+    margin-left: 6mm;
+  }
+  .see-card .head {
+    font-size: 8pt;
+    font-weight: 700;
+    color: #B8FFC9;
+    margin-bottom: 0.8mm;
+  }
+  .see-card .line {
+    font-size: 7.6pt;
+    color: #33FF66;
+    line-height: 1.45;
+  }
+  .see-card .line .amber { font-weight: 600; }
+  .see-card .dim { color: #1F7A3A; }
+
+  /* BUGS block */
+  .bugs {
+    margin-left: 6mm;
+    font-size: 7.6pt;
+    color: #33FF66;
+    line-height: 1.45;
+  }
+  .bugs .tag {
+    color: #FFB000;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  /* Footer exit */
+  .exit-footer {
+    margin-top: auto;
+    border-top: 1px dashed rgba(51,255,102,0.35);
+    padding-top: 2mm;
+  }
+  .exit-line {
+    font-size: 8pt;
+    color: #33FF66;
+  }
+  .exit-end {
+    font-size: 7.5pt;
+    color: #1F7A3A;
+    letter-spacing: 0.12em;
+    margin-top: 1mm;
+    text-align: center;
+  }
+
+  /* Utility */
+  .row { display: flex; gap: 4mm; align-items: baseline; }
+  .mb1 { margin-bottom: 1mm; }
+  .mb2 { margin-bottom: 2mm; }
+  .mt1 { margin-top: 1mm; }
+  .nowrap { white-space: nowrap; }
+
+  @media print {
+    .deck { gap: 0; padding: 0; background: #0A0E0A; }
+    body { background: #0A0E0A; }
+    .resume-page { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- ============================== PAGE 1 ============================== -->
+  <article class="resume-page">
+    <div class="page-inner">
+
+      <!-- Top bar -->
+      <div class="top-bar">
+        <div class="left"><span class="dim">tty0 ·</span> <span class="mid">bash 5.2.15</span> <span class="dim">· 80×43 ·</span> <span class="amber">PHOSPHOR-P1</span></div>
+        <div class="right">UTC+05:30 · BLR · <span class="amber">● REC</span></div>
+      </div>
+
+      <!-- Shell prompt banner -->
+      <div class="prompt">
+        <span class="user">psp</span><span class="at">@</span><span class="host">bengaluru</span><span class="at">:</span><span class="path">~</span><span class="at">$</span> <span class="cmd">cat resume.md</span>
+      </div>
+      <div class="prompt" style="color:#1F7A3A; margin-top:0.8mm;">
+        <span>&gt;&gt; rendering man page · terminfo=xterm-256color · charset=UTF-8 · bloom=on</span>
+      </div>
+
+      <!-- NAME (man-page style) -->
+      <div class="man-name">
+        <div class="man-heading"><span class="hash">##</span>NAME</div>
+        <div class="name-big">PRAKHAR&nbsp;S.&nbsp;PARTHASARTHI<span class="caret"></span></div>
+        <div class="name-sub"><span class="amber">psp(1)</span> &nbsp;—&nbsp; <span class="hi">senior software engineer</span> · java · distributed systems · aws</div>
+      </div>
+
+      <!-- SYNOPSIS -->
+      <div class="section">
+        <div class="section-head">
+          <span class="tag">## SYNOPSIS</span>
+          <span class="rule"></span>
+          <span class="meta">psp [--senior] [--java] [--aws] &lt;problem&gt;</span>
+        </div>
+        <div class="block-body">
+          <dl class="kv">
+            <dt>usage</dt><dd><span class="hi">$ psp --fix p90 --scale booking-funnel --on-call</span></dd>
+            <dt>email</dt><dd>prakhar.mnnit.2022@gmail.com</dd>
+            <dt>github</dt><dd>github.com/praxstack &nbsp;·&nbsp; <span class="dim">linkedin.com/in/prakharshekhar</span></dd>
+            <dt>host</dt><dd>Bengaluru, IN &nbsp;·&nbsp; <span class="amber">[ REDACTED ]</span> &nbsp;<span class="dim">(salary)</span></dd>
+          </dl>
+        </div>
+      </div>
+
+      <!-- DESCRIPTION -->
+      <div class="section">
+        <div class="section-head">
+          <span class="tag">## DESCRIPTION</span>
+          <span class="rule"></span>
+          <span class="meta">elevator(1) — 30 seconds</span>
+        </div>
+        <div class="block-body">
+          Backend-leaning full-stack engineer with <span class="amber">3+ years</span> shipping Java microservices on AWS under the <span class="hi">Amazon Travel</span> booking funnel &mdash; hotels, flights, insurance. I cut p90s with bulkhead executors and CompletableFuture fan-outs, make payment webhooks idempotent with Step Functions + DynamoDB dedupe, and own the on-call dial-tone until it stops ringing. Runbooks, SLOs, postmortems &mdash; the boring parts that keep revenue moving.
+        </div>
+      </div>
+
+      <!-- Stat tiles -->
+      <div class="section">
+        <div class="section-head">
+          <span class="tag">## METRICS</span>
+          <span class="rule"></span>
+          <span class="meta">$ tail -f /var/log/impact</span>
+        </div>
+        <div class="stats">
+          <div class="ascii-card stat"><span class="side-l"></span><span class="side-r"></span><div class="inner">
+            <span class="label">p90 latency</span>
+            <span class="value">−47%</span>
+            <span class="sub">1.10s → 0.59s</span>
+          </div></div>
+          <div class="ascii-card stat"><span class="side-l"></span><span class="side-r"></span><div class="inner">
+            <span class="label">conversion</span>
+            <span class="value">+33%</span>
+            <span class="sub">traveler funnel</span>
+          </div></div>
+          <div class="ascii-card stat"><span class="side-l"></span><span class="side-r"></span><div class="inner">
+            <span class="label">cost / txn</span>
+            <span class="value">−43<span style="font-size:11pt">bps</span></span>
+            <span class="sub">CPT reduction</span>
+          </div></div>
+          <div class="ascii-card stat"><span class="side-l"></span><span class="side-r"></span><div class="inner">
+            <span class="label">on-call load</span>
+            <span class="value">~5<span style="font-size:11pt">/sh</span></span>
+            <span class="sub">pages per shift</span>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- CURRENT POSITION -->
+      <div class="section">
+        <div class="section-head">
+          <span class="tag">## CURRENT POSITION</span>
+          <span class="rule"></span>
+          <span class="meta">$ ps -ef | grep sde2</span>
+        </div>
+        <div class="role-head">
+          <div class="title"><span class="company">SDE II</span><span class="at">@</span>Amazon Travel &mdash; Hotels · Flights · Insurance</div>
+          <div class="date">JUL 2023 &rarr; SEP 2025 · BENGALURU</div>
+        </div>
+        <div class="role-note">owned 4 Java microservices across the booking funnel · <span class="amber">[ REDACTED ]</span> <span class="dim">(team-size)</span></div>
+        <ul class="ok-list">
+          <li>Re-architected pricing fan-out with <span class="code">CompletableFuture.allOf</span> + bulkhead <span class="code">ExecutorService</span> pools &mdash; p90 <span class="metric">1.10s &rarr; 0.59s (−47%)</span>, traveler conversion <span class="metric">+33%</span>.</li>
+          <li>Idempotent payment webhook on <span class="code">SQS + Step Functions</span> with <span class="code">DynamoDB</span> dedupe keys &mdash; <span class="metric">−43 bps CPT</span>, killed double-capture incidents dead.</li>
+          <li>Rewrote 6 legacy pipelines into <span class="code">Java CDK</span>; halved rollbacks; <span class="metric">MTTR −1 day</span>, config drift audited at review-time not 3am.</li>
+          <li>On-call <span class="metric">20+ &rarr; ~5/shift</span>, config-hygiene <span class="metric">5–6 &rarr; 0</span>; <span class="metric">150+ incidents</span> resolved; stopped <span class="metric">~30 bps</span> funnel-churn on insurance attach.</li>
+        </ul>
+      </div>
+
+      <!-- Status bar -->
+      <div class="status-bar">
+        <div class="left">"resume.md" 247L, 9823C &nbsp;·&nbsp; utf-8 &nbsp;·&nbsp; unix</div>
+        <div class="more">-- MORE -- (1/2)</div>
+        <div class="right">press <span class="amber">&lt;SPACE&gt;</span> to continue</div>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============================== PAGE 2 ============================== -->
+  <article class="resume-page">
+    <div class="page-inner">
+
+      <!-- Top bar -->
+      <div class="top-bar">
+        <div class="left"><span class="dim">tty0 ·</span> <span class="mid">bash 5.2.15</span> <span class="dim">· 80×43 ·</span> <span class="amber">PHOSPHOR-P2</span></div>
+        <div class="right">MAN-DB 2.12.0 · section 2 · <span class="amber">● REC</span></div>
+      </div>
+
+      <!-- Shell prompt header -->
+      <div class="prompt">
+        <span class="user">psp</span><span class="at">@</span><span class="host">bengaluru</span><span class="at">:</span><span class="path">~</span><span class="at">$</span> <span class="cmd">man -s 2 psp</span>
+      </div>
+      <div class="prompt" style="color:#1F7A3A; margin-top:0.8mm; margin-bottom:2mm;">
+        <span>PSP(2) &nbsp; System Calls Manual &nbsp; PSP(2)</span>
+      </div>
+
+      <!-- PREVIOUS POSITIONS -->
+      <div class="section" style="margin-top:1mm;">
+        <div class="section-head">
+          <span class="tag">## PREVIOUS POSITIONS</span>
+          <span class="rule"></span>
+          <span class="meta">$ history | grep -i sde</span>
+        </div>
+        <div class="prev-grid">
+          <div class="prev-card">
+            <div class="head">SDE I <span class="dim">·</span> Amazon Travel</div>
+            <div class="date">JUL 2022 &rarr; JUL 2023 · BENGALURU</div>
+            <p>Built REST endpoints + <span class="hi">@Repository</span> DynamoDB DAOs with Spring DI; shipped auto-insurance renewal driving <span class="amber">+60%</span> attach. Held the line at <span class="amber">80%+ JUnit</span> coverage with JaCoCo gates in CI.</p>
+          </div>
+          <div class="prev-card">
+            <div class="head">SDE Intern <span class="dim">·</span> Amazon Travel</div>
+            <div class="date">MAY 2021 &rarr; FEB 2022 · BENGALURU</div>
+            <p>Led a <span class="hi">GraphQL &rarr; Java</span> migration on a customer-facing surface; built One-Click Renewal with Guice DI + clean module boundaries. <span class="amber">90%+</span> coverage before merge.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- STACK TRACE -->
+      <div class="section">
+        <div class="section-head">
+          <span class="tag">## STACK TRACE</span>
+          <span class="rule"></span>
+          <span class="meta">$ jstack $(pgrep psp) | head</span>
+        </div>
+        <div class="stack-grid">
+          <div class="stack-card">
+            <div class="cat">jvm</div>
+            <div class="items">Java 17 · Spring Boot · Spring MVC · Spring DI · Guice · Maven · Gradle</div>
+          </div>
+          <div class="stack-card">
+            <div class="cat">concurrency</div>
+            <div class="items">ExecutorService · CompletableFuture · ConcurrentHashMap · ScheduledExecutor · bulkheads</div>
+          </div>
+          <div class="stack-card">
+            <div class="cat">aws</div>
+            <div class="items">Lambda · DynamoDB · SQS · Step Functions · API Gateway · AppSync · CloudWatch · ECS · CDK-Java</div>
+          </div>
+          <div class="stack-card">
+            <div class="cat">quality</div>
+            <div class="items">JUnit 5 · Mockito · JaCoCo · contract tests · mutation-light</div>
+          </div>
+          <div class="stack-card">
+            <div class="cat">front-end</div>
+            <div class="items">React (SSR & CSR) · Redux · TypeScript · Vitest</div>
+          </div>
+          <div class="stack-card">
+            <div class="cat">data</div>
+            <div class="items">DynamoDB single-table · idempotency keys · dedupe · event sourcing-lite</div>
+          </div>
+          <div class="stack-card">
+            <div class="cat">ops</div>
+            <div class="items">runbooks · alarms · SEV management · on-call · CloudWatch dashboards</div>
+          </div>
+          <div class="stack-card">
+            <div class="cat">method</div>
+            <div class="items">trunk-based · postmortems · SLO-first · small PRs · review-at-merge</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXAMPLES -->
+      <div class="section">
+        <div class="section-head">
+          <span class="tag">## EXAMPLES</span>
+          <span class="rule"></span>
+          <span class="meta">$ ./psp --project &lt;name&gt; --bench</span>
+        </div>
+        <div class="ex-grid">
+          <div class="ex-card">
+            <div class="title">redis-server-java</div>
+            <div class="repo">github.com/praxstack/redis-server-java</div>
+            <div class="desc">RESP2 protocol, single-threaded <span class="hi">event-loop</span> reactor, lock-free hashmap core. 42 tests on the protocol surface, clean shutdown, no leaked sockets.</div>
+            <div class="bench">$ redis-benchmark -t set,get,incr
+  SET   : 154,000 rps
+  GET   : 195,000 rps
+  INCR  : 128,000 rps
+  ~ 78% of C reference</div>
+          </div>
+          <div class="ex-card">
+            <div class="title">markdown-viewer-pro</div>
+            <div class="repo">github.com/praxstack/markdown-viewer-pro</div>
+            <div class="desc">Plugin-first architecture with command palette, <span class="hi">155+ Vitest</span> assertions, zero runtime deps, strict budget on bundle size.</div>
+            <div class="bench">$ du -sh dist/
+  &lt; 100 KB gz
+  deps = 0
+  tests = 155 ✓
+  a11y = WCAG AA</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEE ALSO -->
+      <div class="section">
+        <div class="section-head">
+          <span class="tag">## SEE ALSO</span>
+          <span class="rule"></span>
+          <span class="meta">education(7) · awards(7)</span>
+        </div>
+        <div class="see-grid">
+          <div class="see-card">
+            <div class="head">education</div>
+            <div class="line"><span class="amber">M.C.A. Computer Science</span> &nbsp;·&nbsp; MNNIT Prayagraj &nbsp;·&nbsp; 2019–22 &nbsp;·&nbsp; <span class="hi">GPA 9.25/10</span></div>
+            <div class="line" style="margin-top:0.8mm;"><span class="amber">B.Sc. (Hons) Computer Science</span> &nbsp;·&nbsp; Bhaskaracharya College, University of Delhi &nbsp;·&nbsp; 2015–18</div>
+          </div>
+          <div class="see-card">
+            <div class="head">recognition</div>
+            <div class="line">Amazon Pay <span class="amber">Merchants Categories Champion</span> &nbsp;·&nbsp; 2023</div>
+            <div class="line" style="margin-top:0.8mm;"><span class="amber">100+ trust-buster bugs</span> filed and closed across the booking funnel</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUGS (playful) -->
+      <div class="section">
+        <div class="section-head">
+          <span class="tag">## BUGS</span>
+          <span class="rule"></span>
+          <span class="meta">report to: prakhar.mnnit.2022@gmail.com</span>
+        </div>
+        <div class="bugs">
+          <span class="tag">KNOWN-ISSUE:</span> occasionally over-indexes on p90 graphs when p99 is the actual thing on fire. &nbsp; <span class="tag">WONTFIX:</span> writes runbooks before writing the Slack update. &nbsp; <span class="tag">FEATURE:</span> bias toward idempotency &mdash; will push back on "just retry it." &nbsp; <span class="tag">NOTE:</span> this résumé compiles on A4 with <span class="amber">zero warnings</span>.
+        </div>
+      </div>
+
+      <!-- Exit footer -->
+      <div class="exit-footer">
+        <div class="prompt" style="margin-bottom:0.8mm;">
+          <span class="user">psp</span><span class="at">@</span><span class="host">bengaluru</span><span class="at">:</span><span class="path">~</span><span class="at">$</span> <span class="cmd">exit 0</span><span class="caret"></span>
+        </div>
+        <div class="exit-line"><span class="dim">logout · session closed · process exited with status </span><span class="amber">0</span></div>
+        <div class="exit-end">─── END OF FILE ───</div>
+      </div>
+
+    </div>
+  </article>
+
+</div>
+</body>
+</html>

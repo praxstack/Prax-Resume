@@ -1,0 +1,1277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Resume 06 · Halftone Comic — Prakhar Shekhar Parthasarthi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=block"
+  rel="stylesheet"
+/>
+<style>
+/* ======================================================================
+   RESUME 06 — HALFTONE COMIC BOOK
+   Silver-age comic: yellow-orange newsprint, cyan halftone dots,
+   hot black ink, pop red-orange SFX. Speech bubbles, starbursts, panels.
+   ====================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --paper:    #FDE58B;
+  --paper2:   #FCDB6E;
+  --cyan:     #2BB7E3;
+  --ink:      #121212;
+  --ink2:     #1E1E1E;
+  --pop:      #FF5A3C;
+  --pop2:     #E8431F;
+  --cream:    #FFF8DC;
+  --shadow:   rgba(18,18,18,0.95);
+}
+
+@page { size: A4 portrait; margin: 0; }
+
+html, body { margin: 0; padding: 0; background: #2a1f0f; }
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  color: var(--ink);
+  font-size: 9.6pt;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+.deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22mm;
+  padding: 22mm 0;
+}
+
+/* ======================= PAGE ========================================= */
+.resume-page {
+  width: 210mm;
+  height: 297mm;
+  position: relative;
+  background: var(--paper);
+  overflow: hidden;
+  box-shadow: 0 1mm 3mm rgba(0,0,0,0.35), 0 10mm 30mm rgba(0,0,0,0.45);
+}
+
+/* Cyan halftone dot layer — tiled radial-gradient */
+.resume-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at center, var(--cyan) 0.55mm, transparent 0.65mm);
+  background-size: 2.4mm 2.4mm;
+  opacity: 0.28;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* A second, sparser magenta-ish halftone on corners for richness */
+.resume-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 8% 6%,  rgba(255,90,60,0.25) 0 9mm, transparent 11mm),
+    radial-gradient(circle at 94% 96%, rgba(43,183,227,0.30) 0 10mm, transparent 13mm),
+    radial-gradient(circle at 96% 10%, rgba(18,18,18,0.08) 0 6mm, transparent 8mm);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.frame {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 11mm 12mm 10mm 12mm;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======================= MASTHEAD ===================================== */
+.masthead {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 4mm;
+  border-top: 2pt solid var(--ink);
+  border-bottom: 2pt solid var(--ink);
+  padding: 1.8mm 0;
+}
+.masthead .mh-l,
+.masthead .mh-r {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 7pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.masthead .mh-r { text-align: right; }
+.masthead .mh-logo {
+  font-family: "Bangers", "Permanent Marker", sans-serif;
+  font-size: 17pt;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  line-height: 1;
+  padding: 0 3mm;
+  position: relative;
+  white-space: nowrap;
+}
+.masthead .mh-logo em {
+  font-style: normal;
+  color: var(--pop);
+  -webkit-text-stroke: 0.6pt var(--ink);
+}
+
+/* ======================= NAME + HERO BADGE ============================ */
+.hero-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3mm;
+  align-items: start;
+  margin-top: 4mm;
+}
+
+.bigname {
+  font-family: "Bangers", sans-serif;
+  font-weight: 400;
+  font-size: 58pt;
+  line-height: 0.88;
+  letter-spacing: 0.015em;
+  color: var(--ink);
+  text-transform: uppercase;
+  margin: 0;
+  -webkit-text-stroke: 0.3pt var(--ink);
+  text-shadow:
+    0.9mm 0.9mm 0 var(--pop),
+    0.9mm 0.9mm 0 0.2mm var(--ink);
+}
+.bigname .row2 {
+  display: block;
+  font-size: 40pt;
+  letter-spacing: 0.02em;
+  -webkit-text-stroke: 0.3pt var(--ink);
+  text-shadow:
+    0.7mm 0.7mm 0 var(--cyan),
+    0.7mm 0.7mm 0 0.2mm var(--ink);
+}
+
+.sub-name {
+  margin-top: 2.4mm;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 10pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.sub-name em {
+  font-style: normal;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0 1.4mm;
+  margin: 0 0.4mm;
+}
+
+/* --- starburst "SENIOR SWE!" badge --- */
+.starburst {
+  position: relative;
+  width: 42mm;
+  height: 42mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--pop);
+  color: var(--cream);
+  font-family: "Bangers", sans-serif;
+  text-align: center;
+  line-height: 0.95;
+  transform: rotate(-6deg);
+  clip-path: polygon(
+    50% 0%, 59% 12%, 72% 5%, 73% 20%, 88% 18%, 82% 32%, 96% 37%,
+    85% 48%, 98% 58%, 83% 64%, 90% 79%, 74% 76%, 72% 92%, 60% 83%,
+    53% 96%, 44% 84%, 34% 95%, 28% 79%, 13% 85%, 17% 69%,
+    3% 64%, 14% 53%, 1% 43%, 15% 38%, 6% 24%, 22% 22%, 19% 8%, 33% 14%, 41% 3%
+  );
+  filter: drop-shadow(1.6mm 1.6mm 0 var(--ink));
+}
+.starburst::before {
+  content: "";
+  position: absolute;
+  inset: 1.4mm;
+  border: 0.6mm dashed var(--cream);
+  clip-path: inherit;
+  opacity: 0.55;
+}
+.starburst .sb-sm {
+  font-size: 9pt;
+  letter-spacing: 0.06em;
+  -webkit-text-stroke: 0.3pt var(--ink);
+}
+.starburst .sb-lg {
+  font-size: 20pt;
+  letter-spacing: 0.02em;
+  -webkit-text-stroke: 0.4pt var(--ink);
+  margin-top: 0.6mm;
+}
+.starburst .sb-tiny {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 10pt;
+  margin-top: 0.6mm;
+  color: var(--ink);
+  -webkit-text-stroke: 0;
+}
+
+/* ======================= SPEECH BUBBLE PITCH ========================== */
+.speech {
+  position: relative;
+  margin-top: 5mm;
+  padding: 4.5mm 6mm 4.5mm 6mm;
+  background: var(--cream);
+  filter: drop-shadow(1.6mm 1.6mm 0 var(--ink));
+  clip-path: polygon(
+    0 6%, 3% 2%, 10% 4%, 18% 0, 28% 3%, 42% 1%, 56% 3%, 70% 0, 82% 4%, 92% 1%, 100% 6%,
+    99% 20%, 100% 34%, 98% 48%, 100% 62%, 99% 76%, 100% 88%,
+    94% 94%, 84% 96%, 74% 100%,
+    22% 98%, 18% 110%, 10% 98%, 3% 96%, 0 88%, 2% 70%, 0 56%, 3% 42%, 0 28%
+  );
+}
+.speech .pitch-eye {
+  font-family: "Bangers", sans-serif;
+  font-size: 12pt;
+  letter-spacing: 0.04em;
+  color: var(--pop);
+  -webkit-text-stroke: 0.3pt var(--ink);
+  display: inline-block;
+  margin-right: 2mm;
+}
+.speech p {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 9.4pt;
+  line-height: 1.42;
+  color: var(--ink);
+}
+.speech b { font-weight: 800; }
+.speech u {
+  text-decoration: none;
+  background: linear-gradient(transparent 60%, rgba(43,183,227,0.55) 60%);
+  padding: 0 0.4mm;
+}
+.speech .hot {
+  background: var(--pop);
+  color: var(--cream);
+  padding: 0 1mm;
+  font-weight: 800;
+  -webkit-text-stroke: 0.2pt var(--ink);
+}
+
+/* contact chips row */
+.chips {
+  margin-top: 3mm;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6mm 2mm;
+  align-items: center;
+}
+.chip {
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 7pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--cream);
+  color: var(--ink);
+  padding: 1mm 2.2mm;
+  border: 1.2pt solid var(--ink);
+  box-shadow: 1.2mm 1.2mm 0 var(--ink);
+}
+.chip.pop {
+  background: var(--pop);
+  color: var(--cream);
+  box-shadow: 1.2mm 1.2mm 0 var(--ink);
+  -webkit-text-stroke: 0.2pt var(--ink);
+}
+
+/* ======================= STAT STARBURSTS (4) ========================== */
+.stat-grid {
+  margin-top: 5mm;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3mm;
+}
+.stat-bb {
+  position: relative;
+  height: 34mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "Bangers", sans-serif;
+  line-height: 0.95;
+  clip-path: polygon(
+    50% 0%, 60% 10%, 74% 4%, 74% 18%, 90% 18%, 83% 32%, 98% 38%,
+    86% 48%, 100% 58%, 84% 64%, 90% 80%, 74% 76%, 72% 93%, 60% 84%,
+    52% 100%, 42% 84%, 30% 96%, 26% 80%, 10% 86%, 16% 70%,
+    2% 64%, 14% 54%, 0 44%, 16% 38%, 4% 24%, 20% 22%, 18% 6%, 32% 14%, 40% 2%
+  );
+  filter: drop-shadow(1.2mm 1.2mm 0 var(--ink));
+}
+.stat-bb.cyan { background: var(--cyan); color: var(--cream); }
+.stat-bb.pop  { background: var(--pop);  color: var(--cream); }
+.stat-bb .n {
+  font-size: 20pt;
+  letter-spacing: 0.01em;
+  -webkit-text-stroke: 0.4pt var(--ink);
+}
+.stat-bb .n sub {
+  font-size: 10pt;
+  vertical-align: baseline;
+  position: relative;
+  top: -1mm;
+  margin-left: 0.3mm;
+}
+.stat-bb .k {
+  margin-top: 1mm;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 6.8pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  -webkit-text-stroke: 0.15pt var(--ink);
+  line-height: 1.15;
+}
+.stat-bb .sfx {
+  font-size: 10pt;
+  -webkit-text-stroke: 0.35pt var(--ink);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.6mm;
+}
+
+/* ======================= CHAPTER TITLE ================================ */
+.chapter {
+  margin-top: 5mm;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 3mm;
+  align-items: center;
+}
+.chapter .cap {
+  font-family: "Bangers", sans-serif;
+  font-size: 15pt;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  line-height: 1;
+  background: var(--pop);
+  color: var(--cream);
+  -webkit-text-stroke: 0.3pt var(--ink);
+  padding: 1.4mm 3mm 1mm 3mm;
+  box-shadow: 1.4mm 1.4mm 0 var(--ink);
+  transform: rotate(-1.5deg);
+}
+.chapter .rule {
+  height: 0;
+  border-top: 1.6pt solid var(--ink);
+  position: relative;
+}
+.chapter .rule::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 0.9mm;
+  border-top: 0.8pt solid var(--ink);
+}
+.chapter .tag {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 12pt;
+  color: var(--ink);
+}
+
+/* ======================= PANEL (role card) ============================ */
+.panel {
+  position: relative;
+  margin-top: 3.4mm;
+  background: var(--cream);
+  border: 2.2pt solid var(--ink);
+  padding: 4mm 5mm 4mm 5mm;
+  box-shadow: 2mm 2mm 0 var(--ink);
+}
+.panel .panel-eye {
+  position: absolute;
+  top: -3.4mm;
+  left: 5mm;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: "Bangers", sans-serif;
+  font-size: 9pt;
+  letter-spacing: 0.1em;
+  padding: 1mm 2.4mm;
+  transform: rotate(-2deg);
+}
+
+.role-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3mm;
+  align-items: baseline;
+  border-bottom: 1.4pt dashed var(--ink);
+  padding-bottom: 1.6mm;
+  margin-bottom: 2mm;
+}
+.role-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 11pt;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  line-height: 1.18;
+}
+.role-title .at {
+  color: var(--pop);
+  font-weight: 900;
+  -webkit-text-stroke: 0.15pt var(--ink);
+}
+.role-meta {
+  font-family: "Bangers", sans-serif;
+  font-size: 11pt;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-align: right;
+  line-height: 1.1;
+}
+.role-meta .when {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 7pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 0.6mm;
+}
+
+.caption {
+  font-family: "Caveat", cursive;
+  font-weight: 600;
+  font-size: 12pt;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 2.2mm;
+}
+.caption b { font-weight: 700; }
+.caption mark {
+  background: var(--cyan);
+  color: var(--ink);
+  padding: 0 0.8mm;
+}
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.6mm;
+}
+.bullets li {
+  display: grid;
+  grid-template-columns: 18mm 1fr;
+  gap: 2mm;
+  font-family: "Inter", sans-serif;
+  font-size: 8.6pt;
+  line-height: 1.4;
+  color: var(--ink);
+  align-items: start;
+}
+.bullets li > div { min-width: 0; }
+.sfx-tag {
+  font-family: "Bangers", sans-serif;
+  font-size: 10pt;
+  letter-spacing: 0.05em;
+  color: var(--cream);
+  background: var(--pop);
+  -webkit-text-stroke: 0.3pt var(--ink);
+  padding: 0.8mm 1.6mm;
+  text-align: center;
+  box-shadow: 0.8mm 0.8mm 0 var(--ink);
+  transform: rotate(-2deg);
+  line-height: 1;
+  white-space: nowrap;
+}
+.sfx-tag.cyan { background: var(--cyan); }
+.sfx-tag.ink  { background: var(--ink); color: var(--paper); -webkit-text-stroke: 0; }
+
+.bullets b { font-weight: 800; }
+.bullets .hot {
+  background: var(--pop);
+  color: var(--cream);
+  padding: 0 1mm;
+  font-weight: 800;
+  -webkit-text-stroke: 0.15pt var(--ink);
+}
+.bullets .zip {
+  background: var(--cyan);
+  color: var(--ink);
+  padding: 0 1mm;
+  font-weight: 800;
+}
+
+/* ======================= TO BE CONTINUED / FOOTER ===================== */
+.tbc {
+  margin-top: auto;
+  padding-top: 3mm;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 3mm;
+  border-top: 2pt solid var(--ink);
+}
+.tbc .tbc-lbl {
+  font-family: "Bangers", sans-serif;
+  font-size: 16pt;
+  letter-spacing: 0.05em;
+  color: var(--pop);
+  -webkit-text-stroke: 0.4pt var(--ink);
+  text-shadow: 0.6mm 0.6mm 0 var(--ink);
+  line-height: 1;
+}
+.tbc .tbc-mid {
+  font-family: "Caveat", cursive;
+  font-weight: 600;
+  font-size: 11pt;
+  color: var(--ink);
+  text-align: center;
+}
+.tbc .tbc-pg {
+  font-family: "Bangers", sans-serif;
+  font-size: 14pt;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  background: var(--ink);
+  padding: 1mm 2.4mm 0.6mm 2.4mm;
+  box-shadow: 1.2mm 1.2mm 0 var(--pop);
+}
+
+/* ======================= PAGE 2 MASTHEAD ============================== */
+.mw-masthead {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 4mm;
+  align-items: center;
+  border-top: 2pt solid var(--ink);
+  border-bottom: 2pt solid var(--ink);
+  padding: 1.8mm 0;
+}
+.mw-masthead .mw-l {
+  font-family: "Bangers", sans-serif;
+  font-size: 22pt;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  line-height: 1;
+  -webkit-text-stroke: 0.3pt var(--ink);
+  text-shadow: 0.7mm 0.7mm 0 var(--pop);
+  padding-right: 2mm;
+}
+.mw-masthead .mw-mid {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 13pt;
+  color: var(--ink);
+  line-height: 1.15;
+}
+.mw-masthead .mw-mid em {
+  font-style: normal;
+  background: var(--cyan);
+  color: var(--ink);
+  padding: 0 1mm;
+}
+.mw-masthead .mw-r {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 7pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: right;
+  color: var(--ink);
+}
+
+/* ======================= COMPACT PANELS (roles on pg2) ================= */
+.panel-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5mm;
+  margin-top: 4mm;
+}
+.panel.sm {
+  margin-top: 0;
+  padding: 3.6mm 4mm 3mm 4mm;
+  box-shadow: 1.6mm 1.6mm 0 var(--ink);
+}
+.panel.sm .role-title { font-size: 9.8pt; }
+.panel.sm .role-head { margin-bottom: 1.6mm; padding-bottom: 1.2mm; }
+.panel.sm .caption { font-size: 10.8pt; margin-bottom: 1.4mm; }
+.panel.sm .bullets li { font-size: 8pt; grid-template-columns: 16mm 1fr; }
+.panel.sm .sfx-tag { font-size: 9pt; padding: 0.6mm 1.2mm; }
+.panel.sm .role-meta { font-size: 9.6pt; }
+.panel.sm .role-meta .when { font-size: 6.6pt; }
+
+/* ======================= STACK GRID (3x3 comic panels) ================ */
+.arsenal {
+  margin-top: 2.8mm;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 2.4mm;
+}
+.arsenal .cell {
+  background: var(--cream);
+  border: 1.8pt solid var(--ink);
+  padding: 2mm 2.4mm 2.2mm 2.4mm;
+  box-shadow: 1.4mm 1.4mm 0 var(--ink);
+  line-height: 1.25;
+  min-height: 16mm;
+}
+.arsenal .cell h4 {
+  margin: 0 0 0.9mm 0;
+  font-family: "Bangers", sans-serif;
+  font-size: 10pt;
+  letter-spacing: 0.04em;
+  color: var(--pop);
+  -webkit-text-stroke: 0.3pt var(--ink);
+  line-height: 1;
+}
+.arsenal .cell p {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 6.8pt;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.arsenal .sfx-cell {
+  background: var(--pop);
+  color: var(--cream);
+  border: 1.8pt solid var(--ink);
+  box-shadow: 1.4mm 1.4mm 0 var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Bangers", sans-serif;
+  font-size: 22pt;
+  letter-spacing: 0.04em;
+  -webkit-text-stroke: 0.4pt var(--ink);
+  text-shadow: 0.6mm 0.6mm 0 var(--ink);
+  line-height: 0.9;
+  padding: 1mm;
+}
+.arsenal .sfx-cell span {
+  display: block;
+}
+.arsenal .sfx-cell .small {
+  font-size: 9pt;
+  margin-top: 1mm;
+  -webkit-text-stroke: 0.2pt var(--ink);
+  color: var(--cream);
+}
+
+/* ======================= PROJECT PANELS =============================== */
+.proj-row {
+  margin-top: 3mm;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5mm;
+}
+.proj {
+  position: relative;
+  background: var(--cream);
+  border: 2pt solid var(--ink);
+  padding: 3.4mm 4mm 3.4mm 4mm;
+  box-shadow: 1.8mm 1.8mm 0 var(--ink);
+}
+.proj .boom {
+  position: absolute;
+  top: -5mm;
+  right: -3mm;
+  width: 18mm;
+  height: 18mm;
+  background: var(--pop);
+  color: var(--cream);
+  font-family: "Bangers", sans-serif;
+  font-size: 9pt;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+  clip-path: polygon(
+    50% 0, 60% 14%, 78% 6%, 76% 22%, 94% 22%, 82% 36%, 100% 44%,
+    84% 54%, 96% 68%, 78% 68%, 84% 88%, 66% 76%, 62% 96%,
+    50% 80%, 38% 96%, 34% 76%, 16% 88%, 22% 68%, 4% 68%,
+    16% 54%, 0 44%, 18% 36%, 6% 22%, 24% 22%, 22% 6%, 40% 14%
+  );
+  filter: drop-shadow(1mm 1mm 0 var(--ink));
+  transform: rotate(8deg);
+  -webkit-text-stroke: 0.3pt var(--ink);
+}
+.proj h3 {
+  margin: 0 0 0.6mm 0;
+  font-family: "Bangers", sans-serif;
+  font-size: 14pt;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  line-height: 1;
+}
+.proj .repo {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 6.8pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pop);
+  margin-bottom: 1.6mm;
+}
+.proj p {
+  margin: 0 0 1.8mm 0;
+  font-family: "Inter", sans-serif;
+  font-size: 8pt;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.proj .nums {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1mm 1.4mm;
+}
+.proj .nums span {
+  font-family: "Bangers", sans-serif;
+  font-size: 9pt;
+  letter-spacing: 0.03em;
+  background: var(--cyan);
+  color: var(--ink);
+  -webkit-text-stroke: 0.2pt var(--ink);
+  padding: 0.5mm 1.4mm;
+  box-shadow: 0.6mm 0.6mm 0 var(--ink);
+}
+.proj .nums span.hot {
+  background: var(--pop);
+  color: var(--cream);
+  -webkit-text-stroke: 0.3pt var(--ink);
+}
+.proj .nums span.ink {
+  background: var(--ink);
+  color: var(--paper);
+  -webkit-text-stroke: 0;
+}
+
+/* ======================= EDU + REC ==================================== */
+.origin-row {
+  margin-top: 1.4mm;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 5mm;
+}
+.origin, .awards {
+  background: var(--cream);
+  border: 2pt solid var(--ink);
+  padding: 2.2mm 4mm 2.2mm 4mm;
+  box-shadow: 1.8mm 1.8mm 0 var(--ink);
+  position: relative;
+}
+.origin h4, .awards h4 {
+  margin: 0 0 1.4mm 0;
+  font-family: "Bangers", sans-serif;
+  font-size: 11pt;
+  letter-spacing: 0.04em;
+  color: var(--pop);
+  -webkit-text-stroke: 0.3pt var(--ink);
+  line-height: 1;
+  border-bottom: 1.2pt dashed var(--ink);
+  padding-bottom: 1mm;
+}
+.origin .erow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2mm;
+  align-items: baseline;
+  padding: 1.2mm 0;
+  border-bottom: 0.8pt dotted rgba(18,18,18,0.4);
+}
+.origin .erow:last-child { border-bottom: 0; }
+.origin .erow b {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 7.8pt;
+  color: var(--ink);
+}
+.origin .erow .inst {
+  font-family: "Inter", sans-serif;
+  font-size: 7.6pt;
+  color: var(--ink);
+  display: block;
+  margin-top: 0.3mm;
+}
+.origin .erow .mt {
+  font-family: "Bangers", sans-serif;
+  font-size: 10pt;
+  color: var(--ink);
+  text-align: right;
+  line-height: 1.1;
+}
+.origin .erow .mt .gpa {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 7pt;
+  color: var(--pop);
+  letter-spacing: 0.08em;
+}
+
+.awards ul {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: grid;
+  gap: 1.8mm;
+}
+.awards li {
+  display: grid;
+  grid-template-columns: 6mm 1fr;
+  gap: 1mm;
+  font-family: "Inter", sans-serif;
+  font-size: 7pt;
+  line-height: 1.35;
+  color: var(--ink);
+  align-items: start;
+}
+.awards li .star {
+  font-family: "Bangers", sans-serif;
+  color: var(--pop);
+  font-size: 14pt;
+  line-height: 0.8;
+  -webkit-text-stroke: 0.3pt var(--ink);
+}
+.awards li b { font-weight: 800; }
+
+/* ======================= THE END PANEL ================================ */
+.the-end {
+  margin-top: auto;
+  padding-top: 0mm;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 3mm;
+  border-top: 2pt solid var(--ink);
+}
+.the-end .rule {
+  height: 0;
+  border-top: 1.2pt dashed var(--ink);
+  position: relative;
+}
+.the-end .rule::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0.8mm;
+  border-top: 0.8pt solid var(--ink);
+}
+.the-end .word {
+  font-family: "Bangers", sans-serif;
+  font-size: 12pt;
+  letter-spacing: 0.05em;
+  color: var(--pop);
+  -webkit-text-stroke: 0.4pt var(--ink);
+  text-shadow: none;
+  padding: 0 3mm;
+  line-height: 1;
+}
+.the-end .word small {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 5pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  margin-top: 0.4mm;
+  text-align: center;
+}
+
+/* ======================= PRINT ======================================== */
+@media print {
+  html, body { background: #fff; }
+  .deck { padding: 0; gap: 0; }
+  .resume-page {
+    box-shadow: none;
+    page-break-after: always;
+    break-after: page;
+  }
+  .resume-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- ============================================================ -->
+  <!-- PAGE 1                                                       -->
+  <!-- ============================================================ -->
+  <article class="resume-page p1">
+    <div class="frame">
+
+      <header class="masthead">
+        <div class="mh-l">PSP Comics <span style="color:var(--pop)">●</span> Issue 26 <span style="color:var(--pop)">●</span> Apr 2026</div>
+        <div class="mh-logo">PSP <em>COMICS</em>!</div>
+        <div class="mh-r">A Self-Published Hero Tale <span style="color:var(--pop)">●</span> INR 0</div>
+      </header>
+
+      <section class="hero-row">
+        <div>
+          <h1 class="bigname">
+            PRAKHAR
+            <span class="row2">SHEKHAR P.</span>
+          </h1>
+          <div class="sub-name">
+            <em>JAVA</em> <em>DISTRIBUTED SYSTEMS</em> <em>AWS</em>
+          </div>
+        </div>
+        <div class="starburst">
+          <span class="sb-sm">OPEN TO</span>
+          <span class="sb-lg">SENIOR</span>
+          <span class="sb-lg">SWE!</span>
+          <span class="sb-tiny">(hire our hero)</span>
+        </div>
+      </section>
+
+      <section class="speech">
+        <p>
+          <span class="pitch-eye">MEANWHILE, AT AMAZON TRAVEL…</span>
+          Senior SWE with <b>3+ years</b> owning Java microservices on AWS — hotels, flights, insurance.
+          Sliced p90 latency from <u>1.10s → 0.59s</u> (<span class="hot">−47%!</span>), lifted traveler conversion
+          <span class="hot">+33%!</span>, and dragged on-call from <b>20+ pages/shift</b> down to <b>~5</b>.
+          Comfortable from <b>SQS &amp; Step Functions</b> to the <b>DynamoDB DAO</b>, and from <b>CDK</b> up through <b>React SSR</b>.
+        </p>
+      </section>
+
+      <div class="chips">
+        <span class="chip pop">Open to Sr. SWE</span>
+        <span class="chip">prakhar.mnnit.2022@gmail.com</span>
+        <span class="chip">github.com/praxstack</span>
+        <span class="chip">linkedin.com/in/prakharshekhar</span>
+        <span class="chip">Bengaluru · IN</span>
+      </div>
+
+      <section class="stat-grid">
+        <div class="stat-bb pop">
+          <div class="sfx">SLASH!</div>
+          <div class="n">−47%</div>
+          <div class="k">p90 Latency<br/>1.10s → 0.59s</div>
+        </div>
+        <div class="stat-bb cyan">
+          <div class="sfx">WIN!</div>
+          <div class="n">+33%</div>
+          <div class="k">Traveler<br/>Conversion</div>
+        </div>
+        <div class="stat-bb pop">
+          <div class="sfx">SAVE!</div>
+          <div class="n">−43<sub>bps</sub></div>
+          <div class="k">Cost per<br/>Transaction</div>
+        </div>
+        <div class="stat-bb cyan">
+          <div class="sfx">QUIET!</div>
+          <div class="n">~5</div>
+          <div class="k">Pages per<br/>On-call Shift</div>
+        </div>
+      </section>
+
+      <div class="chapter">
+        <span class="cap">OUR HERO'S STORY SO FAR…</span>
+        <span class="rule"></span>
+        <span class="tag">(open on a quiet 3 AM dashboard…)</span>
+      </div>
+
+      <article class="panel">
+        <div class="panel-eye">PANEL №1 · THE MAIN EVENT</div>
+        <div class="role-head">
+          <div class="role-title">Software Development Engineer II <span class="at">@ Amazon</span> · Travel (Hotels · Flights · Insurance)</div>
+          <div class="role-meta">
+            '23 → '25
+            <span class="when">Jul 2023 — Sep 2025 · Bengaluru</span>
+          </div>
+        </div>
+        <div class="caption">
+          Owned <mark>four Java microservices</mark> across the hotel &amp; flight booking funnel —
+          from search APIs down to idempotent webhook processors — and drove the on-call health of the team.
+        </div>
+        <ul class="bullets">
+          <li>
+            <div><span class="sfx-tag">FAN-OUT!</span></div>
+            <div>Re-architected the pricing fan-out with <b>CompletableFuture.allOf</b> and bulkhead
+            <b>ExecutorService</b> pools; cut p90 <span class="hot">1.1s → 0.59s (−47%)</span> and
+            lifted traveler conversion <span class="hot">+33%</span>.</div>
+          </li>
+          <li>
+            <div><span class="sfx-tag cyan">SHIP!</span></div>
+            <div>Designed an idempotent payment webhook pipeline on <b>SQS + Step Functions</b> with
+            DynamoDB dedupe keys; reclaimed <span class="hot">−43 bps</span> cost-per-transaction and
+            killed the double-capture class of incidents.</div>
+          </li>
+          <li>
+            <div><span class="sfx-tag">DEPLOY!</span></div>
+            <div>Rewrote six legacy pipelines into <b>Java CDK</b>; halved rollback count and
+            dropped mean-time-to-ship by a working day.</div>
+          </li>
+          <li>
+            <div><span class="sfx-tag cyan">PAGE!</span></div>
+            <div>Dragged weekly on-call load from <b>20+ pages → ~5</b>, took config-hygiene
+            violations <b>5–6 → 0</b> via automated guardrails and consolidated runbooks.</div>
+          </li>
+          <li>
+            <div><span class="sfx-tag ink">SAVE!</span></div>
+            <div>Resolved <span class="zip">150+ production incidents</span>; partnered with PM
+            to stop a <span class="hot">~30 bps</span> funnel-churn drop on insurance attach.</div>
+          </li>
+        </ul>
+      </article>
+
+      <div class="tbc">
+        <span class="tbc-lbl">TO BE CONTINUED…</span>
+        <span class="tbc-mid">(turn the page for the back issues, the arsenal, and the trophies)</span>
+        <span class="tbc-pg">PG. 01 / 02 →</span>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============================================================ -->
+  <!-- PAGE 2                                                       -->
+  <!-- ============================================================ -->
+  <article class="resume-page p2">
+    <div class="frame">
+
+      <header class="mw-masthead">
+        <div class="mw-l">MEANWHILE…</div>
+        <div class="mw-mid">Our hero's origin, the <em>arsenal</em>, and the collected trophies —<br/>a back-issue montage in full cyan halftone.</div>
+        <div class="mw-r">PSP Comics · Issue 26<br/>Pg. 02 / 02</div>
+      </header>
+
+      <div class="chapter">
+        <span class="cap">BACK ISSUES · EARLY YEARS!</span>
+        <span class="rule"></span>
+        <span class="tag">(two panels, compressed — the montage sequence)</span>
+      </div>
+
+      <section class="panel-row">
+        <article class="panel sm">
+          <div class="panel-eye">PANEL №2</div>
+          <div class="role-head">
+            <div class="role-title">SDE I <span class="at">@ Amazon</span> · Travel</div>
+            <div class="role-meta">
+              '22 → '23
+              <span class="when">Jul 2022 — Jul 2023</span>
+            </div>
+          </div>
+          <div class="caption">
+            First rung. Wrote REST controllers and <b>@Repository</b>-backed DynamoDB DAOs with Spring DI —
+            shipped the auto-insurance renewal flow that lifted renewals <mark>+60%</mark>.
+          </div>
+          <ul class="bullets">
+            <li>
+              <div><span class="sfx-tag">RENEW!</span></div>
+              <div>Built end-to-end auto-insurance renewal flow on a cold-start funnel — <b>+60%</b> renewal completion.</div>
+            </li>
+            <li>
+              <div><span class="sfx-tag cyan">COVER!</span></div>
+              <div>Held <b>80%+</b> JUnit line coverage via <b>JaCoCo</b> gates in CI; regression escapes ≈ 0 for the year.</div>
+            </li>
+          </ul>
+        </article>
+
+        <article class="panel sm">
+          <div class="panel-eye">PANEL №3</div>
+          <div class="role-head">
+            <div class="role-title">SDE Intern <span class="at">@ Amazon</span> · Travel</div>
+            <div class="role-meta">
+              '21 → '22
+              <span class="when">May 2021 — Feb 2022</span>
+            </div>
+          </div>
+          <div class="caption">
+            The origin issue. Migrated a <b>GraphQL</b> integration layer onto the Java stack —
+            shipped One-Click Renewal with <b>Guice</b> DI at <mark>90%+</mark> coverage.
+          </div>
+          <ul class="bullets">
+            <li>
+              <div><span class="sfx-tag">SWAP!</span></div>
+              <div>Ported <b>GraphQL → Java</b> integration layer end-to-end; zero regressions on cutover weekend.</div>
+            </li>
+            <li>
+              <div><span class="sfx-tag cyan">CLICK!</span></div>
+              <div>Built One-Click Renewal with <b>Guice</b> DI; ship-ready with <b>90%+</b> line coverage.</div>
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <div class="chapter">
+        <span class="cap">THE ARSENAL!</span>
+        <span class="rule"></span>
+        <span class="tag">(a nine-panel splash page of tools)</span>
+      </div>
+
+      <section class="arsenal">
+        <div class="cell">
+          <h4>JVM Core</h4>
+          <p>Java 17 · Spring Boot · Spring MVC · Spring DI · Guice · Maven · Gradle</p>
+        </div>
+        <div class="cell">
+          <h4>Concurrency</h4>
+          <p>ExecutorService · CompletableFuture · ConcurrentHashMap · ScheduledExecutor · bulkheads</p>
+        </div>
+        <div class="cell">
+          <h4>AWS</h4>
+          <p>Lambda · DynamoDB · SQS · Step Functions · API Gateway · AppSync · CloudWatch · ECS · CDK (Java)</p>
+        </div>
+        <div class="cell">
+          <h4>Quality</h4>
+          <p>JUnit 5 · Mockito · JaCoCo · integration harnesses · contract tests</p>
+        </div>
+        <div class="sfx-cell">
+          <span>ASSEMBLE!</span>
+          <span class="small">the stack, in full ink</span>
+        </div>
+        <div class="cell">
+          <h4>Front-End</h4>
+          <p>React (SSR &amp; CSR) · Redux · TypeScript · Vitest</p>
+        </div>
+        <div class="cell">
+          <h4>Data Patterns</h4>
+          <p>DynamoDB single-table · idempotency keys · dedupe queues</p>
+        </div>
+        <div class="cell">
+          <h4>Ops &amp; On-Call</h4>
+          <p>Runbooks · alarm hygiene · SEV pages · on-call rotations</p>
+        </div>
+        <div class="cell">
+          <h4>Method</h4>
+          <p>Trunk-based · code-review discipline · postmortems · SLO-first</p>
+        </div>
+      </section>
+
+      <div class="chapter">
+        <span class="cap">SIDE QUESTS!</span>
+        <span class="rule"></span>
+        <span class="tag">(two panels — weekends and nights)</span>
+      </div>
+
+      <section class="proj-row">
+        <article class="proj">
+          <div class="boom">154k<br/>RPS!</div>
+          <h3>REDIS SERVER · IN JAVA</h3>
+          <div class="repo">github.com/praxstack/redis-server-java</div>
+          <p>From-scratch <b>RESP2</b> wire protocol, event-loop I/O, and a tiny hashmap engine.
+          Runs SET / GET / INCR fast enough to blush next to the C implementation.</p>
+          <div class="nums">
+            <span class="hot">SET 154k rps</span>
+            <span class="hot">GET 195k rps</span>
+            <span>INCR 128k</span>
+            <span class="ink">42 tests</span>
+            <span class="ink">~78% of C</span>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="boom">155<br/>TESTS!</div>
+          <h3>MARKDOWN VIEWER PRO</h3>
+          <div class="repo">github.com/praxstack/markdown-viewer-pro</div>
+          <p>A zero-config markdown reader with a live plugin architecture, a keyboard-first
+          command palette, and a test suite that makes refactors feel routine.</p>
+          <div class="nums">
+            <span class="hot">155+ Vitest tests</span>
+            <span>&lt; 100 KB gz</span>
+            <span class="ink">zero runtime deps</span>
+          </div>
+        </article>
+      </section>
+
+      <div class="chapter">
+        <span class="cap">ORIGIN · AWARDS!</span>
+        <span class="rule"></span>
+        <span class="tag">(school montage &amp; trophy room)</span>
+      </div>
+
+      <section class="origin-row">
+        <div class="origin">
+          <h4>ORIGIN STORY</h4>
+          <div class="erow">
+            <div>
+              <b>M.C.A. — Computer Science</b>
+              <span class="inst">MNNIT · Prayagraj</span>
+            </div>
+            <div class="mt">
+              '19 → '22
+              <span class="gpa">GPA 9.25 / 10</span>
+            </div>
+          </div>
+          <div class="erow">
+            <div>
+              <b>B.Sc. (Hons) — Computer Science</b>
+              <span class="inst">Bhaskaracharya College · Delhi University</span>
+            </div>
+            <div class="mt">
+              '15 → '18
+              <span class="gpa">DU · CS</span>
+            </div>
+          </div>
+        </div>
+        <div class="awards">
+          <h4>AWARDS COLLECTED</h4>
+          <ul>
+            <li>
+              <span class="star">★</span>
+              <div><b>Amazon Pay Merchants · Categories Champion 2023</b> — for category-level reliability and incident response.</div>
+            </li>
+            <li>
+              <span class="star">★</span>
+              <div><b>100+ trust-buster bugs</b> resolved across travel-funnel quality sprints — the slow, unglamorous kind that ship trust.</div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="the-end">
+        <div class="rule"></div>
+        <div class="word">
+          — THE END —
+          <small>PSP COMICS · ISSUE 26 · © 2026 · PRINTED ON NEWSPRINT</small>
+        </div>
+        <div class="rule"></div>
+      </div>
+
+    </div>
+  </article>
+
+</div>
+
+</body>
+</html>

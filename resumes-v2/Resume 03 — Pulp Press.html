@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prakhar Shekhar Parthasarthi — First Edition, Limited Press</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+SC:wght@400;500;600;700&display=block" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  html, body { background:#201a12; margin:0; padding:0; }
+  body { font-family: 'Cormorant Garamond', 'Georgia', serif; color:#2b1d12; }
+
+  .deck { display:flex; flex-direction:column; align-items:center; gap:22mm; padding:22mm 0; }
+
+  .resume-page {
+    width:210mm; height:297mm;
+    position:relative; overflow:hidden;
+    background:#F0DEB8;
+    color:#2b1d12;
+    box-shadow: 0 10mm 30mm rgba(0,0,0,0.4);
+  }
+
+  /* paper grain + foxing */
+  .resume-page::before {
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(158,55,23,0.05) 0 2.5mm, transparent 3mm),
+      radial-gradient(circle at 82% 9%, rgba(158,55,23,0.04) 0 2mm, transparent 2.6mm),
+      radial-gradient(circle at 78% 72%, rgba(158,55,23,0.05) 0 3mm, transparent 3.6mm),
+      radial-gradient(circle at 25% 88%, rgba(34,53,111,0.04) 0 2mm, transparent 2.8mm),
+      radial-gradient(circle at 60% 42%, rgba(158,55,23,0.03) 0 1.6mm, transparent 2.2mm);
+    mix-blend-mode:multiply;
+  }
+  /* deckle/ink-bleed border */
+  .resume-page::after {
+    content:""; position:absolute; inset:0; pointer-events:none;
+    box-shadow:
+      inset 0 0 0 0.6mm #F0DEB8,
+      inset 0 0 2.2mm rgba(70,38,12,0.22),
+      inset 0 0 9mm rgba(70,38,12,0.10);
+  }
+
+  @media print {
+    html, body { background:#fff; }
+    .deck { padding:0; gap:0; }
+    .resume-page { box-shadow:none; page-break-after: always; break-after: page; }
+    .resume-page:last-child { page-break-after:auto; break-after:auto; }
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    position:absolute; top:8mm; left:10mm; right:10mm;
+    border-top:1.2px solid #9E3717;
+    border-bottom:1.2px solid #9E3717;
+    padding:2mm 0;
+  }
+  .masthead .inner {
+    border-top:0.6px dotted #9E3717;
+    border-bottom:0.6px dotted #9E3717;
+    padding:1.4mm 2mm;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'Cormorant SC','Cormorant Garamond',serif;
+    font-weight:600; font-size:7.2pt;
+    letter-spacing:0.22em; color:#22356F;
+  }
+  .masthead .fleur { color:#9E3717; font-size:8.4pt; letter-spacing:0.5em; }
+
+  /* ============ TITLE BLOCK (page 1) ============ */
+  .title-block {
+    position:absolute; top:30mm; left:14mm; right:14mm;
+    text-align:center;
+  }
+  .pretitle {
+    font-family:'Cormorant SC',serif;
+    font-size:8.6pt; letter-spacing:0.42em; color:#9E3717;
+    font-weight:600;
+  }
+  .byline {
+    font-family:'Playfair Display',serif;
+    font-style:italic; font-weight:400;
+    font-size:10.6pt; color:#22356F;
+    margin-top:2.2mm; letter-spacing:0.04em;
+  }
+  .resume-name {
+    font-family:'Playfair Display',serif;
+    font-weight:900; font-size:33pt; line-height:1.02;
+    color:#2b1d12; margin-top:4.8mm;
+    letter-spacing:0.01em;
+  }
+  .resume-name .amp { color:#9E3717; font-style:italic; font-weight:400; }
+
+  .underline-orn {
+    display:flex; align-items:center; justify-content:center;
+    gap:3mm; margin-top:3.2mm; color:#9E3717;
+  }
+  .underline-orn .rule { flex:0 0 30mm; border-top:1.2px solid #9E3717; height:0; }
+  .underline-orn .rule.dot { border-top:0.6px dotted #9E3717; flex:0 0 18mm; }
+  .underline-orn .star { font-size:11pt; }
+
+  .kicker {
+    font-family:'Cormorant SC',serif;
+    font-size:9.6pt; letter-spacing:0.26em; font-weight:600;
+    color:#22356F; margin-top:3.6mm;
+  }
+  .kicker .sep { color:#9E3717; margin:0 1.2mm; }
+
+  .contact-row {
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic; font-size:8.4pt; color:#2b1d12;
+    margin-top:3mm; line-height:1.45;
+  }
+  .contact-row .sep { color:#9E3717; margin:0 1.4mm; font-style:normal; }
+
+  /* ============ STAT LEDGER ============ */
+  .stats {
+    position:absolute; top:92mm; left:14mm; right:14mm;
+    display:grid; grid-template-columns: repeat(4,1fr); gap:3mm;
+  }
+  .stat {
+    border-top:1px solid #9E3717;
+    border-bottom:1px solid #9E3717;
+    padding:2.4mm 2mm 2.2mm;
+    position:relative;
+  }
+  .stat::before {
+    content:""; position:absolute; left:2mm; right:2mm; top:1.3mm;
+    border-top:0.5px dotted #9E3717;
+  }
+  .stat::after {
+    content:""; position:absolute; left:2mm; right:2mm; bottom:1.3mm;
+    border-top:0.5px dotted #9E3717;
+  }
+  .stat .num {
+    font-family:'Playfair Display',serif;
+    font-weight:900; font-size:18pt; color:#9E3717;
+    line-height:1; letter-spacing:0.01em;
+  }
+  .stat .num .unit { font-size:10pt; color:#22356F; font-weight:700; }
+  .stat .cap {
+    font-family:'Cormorant SC',serif;
+    font-size:6.8pt; letter-spacing:0.2em; font-weight:600;
+    color:#2b1d12; margin-top:1.6mm; line-height:1.3;
+  }
+
+  /* ============ CHAPTER SIGNATURE ============ */
+  .chapter-sig {
+    position:absolute; left:14mm; right:14mm;
+    text-align:center;
+  }
+  .chapter-sig .tag {
+    font-family:'Cormorant SC',serif;
+    font-size:8.4pt; letter-spacing:0.38em; color:#9E3717; font-weight:600;
+  }
+  .chapter-sig .num {
+    font-family:'Playfair Display',serif;
+    font-weight:900; font-size:28pt; color:#2b1d12;
+    line-height:1; margin-top:1.2mm; letter-spacing:0.04em;
+  }
+  .chapter-sig .title {
+    font-family:'Playfair Display',serif;
+    font-style:italic; font-size:12pt; color:#22356F;
+    margin-top:1.2mm; font-weight:400;
+  }
+  .chapter-sig .lede {
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic; font-size:9pt; color:#2b1d12;
+    line-height:1.38; margin:2.4mm 10mm 0;
+  }
+  .chapter-sig .flourish {
+    color:#9E3717; font-size:10pt; margin-top:1.8mm; letter-spacing:0.5em;
+  }
+
+  /* ============ ROLE PLATE (woodcut border) ============ */
+  .role-plate {
+    position:absolute; left:14mm; right:14mm;
+    border:1.2px solid #9E3717;
+    padding:3mm 4mm 3.4mm;
+    background:transparent;
+  }
+  .role-plate::before {
+    content:""; position:absolute; inset:1.1mm;
+    border:0.5px dotted #9E3717; pointer-events:none;
+  }
+  .role-plate .head {
+    display:grid; grid-template-columns: 1fr auto; align-items:baseline;
+    gap:3mm; padding-bottom:1.8mm;
+    border-bottom:0.6px solid #9E3717;
+  }
+  .role-plate h3 {
+    margin:0; font-family:'Playfair Display',serif;
+    font-size:13.2pt; font-weight:700; color:#2b1d12; letter-spacing:0.01em;
+  }
+  .role-plate h3 .at { font-style:italic; color:#9E3717; font-weight:400; }
+  .role-plate .meta {
+    font-family:'Cormorant SC',serif;
+    font-size:7.6pt; letter-spacing:0.22em; color:#22356F; font-weight:600;
+  }
+  .role-plate .strap {
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:9pt; color:#22356F; margin:1.8mm 0 2mm; line-height:1.38;
+  }
+
+  /* ============ CHAPTERED BULLETS ============ */
+  ul.chapters {
+    list-style:none; margin:0; padding:0;
+  }
+  ul.chapters li {
+    display:grid;
+    grid-template-columns: 12mm 1fr;
+    gap:2.2mm;
+    padding:1.6mm 0;
+    border-bottom:0.4px dotted rgba(158,55,23,0.45);
+  }
+  ul.chapters li:last-child { border-bottom:0; padding-bottom:0.6mm; }
+  ul.chapters li::before {
+    content: attr(data-ch);
+    font-family:'Playfair Display',serif;
+    font-weight:900; font-size:13pt; color:#9E3717;
+    text-align:center; line-height:1;
+    padding-top:0.6mm;
+    border-right:0.6px solid #9E3717;
+  }
+  ul.chapters li > div {
+    font-family:'Cormorant Garamond',serif;
+    font-size:9.4pt; line-height:1.38; color:#2b1d12;
+  }
+  ul.chapters li b {
+    font-family:'Cormorant SC',serif;
+    font-weight:700; color:#22356F; letter-spacing:0.12em;
+    font-size:8.4pt;
+  }
+  ul.chapters li .hit {
+    color:#9E3717; font-weight:700; font-style:italic;
+  }
+
+  /* ============ COLOPHON ============ */
+  .colophon {
+    position:absolute; bottom:8mm; left:14mm; right:14mm;
+    display:flex; justify-content:space-between; align-items:center;
+    border-top:0.8px solid #9E3717; padding-top:1.6mm;
+    font-family:'Cormorant SC',serif;
+    font-size:7.2pt; letter-spacing:0.28em; color:#22356F; font-weight:600;
+  }
+  .colophon .mid { color:#9E3717; letter-spacing:0.5em; }
+
+  /* ============ PAGE 2 ============ */
+  .part-title {
+    position:absolute; top:18mm; left:14mm; right:14mm;
+    text-align:center;
+  }
+  .part-title .over {
+    font-family:'Cormorant SC',serif;
+    font-size:8.4pt; letter-spacing:0.4em; color:#9E3717; font-weight:600;
+  }
+  .part-title .main {
+    font-family:'Playfair Display',serif; font-weight:900;
+    font-size:22pt; color:#2b1d12; margin-top:1mm; line-height:1;
+  }
+  .part-title .main em { color:#22356F; font-weight:400; }
+  .part-title .sub {
+    font-family:'Playfair Display',serif; font-style:italic;
+    font-size:10pt; color:#22356F; margin-top:1.2mm;
+  }
+
+  /* role cards (short chapters) */
+  .short-roles {
+    position:absolute; top:40mm; left:14mm; right:14mm;
+    display:grid; grid-template-columns: 1fr 1fr; gap:4mm;
+  }
+  .short-role {
+    border:1px solid #9E3717;
+    padding:2.8mm 3mm 3mm;
+    position:relative;
+  }
+  .short-role::before {
+    content:""; position:absolute; inset:0.9mm;
+    border:0.4px dotted #9E3717; pointer-events:none;
+  }
+  .short-role .ch {
+    font-family:'Cormorant SC',serif;
+    font-size:7.4pt; letter-spacing:0.3em; color:#9E3717; font-weight:600;
+  }
+  .short-role h4 {
+    margin:0.6mm 0 0; font-family:'Playfair Display',serif;
+    font-weight:700; font-size:11pt; color:#2b1d12; letter-spacing:0.01em;
+  }
+  .short-role h4 .at { font-style:italic; color:#9E3717; font-weight:400; }
+  .short-role .meta {
+    font-family:'Cormorant SC',serif; font-size:6.8pt;
+    letter-spacing:0.22em; color:#22356F; font-weight:600; margin-top:0.8mm;
+  }
+  .short-role p {
+    margin:1.6mm 0 0; font-family:'Cormorant Garamond',serif;
+    font-size:8.6pt; line-height:1.36; color:#2b1d12;
+  }
+  .short-role p b {
+    font-family:'Cormorant SC',serif; font-weight:700; color:#22356F;
+    letter-spacing:0.1em; font-size:7.8pt;
+  }
+  .short-role .hit { color:#9E3717; font-weight:700; font-style:italic; }
+
+  /* stack catalogue */
+  .stack-wall {
+    position:absolute; top:97mm; left:14mm; right:14mm;
+  }
+  .stack-head {
+    display:flex; align-items:center; gap:3mm; margin-bottom:2mm;
+  }
+  .stack-head .r { flex:1; border-top:0.6px dotted #9E3717; height:0; }
+  .stack-head .t {
+    font-family:'Cormorant SC',serif; font-size:8.4pt;
+    letter-spacing:0.32em; color:#9E3717; font-weight:600;
+  }
+  .stack-grid {
+    display:grid; grid-template-columns: repeat(4,1fr); gap:2.4mm;
+  }
+  .stack-tile {
+    border:0.8px solid #9E3717; padding:2mm 2.2mm 2.2mm; position:relative;
+  }
+  .stack-tile::before {
+    content:""; position:absolute; inset:0.7mm;
+    border:0.3px dotted #9E3717; pointer-events:none;
+  }
+  .stack-tile .cat {
+    font-family:'Cormorant SC',serif; font-weight:700;
+    font-size:7pt; letter-spacing:0.22em; color:#22356F;
+    padding-bottom:1mm; margin-bottom:1mm;
+    border-bottom:0.4px solid #9E3717;
+  }
+  .stack-tile .it {
+    font-family:'Cormorant Garamond',serif;
+    font-size:7.8pt; line-height:1.32; color:#2b1d12;
+  }
+
+  /* projects (works cited) */
+  .works {
+    position:absolute; top:174mm; left:14mm; right:14mm;
+  }
+  .works-grid {
+    display:grid; grid-template-columns: 1fr 1fr; gap:4mm; margin-top:2mm;
+  }
+  .work {
+    border-top:1px solid #9E3717; border-bottom:1px solid #9E3717;
+    padding:2mm 2mm 2.2mm; position:relative;
+  }
+  .work::before {
+    content:""; position:absolute; left:2mm; right:2mm; top:0.8mm;
+    border-top:0.5px dotted #9E3717;
+  }
+  .work::after {
+    content:""; position:absolute; left:2mm; right:2mm; bottom:0.8mm;
+    border-top:0.5px dotted #9E3717;
+  }
+  .work h5 {
+    margin:0; font-family:'Playfair Display',serif;
+    font-weight:700; font-size:10.4pt; color:#2b1d12; letter-spacing:0.01em;
+  }
+  .work h5 em { color:#9E3717; font-weight:400; }
+  .work .url {
+    font-family:'Cormorant SC',serif; font-size:6.8pt;
+    letter-spacing:0.16em; color:#22356F; font-weight:600; margin-top:0.6mm;
+  }
+  .work p {
+    margin:1.2mm 0 1.4mm;
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:8.4pt; line-height:1.32; color:#2b1d12;
+  }
+  .work .nums {
+    display:flex; flex-wrap:wrap; gap:1.2mm 2.8mm;
+    font-family:'Cormorant SC',serif; font-size:6.8pt;
+    letter-spacing:0.14em; color:#22356F; font-weight:600;
+  }
+  .work .nums b { color:#9E3717; font-weight:700; }
+
+  /* education + recognition */
+  .ed-wrap {
+    position:absolute; top:225mm; left:14mm; right:14mm;
+    display:grid; grid-template-columns: 1.15fr 1fr; gap:5mm;
+  }
+  .ed-block .lbl, .rec-block .lbl {
+    font-family:'Cormorant SC',serif; font-size:8pt;
+    letter-spacing:0.32em; color:#9E3717; font-weight:600;
+    border-bottom:0.6px solid #9E3717; padding-bottom:0.8mm;
+    margin-bottom:1.6mm;
+  }
+  .ed-item { margin-bottom:1.4mm; }
+  .ed-item .t {
+    font-family:'Playfair Display',serif; font-weight:700;
+    font-size:9.6pt; color:#2b1d12; letter-spacing:0.01em;
+  }
+  .ed-item .t em { color:#9E3717; font-weight:400; }
+  .ed-item .d {
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:8.4pt; color:#22356F; margin-top:0.3mm;
+  }
+  .rec-block p {
+    margin:0 0 1.4mm; font-family:'Cormorant Garamond',serif;
+    font-size:8.6pt; line-height:1.34; color:#2b1d12;
+  }
+  .rec-block p b {
+    font-family:'Cormorant SC',serif; font-weight:700;
+    color:#22356F; letter-spacing:0.1em; font-size:7.6pt;
+  }
+  .rec-block p .hit { color:#9E3717; font-weight:700; font-style:italic; }
+
+  /* finis */
+  .finis {
+    position:absolute; bottom:8mm; left:14mm; right:14mm;
+    text-align:center;
+    font-family:'Cormorant SC',serif; font-size:8pt;
+    letter-spacing:0.5em; color:#9E3717; font-weight:600;
+  }
+  .finis .mark {
+    display:block; margin-top:1.2mm;
+    font-family:'Playfair Display',serif; font-style:italic;
+    font-size:8.4pt; letter-spacing:0.12em; color:#22356F; font-weight:400;
+  }
+
+  /* margin roman numerals for page */
+  .page-numeral {
+    position:absolute; bottom:8mm; right:10mm;
+    font-family:'Playfair Display',serif; font-weight:900;
+    font-size:10pt; color:#9E3717; letter-spacing:0.08em;
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- ============================ PAGE 1 ============================ -->
+  <article class="resume-page">
+
+    <header class="masthead">
+      <div class="inner">
+        <span>FIRST EDITION <span class="fleur">✦</span> LIMITED PRESS</span>
+        <span class="fleur">❦ &nbsp; ❦ &nbsp; ❦</span>
+        <span>VOL. MMXXV &nbsp;·&nbsp; NO. I</span>
+      </div>
+    </header>
+
+    <section class="title-block">
+      <div class="pretitle">A JAVA TRAVEL DIARY &nbsp;·&nbsp; IN TWO ACTS</div>
+      <div class="byline">being the working papers of one</div>
+      <h1 class="resume-name">Prakhar Shekhar <span class="amp">&amp;</span> Parthasarthi</h1>
+
+      <div class="underline-orn">
+        <span class="rule"></span>
+        <span class="star">✦</span>
+        <span class="rule dot"></span>
+        <span class="star">❦</span>
+        <span class="rule dot"></span>
+        <span class="star">✦</span>
+        <span class="rule"></span>
+      </div>
+
+      <div class="kicker">
+        SENIOR SOFTWARE ENGINEER
+        <span class="sep">·</span> JAVA
+        <span class="sep">·</span> DISTRIBUTED SYSTEMS
+        <span class="sep">·</span> AWS
+      </div>
+
+      <div class="contact-row">
+        prakhar.mnnit.2022@gmail.com
+        <span class="sep">✦</span> github.com/praxstack
+        <span class="sep">✦</span> linkedin.com/in/prakharshekhar
+        <br>
+        Bengaluru, IN
+        <span class="sep">✦</span> <em>open to Senior SWE postings &amp; correspondence</em>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <div class="num">−47<span class="unit">%</span></div>
+        <div class="cap">p90 latency, pricing fan-out<br>1.10 s → 0.59 s</div>
+      </div>
+      <div class="stat">
+        <div class="num">+33<span class="unit">%</span></div>
+        <div class="cap">traveler conversion<br>post re-architecture</div>
+      </div>
+      <div class="stat">
+        <div class="num">−43<span class="unit">bps</span></div>
+        <div class="cap">cost-per-transaction<br>payments ledger</div>
+      </div>
+      <div class="stat">
+        <div class="num">20→5</div>
+        <div class="cap">on-call pages per shift<br>after guardrails</div>
+      </div>
+    </section>
+
+    <section class="chapter-sig" style="top:127mm;">
+      <div class="tag">CHAPTER &nbsp;·&nbsp; I</div>
+      <div class="num">I.</div>
+      <div class="title">The Year His Pagers Went Quiet</div>
+      <div class="lede">
+        In which the narrator, appointed custodian of four Java microservices along the booking
+        funnel, teaches a pricing engine to breathe, a payments ledger to forget its double-counts,
+        and a weekly on-call roster to sleep through the night.
+      </div>
+      <div class="flourish">✦ &nbsp; ❦ &nbsp; ✦</div>
+    </section>
+
+    <section class="role-plate" style="top:173mm;">
+      <div class="head">
+        <h3>S D E &nbsp; II &nbsp; <span class="at">— at</span> Amazon Travel <span class="at">·</span> Hotels, Flights &amp; Insurance</h3>
+        <div class="meta">JUL 2023 &nbsp;·&nbsp; SEP 2025 &nbsp;·&nbsp; BENGALURU</div>
+      </div>
+      <div class="strap">
+        Owner of four Java microservices across the booking funnel; principal engineer on the
+        pricing, payments, deployment, and on-call fronts of a global traveler platform.
+      </div>
+
+      <ul class="chapters">
+        <li data-ch="I">
+          <div>
+            <b>THE PRICING FAN-OUT.</b> Re-architected the traveler's pricing call
+            upon <i>CompletableFuture.allOf</i> with bulkhead <i>ExecutorService</i> pools —
+            cut p90 from <span class="hit">1.10 s to 0.59 s (−47%)</span> and lifted
+            traveler conversion by <span class="hit">+33%</span>.
+          </div>
+        </li>
+        <li data-ch="II">
+          <div>
+            <b>THE IDEMPOTENT LEDGER.</b> Wrote a payment webhook upon SQS and Step Functions,
+            keyed by DynamoDB dedupe entries — reclaimed <span class="hit">−43 bps CPT</span>
+            and silenced the double-capture incidents for good.
+          </div>
+        </li>
+        <li data-ch="III">
+          <div>
+            <b>THE CDK REWRITE.</b> Rewrote six legacy pipelines in Java CDK —
+            <span class="hit">halved rollbacks</span>, and pulled MTTR down by
+            <span class="hit">a full day</span>.
+          </div>
+        </li>
+        <li data-ch="IV">
+          <div>
+            <b>THE SILENCED PAGER.</b> Dragged the weekly on-call from <span class="hit">20+ pages to ~5</span>,
+            config-hygiene from 5–6 → 0 through automated guardrails; resolved
+            <span class="hit">150+ incidents</span>, and stopped ~30 bps of funnel-churn
+            on insurance attach.
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="colophon">
+      <span>PRAKHAR S. PARTHASARTHI</span>
+      <span class="mid">✦ &nbsp; ✦ &nbsp; ✦</span>
+      <span>CONT'D — CHAPTER II OVERLEAF</span>
+    </footer>
+    <div class="page-numeral">— I —</div>
+  </article>
+
+  <!-- ============================ PAGE 2 ============================ -->
+  <article class="resume-page">
+
+    <header class="masthead">
+      <div class="inner">
+        <span>ACT II &nbsp;·&nbsp; THE APPRENTICE YEARS</span>
+        <span class="fleur">❦ &nbsp; ❦ &nbsp; ❦</span>
+        <span>APPENDICES &nbsp;·&nbsp; WORKS &nbsp;·&nbsp; FINIS</span>
+      </div>
+    </header>
+
+    <section class="part-title">
+      <div class="over">PART THE SECOND</div>
+      <div class="main">Act I <em>·</em> The Apprentice Years</div>
+      <div class="sub">being the earlier chapters, the catalogue of instruments, and two works cited</div>
+    </section>
+
+    <section class="short-roles">
+      <div class="short-role">
+        <div class="ch">CHAPTER &nbsp;·&nbsp; V</div>
+        <h4>S D E &nbsp; I &nbsp; <span class="at">— at</span> Amazon Travel</h4>
+        <div class="meta">JUL 2022 &nbsp;·&nbsp; JUL 2023</div>
+        <p>
+          <b>THE FIRST COMMISSION.</b> Authored REST controllers and <i>@Repository</i>
+          DynamoDB DAOs upon Spring DI; steered an auto-insurance renewal flow to
+          <span class="hit">+60% uptake</span>. Held the unit-test line above
+          <span class="hit">80% coverage</span> with JUnit 5 and JaCoCo gates in CI.
+        </p>
+      </div>
+      <div class="short-role">
+        <div class="ch">CHAPTER &nbsp;·&nbsp; VI</div>
+        <h4>S D E &nbsp; Intern &nbsp; <span class="at">— at</span> Amazon Travel</h4>
+        <div class="meta">MAY 2021 &nbsp;·&nbsp; FEB 2022</div>
+        <p>
+          <b>THE APPRENTICE PAPERS.</b> Saw a GraphQL façade retired into pure Java;
+          engineered a <i>One-Click Renewal</i> upon Guice DI; kept the test ledger
+          above <span class="hit">90% coverage</span> throughout.
+        </p>
+      </div>
+    </section>
+
+    <section class="stack-wall">
+      <div class="stack-head">
+        <span class="r"></span>
+        <span class="t">✦ &nbsp; THE CATALOGUE OF INSTRUMENTS &nbsp; ✦</span>
+        <span class="r"></span>
+      </div>
+      <div class="stack-grid">
+        <div class="stack-tile">
+          <div class="cat">JVM</div>
+          <div class="it">Java 17, Spring Boot, Spring MVC, Spring DI, Guice, Maven, Gradle</div>
+        </div>
+        <div class="stack-tile">
+          <div class="cat">CONCURRENCY</div>
+          <div class="it">ExecutorService, CompletableFuture, ConcurrentHashMap, ScheduledExecutor, bulkheads</div>
+        </div>
+        <div class="stack-tile">
+          <div class="cat">AWS</div>
+          <div class="it">Lambda, DynamoDB, SQS, Step Functions, API Gateway, AppSync, CloudWatch, ECS, CDK (Java)</div>
+        </div>
+        <div class="stack-tile">
+          <div class="cat">QUALITY</div>
+          <div class="it">JUnit 5, Mockito, JaCoCo, integration harnesses, contract tests</div>
+        </div>
+        <div class="stack-tile">
+          <div class="cat">FRONT-END</div>
+          <div class="it">React (SSR &amp; CSR), Redux, TypeScript, Vitest</div>
+        </div>
+        <div class="stack-tile">
+          <div class="cat">DATA</div>
+          <div class="it">DynamoDB single-table, idempotency keys, dedupe queues</div>
+        </div>
+        <div class="stack-tile">
+          <div class="cat">OPS</div>
+          <div class="it">runbooks, alarm hygiene, SEV pages, on-call rotations</div>
+        </div>
+        <div class="stack-tile">
+          <div class="cat">METHOD</div>
+          <div class="it">trunk-based, code-review discipline, postmortems, SLO-first</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="works">
+      <div class="stack-head">
+        <span class="r"></span>
+        <span class="t">✦ &nbsp; WORKS CITED &nbsp; ✦</span>
+        <span class="r"></span>
+      </div>
+      <div class="works-grid">
+        <div class="work">
+          <h5>Redis Server <em>· in Java</em></h5>
+          <div class="url">github.com/praxstack/redis-server-java</div>
+          <p>
+            A from-scratch study of the RESP2 protocol, event-loop I/O, and a hand-rolled
+            hashmap engine — built in the evenings, benchmarked in the small hours.
+          </p>
+          <div class="nums">
+            <span>SET <b>154k rps</b></span>
+            <span>GET <b>195k rps</b></span>
+            <span>INCR <b>128k rps</b></span>
+            <span><b>42</b> TESTS</span>
+            <span>~<b>78%</b> OF C IMPL</span>
+          </div>
+        </div>
+        <div class="work">
+          <h5>Markdown Viewer <em>· Pro</em></h5>
+          <div class="url">github.com/praxstack/markdown-viewer-pro</div>
+          <p>
+            A zero-config reader with a live plugin architecture and a keyboard-first
+            command palette, carried by a lean gzipped payload and no runtime baggage.
+          </p>
+          <div class="nums">
+            <span><b>155+</b> VITEST TESTS</span>
+            <span><b>&lt;100KB</b> GZIPPED</span>
+            <span><b>ZERO</b> RUNTIME DEPS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ed-wrap">
+      <div class="ed-block">
+        <div class="lbl">EDUCATION &nbsp;·&nbsp; COLOPHON</div>
+        <div class="ed-item">
+          <div class="t">M.C.A., Computer Science <em>— MNNIT Prayagraj</em></div>
+          <div class="d">2019 — 2022 &nbsp;·&nbsp; grade-book 9.25 / 10</div>
+        </div>
+        <div class="ed-item">
+          <div class="t">B.Sc. (Hons.), Computer Science <em>— Bhaskaracharya College, DU</em></div>
+          <div class="d">2015 — 2018</div>
+        </div>
+      </div>
+      <div class="rec-block">
+        <div class="lbl">RECOGNITION &nbsp;·&nbsp; POSTSCRIPT</div>
+        <p>
+          <b>AMAZON PAY MERCHANTS — CATEGORIES CHAMPION, 2023.</b>
+          Commended for stewardship of the merchant-category domain.
+        </p>
+        <p>
+          <b>TRUST-BUSTER SPRINTS.</b> Resolved <span class="hit">100+ trust-buster bugs</span>
+          across travel quality sprints — small cuts, quietly healed.
+        </p>
+      </div>
+    </section>
+
+    <footer class="finis">
+      —— &nbsp; F I N I S &nbsp; ——
+      <span class="mark">set in Playfair &amp; Cormorant Garamond · printed upon ochre paper</span>
+    </footer>
+    <div class="page-numeral">— II —</div>
+  </article>
+
+</div>
+</body>
+</html>
