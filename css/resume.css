@@ -1,73 +1,86 @@
 /* =========================================================================
-   Prax Resume — fused: editorial serif name + Inter body + JetBrains code.
-   Rust accent on ink, single-rule dividers, tabular figures, chip tags.
+   Prax Resume v2 — editorial rehaul.
+   Design pass via ui-ux-pro-max: Classic Elegant (serif display + sans body
+   + mono labels). Rust accent reserved for dates + metrics only.
+   Section titles as newspaper eyebrows. Flat project cards. 4/8 spacing.
    ========================================================================= */
 
 :root {
-  --bg:            #FFFFFF;
-  --bg-soft:       #FAF7F2;       /* warm paper hint */
-  --bg-chip:       #F2ECE1;       /* chip / code background */
+  /* Paper & ink — warm neutral, editorial contrast */
+  --paper:          #FFFFFF;
+  --paper-soft:     #FAF7F2;       /* page background for screen */
+  --paper-chip:     #F2ECE1;       /* code / inline chip */
 
-  --ink:           #0B1524;       /* primary text */
-  --ink-body:      #2A3647;       /* body */
-  --ink-muted:     #5A6472;       /* metadata */
-  --ink-subtle:    #8A8F98;       /* dates, borders */
+  /* Ink ramp */
+  --ink:            #0B1524;       /* primary text, name, role title */
+  --ink-body:       #2A3647;       /* body copy */
+  --ink-muted:      #5A6472;       /* company, meta */
+  --ink-subtle:     #8A8F98;       /* captions, separators */
 
-  --rule:          #DDD5C6;       /* dividers */
-  --rule-soft:     #EADFCD;
+  /* Rules */
+  --rule:           #D8D0C0;
+  --rule-hair:      #E8E1D1;
 
-  --accent:        #8C2B12;       /* rust */
-  --accent-soft:   #F2E2D9;       /* chip tint */
+  /* Accent — rust, reserved for dates, metrics, micro-marks only */
+  --accent:         #8C2B12;
+  --accent-soft:    #F2E2D9;       /* metric pill background */
 
-  --serif:    "IBM Plex Serif", Georgia, "Times New Roman", serif;
-  --sans:     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-  --mono:     "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  /* Type system */
+  --serif:   "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --sans:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Spacing scale — 4/8 rhythm */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
 }
 
 /* ---------- Base ---------- */
 
-html {
-  background: var(--bg-soft);
-}
+html { background: var(--paper-soft); }
 
 body {
-  background: var(--bg-soft);
+  background: var(--paper-soft);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 10pt;
-  line-height: 1.46;
+  line-height: 1.5;
   font-feature-settings: "cv11", "ss01", "ss03";
   font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Screen: centered sheet with soft shadow; Print reverts to plain */
+/* Screen sheet */
 @media screen {
-  body { padding: 28px 16px; }
+  body { padding: 32px 16px; }
   .page {
     max-width: 210mm;
     margin: 0 auto;
-    padding: 13mm 15mm;
-    background: var(--bg);
-    box-shadow: 0 1px 2px rgba(11, 21, 36, .04), 0 14px 48px rgba(11, 21, 36, .10);
+    padding: 16mm 18mm;
+    background: var(--paper);
+    box-shadow: 0 1px 2px rgba(11, 21, 36, .04), 0 18px 56px rgba(11, 21, 36, .10);
     border-radius: 2px;
   }
 }
 
-/* ---------- Masthead ---------- */
+/* ---------- Masthead — newspaper nameplate ---------- */
 
 .masthead {
-  padding-bottom: 11px;
-  margin-bottom: 15px;
+  padding-bottom: var(--s-3);
+  margin-bottom: var(--s-5);
   border-bottom: 1px solid var(--ink);
   position: relative;
 }
-/* Rust tab abutting the bottom rule — single divider effect, no doubled line */
 .masthead::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -1px;
-  width: 80px;
+  bottom: -2px;
+  width: 56px;
   height: 3px;
   background: var(--accent);
 }
@@ -75,109 +88,124 @@ body {
 .name {
   font-family: var(--serif);
   font-weight: 600;
-  font-size: 25pt;
-  line-height: 1.04;
-  letter-spacing: -0.01em;
+  font-size: 26pt;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
   color: var(--ink);
-  margin-bottom: 4px;
+  margin-bottom: var(--s-2);
 }
 
 .tagline {
+  font-family: var(--sans);
   font-size: 10pt;
   font-weight: 500;
   color: var(--ink-body);
-  letter-spacing: -0.005em;
-  margin-bottom: 8px;
+  letter-spacing: -0.003em;
+  margin-bottom: var(--s-3);
 }
 
 .contact {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 16px;
-  font-size: 9pt;
+  gap: var(--s-1) var(--s-4);
+  font-family: var(--mono);
+  font-size: 8.4pt;
+  letter-spacing: 0.01em;
   color: var(--ink-muted);
 }
-
-.contact li {
-  position: relative;
-}
+.contact li { position: relative; }
 .contact li + li::before {
   content: "·";
   color: var(--ink-subtle);
-  margin-right: 16px;
-  margin-left: -12px;
+  margin-right: var(--s-4);
+  margin-left: calc(-1 * var(--s-3));
   display: inline-block;
 }
-
 .contact a {
   color: var(--ink-body);
   border-bottom: 1px solid transparent;
-  transition: color 120ms ease, border-color 120ms ease;
+  transition: color 150ms ease, border-color 150ms ease;
 }
 .contact a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
 /* ---------- Block primitives ---------- */
 
-.block { margin-bottom: 18px; }
+.block { margin-bottom: var(--s-5); }
 .block:last-child { margin-bottom: 0; }
 
-/* Section heading — accent pill on the left, subtle warm band, thin rule under */
+/* Section title — newspaper eyebrow: small mono label + hairline rule */
 .block__title {
-  font-family: var(--sans);
-  font-size: 9pt;
-  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-family: var(--mono);
+  font-size: 7.8pt;
+  font-weight: 500;
   color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  padding: 5px 10px 6px 12px;
-  margin-bottom: 12px;
-  background: linear-gradient(90deg, var(--accent-soft) 0%, var(--accent-soft) 55%, transparent 100%);
-  border-left: 3px solid var(--accent);
-  border-bottom: 1px solid var(--rule);
-  border-radius: 0 2px 2px 0;
+  letter-spacing: 0.22em;
+  padding: 0;
+  margin-bottom: var(--s-3);
+  background: none;
+  border: none;
+  line-height: 1;
+}
+.block__title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+  display: block;
 }
 
 /* ---------- Summary ---------- */
 
 .summary {
   font-size: 10pt;
-  line-height: 1.54;
+  line-height: 1.56;
   color: var(--ink-body);
 }
 .summary strong { color: var(--ink); font-weight: 600; }
 
 /* ---------- Role ---------- */
 
-.role { margin-bottom: 12px; }
+.role { margin-bottom: var(--s-4); }
 .role:last-child { margin-bottom: 0; }
 
 .role__head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 12px;
+  gap: var(--s-3);
+  margin-bottom: 2px;
 }
 
 .role__title {
   font-family: var(--sans);
-  font-size: 10.6pt;
+  font-size: 11pt;
   font-weight: 600;
   color: var(--ink);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.012em;
 }
 
+/* Dates — mono, rust — the one visible timeline marker */
 .role__dates {
-  font-size: 9pt;
-  color: var(--ink-muted);
+  font-family: var(--mono);
+  font-size: 8.6pt;
+  font-weight: 500;
+  color: var(--accent);
   font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
 
+/* Company — ink, no more rust */
 .role__company {
+  font-family: var(--sans);
   font-size: 9.6pt;
   font-weight: 500;
-  color: var(--accent);
-  margin-bottom: 4px;
+  color: var(--ink-body);
+  margin-bottom: var(--s-2);
 }
 .role__loc {
   color: var(--ink-subtle);
@@ -186,24 +214,22 @@ body {
 
 /* ---------- Bullets ---------- */
 
-.bullets { margin-top: 3px; }
-
+.bullets { margin-top: var(--s-1); }
 .bullets li {
   position: relative;
-  padding-left: 14px;
-  margin-bottom: 3px;
+  padding-left: var(--s-4);
+  margin-bottom: var(--s-1);
   font-size: 9.6pt;
-  line-height: 1.5;
+  line-height: 1.52;
   color: var(--ink-body);
 }
 .bullets li:last-child { margin-bottom: 0; }
 
-/* Diamond bullet in accent */
 .bullets li::before {
   content: "";
   position: absolute;
   left: 2px;
-  top: 0.62em;
+  top: 0.66em;
   width: 4px;
   height: 4px;
   background: var(--accent);
@@ -218,95 +244,107 @@ body {
   color: var(--ink);
 }
 
-/* Metric highlight */
+/* Metric pill — the hero datum. Subtle but isolated. */
 .metric {
   color: var(--ink);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
+  background: var(--accent-soft);
+  padding: 0 4px;
+  border-radius: 2px;
   white-space: nowrap;
 }
 
 /* Inline code */
 code {
   font-family: var(--mono);
-  font-size: 0.85em;
-  background: var(--bg-chip);
+  font-size: 0.86em;
+  background: var(--paper-chip);
   color: var(--ink);
   padding: 0.5px 4px;
-  border-radius: 3px;
-  border: 1px solid var(--rule-soft);
+  border-radius: 2px;
+  border: 1px solid var(--rule-hair);
   font-weight: 500;
   letter-spacing: -0.01em;
 }
 
-/* ---------- Projects ---------- */
+/* ---------- Projects — flat editorial cards ---------- */
 
 .projects {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: var(--s-4);
 }
 
 .project {
-  padding: 11px 13px;
-  background: var(--bg-soft);
-  border: 1px solid var(--rule-soft);
-  border-left: 2px solid var(--accent);
-  border-radius: 4px;
+  padding: var(--s-3) 0 0 0;
+  border-top: 1px solid var(--ink);
+  position: relative;
+}
+.project::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--accent);
 }
 
 .project__title {
   font-family: var(--serif);
-  font-size: 10.8pt;
+  font-size: 11pt;
   font-weight: 600;
   color: var(--ink);
   line-height: 1.25;
-  margin-bottom: 1px;
+  margin-bottom: var(--s-2);
+  letter-spacing: -0.01em;
 }
 
 .project__repo {
   font-family: var(--mono);
-  font-size: 7.9pt;
+  font-size: 7.8pt;
   color: var(--accent);
-  margin-bottom: 6px;
+  margin-bottom: var(--s-2);
   word-break: break-all;
+  letter-spacing: 0.01em;
 }
 .project__repo a { color: var(--accent); }
 
 .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
-  margin-bottom: 7px;
+  gap: var(--s-1);
+  margin-bottom: var(--s-2);
 }
 .chips li {
   font-family: var(--mono);
-  font-size: 7.3pt;
-  padding: 0.5px 6px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  border-radius: 3px;
+  font-size: 7pt;
+  padding: 1px 6px;
+  background: transparent;
+  color: var(--ink-muted);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
   line-height: 1.5;
+  text-transform: lowercase;
 }
 
 .project__desc {
-  font-size: 9.1pt;
-  line-height: 1.46;
+  font-size: 9pt;
+  line-height: 1.5;
   color: var(--ink-body);
-  margin-bottom: 6px;
+  margin-bottom: var(--s-2);
 }
-.project__desc code {
-  font-size: 0.88em;
-}
+.project__desc code { font-size: 0.88em; }
 
 .project__metrics {
   font-size: 8.6pt;
-  line-height: 1.42;
+  line-height: 1.45;
   color: var(--ink-muted);
-  padding-top: 5px;
-  border-top: 1px solid var(--rule-soft);
+  padding-top: var(--s-2);
+  border-top: 1px solid var(--rule-hair);
 }
 .project__metrics strong { color: var(--ink); font-weight: 600; }
 
@@ -314,20 +352,22 @@ code {
 
 .skills {
   display: grid;
-  grid-template-columns: 108px 1fr;
-  column-gap: 14px;
-  row-gap: 5px;
-  font-size: 9.5pt;
-  line-height: 1.46;
+  grid-template-columns: 120px 1fr;
+  column-gap: var(--s-4);
+  row-gap: var(--s-2);
+  font-size: 9.6pt;
+  line-height: 1.5;
 }
 .skills dt {
-  font-weight: 600;
-  font-size: 9.2pt;
+  font-family: var(--mono);
+  font-size: 8.4pt;
+  font-weight: 500;
   color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding-top: 2px;
 }
-.skills dd {
-  color: var(--ink-body);
-}
+.skills dd { color: var(--ink-body); }
 .skills dd code { font-size: 0.88em; padding: 0 4px; }
 .skills dd strong { color: var(--ink); font-weight: 600; }
 
@@ -337,67 +377,59 @@ code {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 12px;
-  margin-bottom: 5px;
-  font-size: 9.5pt;
-  line-height: 1.46;
+  gap: var(--s-3);
+  margin-bottom: var(--s-2);
+  font-size: 9.6pt;
+  line-height: 1.5;
 }
 .row:last-child { margin-bottom: 0; }
 
-.row__left {
-  color: var(--ink-body);
-  flex: 1;
-}
+.row__left { color: var(--ink-body); flex: 1; }
 .row__left strong { color: var(--ink); font-weight: 600; }
 
 .row__right {
-  font-size: 9pt;
-  color: var(--ink-muted);
+  font-family: var(--mono);
+  font-size: 8.6pt;
+  font-weight: 500;
+  color: var(--accent);
   font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
 
 .gpa {
   display: inline-block;
   font-family: var(--mono);
-  font-size: 8.2pt;
+  font-size: 8pt;
   font-weight: 500;
   color: var(--accent);
   background: var(--accent-soft);
-  border-radius: 3px;
+  border-radius: 2px;
   padding: 0 5px;
-  margin-left: 6px;
-  letter-spacing: -0.01em;
-}
-
-/* ---------- Split: Education + Awards side-by-side ---------- */
-
-.split {
-  display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 24px;
-}
-.split__col .block__title {
-  margin-top: 0;
+  margin-left: var(--s-2);
+  letter-spacing: 0;
 }
 
 /* ---------- Responsive (screen only) ---------- */
 
 @media (max-width: 820px) {
-  body { padding: 16px 12px; font-size: 14px; line-height: 1.55; }
-  .page { padding: 18px 16px; border-radius: 0; box-shadow: none; }
+  body { padding: 16px 12px; font-size: 14px; line-height: 1.58; }
+  .page { padding: 20px 16px; border-radius: 0; box-shadow: none; }
 
   .name { font-size: 26pt; }
   .tagline { font-size: 11pt; }
-  .contact { font-size: 11pt; gap: 4px 12px; }
+  .contact { font-size: 10pt; gap: 4px 12px; }
   .contact li + li::before { margin-right: 12px; margin-left: -10px; }
 
   .projects { grid-template-columns: 1fr; }
-  .skills { grid-template-columns: 1fr; row-gap: 2px; }
-  .skills dt { border-bottom: 1px solid var(--rule-soft); padding-bottom: 2px; margin-top: 6px; }
+  .skills { grid-template-columns: 1fr; row-gap: 4px; }
+  .skills dt {
+    border-bottom: 1px solid var(--rule-hair);
+    padding-bottom: 2px;
+    margin-top: var(--s-3);
+  }
   .skills dt:first-child { margin-top: 0; }
 
   .role__head { flex-direction: column; gap: 2px; align-items: flex-start; }
   .row { flex-direction: column; gap: 2px; }
-  .split { grid-template-columns: 1fr; gap: 16px; }
 }
