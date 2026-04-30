@@ -1,21 +1,30 @@
 #!/usr/bin/env node
 /**
- * Build resume.pdf from index.html via headless Chromium.
- *   npm run pdf
+ * Build a PDF from an HTML resume via headless Chromium.
+ *
+ *   node scripts/build-pdf.mjs                                # default: index.html → resume.pdf
+ *   node scripts/build-pdf.mjs <input.html> [output.pdf]      # custom input / output
+ *   npm run pdf                                               # shortcut for default
  */
 
 import { chromium } from "playwright";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { dirname, resolve } from "node:path";
+import { dirname, resolve, basename, extname } from "node:path";
 import { existsSync } from "node:fs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
-const htmlPath = resolve(root, "index.html");
-const outPath = resolve(root, "resume.pdf");
+
+const [, , inputArg, outputArg] = process.argv;
+
+const htmlPath = resolve(root, inputArg ?? "index.html");
+const outPath = resolve(
+  root,
+  outputArg ?? `${basename(htmlPath, extname(htmlPath))}.pdf`
+);
 
 if (!existsSync(htmlPath)) {
-  console.error(`✗ index.html not found at ${htmlPath}`);
+  console.error(`✗ HTML not found at ${htmlPath}`);
   process.exit(1);
 }
 

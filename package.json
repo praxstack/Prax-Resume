@@ -1,10 +1,12 @@
 {
   "name": "prax-resume",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
-  "description": "Resume — Prakhar Shekhar Parthasarthi. Static HTML + CSS with headless PDF export.",
+  "description": "Resume — Prakhar Shekhar Parthasarthi. Static HTML + CSS with headless PDF export. Ships both a signed resume and an anonymized Ex-SDE variant.",
   "scripts": {
-    "pdf": "node scripts/build-pdf.mjs",
+    "pdf": "node scripts/build-pdf.mjs \"Prakhar Shekhar Parthasarthi Resume Apr 2026.html\" \"Prakhar Shekhar Parthasarthi Resume Apr 2026.pdf\"",
+    "pdf:anon": "node scripts/build-pdf.mjs \"Ex-SDE Resume.html\" \"Ex-SDE Resume.pdf\"",
+    "pdf:all": "npm run pdf && npm run pdf:anon",
     "serve": "python3 -m http.server 5173"
   },
   "devDependencies": {
