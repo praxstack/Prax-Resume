@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UnifyApps Sr. FDSE — Outreach Playbook · Prakhar S. Parthasarthi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, figure, table { margin: 0; padding: 0; }
+    ul, ol { list-style: none; }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+
+    :root {
+      --paper:       #FFFFFF;
+      --paper-soft:  #FAF7F2;
+      --paper-chip:  #F2ECE1;
+      --ink:         #0B1524;
+      --ink-body:    #2A3647;
+      --ink-muted:   #5A6472;
+      --ink-subtle:  #8A8F98;
+      --rule:        #D8D0C0;
+      --rule-hair:   #E8E1D1;
+      --accent:      #8C2B12;
+      --accent-soft: #F2E2D9;
+      --good:        #1F6B3E;
+      --good-soft:   #DCEDE2;
+      --bad:         #8C1F1F;
+      --bad-soft:    #F2DADA;
+      --warn:        #8A5A00;
+      --warn-soft:   #F4E9CC;
+      --serif:  "IBM Plex Serif", Georgia, "Times New Roman", serif;
+      --sans:   "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      --mono:   "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    html { background: var(--paper-soft); }
+    body {
+      background: var(--paper-soft);
+      color: var(--ink-body);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      font-feature-settings: "cv11", "ss01", "ss03";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    .shell {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 56px 32px 96px;
+    }
+
+    /* Top nav */
+    .topnav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ink-muted);
+      margin-bottom: 56px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .topnav__brand { color: var(--ink); font-weight: 600; }
+    .topnav__links { display: flex; gap: 20px; }
+    .topnav__links a {
+      color: var(--ink-muted);
+      transition: color 150ms ease;
+    }
+    .topnav__links a:hover { color: var(--accent); }
+    .topnav__links a.active { color: var(--accent); }
+
+    /* Masthead */
+    .masthead { margin-bottom: 48px; }
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: 2px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h1.title {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 38px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 19px;
+      line-height: 1.45;
+      color: var(--ink-muted);
+      margin-bottom: 8px;
+    }
+    .meta {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-subtle);
+      letter-spacing: 0.04em;
+      margin-top: 12px;
+    }
+    .meta span + span::before { content: " · "; color: var(--rule); margin: 0 8px; }
+
+    /* Lede */
+    .lede {
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--ink-body);
+      padding: 20px 24px;
+      border-left: 3px solid var(--accent);
+      background: var(--paper);
+      border-radius: 0 4px 4px 0;
+      margin: 32px 0 48px;
+    }
+    .lede strong { color: var(--ink); font-weight: 600; }
+    .lede + .lede { margin-top: -32px; }
+
+    /* H2 — section eyebrow + rule */
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      margin-top: 56px;
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+    h2::before {
+      content: "§";
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--ink-subtle);
+      letter-spacing: 0;
+      font-size: 14px;
+    }
+    h2::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    h4 {
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+
+    p { margin-bottom: 14px; color: var(--ink-body); }
+    p strong { color: var(--ink); font-weight: 600; }
+    p em { font-family: var(--serif); font-style: italic; color: var(--ink-muted); }
+
+    a.link { color: var(--accent); border-bottom: 1px solid var(--accent-soft); }
+    a.link:hover { border-bottom-color: var(--accent); }
+
+    /* Lists */
+    ul.bullets, ol.bullets {
+      margin: 12px 0 18px;
+      padding-left: 0;
+    }
+    ul.bullets li, ol.bullets li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 8px;
+      color: var(--ink-body);
+    }
+    ul.bullets li::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 0.65em;
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      transform: rotate(45deg);
+    }
+    ol.bullets {
+      counter-reset: ol;
+    }
+    ol.bullets li {
+      counter-increment: ol;
+    }
+    ol.bullets li::before {
+      content: counter(ol) ".";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    li strong { color: var(--ink); font-weight: 600; }
+    li em { font-family: var(--serif); font-style: italic; color: var(--ink-muted); }
+
+    /* Inline code */
+    code {
+      font-family: var(--mono);
+      font-size: 0.88em;
+      background: var(--paper-chip);
+      color: var(--ink);
+      padding: 1px 6px;
+      border-radius: 2px;
+      border: 1px solid var(--rule-hair);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    /* Pre / code blocks */
+    pre {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.55;
+      background: var(--ink);
+      color: #E8E1D1;
+      padding: 20px 24px;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 16px 0 24px;
+      border: 1px solid var(--ink);
+    }
+    pre code {
+      background: none;
+      border: none;
+      color: inherit;
+      padding: 0;
+      font-size: inherit;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 16px 0 28px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    thead { background: var(--paper-chip); }
+    th, td {
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--rule-hair);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    th {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    td { color: var(--ink-body); }
+    td strong { color: var(--ink); font-weight: 600; }
+    td code { font-size: 12px; }
+
+    /* Pills */
+    .pill {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+    .pill--accent { background: var(--accent-soft); color: var(--accent); }
+    .pill--good   { background: var(--good-soft); color: var(--good); }
+    .pill--bad    { background: var(--bad-soft); color: var(--bad); }
+    .pill--warn   { background: var(--warn-soft); color: var(--warn); }
+    .pill--mute   { background: var(--paper-chip); color: var(--ink-muted); }
+
+    /* Blockquote — used for templates */
+    blockquote {
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink-body);
+      padding: 18px 24px;
+      border-left: 2px solid var(--rule);
+      background: var(--paper);
+      margin: 14px 0 20px;
+      border-radius: 0 3px 3px 0;
+      white-space: pre-wrap;
+    }
+    blockquote strong { color: var(--ink); font-weight: 600; }
+    blockquote em { font-style: italic; color: var(--ink-muted); }
+
+    /* Email/DM template card */
+    .template {
+      background: var(--paper);
+      border: 1px solid var(--rule-hair);
+      border-radius: 4px;
+      padding: 0;
+      margin: 18px 0 28px;
+      overflow: hidden;
+    }
+    .template__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 18px;
+      background: var(--paper-chip);
+      border-bottom: 1px solid var(--rule-hair);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .template__head strong { color: var(--ink); font-weight: 600; }
+    .template__body {
+      padding: 18px 22px;
+      font-family: var(--serif);
+      font-size: 15.5px;
+      line-height: 1.65;
+      color: var(--ink-body);
+      white-space: pre-wrap;
+    }
+    .template__body strong { color: var(--ink); font-weight: 600; font-family: var(--sans); }
+
+    /* Callouts */
+    .callout {
+      padding: 16px 22px;
+      border-radius: 4px;
+      margin: 18px 0;
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+    .callout--accent { background: var(--accent-soft); border-left: 3px solid var(--accent); }
+    .callout--good   { background: var(--good-soft);   border-left: 3px solid var(--good); }
+    .callout--warn   { background: var(--warn-soft);   border-left: 3px solid var(--warn); }
+    .callout--mute   { background: var(--paper); border: 1px solid var(--rule-hair); border-left: 3px solid var(--ink-subtle); }
+    .callout strong { color: var(--ink); font-weight: 600; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    /* Q&A */
+    .qa { margin: 18px 0; }
+    .qa__q {
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .qa__q::before {
+      content: "Q.";
+      font-family: var(--mono);
+      color: var(--accent);
+      font-weight: 600;
+      margin-right: 8px;
+    }
+    .qa__a {
+      font-family: var(--serif);
+      font-size: 15.5px;
+      line-height: 1.6;
+      color: var(--ink-body);
+      padding-left: 28px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+    .qa__a::before {
+      content: "A.";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-family: var(--mono);
+      color: var(--ink-subtle);
+      font-weight: 600;
+    }
+    .qa__a strong { color: var(--ink); font-weight: 600; font-family: var(--sans); }
+    .qa__a em { font-style: italic; color: var(--ink-muted); }
+
+    /* Horizontal rule between major sections */
+    hr {
+      border: none;
+      height: 1px;
+      background: var(--rule);
+      margin: 48px 0;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 80px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-subtle);
+      letter-spacing: 0.06em;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a { color: var(--ink-muted); border-bottom: 1px solid transparent; }
+    .footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      .shell { padding: 32px 20px 64px; }
+      h1.title { font-size: 28px; }
+      .subtitle { font-size: 16px; }
+      .lede { font-size: 16px; padding: 16px 18px; }
+      h3 { font-size: 19px; }
+      table { font-size: 13px; }
+      th, td { padding: 8px 10px; }
+      pre { font-size: 12px; padding: 16px; }
+      .topnav { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .template__body { font-size: 14.5px; padding: 14px 16px; }
+    }
+
+    @media print {
+      html, body { background: #fff; }
+      .topnav, .footer { display: none; }
+      .shell { padding: 0; max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+
+    <nav class="topnav">
+      <span class="topnav__brand">Prakhar · UnifyApps Application Pack</span>
+      <span class="topnav__links">
+        <a href="Prakhar — UnifyApps FDSE.html">Resume</a>
+        <a href="UNIFYAPPS_GENAI_PROJECT_SPEC.html">Project Spec</a>
+        <a class="active" href="UNIFYAPPS_OUTREACH_PLAYBOOK.html">Playbook</a>
+      </span>
+    </nav>
+
+    <header class="masthead">
+      <span class="eyebrow">Outreach Playbook · 14-day plan</span>
+      <h1 class="title">UnifyApps Sr. FDSE &mdash; Get the Screen.</h1>
+      <p class="subtitle">Form-bypass strategy, cold-DM templates, and interview prep that get past the &ldquo;2022 grad-year&rdquo; trap.</p>
+      <p class="meta">
+        <span>Owner — Prakhar S. Parthasarthi</span>
+        <span>Target — Sr. FDSE @ UnifyApps</span>
+        <span>Locations — Gurgaon / Mumbai</span>
+      </p>
+    </header>
+
+    <div class="lede">
+      <strong>Goal:</strong> get a recruiter screen for <strong>Sr. Forward-Deployed Software Engineer</strong> at UnifyApps without being blocked by their Google Form&rsquo;s <code>Year of Graduation</code> dropdown (2023&thinsp;/&thinsp;2024&thinsp;/&thinsp;2025 only &mdash; you graduated 2022).
+    </div>
+
+    <div class="lede">
+      <strong>Strategy:</strong> dual-track. <strong>(A)</strong> Submit the form correctly, knowing it&rsquo;ll likely silently filter you. <strong>(B)</strong> In parallel, the <strong>referral path is your real shot</strong>. Build it now.
+    </div>
+
+    <h2>Honest Read of the Form</h2>
+    <table>
+      <thead>
+        <tr><th>Field</th><th>Your answer</th><th>Risk</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>College</td><td><strong>NIT</strong></td><td><span class="pill pill--good">OK</span> explicitly listed, you&rsquo;re fine</td></tr>
+        <tr><td>Year of Graduation</td><td><strong>No 2022 option</strong></td><td><span class="pill pill--bad">Trap</span> the real blocker</td></tr>
+        <tr><td>Role</td><td><strong>Forward Deployed Software Engineer (FDSE) / Sr. FDSE</strong></td><td><span class="pill pill--good">OK</span> correct lane</td></tr>
+        <tr><td>Public resume link</td><td>needs hosting</td><td><span class="pill pill--warn">Fix</span> before submitting</td></tr>
+        <tr><td>Preferred Location</td><td>Gurgaon or Mumbai</td><td><span class="pill pill--good">OK</span> either is fine</td></tr>
+      </tbody>
+    </table>
+
+    <h3>About the year dropdown &mdash; do not pick &ldquo;2025&rdquo;</h3>
+    <ul class="bullets">
+      <li>It&rsquo;s misrepresentation. If they figure it out (and they will &mdash; your Amazon dates are public on LinkedIn), the application becomes evidence of dishonesty. Not worth the risk.</li>
+      <li>Two clean alternatives:
+        <ol class="bullets" style="margin-top:10px">
+          <li><strong>Skip the form. Apply via referral only.</strong> <em>(Recommended &mdash; see §&thinsp;3.)</em></li>
+          <li><strong>Apply via form AND referral.</strong> Pick the closest year, <strong>2023</strong>, and explicitly call it out in the cover note (<em>&ldquo;Form&rsquo;s grad-year dropdown didn&rsquo;t include 2022 &mdash; I selected 2023, my FT start; please flag if this matters.&rdquo;</em>) &mdash; owns the discrepancy upfront. Lower-risk than picking 2025; recruiter sees an honest applicant who read carefully.</li>
+        </ol>
+      </li>
+    </ul>
+    <div class="callout callout--accent">
+      <strong>My pick:</strong> option 2. Submit the form (tracked, dated, in their system) <strong>and</strong> referral path (real path through). Both ride.
+    </div>
+
+    <h2>Pre-Apply Checklist &mdash; do these today, before any outreach</h2>
+
+    <h3>1.1 &middot; Host your resume publicly</h3>
+    <p>GitHub Pages is the cleanest path. From the repo root:</p>
+    <pre><code># 1. ensure the file is committed
+git add "Prakhar — UnifyApps FDSE.html"
+git commit -m "Add UnifyApps FDSE-tailored resume"
+git push origin main
+
+# 2. enable GitHub Pages
+#    Repo → Settings → Pages → Source: "Deploy from a branch", Branch: main, Folder: /(root)
+
+# 3. your URL becomes:
+#    https://praxstack.github.io/Prax-Resume/Prakhar%20%E2%80%94%20UnifyApps%20FDSE.html
+
+# 4. (optional) generate the PDF and host that too
+npm run pdf -- "Prakhar — UnifyApps FDSE.html" "Prakhar — UnifyApps FDSE.pdf"
+git add "Prakhar — UnifyApps FDSE.pdf" && git commit -m "PDF" && git push</code></pre>
+    <p><strong>Use the <code>.html</code> URL in the form</strong> &mdash; HTML loads fast on mobile, recruiter-friendly. Keep the PDF as a backup.</p>
+
+    <h3>1.2 &middot; Update your LinkedIn (15 min)</h3>
+    <p>Recruiters will check before clicking your form submission.</p>
+    <ul class="bullets">
+      <li><strong>Headline:</strong> <code>Forward-Deployed Software Engineer · Java + Spring Boot · ex-Amazon (Travel) · Building agentic AI in Java</code></li>
+      <li><strong>About:</strong> first 2 lines must include &ldquo;Java&rdquo;, &ldquo;Spring Boot&rdquo;, &ldquo;API integrations&rdquo;, and &ldquo;agentic AI&rdquo; &mdash; UnifyApps&rsquo; keyword filter words</li>
+      <li><strong>Featured:</strong> pin your Redis-from-scratch repo and (in 2 weeks) the agentic workflow repo</li>
+      <li><strong>Open To Work:</strong> turn on &ldquo;recruiters only&rdquo; with target = &ldquo;Forward Deployed Engineer&rdquo;, &ldquo;Solutions Engineer&rdquo;, &ldquo;Software Engineer&rdquo;, India</li>
+    </ul>
+
+    <h3>1.3 &middot; Refresh your GitHub profile</h3>
+    <ul class="bullets">
+      <li>Pin: <code>redis-server-java</code>, <code>agentic-workflow-java</code> (when ready), <code>markdown-viewer-pro</code></li>
+      <li>README on <code>praxstack/praxstack</code> (profile repo): one-paragraph intro, &ldquo;currently building&rdquo;, contact</li>
+    </ul>
+
+    <h2>Form Submission Plan</h2>
+    <p>The form is <strong>fixed-fields only</strong> &mdash; there&rsquo;s no &ldquo;anything else?&rdquo; or open-text box, so the cover note can&rsquo;t go inside the form. <strong>Plan:</strong> submit the form with exactly what it asks for, then 30 minutes later send Version A of the cover note to <code>careers@unifyapps.com</code> referencing your form submission. <em>Submit the form AFTER you&rsquo;ve hosted the resume publicly (§1.1) and lined up at least one referral DM (§3) — the referral hits the recruiter the same day while your form lands in the queue.</em></p>
+    <table>
+      <thead>
+        <tr><th>Field (exact form order)</th><th>Answer</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Email</td><td><code>prakhar.mnnit.2022@gmail.com</code> <span class="pill pill--mute">canonical, switch from prax.sr.sde first</span></td></tr>
+        <tr><td>Full Name</td><td>Prakhar Shekhar Parthasarthi</td></tr>
+        <tr><td>Phone Number</td><td><em>your number</em> <span class="pill pill--mute">redacted from public repo</span></td></tr>
+        <tr><td>Which college did you graduate from?</td><td><strong>NIT</strong></td></tr>
+        <tr><td>Year of Graduation</td><td><strong>2023</strong> <span class="pill pill--warn">closest to truth</span> &mdash; you&rsquo;re 2022 MCA; disclose in follow-up email</td></tr>
+        <tr><td>LinkedIn URL</td><td><code>https://www.linkedin.com/in/prakharshekhar/</code></td></tr>
+        <tr><td>Resume link <em>(public)</em></td><td>GitHub Pages URL from §1.1 &mdash; <strong>verify in incognito</strong> before submitting</td></tr>
+        <tr><td>Preferred Location</td><td><strong>Gurgaon</strong> &mdash; bigger UnifyApps office, more roles</td></tr>
+        <tr><td>Role</td><td><strong>Forward Deployed Software Engineer (FDSE) / Sr. FDSE</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout--warn">
+      <strong>Important &mdash; before you click Email:</strong> the form pre-fills with whatever account you&rsquo;re logged into Google with. Right now that says <code>prax.sr.sde@gmail.com</code> at the top with a &ldquo;Switch account&rdquo; link. <strong>Click &ldquo;Switch account&rdquo;</strong> and log in as <code>prakhar.mnnit.2022@gmail.com</code> first, otherwise the form sends from the wrong address.
+    </div>
+    <div class="callout callout--accent">
+      <strong>Cover-note delivery (since the form has no open-text):</strong> 30 minutes after submitting the form, send <strong>Version A</strong> from <a class="link" href="UNIFYAPPS_COVER_NOTE.html">the cover note page</a> to <code>careers@unifyapps.com</code> (or whichever recruiter address you found). Include your form submission timestamp and resume link. The follow-up email is where the grad-year disclosure and your story land.
+    </div>
+
+    <h2>The Referral Path &mdash; your real shot</h2>
+
+    <h3>3.1 &middot; Find 3&ndash;5 UnifyApps insiders to DM</h3>
+    <p>Search LinkedIn for these profile types, in priority order:</p>
+    <ol class="bullets">
+      <li><strong>Recruiters / TA at UnifyApps</strong> &mdash; search <code>"UnifyApps" recruiter</code> or <code>"UnifyApps" "talent"</code></li>
+      <li><strong>Engineering managers / EMs</strong> &mdash; search <code>"UnifyApps" engineering manager</code></li>
+      <li><strong>Forward-Deployed Engineers / Solutions</strong> &mdash; search <code>"UnifyApps" "forward deployed"</code> or <code>"UnifyApps" solutions</code></li>
+      <li><strong>Founder / co-founders</strong> &mdash; Pavitar Singh (CEO), look up the leadership page</li>
+      <li><strong>Amazon overlap</strong> &mdash; search <code>UnifyApps</code> filtered by <code>past company: Amazon</code> &mdash; <em>highest hit rate</em>, you share war stories</li>
+    </ol>
+    <p>Aim for <strong>3 sends in the first 24h, 5 by end of week 1.</strong></p>
+
+    <h3>3.2 &middot; Cold-DM templates &mdash; three variants, match the recipient</h3>
+
+    <div class="template">
+      <div class="template__head">
+        <strong>Variant A</strong> &middot; To a Recruiter / TA at UnifyApps
+        <span><span class="pill pill--accent">Send first</span></span>
+      </div>
+      <div class="template__body"><strong>Subject:</strong> Sr. FDSE candidate &mdash; ex-Amazon, Java + agentic AI in flight
+
+Hi [Name],
+
+Saw the Sr. FDSE hiring drive &mdash; I&rsquo;d be a good fit and wanted to put myself on your radar directly.
+
+3+ years at Amazon (Travel) shipping Java/Spring Boot services and integrating 6 partner APIs. p90 cut 47%, conversion +33%. Built a RESP2 Redis server from scratch in Java for fun (154k SET / 195k GET rps). Currently building a Java + Spring AI agentic workflow engine &mdash; first-principles, idempotency keys, audit logs, human-approval gate (the FDSE shape of work).
+
+One note: your form&rsquo;s grad-year dropdown only goes back to 2023. I graduated MCA from MNNIT 2022. Wanted to flag honestly so it doesn&rsquo;t slip through a filter.
+
+60-second resume: [GitHub Pages link]
+Repo: github.com/praxstack/redis-server-java
+
+Worth a 15-min screen?
+
+Prakhar</div>
+    </div>
+
+    <div class="template">
+      <div class="template__head">
+        <strong>Variant B</strong> &middot; To an Engineer or EM (Amazon-overlap preferred)
+      </div>
+      <div class="template__body">Hi [Name],
+
+Noticed you went from Amazon → UnifyApps. I&rsquo;m in the same boat thinking &mdash; 3 years at Amazon Travel (Hotels/Flights) on Java/Spring services, looking at the Sr. FDSE role at UnifyApps.
+
+Two questions if you have a minute:
+  1. What&rsquo;s the actual day-to-day rhythm look like? &ldquo;60-day go-live&rdquo; sounds intense but honest take?
+  2. Is there a referral channel? Form&rsquo;s grad-year dropdown stops at 2023 (I&rsquo;m 2022 MCA), worried I&rsquo;ll get filtered.
+
+Happy to share what I&rsquo;ve been building &mdash; Java agentic workflow engine in flight, Redis-from-scratch repo done. ex-Amazon-to-ex-Amazon, no sales pitch.
+
+Resume if useful: [link]
+
+Cheers,
+Prakhar</div>
+    </div>
+
+    <div class="template">
+      <div class="template__head">
+        <strong>Variant C</strong> &middot; To a Founder / Sr. leader
+        <span><span class="pill pill--mute">Short, no ask in DM 1</span></span>
+      </div>
+      <div class="template__body">Hi Pavitar,
+
+The LinkedIn post on the 60-day go-live cadence resonated. Different shape of work from the 6-month-PRD culture I came out of (3 years at Amazon Travel &mdash; Java/Spring, idempotent integrations, ex-Amazon Pay).
+
+Currently building a Java + Spring AI agentic workflow engine &mdash; agentic loop, idempotency keys, audit log, human-approval gate. Will share when it&rsquo;s live in 2 weeks.
+
+Big fan of the bet. If there&rsquo;s a fit on the Sr. FDSE side, I&rsquo;d love to chat.
+
+Prakhar
+[LinkedIn] · [GitHub]</div>
+    </div>
+
+    <h3>3.3 &middot; Follow-up cadence</h3>
+    <ul class="bullets">
+      <li><strong>Day 0</strong> &mdash; send DM</li>
+      <li><strong>Day 4</strong> &mdash; soft bump <em>(&ldquo;hi [name], floating this back up &mdash; happy to send a 2-min Loom of the Java agentic engine if useful&rdquo;)</em></li>
+      <li><strong>Day 10</strong> &mdash; final bump only if engaged before <em>(&ldquo;not chasing, just want to close the loop &mdash; best path forward?&rdquo;)</em></li>
+      <li>After Day 10 with no reply → move on, try the next person on the list. <strong>Do not double-bump unanswered messages.</strong></li>
+    </ul>
+
+    <h2>Cover Note &mdash; lives in your follow-up email</h2>
+    <p>Three versions, full reasoning, and copy-paste templates are on the dedicated <a class="link" href="UNIFYAPPS_COVER_NOTE.html"><strong>Cover Note</strong></a> page. Quick recap:</p>
+    <ul class="bullets">
+      <li><strong>Version A</strong> &mdash; ~85 words, email body, send 30 min after form submission. <em>Default.</em></li>
+      <li><strong>Version B</strong> &mdash; ~140 words, longer follow-up if recruiter replies asking for more.</li>
+      <li><strong>Version C</strong> &mdash; ~50 words, LinkedIn DM opener.</li>
+    </ul>
+    <p>All three include the honest grad-year disclosure. <a class="link" href="UNIFYAPPS_COVER_NOTE.html">Open the cover note page →</a></p>
+
+    <h2>Interview Prep &mdash; in case the screen happens fast</h2>
+    <p>If the recruiter responds within 48h, you might get a screen before the agentic project ships. Prepare answers anyway.</p>
+
+    <div class="qa">
+      <p class="qa__q">&ldquo;Walk me through your Amazon work.&rdquo;</p>
+      <p class="qa__a">60 seconds. Lead with <strong>scope</strong> (4 services, owned end-to-end), then <strong>one number</strong> (47% p90 cut), then <strong>one judgment call</strong> (idempotency design on the schedule-change webhook &mdash; <em>&ldquo;at-least-once delivery + retries means dedup keys in DynamoDB are non-negotiable&rdquo;</em>).</p>
+    </div>
+
+    <div class="qa">
+      <p class="qa__q">&ldquo;Why FDSE?&rdquo;</p>
+      <p class="qa__a"><em>&ldquo;I want the customer-feedback loop tight. At Amazon I owned services but didn&rsquo;t talk to the people who used them. FDSE is the inverse &mdash; the customer is in the room, the integration is the project, the success metric is whether they&rsquo;re live in 60 days. That&rsquo;s a much better feedback loop for a builder.&rdquo;</em></p>
+    </div>
+
+    <div class="qa">
+      <p class="qa__q">&ldquo;What&rsquo;s your take on agentic AI in enterprise?&rdquo;</p>
+      <p class="qa__a"><em>&ldquo;The demos are easy, the reliability is hard. The interesting problems are: how do you make a tool call idempotent so the agent doesn&rsquo;t double-charge a customer? How do you persist enough state that a crashed agent run can resume? What&rsquo;s the human-approval contract for actions that touch external systems? I&rsquo;m building a Java engine right now exactly to get hands-on with these.&rdquo;</em></p>
+    </div>
+
+    <div class="qa">
+      <p class="qa__q">&ldquo;Why didn&rsquo;t you continue at Amazon?&rdquo;</p>
+      <p class="qa__a"><em>(Sep 2025 end date &mdash; be ready.)</em> Honest, short, forward-looking. Don&rsquo;t trash Amazon. Pick <strong>one</strong> real reason: <em>&ldquo;I wanted to compress the build-ship-feedback loop. Amazon&rsquo;s bar is high but the loop is long. UnifyApps&rsquo; 60-day cadence is what I want to optimize my next 2 years for.&rdquo;</em></p>
+    </div>
+
+    <div class="qa">
+      <p class="qa__q">&ldquo;What&rsquo;s a project you&rsquo;re most proud of?&rdquo;</p>
+      <p class="qa__a">The Redis server. <em>&ldquo;Wanted to know how Redis actually worked, so I built RESP2 from scratch in Java. 154k rps SET, 195k rps GET, 42 tests at 100%. The interesting thing was the TTL-eviction design &mdash; hybrid lazy-on-GET plus active-sweep &mdash; because pure-active eats CPU and pure-lazy leaks memory. Trade-offs are everything.&rdquo;</em></p>
+    </div>
+
+    <div class="qa">
+      <p class="qa__q">&ldquo;What&rsquo;s your weakness?&rdquo;</p>
+      <p class="qa__a">Don&rsquo;t say &ldquo;perfectionism.&rdquo; Say something true and small: <em>&ldquo;I default to deep technical work over visible communication. At Amazon I&rsquo;d ship a fix and forget to broadcast it. I&rsquo;ve been forcing myself to write things up and present even small wins &mdash; the COE habit was step one.&rdquo;</em></p>
+    </div>
+
+    <h2>14-Day Execution Schedule &mdash; Day 0 = today</h2>
+    <table>
+      <thead>
+        <tr><th style="width:90px">Day</th><th>Action</th><th style="width:80px;text-align:right">Effort</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>0</strong> <span class="pill pill--accent">today</span></td><td>Host resume on GitHub Pages. Verify link in incognito. Update LinkedIn headline + Open To Work. Pin GitHub repos.</td><td style="text-align:right">90 min</td></tr>
+        <tr><td><strong>1</strong></td><td>Find 5 UnifyApps targets on LinkedIn. Send 2 DMs (Recruiter + ex-Amazon engineer).</td><td style="text-align:right">60 min</td></tr>
+        <tr><td><strong>2</strong></td><td>Submit the Google form (with §2 plan + cover note). Send 1 more DM.</td><td style="text-align:right">45 min</td></tr>
+        <tr><td><strong>3</strong></td><td>Start the agentic project (see Project Spec).</td><td style="text-align:right">5h</td></tr>
+        <tr><td><strong>4&ndash;13</strong></td><td>Build agentic project per spec. Day 4 bump on stale DMs.</td><td style="text-align:right">5h&thinsp;/&thinsp;day</td></tr>
+        <tr><td><strong>14</strong></td><td>Project shipped. LinkedIn launch post. Loom in resume. Send Loom + repo link to anyone who replied earlier &mdash; <em>&ldquo;promised I&rsquo;d send this when it was live.&rdquo;</em></td><td style="text-align:right">3h</td></tr>
+      </tbody>
+    </table>
+
+    <h2>What Success Looks Like</h2>
+    <ul class="bullets">
+      <li><strong>Form submitted</strong> with honest answers</li>
+      <li><strong>3+ DMs sent</strong>, at least 1 reply by day 7</li>
+      <li><strong>Recruiter screen scheduled</strong> by day 14</li>
+      <li><strong>Agentic project shipped public</strong> by day 14</li>
+      <li><strong>Loom + Redis repo links</strong> handed to recruiter on the screen</li>
+    </ul>
+    <div class="callout callout--warn">
+      If by <strong>day 21</strong> there&rsquo;s no recruiter contact: the role isn&rsquo;t happening this cycle. Repurpose the artifacts (resume + agentic project + Loom) for the next 5 FDSE/Solutions Engineer roles &mdash; they all want the same signal.
+    </div>
+
+    <h2>The One Thing You Cannot Fake</h2>
+    <div class="lede" style="margin: 24px 0;">
+      Everything else in this playbook is mechanics. The interview itself rewards one thing: <strong>a candidate who has built something hard, recently, and can talk about the trade-offs without slides.</strong><br><br>
+      You have the Redis server. You&rsquo;ll have the agentic engine. Walk in with both stories ready, and the form&rsquo;s grad-year dropdown won&rsquo;t matter.
+    </div>
+
+    <hr>
+
+    <footer class="footer">
+      <span>Prakhar Shekhar Parthasarthi · prakhar.mnnit.2022@gmail.com</span>
+      <span>
+        <a href="Prakhar — UnifyApps FDSE.html">Resume</a>
+        &nbsp;·&nbsp;
+        <a href="UNIFYAPPS_GENAI_PROJECT_SPEC.html">← Project Spec</a>
+      </span>
+    </footer>
+
+  </div>
+</body>
+</html>

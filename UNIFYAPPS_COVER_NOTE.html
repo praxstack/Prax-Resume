@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cover Note — UnifyApps Sr. FDSE · Prakhar S. Parthasarthi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, figure, table { margin: 0; padding: 0; }
+    ul, ol { list-style: none; }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+
+    :root {
+      --paper:       #FFFFFF;
+      --paper-soft:  #FAF7F2;
+      --paper-chip:  #F2ECE1;
+      --ink:         #0B1524;
+      --ink-body:    #2A3647;
+      --ink-muted:   #5A6472;
+      --ink-subtle:  #8A8F98;
+      --rule:        #D8D0C0;
+      --rule-hair:   #E8E1D1;
+      --accent:      #8C2B12;
+      --accent-soft: #F2E2D9;
+      --good:        #1F6B3E;
+      --good-soft:   #DCEDE2;
+      --bad:         #8C1F1F;
+      --bad-soft:    #F2DADA;
+      --warn:        #8A5A00;
+      --warn-soft:   #F4E9CC;
+      --serif:  "IBM Plex Serif", Georgia, "Times New Roman", serif;
+      --sans:   "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      --mono:   "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    html { background: var(--paper-soft); }
+    body {
+      background: var(--paper-soft);
+      color: var(--ink-body);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      font-feature-settings: "cv11", "ss01", "ss03";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    .shell {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 56px 32px 96px;
+    }
+
+    /* Top nav */
+    .topnav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ink-muted);
+      margin-bottom: 56px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .topnav__brand { color: var(--ink); font-weight: 600; }
+    .topnav__links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .topnav__links a {
+      color: var(--ink-muted);
+      transition: color 150ms ease;
+    }
+    .topnav__links a:hover { color: var(--accent); }
+    .topnav__links a.active { color: var(--accent); }
+
+    /* Masthead */
+    .masthead { margin-bottom: 48px; }
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: 2px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h1.title {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 38px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 19px;
+      line-height: 1.45;
+      color: var(--ink-muted);
+      margin-bottom: 8px;
+    }
+
+    /* Lede */
+    .lede {
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--ink-body);
+      padding: 22px 26px;
+      border-left: 3px solid var(--accent);
+      background: var(--paper);
+      border-radius: 0 4px 4px 0;
+      margin: 32px 0 32px;
+    }
+    .lede strong { color: var(--ink); font-weight: 600; font-family: var(--sans); }
+    .lede + .lede { margin-top: -16px; }
+
+    /* H2 */
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      margin-top: 56px;
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+    h2::before {
+      content: "§";
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--ink-subtle);
+      letter-spacing: 0;
+      font-size: 14px;
+    }
+    h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+    h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+
+    p { margin-bottom: 14px; color: var(--ink-body); }
+    p strong { color: var(--ink); font-weight: 600; }
+    p em { font-family: var(--serif); font-style: italic; color: var(--ink-muted); }
+
+    /* Lists */
+    ul.bullets {
+      margin: 12px 0 18px;
+      padding-left: 0;
+    }
+    ul.bullets li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 8px;
+      color: var(--ink-body);
+    }
+    ul.bullets li::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 0.65em;
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      transform: rotate(45deg);
+    }
+    li strong { color: var(--ink); font-weight: 600; }
+
+    /* Inline code */
+    code {
+      font-family: var(--mono);
+      font-size: 0.88em;
+      background: var(--paper-chip);
+      color: var(--ink);
+      padding: 1px 6px;
+      border-radius: 2px;
+      border: 1px solid var(--rule-hair);
+      font-weight: 500;
+    }
+
+    /* Compare table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14.5px;
+      margin: 16px 0 28px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    thead { background: var(--paper-chip); }
+    th, td {
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--rule-hair);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    th {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    td { color: var(--ink-body); }
+    td strong { color: var(--ink); font-weight: 600; }
+
+    /* Pills */
+    .pill {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+    .pill--accent { background: var(--accent-soft); color: var(--accent); }
+    .pill--good   { background: var(--good-soft); color: var(--good); }
+    .pill--bad    { background: var(--bad-soft); color: var(--bad); }
+    .pill--warn   { background: var(--warn-soft); color: var(--warn); }
+    .pill--mute   { background: var(--paper-chip); color: var(--ink-muted); }
+
+    /* Paste-ready cover note card */
+    .note {
+      background: var(--paper);
+      border: 1px solid var(--rule-hair);
+      border-radius: 4px;
+      margin: 18px 0 28px;
+      overflow: hidden;
+    }
+    .note__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: var(--paper-chip);
+      border-bottom: 1px solid var(--rule-hair);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .note__head strong { color: var(--ink); font-weight: 600; }
+    .note__head__meta { display: flex; gap: 8px; flex-wrap: wrap; }
+    .note__body {
+      padding: 22px 26px;
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-body);
+      white-space: pre-wrap;
+    }
+    .note__body strong { color: var(--ink); font-weight: 600; font-family: var(--sans); }
+    .note__body em { font-style: italic; color: var(--ink-muted); }
+    .note__why {
+      padding: 14px 26px 18px;
+      border-top: 1px solid var(--rule-hair);
+      background: var(--paper-soft);
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--ink-muted);
+    }
+    .note__why strong { color: var(--ink); font-weight: 600; }
+
+    /* Callout */
+    .callout {
+      padding: 16px 22px;
+      border-radius: 4px;
+      margin: 18px 0;
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+    .callout--accent { background: var(--accent-soft); border-left: 3px solid var(--accent); }
+    .callout--warn   { background: var(--warn-soft);   border-left: 3px solid var(--warn); }
+    .callout--mute   { background: var(--paper); border: 1px solid var(--rule-hair); border-left: 3px solid var(--ink-subtle); }
+    .callout strong { color: var(--ink); font-weight: 600; }
+
+    hr { border: none; height: 1px; background: var(--rule); margin: 48px 0; }
+
+    .footer {
+      margin-top: 80px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-subtle);
+      letter-spacing: 0.06em;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a { color: var(--ink-muted); }
+    .footer a:hover { color: var(--accent); }
+
+    @media (max-width: 720px) {
+      .shell { padding: 32px 20px 64px; }
+      h1.title { font-size: 28px; }
+      .subtitle { font-size: 16px; }
+      .lede { font-size: 16px; padding: 18px 20px; }
+      h3 { font-size: 19px; }
+      table { font-size: 13px; }
+      th, td { padding: 10px; }
+      .topnav { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .note__body { font-size: 15px; padding: 16px 18px; }
+    }
+
+    @media print {
+      html, body { background: #fff; }
+      .topnav, .footer { display: none; }
+      .shell { padding: 0; max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+
+    <nav class="topnav">
+      <span class="topnav__brand">Prakhar · UnifyApps Application Pack</span>
+      <span class="topnav__links">
+        <a href="UNIFYAPPS_INDEX.html">Index</a>
+        <a href="Prakhar — UnifyApps FDSE.html">Resume</a>
+        <a href="UNIFYAPPS_GENAI_PROJECT_SPEC.html">Project Spec</a>
+        <a href="UNIFYAPPS_OUTREACH_PLAYBOOK.html">Playbook</a>
+        <a class="active" href="UNIFYAPPS_COVER_NOTE.html">Cover Note</a>
+      </span>
+    </nav>
+
+    <header class="masthead">
+      <span class="eyebrow">Cover Note · paste-ready</span>
+      <h1 class="title">What is a cover note &mdash; and three you can paste.</h1>
+      <p class="subtitle">A cover note is not a cover letter. It&rsquo;s 4&ndash;6 lines that ride along with your resume so the recruiter knows why you&rsquo;re reaching out, in 20 seconds.</p>
+    </header>
+
+    <h2>Cover Note vs Cover Letter &mdash; what&rsquo;s the difference?</h2>
+    <table>
+      <thead>
+        <tr><th></th><th>Cover Note</th><th>Cover Letter</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Length</strong></td><td>4&ndash;6 lines, ~80 words</td><td>3 paragraphs, ~300&ndash;400 words</td></tr>
+        <tr><td><strong>Where it lives</strong></td><td>Email body, LinkedIn DM, form&rsquo;s &ldquo;anything else?&rdquo; field</td><td>Attached PDF, separate document</td></tr>
+        <tr><td><strong>Tone</strong></td><td>Conversational, direct, no fluff</td><td>Formal, structured, narrative</td></tr>
+        <tr><td><strong>Goal</strong></td><td>Get them to open the resume</td><td>Tell a story before they see the resume</td></tr>
+        <tr><td><strong>Use it when</strong></td><td>Modern tech roles, cold outreach, referrals, follow-ups</td><td>Legal, gov, traditional corporate, when explicitly asked</td></tr>
+      </tbody>
+    </table>
+
+    <div class="lede">
+      <strong>For UnifyApps Sr. FDSE:</strong> they want operators, not essayists. <strong>Send a cover note, not a cover letter.</strong> If their form has an open-text box you fill it with the medium version below. If you DM a recruiter you use the short version. If you&rsquo;re emailing your resume directly, use the email version.
+    </div>
+
+    <h2>The structure that works</h2>
+    <p>A good cover note has 4 jobs &mdash; in this exact order:</p>
+    <ol style="counter-reset: cn; margin: 12px 0 18px; padding-left: 0;">
+      <li style="counter-increment: cn; position: relative; padding: 12px 16px 12px 56px; margin-bottom: 8px; background: var(--paper); border: 1px solid var(--rule-hair); border-radius: 3px;">
+        <span style="position:absolute; left: 16px; top: 12px; font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; border-radius: 2px;">1</span>
+        <strong>Hook</strong> &mdash; one sentence on the role/post and why <em>you</em> read it.
+      </li>
+      <li style="counter-increment: cn; position: relative; padding: 12px 16px 12px 56px; margin-bottom: 8px; background: var(--paper); border: 1px solid var(--rule-hair); border-radius: 3px;">
+        <span style="position:absolute; left: 16px; top: 12px; font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; border-radius: 2px;">2</span>
+        <strong>Proof</strong> &mdash; one or two lines with a name (Amazon), a number (47% p90 cut), and a public artifact (the Redis repo).
+      </li>
+      <li style="counter-increment: cn; position: relative; padding: 12px 16px 12px 56px; margin-bottom: 8px; background: var(--paper); border: 1px solid var(--rule-hair); border-radius: 3px;">
+        <span style="position:absolute; left: 16px; top: 12px; font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; border-radius: 2px;">3</span>
+        <strong>Disclosure (only if needed)</strong> &mdash; the form&rsquo;s grad-year dropdown didn&rsquo;t include 2022. Owning it upfront.
+      </li>
+      <li style="counter-increment: cn; position: relative; padding: 12px 16px 12px 56px; margin-bottom: 8px; background: var(--paper); border: 1px solid var(--rule-hair); border-radius: 3px;">
+        <span style="position:absolute; left: 16px; top: 12px; font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; border-radius: 2px;">4</span>
+        <strong>The ask</strong> &mdash; one specific, low-friction next step. <em>&ldquo;Worth a 15-min screen?&rdquo;</em> not <em>&ldquo;please consider me.&rdquo;</em>
+      </li>
+    </ol>
+
+    <h2>The three versions &mdash; pick one based on where you&rsquo;re sending it</h2>
+
+    <div class="note">
+      <div class="note__head">
+        <span><strong>Version A</strong> &middot; Email body when sending the resume</span>
+        <span class="note__head__meta">
+          <span class="pill pill--accent">Most common</span>
+          <span class="pill pill--mute">~85 words</span>
+        </span>
+      </div>
+      <div class="note__body"><strong>Subject:</strong> Sr. FDSE candidate &mdash; ex-Amazon, Java + agentic AI in flight
+
+Hi [Recruiter Name],
+
+Saw the UnifyApps hiring drive for Sr. FDSE on LinkedIn &mdash; the &ldquo;60-day go-live&rdquo; framing is exactly what I&rsquo;m optimising my next move for.
+
+Quick fit: 3+ yrs at Amazon Travel shipping Java/Spring services and integrating 6 partner APIs &mdash; p90 cut 47%, conversion +33%. Built a RESP2 Redis server from scratch in Java for fun (154k SET / 195k GET rps). Currently shipping a Java + Spring AI agentic engine with idempotency keys and audit log &mdash; the FDSE shape of work.
+
+One honest note &mdash; the form&rsquo;s grad-year dropdown only goes back to 2023; I graduated MCA from MNNIT in 2022.
+
+Resume: [GitHub Pages link]
+Code: github.com/praxstack
+
+Worth a 15-min screen?
+
+Prakhar
+prakhar.mnnit.2022@gmail.com</div>
+      <div class="note__why"><strong>When to use:</strong> emailing the resume directly to a recruiter or hiring manager. Paste in the email body, attach the PDF resume.</div>
+    </div>
+
+    <div class="note">
+      <div class="note__head">
+        <span><strong>Version B</strong> &middot; Form &ldquo;anything else?&rdquo; field / formal cover note</span>
+        <span class="note__head__meta">
+          <span class="pill pill--accent">Form-ready</span>
+          <span class="pill pill--mute">~140 words</span>
+        </span>
+      </div>
+      <div class="note__body"><strong>Sr. FDSE / UnifyApps &mdash; Prakhar Shekhar Parthasarthi</strong>
+
+<strong>Why FDSE, why UnifyApps:</strong>
+The 60-day go-live cadence is the inverse of where I came from (3 years at Amazon Travel &mdash; services owned end-to-end, but with quarterly planning around them). I want to compress the loop.
+
+<strong>What I bring:</strong>
+ · 3+ yrs Java / Spring Boot / AWS, owned 4 microservices end-to-end
+ · 6 partner-API integrations in production; idempotent webhook design (43 bps CPT impact)
+ · 150+ prod incidents resolved, COEs presented to leadership &mdash; comfortable in cross-functional rooms
+ · RESP2 Redis server from scratch in Java (154k/195k rps); MIT-licensed AI Visual Code Review on npm
+ · Java + Spring AI agentic workflow engine in flight &mdash; tool-calling loop with idempotency, audit log, human-approval gate. Public repo + 2-min Loom in ~14 days.
+
+<strong>One honest note:</strong>
+The grad-year dropdown didn&rsquo;t include 2022 (my MCA at MNNIT was 2019&ndash;2022). I selected 2023 to closest reflect my full-time start &mdash; please flag if this matters.
+
+Open to relocate from Shahjahanpur, UP to Gurgaon (preference) or Mumbai. Fastest reach: prakhar.mnnit.2022@gmail.com</div>
+      <div class="note__why"><strong>When to use:</strong> paste this into the form&rsquo;s open-text field or as the body of a follow-up email. Long enough to give signal, short enough that a recruiter reads all of it.</div>
+    </div>
+
+    <div class="note">
+      <div class="note__head">
+        <span><strong>Version C</strong> &middot; LinkedIn DM (cold)</span>
+        <span class="note__head__meta">
+          <span class="pill pill--accent">Cold reach</span>
+          <span class="pill pill--mute">~50 words</span>
+        </span>
+      </div>
+      <div class="note__body">Hi [Name],
+
+Saw the UnifyApps Sr. FDSE drive. ex-Amazon Travel (3 yrs, Java/Spring, 6 partner APIs in prod, p90 cut 47%). Built a RESP2 Redis server from scratch in Java. Form&rsquo;s grad-year dropdown didn&rsquo;t have 2022 (my MCA grad year), wanted to flag honestly so I don&rsquo;t get auto-filtered.
+
+Resume: [link]
+
+Worth a 15-min screen?
+
+Prakhar</div>
+      <div class="note__why"><strong>When to use:</strong> opening DM on LinkedIn to a recruiter or insider. Short enough to read on mobile in 5 seconds.</div>
+    </div>
+
+    <h2>Common mistakes to avoid</h2>
+    <ul class="bullets">
+      <li><strong>&ldquo;I am writing to apply for the position of...&rdquo;</strong> &mdash; cut. They know.</li>
+      <li><strong>&ldquo;I am a passionate, hardworking individual...&rdquo;</strong> &mdash; cut. Show, don&rsquo;t tell.</li>
+      <li><strong>Restating the resume in paragraphs.</strong> The cover note&rsquo;s job is to make them <em>open</em> the resume, not replicate it.</li>
+      <li><strong>No specific number.</strong> If the note has zero numbers it sounds like every other note. <em>47%, 6 APIs, 154k rps</em> &mdash; pick one.</li>
+      <li><strong>No ask.</strong> Recruiters reply when there&rsquo;s a clear next step. &ldquo;15-min screen?&rdquo; works. &ldquo;Looking forward to hearing from you&rdquo; doesn&rsquo;t.</li>
+      <li><strong>Hiding the grad-year discrepancy.</strong> If they figure it out later, you look like you tried to slip something past them. Owning it upfront looks like rigour.</li>
+    </ul>
+
+    <h2>How to actually send it</h2>
+    <ol class="bullets">
+      <li><strong>If you have a recruiter email:</strong> use Version A in the email body. Attach the resume as PDF named <code>Prakhar Parthasarthi &mdash; Sr FDSE.pdf</code> (no brackets, no version numbers).</li>
+      <li><strong>If you only have the Google Form:</strong> the form may not have an open-text field. If it does, paste Version B. If it doesn&rsquo;t, hold Version A in your clipboard and email it to <code>careers@unifyapps.com</code> (or whatever address you find) <em>30 minutes after</em> submitting the form, referencing your form submission.</li>
+      <li><strong>If you&rsquo;re DMing on LinkedIn:</strong> Version C. Wait for a reply before sending the resume link.</li>
+      <li><strong>For follow-ups:</strong> never resend the cover note. Send a 1-line bump: <em>&ldquo;hi [name], floating this back up &mdash; happy to send a 2-min walkthrough of the agentic engine if useful.&rdquo;</em></li>
+    </ol>
+
+    <div class="callout callout--accent">
+      <strong>One last thing:</strong> the note isn&rsquo;t the document. The resume is the document. The cover note is the door-knock that gets the recruiter to open the resume. Keep that frame.
+    </div>
+
+    <hr>
+
+    <footer class="footer">
+      <span>Prakhar Shekhar Parthasarthi · prakhar.mnnit.2022@gmail.com</span>
+      <span>
+        <a href="UNIFYAPPS_INDEX.html">← Index</a>
+        &nbsp;·&nbsp;
+        <a href="UNIFYAPPS_OUTREACH_PLAYBOOK.html">Playbook</a>
+      </span>
+    </footer>
+
+  </div>
+</body>
+</html>

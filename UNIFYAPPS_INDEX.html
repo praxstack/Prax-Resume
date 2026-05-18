@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UnifyApps Application Pack — Prakhar S. Parthasarthi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; padding: 0; }
+    ul, ol { list-style: none; }
+    a { color: inherit; text-decoration: none; }
+
+    :root {
+      --paper:       #FFFFFF;
+      --paper-soft:  #FAF7F2;
+      --paper-chip:  #F2ECE1;
+      --ink:         #0B1524;
+      --ink-body:    #2A3647;
+      --ink-muted:   #5A6472;
+      --ink-subtle:  #8A8F98;
+      --rule:        #D8D0C0;
+      --rule-hair:   #E8E1D1;
+      --accent:      #8C2B12;
+      --accent-soft: #F2E2D9;
+      --good:        #1F6B3E;
+      --good-soft:   #DCEDE2;
+      --serif:  "IBM Plex Serif", Georgia, serif;
+      --sans:   "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --mono:   "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    html { background: var(--paper-soft); }
+    body {
+      background: var(--paper-soft);
+      color: var(--ink-body);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      font-feature-settings: "cv11", "ss01", "ss03";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .shell {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 64px 32px 96px;
+    }
+
+    /* Top brand */
+    .brand {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      padding-bottom: 16px;
+      margin-bottom: 56px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .brand strong { color: var(--ink); font-weight: 600; }
+
+    /* Masthead */
+    .masthead { margin-bottom: 56px; }
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: 2px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 44px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 18px;
+    }
+    h1 .accent { color: var(--accent); }
+    .subtitle {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.5;
+      color: var(--ink-muted);
+      max-width: 640px;
+    }
+
+    /* TL;DR */
+    .tldr {
+      background: var(--paper);
+      border: 1px solid var(--rule-hair);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 4px 4px 0;
+      padding: 22px 28px;
+      margin: 40px 0 56px;
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--ink-body);
+    }
+    .tldr strong { color: var(--ink); font-weight: 600; font-family: var(--sans); }
+
+    /* Section title */
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      margin-top: 64px;
+      margin-bottom: 24px;
+      line-height: 1;
+    }
+    h2::before {
+      content: "§";
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--ink-subtle);
+      letter-spacing: 0;
+      font-size: 14px;
+    }
+    h2::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* Doc cards */
+    .docs {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .doc {
+      display: flex;
+      align-items: stretch;
+      background: var(--paper);
+      border: 1px solid var(--rule-hair);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+    }
+    .doc:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(11, 21, 36, 0.08);
+      border-color: var(--accent);
+    }
+    .doc__num {
+      flex: 0 0 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 26px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-right: 1px solid var(--rule-hair);
+    }
+    .doc__body {
+      flex: 1;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .doc__title {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .doc__sub {
+      font-size: 14.5px;
+      color: var(--ink-body);
+      line-height: 1.5;
+    }
+    .doc__meta {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .pill {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .pill--accent { background: var(--accent-soft); color: var(--accent); }
+    .pill--good   { background: var(--good-soft); color: var(--good); }
+    .pill--mute   { background: var(--paper-chip); color: var(--ink-muted); }
+
+    /* Quick verdict */
+    .verdict {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .stat {
+      background: var(--paper);
+      border: 1px solid var(--rule-hair);
+      border-radius: 4px;
+      padding: 16px 18px;
+    }
+    .stat__num {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat__num .accent { color: var(--accent); }
+    .stat__label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Step list */
+    ol.steps {
+      counter-reset: ol;
+      margin: 12px 0;
+    }
+    ol.steps li {
+      counter-increment: ol;
+      position: relative;
+      padding: 14px 16px 14px 56px;
+      margin-bottom: 8px;
+      background: var(--paper);
+      border: 1px solid var(--rule-hair);
+      border-radius: 3px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--ink-body);
+    }
+    ol.steps li::before {
+      content: counter(ol);
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-soft);
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2px;
+    }
+    ol.steps li strong { color: var(--ink); font-weight: 600; }
+    ol.steps li em { font-family: var(--serif); font-style: italic; color: var(--ink-muted); }
+
+    /* Footer */
+    .footer {
+      margin-top: 96px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-subtle);
+      letter-spacing: 0.06em;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a { color: var(--ink-muted); }
+    .footer a:hover { color: var(--accent); }
+
+    code {
+      font-family: var(--mono);
+      font-size: 0.88em;
+      background: var(--paper-chip);
+      color: var(--ink);
+      padding: 1px 6px;
+      border-radius: 2px;
+      border: 1px solid var(--rule-hair);
+      font-weight: 500;
+    }
+
+    @media (max-width: 720px) {
+      .shell { padding: 32px 20px 64px; }
+      h1 { font-size: 30px; }
+      .subtitle { font-size: 17px; }
+      .tldr { font-size: 16px; padding: 18px 20px; }
+      .verdict { grid-template-columns: 1fr; }
+      .doc__num { font-size: 22px; flex-basis: 50px; }
+      .doc__title { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+
+    <div class="brand">
+      <span><strong>Prakhar Shekhar Parthasarthi</strong> &middot; Application Pack</span>
+      <span>Target &mdash; UnifyApps Sr. FDSE &middot; Gurgaon / Mumbai</span>
+    </div>
+
+    <header class="masthead">
+      <span class="eyebrow">Three-Document Application Package</span>
+      <h1>UnifyApps <span class="accent">Sr. FDSE</span> &mdash; the full play.</h1>
+      <p class="subtitle">A tailored resume, a 14-day GenAI build spec, and an outreach playbook that gets past the form&rsquo;s grad-year filter.</p>
+    </header>
+
+    <div class="tldr">
+      <strong>The verdict:</strong> 7/10 fit today &mdash; ex-Amazon, Java/Spring, idempotent integrations &mdash; <strong>but UnifyApps&rsquo; #1 hiring signal is GenAI/agentic AI</strong>, and the resume currently shows zero LLM surface area. The form also caps grad year at 2023 (you&rsquo;re 2022 MCA). This pack closes both gaps in 14 days: ship a Java + Spring AI agentic engine, host the tailored resume, and run a referral path in parallel.
+    </div>
+
+    <div class="verdict">
+      <div class="stat">
+        <div class="stat__num"><span class="accent">9</span>/10</div>
+        <div class="stat__label">Fit after 14 days</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">14<span class="accent">d</span></div>
+        <div class="stat__label">Spec to ship-ready</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">3<span class="accent">×</span></div>
+        <div class="stat__label">DMs in first 24h</div>
+      </div>
+    </div>
+
+    <h2>The Three Documents</h2>
+    <div class="docs">
+
+      <a class="doc" href="Prakhar — UnifyApps FDSE.html">
+        <div class="doc__num">01</div>
+        <div class="doc__body">
+          <div class="doc__title">Tailored Resume &mdash; Sr. FDSE</div>
+          <div class="doc__sub">Reframed for the FDSE shape of work. Leads with first-principles, surfaces partner-API integrations as their own row, leads the Selected Projects section with <strong>AI Visual Code Review</strong> (npm v2.4.1, real, shipped) followed by the Redis-from-scratch repo, and adds a cross-functional / COE bullet for stakeholder chops.</div>
+          <div class="doc__meta">
+            <span class="pill pill--accent">Standalone HTML</span>
+            <span class="pill pill--mute">A4 print-ready</span>
+            <span class="pill pill--mute">Hostable on GitHub Pages</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="doc" href="UNIFYAPPS_GENAI_PROJECT_SPEC.html">
+        <div class="doc__num">02</div>
+        <div class="doc__body">
+          <div class="doc__title">Java Agentic Workflow Engine &mdash; Build Spec</div>
+          <div class="doc__sub">Day-by-day 14-day plan to ship a Spring AI agent loop with idempotency keys, full audit log, and a human-approval gate. 6 tools, 8 demo scenarios, repo layout, README/Loom/launch-post templates, scope cut-line, and FDSE interview talking points.</div>
+          <div class="doc__meta">
+            <span class="pill pill--accent">14 days · ~70h</span>
+            <span class="pill pill--mute">Java 17 / Spring AI</span>
+            <span class="pill pill--mute">8 demo scenarios</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="doc" href="UNIFYAPPS_OUTREACH_PLAYBOOK.html">
+        <div class="doc__num">03</div>
+        <div class="doc__body">
+          <div class="doc__title">Outreach Playbook &mdash; Get the Screen</div>
+          <div class="doc__sub">Honest read of the form&rsquo;s hidden filter (no 2022 grad-year option), three calibrated cold-DM templates (Recruiter / ex-Amazon Engineer / Founder), referral search strategy, and a 14-day execution schedule that runs alongside the project build.</div>
+          <div class="doc__meta">
+            <span class="pill pill--accent">3 DM templates</span>
+            <span class="pill pill--mute">Form bypass</span>
+            <span class="pill pill--mute">Interview Q&amp;A</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="doc" href="UNIFYAPPS_COVER_NOTE.html">
+        <div class="doc__num">04</div>
+        <div class="doc__body">
+          <div class="doc__title">Cover Note &mdash; the 4-line attach with your resume</div>
+          <div class="doc__sub">What a cover note is, why it&rsquo;s not a cover letter, and three paste-ready versions: (a) a short email body to attach when sending the resume, (b) a long version for the form&rsquo;s open-text field, (c) a one-line LinkedIn DM opener. Includes the grad-year disclosure line.</div>
+          <div class="doc__meta">
+            <span class="pill pill--accent">3 versions</span>
+            <span class="pill pill--mute">Paste-ready</span>
+            <span class="pill pill--mute">With grad-year disclosure</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <h2>Read in this order</h2>
+    <ol class="steps">
+      <li><strong>Start with the Outreach Playbook (03).</strong> It explains the form trap, the dual-track strategy, and the 14-day schedule that pulls the other two docs together. <em>15 min read.</em></li>
+      <li><strong>Skim the tailored Resume (01).</strong> Confirm it sounds like you. Adjust anything that feels off; commit changes; host on GitHub Pages per Playbook §1.1. <em>10 min.</em></li>
+      <li><strong>Use the Project Spec (02) as your build journal.</strong> Day 1 starts after the playbook&rsquo;s pre-apply checklist is done. The agentic engine ships on Day 14, same day the LinkedIn launch post goes out. <em>14 days.</em></li>
+    </ol>
+
+    <h2>Why This Beats the Form</h2>
+    <ol class="steps">
+      <li><strong>The artifacts are the moat.</strong> Anyone can fill a Google form. Almost no candidates will show up with a Java agentic engine they shipped <em>this month</em>, with idempotency keys and an audit log because that&rsquo;s how a real FDSE thinks about reliability.</li>
+      <li><strong>The form filters on year, not on signal.</strong> Year-2022 MCA &rarr; auto-filter. Year-2022 MCA <em>+ Loom + repo + ex-Amazon DM</em> &rarr; recruiter override.</li>
+      <li><strong>Honest disclosure beats clever year-picking.</strong> &ldquo;Form didn&rsquo;t have my year, here&rsquo;s what I picked and why&rdquo; reads as a careful candidate. Picking 2025 reads as someone who&rsquo;ll cut corners on customer projects.</li>
+    </ol>
+
+    <footer class="footer">
+      <span>Prakhar Shekhar Parthasarthi · prakhar.mnnit.2022@gmail.com · <a href="https://github.com/praxstack">github.com/praxstack</a></span>
+      <span><a href="https://www.linkedin.com/in/prakharshekhar">linkedin.com/in/prakharshekhar</a></span>
+    </footer>
+
+  </div>
+</body>
+</html>

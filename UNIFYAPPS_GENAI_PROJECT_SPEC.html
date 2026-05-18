@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Java Agentic Workflow Engine — 2-Week Build Spec · UnifyApps FDSE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, figure, table { margin: 0; padding: 0; }
+    ul, ol { list-style: none; }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+
+    :root {
+      --paper:       #FFFFFF;
+      --paper-soft:  #FAF7F2;
+      --paper-chip:  #F2ECE1;
+      --ink:         #0B1524;
+      --ink-body:    #2A3647;
+      --ink-muted:   #5A6472;
+      --ink-subtle:  #8A8F98;
+      --rule:        #D8D0C0;
+      --rule-hair:   #E8E1D1;
+      --accent:      #8C2B12;
+      --accent-soft: #F2E2D9;
+      --good:        #1F6B3E;
+      --good-soft:   #DCEDE2;
+      --bad:         #8C1F1F;
+      --bad-soft:    #F2DADA;
+      --serif:  "IBM Plex Serif", Georgia, "Times New Roman", serif;
+      --sans:   "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      --mono:   "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    html { background: var(--paper-soft); }
+    body {
+      background: var(--paper-soft);
+      color: var(--ink-body);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      font-feature-settings: "cv11", "ss01", "ss03";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    .shell {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 56px 32px 96px;
+    }
+
+    /* Top nav */
+    .topnav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ink-muted);
+      margin-bottom: 56px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .topnav__brand {
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .topnav__links { display: flex; gap: 20px; }
+    .topnav__links a {
+      color: var(--ink-muted);
+      transition: color 150ms ease;
+    }
+    .topnav__links a:hover { color: var(--accent); }
+    .topnav__links a.active { color: var(--accent); }
+
+    /* Masthead */
+    .masthead { margin-bottom: 48px; }
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: 2px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h1.title {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 38px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 19px;
+      line-height: 1.45;
+      color: var(--ink-muted);
+      margin-bottom: 8px;
+    }
+    .meta {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-subtle);
+      letter-spacing: 0.04em;
+      margin-top: 12px;
+    }
+    .meta span + span::before { content: " · "; color: var(--rule); margin: 0 8px; }
+
+    /* Lede */
+    .lede {
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--ink-body);
+      padding: 20px 24px;
+      border-left: 3px solid var(--accent);
+      background: var(--paper);
+      border-radius: 0 4px 4px 0;
+      margin: 32px 0 48px;
+    }
+    .lede strong { color: var(--ink); font-weight: 600; }
+    .lede + .lede { margin-top: -32px; }
+
+    /* H2 — section eyebrow + rule */
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      margin-top: 56px;
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+    h2::before {
+      content: "§";
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--ink-subtle);
+      letter-spacing: 0;
+      font-size: 14px;
+    }
+    h2::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    h4 {
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+
+    p { margin-bottom: 14px; color: var(--ink-body); }
+    p strong { color: var(--ink); font-weight: 600; }
+    p em { font-family: var(--serif); font-style: italic; color: var(--ink-muted); }
+
+    a.link { color: var(--accent); border-bottom: 1px solid var(--accent-soft); }
+    a.link:hover { border-bottom-color: var(--accent); }
+
+    /* Lists */
+    ul.bullets, ol.bullets {
+      margin: 12px 0 18px;
+      padding-left: 0;
+    }
+    ul.bullets li, ol.bullets li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 8px;
+      color: var(--ink-body);
+    }
+    ul.bullets li::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 0.65em;
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      transform: rotate(45deg);
+    }
+    ol.bullets {
+      counter-reset: ol;
+    }
+    ol.bullets li {
+      counter-increment: ol;
+    }
+    ol.bullets li::before {
+      content: counter(ol) ".";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    li strong { color: var(--ink); font-weight: 600; }
+
+    /* Inline code */
+    code {
+      font-family: var(--mono);
+      font-size: 0.88em;
+      background: var(--paper-chip);
+      color: var(--ink);
+      padding: 1px 6px;
+      border-radius: 2px;
+      border: 1px solid var(--rule-hair);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    /* Pre / code blocks */
+    pre {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.55;
+      background: var(--ink);
+      color: #E8E1D1;
+      padding: 20px 24px;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 16px 0 24px;
+      border: 1px solid var(--ink);
+    }
+    pre code {
+      background: none;
+      border: none;
+      color: inherit;
+      padding: 0;
+      font-size: inherit;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 16px 0 28px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    thead {
+      background: var(--paper-chip);
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--rule-hair);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    th {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    td { color: var(--ink-body); }
+    td strong { color: var(--ink); font-weight: 600; }
+    td code { font-size: 12px; }
+
+    /* Pills */
+    .pill {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+    .pill--accent { background: var(--accent-soft); color: var(--accent); }
+    .pill--good   { background: var(--good-soft); color: var(--good); }
+    .pill--bad    { background: var(--bad-soft); color: var(--bad); }
+    .pill--mute   { background: var(--paper-chip); color: var(--ink-muted); }
+
+    /* Blockquote */
+    blockquote {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--ink-body);
+      padding: 14px 22px;
+      border-left: 2px solid var(--rule);
+      background: var(--paper);
+      margin: 18px 0;
+      border-radius: 0 3px 3px 0;
+    }
+    blockquote strong { color: var(--ink); font-style: normal; font-weight: 600; }
+
+    /* Callouts */
+    .callout {
+      padding: 16px 22px;
+      border-radius: 4px;
+      margin: 18px 0;
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+    .callout--accent {
+      background: var(--accent-soft);
+      border-left: 3px solid var(--accent);
+    }
+    .callout--good {
+      background: var(--good-soft);
+      border-left: 3px solid var(--good);
+    }
+    .callout--mute {
+      background: var(--paper);
+      border: 1px solid var(--rule-hair);
+      border-left: 3px solid var(--ink-subtle);
+    }
+    .callout strong { color: var(--ink); font-weight: 600; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    /* Horizontal rule between major sections */
+    hr {
+      border: none;
+      height: 1px;
+      background: var(--rule);
+      margin: 48px 0;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 80px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-subtle);
+      letter-spacing: 0.06em;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a { color: var(--ink-muted); border-bottom: 1px solid transparent; }
+    .footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      .shell { padding: 32px 20px 64px; }
+      h1.title { font-size: 28px; }
+      .subtitle { font-size: 16px; }
+      .lede { font-size: 16px; padding: 16px 18px; }
+      h3 { font-size: 19px; }
+      table { font-size: 13px; }
+      th, td { padding: 8px 10px; }
+      pre { font-size: 12px; padding: 16px; }
+      .topnav { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+
+    @media print {
+      html, body { background: #fff; }
+      .topnav, .footer { display: none; }
+      .shell { padding: 0; max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+
+    <nav class="topnav">
+      <span class="topnav__brand">Prakhar · UnifyApps Application Pack</span>
+      <span class="topnav__links">
+        <a href="Prakhar — UnifyApps FDSE.html">Resume</a>
+        <a class="active" href="UNIFYAPPS_GENAI_PROJECT_SPEC.html">Project Spec</a>
+        <a href="UNIFYAPPS_OUTREACH_PLAYBOOK.html">Playbook</a>
+      </span>
+    </nav>
+
+    <header class="masthead">
+      <span class="eyebrow">Build Spec · 14 days · ~70 hrs</span>
+      <h1 class="title">Java Agentic Workflow Engine</h1>
+      <p class="subtitle">Spring AI · pluggable tool registry · idempotency keys · audit log · human-approval gate.</p>
+      <p class="meta">
+        <span>Owner — Prakhar S. Parthasarthi</span>
+        <span>Stack — Java 17 / Spring Boot 3 / Spring AI / Postgres</span>
+        <span>Target — UnifyApps Sr. FDSE</span>
+      </p>
+    </header>
+
+    <div class="lede">
+      <strong>Why this exists:</strong> UnifyApps&rsquo; #1 hiring signal is <em>&ldquo;can you ship enterprise GenAI / agentic AI integrations fast?&rdquo;</em>. The current resume has zero LLM surface area. This project closes that gap in <strong>14 calendar days</strong> (≈ 60–80 focused hours) and gives a credible artifact to ship, demo, and talk about in interviews.
+    </div>
+
+    <div class="lede">
+      <strong>Strategy:</strong> play to existing strengths &mdash; Java, Spring, idempotent integrations, audit trails &mdash; instead of pivoting to a Python/LangChain stack you don&rsquo;t know. Showing up with <strong>Spring AI + agentic loop in pure Java</strong> is more differentiated than a generic Python notebook.
+    </div>
+
+    <h2>The Pitch &mdash; memorise this</h2>
+    <blockquote>
+      &ldquo;I built a Java agentic workflow engine &mdash; natural-language goal in, planner generates a tool-calling sequence, executor runs it against a pluggable tool registry with <strong>idempotency keys</strong> and <strong>full audit logs</strong>. It&rsquo;s the FDSE shape of work in miniature: plug a customer&rsquo;s API in, wire a tool, demo a working agent in days. ~600 LOC of orchestration, Spring AI for the LLM glue, ships with 8 demo scenarios.&rdquo;
+    </blockquote>
+    <p>That&rsquo;s your 30-second answer to <em>&ldquo;tell me about your GenAI experience.&rdquo;</em></p>
+
+    <h2>Repo Layout</h2>
+    <pre><code>agentic-workflow-java/
+├── README.md                       # Hero + quickstart + demo gif
+├── pom.xml                         # Java 17, Spring Boot 3, Spring AI
+├── docker-compose.yml              # Postgres for run logs
+├── .env.example                    # OPENAI_API_KEY, ANTHROPIC_API_KEY
+├── src/main/java/com/praxstack/agent/
+│   ├── AgentApplication.java
+│   ├── core/
+│   │   ├── Agent.java              # plan → execute → reflect loop
+│   │   ├── Planner.java            # LLM call → ToolCall[]
+│   │   ├── Executor.java           # runs ToolCall, handles retries
+│   │   ├── ToolSpec.java           # interface
+│   │   ├── ToolRegistry.java       # discovery + dispatch
+│   │   └── AuditLogger.java        # every step → DB
+│   ├── tools/
+│   │   ├── HttpFetcherTool.java    # GET/POST any REST API
+│   │   ├── SlackPostTool.java      # post to webhook
+│   │   ├── SheetsAppendTool.java   # Google Sheets API
+│   │   ├── EmailDraftTool.java     # Gmail API draft
+│   │   ├── JsonExtractTool.java    # JSONPath / extract field
+│   │   └── HumanApprovalTool.java  # blocks for approval
+│   ├── api/
+│   │   ├── AgentController.java    # POST /run, GET /run/{id}
+│   │   └── WebhookController.java
+│   └── persistence/
+│       ├── AgentRun.java
+│       ├── ToolInvocation.java
+│       └── AgentRunRepository.java
+├── src/main/resources/
+│   ├── application.yml
+│   └── prompts/
+│       ├── planner.md
+│       └── reflection.md
+├── src/test/java/...               # JUnit 5 + Mockito
+├── demos/
+│   ├── 01-summarize-page.json
+│   └── ... (8 scenarios)
+└── docs/
+    ├── ARCHITECTURE.md             # flow diagram + design decisions
+    ├── DEMO.md                     # walkthrough with screenshots
+    └── loom-link.md                # 2-min screen recording</code></pre>
+
+    <h2>Core Loop &mdash; the only thing that matters</h2>
+    <pre><code>public class Agent {
+  public AgentRun run(String goal, AgentContext ctx) {
+    AgentRun runRecord = audit.start(goal);
+    int step = 0;
+    while (step++ &lt; MAX_STEPS) {
+      Plan plan = planner.next(goal, ctx, runRecord.history());
+      audit.logPlan(runRecord, plan);
+
+      if (plan.isDone()) {
+        return audit.finish(runRecord, plan.summary());
+      }
+
+      for (ToolCall call : plan.toolCalls()) {
+        ToolResult r = executor.invoke(call, ctx);     // retries, dedup
+        audit.logToolCall(runRecord, call, r);         // every step persisted
+        ctx.observe(r);                                // feed back into planner
+      }
+    }
+    return audit.finishWithCap(runRecord);
+  }
+}</code></pre>
+
+    <h3>Three hard rules &mdash; the differentiators</h3>
+    <ol class="bullets">
+      <li><strong>Every tool call is idempotent.</strong> Caller passes a <code>dedupKey</code>; the executor skips if already seen for this run. <em>Reuses the Amazon webhook pattern. Talk about this.</em></li>
+      <li><strong>Every step is persisted</strong> before the next step starts &mdash; agent runs are replayable, debuggable, and survive crashes. <em>Your COE / audit-trail muscle showing up in agent design.</em></li>
+      <li><strong><code>HumanApprovalTool</code></strong> blocks the loop on a configurable list of high-risk actions (anything that writes externally, costs money, or sends comms). <em>Enterprise-safe agents &mdash; exactly what UnifyApps sells.</em></li>
+    </ol>
+
+    <h2>Tool Registry</h2>
+    <p><code>ToolSpec</code> interface &mdash; one method to implement per tool:</p>
+    <pre><code>public interface ToolSpec {
+  String name();
+  String description();           // shown to the LLM
+  JsonSchema inputSchema();       // shown to the LLM
+  ToolResult invoke(JsonNode input, ToolContext ctx);
+}</code></pre>
+
+    <p>Ship 6 tools &mdash; broad enough to demo, narrow enough to finish:</p>
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>What it does</th><th style="text-align:right">LOC</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>HttpFetcherTool</code></td><td>GET/POST any URL with headers, returns <code>{status, body}</code></td><td style="text-align:right">~80</td></tr>
+        <tr><td><code>JsonExtractTool</code></td><td>JSONPath query over previous result</td><td style="text-align:right">~40</td></tr>
+        <tr><td><code>SlackPostTool</code></td><td>POST to incoming-webhook URL</td><td style="text-align:right">~50</td></tr>
+        <tr><td><code>SheetsAppendTool</code></td><td>Google Sheets API append-row</td><td style="text-align:right">~120</td></tr>
+        <tr><td><code>EmailDraftTool</code></td><td>Gmail API draft creation</td><td style="text-align:right">~120</td></tr>
+        <tr><td><code>HumanApprovalTool</code></td><td>blocks run, waits for <code>POST /run/{id}/approve</code></td><td style="text-align:right">~60</td></tr>
+      </tbody>
+    </table>
+    <p>The <code>HttpFetcherTool</code> alone gets you 80% of demos &mdash; any REST API works.</p>
+
+    <h2>The 8 Demo Scenarios &mdash; your interview ammo</h2>
+    <p>Each demo is one JSON file in <code>demos/</code> &mdash; a goal + expected tool calls. Run with <code>mvn spring-boot:run -Dgoal=@demos/01-summarize-page.json</code>.</p>
+    <table>
+      <thead>
+        <tr><th style="width:36px">#</th><th>Goal (natural language)</th><th>Tools used</th><th>Why it sells</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><em>&ldquo;Summarize the latest TechCrunch homepage and post a 3-line digest to Slack #news.&rdquo;</em></td><td>http, json, slack</td><td>Read-only baseline; works in 30 sec</td></tr>
+        <tr><td>2</td><td><em>&ldquo;Pull yesterday&rsquo;s GitHub commits from praxstack/redis-server-java, count by author, append to Sheet &lsquo;Commit Log&rsquo;.&rdquo;</em></td><td>http (gh API), json, sheets</td><td>Multi-step + structured output</td></tr>
+        <tr><td>3</td><td><em>&ldquo;Watch this RSS feed; if any item mentions &lsquo;OpenAI&rsquo; draft me an email.&rdquo;</em></td><td>http, json, email-draft</td><td>Conditional logic + human-in-loop draft</td></tr>
+        <tr><td>4</td><td><em>&ldquo;Compare response time of /health on these 3 staging URLs, post the slowest to Slack with the latency number.&rdquo;</em></td><td>http (×3), json, slack</td><td>Parallel-ish tool use, real number</td></tr>
+        <tr><td>5</td><td><em>&ldquo;Find top 5 Hacker News stories that mention &lsquo;AI agents&rsquo; and create a Sheets row per story.&rdquo;</em></td><td>http, json (filter), sheets ×5</td><td>Iteration over a list</td></tr>
+        <tr><td>6</td><td><em>&ldquo;Read this PDF link, extract the named entities, draft me a brief.&rdquo;</em> <span class="pill pill--mute">Stretch</span></td><td>http, json, email-draft</td><td>Only if time</td></tr>
+        <tr><td>7</td><td><em>&ldquo;Schedule a weekly Monday 9am run of demo #2.&rdquo;</em></td><td>scheduler + #2</td><td>Recurring agent runs</td></tr>
+        <tr><td>8</td><td><em>&ldquo;Approval-gated: send this drafted email.&rdquo;</em></td><td>email-draft, human-approval</td><td>Showcase the safety rail</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout--accent">
+      <strong>Record a 2-minute Loom</strong> running demos 1, 2, 4, 8. That&rsquo;s your interview show-and-tell.
+    </div>
+
+    <h2>Day-by-Day Plan</h2>
+    <p><em>Effort: ~5 hrs/day × 14 days = ~70 hrs. Bias toward shipping demos over polishing code.</em></p>
+
+    <h3>Week 1 &mdash; Get the loop working end-to-end</h3>
+
+    <h4>Day 1 (Sun) · Scaffolding</h4>
+    <ul class="bullets">
+      <li><code>mvn archetype</code> Spring Boot 3.3 + Spring AI starter</li>
+      <li>Postgres docker-compose, Flyway migration for <code>agent_runs</code> + <code>tool_invocations</code></li>
+      <li>Wire <code>OPENAI_API_KEY</code> via <code>.env</code> (or Anthropic &mdash; pick one; Spring AI abstracts both)</li>
+      <li><strong>Done when:</strong> <code>mvn spring-boot:run</code> boots, <code>/health</code> returns 200</li>
+    </ul>
+
+    <h4>Day 2 · The planner</h4>
+    <ul class="bullets">
+      <li><code>Planner.next(goal, history)</code> → calls Spring AI <code>ChatClient</code> with planner system prompt + JSON-schema tool list</li>
+      <li>Parse model response into <code>Plan { toolCalls: [...], done: bool, summary: ... }</code> via Spring AI <code>.entity(Plan.class)</code></li>
+      <li><strong>Done when:</strong> goal &ldquo;say hello in 3 languages&rdquo; returns a sane no-tool plan</li>
+    </ul>
+
+    <h4>Day 3 · The executor + first tool</h4>
+    <ul class="bullets">
+      <li><code>Executor.invoke(toolCall, ctx)</code> &mdash; dispatches via <code>ToolRegistry.lookup(name)</code>, retry-with-backoff (reuse your patterns), persist <code>ToolInvocation</code> row before &amp; after</li>
+      <li><code>HttpFetcherTool</code> &mdash; Apache HttpClient 5 with timeouts</li>
+      <li><strong>Done when:</strong> demo 1 (TechCrunch summarise) runs end-to-end via curl</li>
+    </ul>
+
+    <h4>Day 4 · Idempotency + audit log</h4>
+    <ul class="bullets">
+      <li>Add <code>dedupKey = sha256(toolName + canonicalInput)</code> to <code>ToolInvocation</code>; executor short-circuits on seen-in-run</li>
+      <li><code>AuditLogger</code> writes every plan, tool-call, tool-result row with timing</li>
+      <li><code>GET /run/{id}</code> returns full timeline as JSON</li>
+      <li><strong>Done when:</strong> retry mid-flight, only un-done tools re-execute</li>
+    </ul>
+
+    <h4>Day 5 · Tools 2&ndash;3 (Slack + JSON)</h4>
+    <ul class="bullets">
+      <li><code>SlackPostTool</code> (incoming webhook) + <code>JsonExtractTool</code> (JSONPath via Jayway)</li>
+      <li>Demo 1 + demo 4 working &mdash; <strong>done when</strong> demo 4 posts a real Slack message</li>
+    </ul>
+
+    <h4>Day 6 · Tools 4&ndash;5 (Sheets + Email)</h4>
+    <ul class="bullets">
+      <li>Google API client, OAuth service-account flow (15 min of yak-shaving &mdash; eat it)</li>
+      <li><code>SheetsAppendTool</code>, <code>EmailDraftTool</code></li>
+      <li><strong>Done when:</strong> demo 2 appends a real row in a real spreadsheet</li>
+    </ul>
+
+    <h4>Day 7 · Buffer / Catch-up</h4>
+    <ul class="bullets">
+      <li>Whatever&rsquo;s behind. Don&rsquo;t move on with broken demos.</li>
+    </ul>
+
+    <h3>Week 2 &mdash; Polish, demo, ship</h3>
+
+    <h4>Day 8 · HumanApprovalTool + reflection</h4>
+    <ul class="bullets">
+      <li><code>HumanApprovalTool</code> &mdash; writes <code>state=PENDING_APPROVAL</code>, blocks loop; <code>POST /run/{id}/approve</code> resumes</li>
+      <li>1-step reflection: planner sees its last action and answers &ldquo;did that work? what next?&rdquo;</li>
+      <li><strong>Done when:</strong> demo 8 (approval-gated email) works end-to-end</li>
+    </ul>
+
+    <h4>Day 9 · Tests</h4>
+    <ul class="bullets">
+      <li>JUnit 5 + Mockito: planner contract, executor retry, idempotency dedup, audit-log invariants</li>
+      <li>Wiremock-based test for <code>HttpFetcherTool</code></li>
+      <li><strong>80%+ coverage on <code>core/</code></strong>, lower on tools (mirrors Amazon JaCoCo discipline &mdash; talk about it)</li>
+      <li><strong>Done when:</strong> <code>mvn test</code> passes, JaCoCo gate enabled</li>
+    </ul>
+
+    <h4>Day 10 · Demos &amp; demo runner</h4>
+    <ul class="bullets">
+      <li>All 8 demo JSON files; CLI: <code>./agent run demos/01-summarize-page.json</code></li>
+      <li>Capture stdout for README</li>
+    </ul>
+
+    <h4>Day 11 · ARCHITECTURE.md + flow diagram</h4>
+    <ul class="bullets">
+      <li>Mermaid diagram of the loop</li>
+      <li>1-page rationale: why idempotency, why audit-first persistence, why human-approval, why Spring AI over LangChain4j</li>
+      <li>This is the doc that will get screenshotted into your interview prep</li>
+    </ul>
+
+    <h4>Day 12 · README + screenshots</h4>
+    <ul class="bullets">
+      <li>Hero with one-line pitch, 30-second quickstart (<code>docker compose up</code> + curl), GIF of demo 4, architecture diagram inline, status badge</li>
+      <li><strong>Done when:</strong> a stranger could clone, set 1 env var, run demo 1 in 5 min</li>
+    </ul>
+
+    <h4>Day 13 · 2-min Loom</h4>
+    <ul class="bullets">
+      <li>Screen-record demos 1, 2, 4, 8</li>
+      <li>Voice-over: planner → tool registry → executor → audit log → human approval</li>
+      <li>Upload, paste link in README + on resume</li>
+    </ul>
+
+    <h4>Day 14 · Ship</h4>
+    <ul class="bullets">
+      <li>Push to GitHub public, pin on profile</li>
+      <li>LinkedIn post (template below)</li>
+      <li>Update resume&rsquo;s &ldquo;ETA 2 weeks&rdquo; → &ldquo;shipped&rdquo; + Loom link</li>
+      <li>Update LinkedIn headline to include &ldquo;Agentic AI / Java&rdquo;</li>
+    </ul>
+
+    <h2>LinkedIn Launch Post &mdash; paste-ready, post Day 14</h2>
+    <blockquote>
+      Spent the last two weeks building <strong>a Java agentic workflow engine</strong> &mdash; Spring AI + a tool-calling loop with idempotency keys, full audit trails, and a human-approval gate.<br><br>
+      Why Java? Because most of the agentic-AI conversation is happening in Python notebooks. The infra most enterprises actually run on is JVM. Wanted to see what the FDSE shape of work &mdash; <em>plug a customer&rsquo;s API into an agent, ship in days</em> &mdash; looks like in pure Java.<br><br>
+      6 tools, 8 demo scenarios, 80% test coverage, ~600 LOC of orchestration.<br><br>
+      Repo: github.com/praxstack/agentic-workflow-java<br>
+      2-min walkthrough: [loom link]<br><br>
+      Open to chat with anyone building in this space &mdash; especially if reliability of the agent matters more than the demo.
+    </blockquote>
+
+    <h2>Talking Points &mdash; for the FDSE interview</h2>
+    <p>When they ask <em>&ldquo;tell me about a recent project&rdquo;</em>:</p>
+    <ul class="bullets">
+      <li><strong>Open with the FDSE framing:</strong> <em>&ldquo;The shape of an FDSE&rsquo;s work is plug a customer&rsquo;s API into something useful, fast. I built a Java agentic engine to live that workflow.&rdquo;</em></li>
+      <li><strong>Lead with three differentiators:</strong> idempotency / audit log / approval gate &mdash; <em>&ldquo;every agent run is replayable; nothing happens twice; nothing risky happens without a human in the loop.&rdquo;</em></li>
+      <li><strong>Show one number:</strong> <em>&ldquo;6 tools, 8 demos, 80% test coverage. 14 days. Java, not Python &mdash; most enterprise infra is JVM.&rdquo;</em></li>
+      <li><strong>Close with curiosity:</strong> <em>&ldquo;What&rsquo;s UnifyApps&rsquo; approach to agent reliability &mdash; do you persist tool calls? gate destructive actions?&rdquo;</em> &mdash; flips it into a 2-way conversation; FDSEs are evaluated on customer-conversation chops as much as code.</li>
+    </ul>
+
+    <h2>Cut-line &mdash; what to drop if you slip</h2>
+    <p>If you&rsquo;re behind by Day 9:</p>
+    <div class="callout callout--mute">
+      <p><strong class="pill pill--bad">Cut</strong> demo 6 (PDF), demo 7 (scheduler), reflection step, EmailDraftTool</p>
+      <p><strong class="pill pill--good">Keep at all costs</strong> the core loop, audit log, idempotency, HumanApprovalTool, demos 1+2+4+8, the Loom</p>
+    </div>
+    <p>The minimum viable artifact = <strong>demos 1, 2, 4, 8 working + 80% coverage on core + 2-min Loom + clean README.</strong> Everything else is bonus.</p>
+
+    <h2>Scope Discipline &mdash; what NOT to build</h2>
+    <p>Things that will eat your time and not move the needle:</p>
+    <ul class="bullets">
+      <li><strong>A web UI.</strong> CLI + JSON demos are stronger signal anyway.</li>
+      <li><strong>Vector DB / RAG.</strong> Not what UnifyApps does. Save it for v2.</li>
+      <li><strong>Multi-agent / agent-to-agent.</strong> Not the FDSE shape. Cute, irrelevant.</li>
+      <li><strong>Custom prompt-engineering DSL.</strong> Use Markdown files in <code>resources/prompts/</code>. Done.</li>
+      <li><strong>Local LLM support (Ollama).</strong> One paid model is the production reality. Pick OpenAI <em>or</em> Anthropic, not both.</li>
+      <li><strong>Bench-marking against LangChain / AutoGen / Bedrock Agents.</strong> Not the audience. Don&rsquo;t bait the comparison.</li>
+    </ul>
+
+    <hr>
+
+    <footer class="footer">
+      <span>Prakhar Shekhar Parthasarthi · prakhar.mnnit.2022@gmail.com</span>
+      <span>
+        <a href="Prakhar — UnifyApps FDSE.html">Resume</a>
+        &nbsp;·&nbsp;
+        <a href="UNIFYAPPS_OUTREACH_PLAYBOOK.html">Outreach Playbook →</a>
+      </span>
+    </footer>
+
+  </div>
+</body>
+</html>
