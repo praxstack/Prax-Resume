@@ -70,7 +70,7 @@
 
   /* Color helpers */
   .amber { color: #FFB000; text-shadow: 0 0 1px rgba(255,176,0,0.6), 0 0 6px rgba(255,176,0,0.18); }
-  .dim { color: #1F7A3A; text-shadow: none; }
+  .dim { color: #2FA050; text-shadow: none; } /* was #1F7A3A (3.61:1, failed AA) → 5.80:1 on #0A0E0A */
   .mid { color: #2FCC5A; }
   .hi { color: #B8FFC9; }
   .redact { background: #33FF66; color: #0A0E0A; padding: 0 4pt; font-weight: 700; text-shadow: none; }
@@ -454,7 +454,7 @@
     line-height: 1.45;
   }
   .see-card .line .amber { font-weight: 600; }
-  .see-card .dim { color: #1F7A3A; }
+  .see-card .dim { color: #2FA050; } /* keep in step with global .dim AA fix */
 
   /* BUGS block */
   .bugs {

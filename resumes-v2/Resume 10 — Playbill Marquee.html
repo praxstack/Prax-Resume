@@ -96,7 +96,7 @@
       radial-gradient(circle at 2mm 50%, var(--gold) 0 0.7mm, transparent 0.9mm) 0 0 / 4mm 100% repeat-x;
     opacity: 0.9;
   }
-  .marquee .title-text { color: var(--gold); font-weight: 700; letter-spacing: 0.38em; }
+  .marquee .title-text { color: var(--cream); font-weight: 700; letter-spacing: 0.38em; }
   .marquee .title-text b { color: var(--cream); font-weight: 900; }
   .marquee .side { font-family: 'JetBrains Mono', monospace; font-size: 7.6pt; color: var(--cream); letter-spacing: 0.2em; font-weight: 500; }
 
@@ -822,9 +822,9 @@
       </div>
 
       <!-- GIANT MARQUEE TITLE -->
-      <h1 class="marquee-title">
-        <span class="ghost" data-ghost="PRAKHAR">PRAKHAR</span><br>
-        <span class="ghost" data-ghost="SHEKHAR">SHEKHAR</span>
+      <h1 class="marquee-title" aria-label="Prakhar Shekhar">
+        <span class="ghost" data-ghost="PRAKHAR" aria-hidden="true">PRAKHAR</span><br>
+        <span class="ghost" data-ghost="SHEKHAR" aria-hidden="true">SHEKHAR</span>
       </h1>
 
       <!-- SUBTITLE -->

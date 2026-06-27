@@ -242,6 +242,20 @@ body {
   color: var(--chalk2);
   max-width: 120mm;
 }
+
+.hero-contact {
+  display: flex; flex-wrap: wrap; gap: 1.2mm 4mm;
+  margin-top: 3mm; padding-top: 2.4mm;
+  border-top: 1px solid rgba(195,255,0,0.35);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7pt; letter-spacing: 0.04em;
+  color: var(--chalk2);
+}
+.hero-contact .hc-item { white-space: nowrap; }
+.hero-contact .hc-item b {
+  color: var(--lime); font-weight: 700;
+  margin-right: 1.2mm; letter-spacing: 0.12em;
+}
 .hero-bio b { color: var(--chalk); font-weight: 700; }
 .hero-bio u {
   text-decoration: none;
@@ -805,6 +819,12 @@ body {
           Step Functions, and DynamoDB. Headline wins on <b>latency (−47%)</b> and
           <b>conversion (+33%)</b>. On-call press release: <b>quiet shifts.</b>
         </p>
+        <div class="hero-contact">
+          <span class="hc-item"><b>EML</b> prakhar.mnnit.2022@gmail.com</span>
+          <span class="hc-item"><b>WEB</b> github.com/praxstack</span>
+          <span class="hc-item"><b>NET</b> linkedin.com/in/prakharshekhar</span>
+          <span class="hc-item"><b>LOC</b> Shahjahanpur, UP · open to relocate</span>
+        </div>
       </div>
     </section>
 
@@ -1004,7 +1024,7 @@ body {
           </div>
         </article>
         <article class="reel-card">
-          <h3>Markdown Viewer Pro</h3>
+          <h3>Markdown Viewer App</h3>
           <div class="repo">github.com/praxstack/markdown-viewer-app</div>
           <p>Zero-config markdown reader with live plugin architecture, keyboard-first command
           palette, test suite that makes refactors feel routine.</p>
