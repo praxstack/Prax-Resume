@@ -4,6 +4,3 @@ Thumbs.db
 .idea/
 *.log
 node_modules/
-package-lock.json
-resume.pdf
-*.pdf
