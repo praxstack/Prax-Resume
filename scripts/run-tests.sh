@@ -23,4 +23,17 @@ node scripts/verify-resume.mjs "$CANON"
 RC=$?
 echo
 if [ "$RC" -eq 0 ]; then echo "PASS — canonical resume meets all AGENTS.md contracts"; else echo "FAIL — contract violation in canonical resume"; fi
-exit $RC
+
+echo
+echo "=== resumes-v2 themes — data contract ==="
+node scripts/verify-themes.mjs
+RC2=$?
+
+echo
+if [ "$RC" -eq 0 ] && [ "$RC2" -eq 0 ]; then
+  echo "ALL PASS — canonical resume + all themes meet AGENTS.md data contracts"
+  exit 0
+else
+  echo "FAIL — see violations above (canonical RC=$RC, themes RC=$RC2)"
+  exit 1
+fi
