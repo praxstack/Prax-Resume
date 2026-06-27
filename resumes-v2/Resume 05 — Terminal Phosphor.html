@@ -500,6 +500,11 @@
     .resume-page { box-shadow: none; }
     .resume-page::before, .resume-page::after { display: none !important; }
   /* keep text glow as text-shadow (PDF-safe); kill blend overlays that flatten opaque */
+  .stack-card, .ex-card { background: #0E140E !important; border-color: #1F7A3A !important; }
+  .stack-card::before { background: #0A0E0A !important; }
+  /* flatten phosphor text-shadow in print so glyphs are crisp, no green smear */
+  * { text-shadow: none !important; }
+  .name, .cmd, h2, .sec-h { color: #33FF66 !important; }
 }
 
   /* universal clickable contact/repo links — inherit theme color, subtle affordance */

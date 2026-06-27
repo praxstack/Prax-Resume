@@ -46,7 +46,8 @@
     .deck { padding:0; gap:0; }
     .resume-page { box-shadow:none; page-break-after: always; break-after: page; }
     .resume-page:last-child { page-break-after:auto; break-after:auto; }
-  }
+    .resume-page::before { display: none !important; }
+}
 
   /* ============ MASTHEAD ============ */
   .masthead {

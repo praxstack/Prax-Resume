@@ -880,6 +880,11 @@ body {
     page-break-after: auto;
     break-after: auto;
   }
+  .resume-page::after, .grain, .blob, .pg::before { display: none !important; }
+  .name::before { display: none !important; }
+  .word::before { mix-blend-mode: normal !important; }
+  /* highlight markers: render as solid translucent behind text, not opaque blend */
+  .word, mark, .hl { mix-blend-mode: normal !important; }
 }
 
   /* universal clickable contact/repo links — inherit theme color, subtle affordance */
