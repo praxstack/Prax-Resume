@@ -759,6 +759,10 @@ body {
   .resume-page { box-shadow:none; page-break-after: always; break-after: page; }
   .resume-page:last-child { page-break-after: auto; break-after: auto; }
 }
+
+  /* universal clickable contact/repo links — inherit theme color, subtle affordance */
+  a.xlink { color: inherit; text-decoration: none; border-bottom: 0.2mm solid currentColor; opacity: 0.96; }
+  a.xlink:hover { opacity: 0.75; }
 </style>
 </head>
 <body>
@@ -820,9 +824,9 @@ body {
           <b>conversion (+33%)</b>. On-call press release: <b>quiet shifts.</b>
         </p>
         <div class="hero-contact">
-          <span class="hc-item"><b>EML</b> prakhar.mnnit.2022@gmail.com</span>
-          <span class="hc-item"><b>WEB</b> github.com/praxstack</span>
-          <span class="hc-item"><b>NET</b> linkedin.com/in/prakharshekhar</span>
+          <span class="hc-item"><b>EML</b> <a class="xlink" href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></span>
+          <span class="hc-item"><b>WEB</b> <a class="xlink" href="https://github.com/praxstack">github.com/praxstack</a></span>
+          <span class="hc-item"><b>NET</b> <a class="xlink" href="https://linkedin.com/in/prakharshekhar">linkedin.com/in/prakharshekhar</a></span>
           <span class="hc-item"><b>LOC</b> Shahjahanpur, UP · open to relocate</span>
         </div>
       </div>
@@ -1012,7 +1016,7 @@ body {
       <div class="reel">
         <article class="reel-card">
           <h3>Redis Server · Java</h3>
-          <div class="repo">github.com/praxstack/redis-server-java</div>
+          <div class="repo"><a class="xlink" href="https://github.com/praxstack/redis-server-java">github.com/praxstack/redis-server-java</a></div>
           <p>From-scratch <b>RESP2</b> protocol, event-loop I/O, tiny hashmap engine. SET/GET/INCR
           fast enough to blush next to the C implementation.</p>
           <div class="line">
@@ -1025,7 +1029,7 @@ body {
         </article>
         <article class="reel-card">
           <h3>Markdown Viewer App</h3>
-          <div class="repo">github.com/praxstack/markdown-viewer-app</div>
+          <div class="repo"><a class="xlink" href="https://github.com/praxstack/markdown-viewer-app">github.com/praxstack/markdown-viewer-app</a></div>
           <p>Zero-config markdown reader with live plugin architecture, keyboard-first command
           palette, test suite that makes refactors feel routine.</p>
           <div class="line">

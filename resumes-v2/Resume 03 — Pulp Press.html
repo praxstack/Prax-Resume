@@ -423,6 +423,10 @@
     font-family:'Playfair Display',serif; font-weight:900;
     font-size:10pt; color:#7A2810; letter-spacing:0.08em;
   }
+
+  /* universal clickable contact/repo links — inherit theme color, subtle affordance */
+  a.xlink { color: inherit; text-decoration: none; border-bottom: 0.2mm solid currentColor; opacity: 0.96; }
+  a.xlink:hover { opacity: 0.75; }
 </style>
 </head>
 <body>
@@ -462,9 +466,9 @@
       </div>
 
       <div class="contact-row">
-        prakhar.mnnit.2022@gmail.com
-        <span class="sep">✦</span> github.com/praxstack
-        <span class="sep">✦</span> linkedin.com/in/prakharshekhar
+        <a class="xlink" href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a>
+        <span class="sep">✦</span> <a class="xlink" href="https://github.com/praxstack">github.com/praxstack</a>
+        <span class="sep">✦</span> <a class="xlink" href="https://linkedin.com/in/prakharshekhar">linkedin.com/in/prakharshekhar</a>
         <br>
         Shahjahanpur, UP · open to relocate
         <span class="sep">✦</span> <em>open to Senior SWE postings &amp; correspondence</em>
@@ -648,7 +652,7 @@
       <div class="works-grid">
         <div class="work">
           <h5>Redis Server <em>· in Java</em></h5>
-          <div class="url">github.com/praxstack/redis-server-java</div>
+          <div class="url"><a class="xlink" href="https://github.com/praxstack/redis-server-java">github.com/praxstack/redis-server-java</a></div>
           <p>
             A from-scratch study of the RESP2 protocol, event-loop I/O, and a hand-rolled
             hashmap engine — built in the evenings, benchmarked in the small hours.
@@ -663,7 +667,7 @@
         </div>
         <div class="work">
           <h5>Markdown Viewer <em>· App</em></h5>
-          <div class="url">github.com/praxstack/markdown-viewer-app</div>
+          <div class="url"><a class="xlink" href="https://github.com/praxstack/markdown-viewer-app">github.com/praxstack/markdown-viewer-app</a></div>
           <p>
             A zero-config reader with a live plugin architecture and a keyboard-first
             command palette, carried by a lean gzipped payload and no runtime baggage.

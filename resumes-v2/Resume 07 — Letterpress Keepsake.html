@@ -663,6 +663,10 @@ ul.numerals .sidehead {
   font-size: 7.2pt;
   color: var(--ink2);
 }
+
+  /* universal clickable contact/repo links — inherit theme color, subtle affordance */
+  a.xlink { color: inherit; text-decoration: none; border-bottom: 0.2mm solid currentColor; opacity: 0.96; }
+  a.xlink:hover { opacity: 0.75; }
 </style>
 </head>
 <body>
@@ -689,9 +693,9 @@ ul.numerals .sidehead {
       <div class="tag">BEING AN ACCOUNT OF THREE SEASONS AT AMAZON TRAVEL</div>
       <div class="divider" aria-hidden="true">❧</div>
       <div class="contact">
-        prakhar.mnnit.2022@gmail.com
-        <span class="dot">·</span>github.com/praxstack
-        <span class="dot">·</span>linkedin.com/in/prakharshekhar
+        <a class="xlink" href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a>
+        <span class="dot">·</span><a class="xlink" href="https://github.com/praxstack">github.com/praxstack</a>
+        <span class="dot">·</span><a class="xlink" href="https://linkedin.com/in/prakharshekhar">linkedin.com/in/prakharshekhar</a>
         <span class="dot">·</span>Shahjahanpur, UP · open to relocate
         <span class="dot">·</span>Open to Sr SWE roles
       </div>
@@ -877,7 +881,7 @@ ul.numerals .sidehead {
     <div class="devices">
       <div class="device">
         <div class="ttl">Redis Server &mdash; in Java</div>
-        <div class="repo">github.com/praxstack/redis-server-java</div>
+        <div class="repo"><a class="xlink" href="https://github.com/praxstack/redis-server-java">github.com/praxstack/redis-server-java</a></div>
         <p>
           From-scratch <b>RESP2 protocol</b> with event-loop I/O and a hashmap engine.
           Written for sport &amp; study; benchmarked against the C implementation to keep
@@ -893,7 +897,7 @@ ul.numerals .sidehead {
       </div>
       <div class="device">
         <div class="ttl">Markdown Viewer App</div>
-        <div class="repo">github.com/praxstack/markdown-viewer-app</div>
+        <div class="repo"><a class="xlink" href="https://github.com/praxstack/markdown-viewer-app">github.com/praxstack/markdown-viewer-app</a></div>
         <p>
           Zero-config Markdown reader with a plugin architecture and a keyboard-first
           command palette. Built to fit in a browser tab and stay there — dependency-free

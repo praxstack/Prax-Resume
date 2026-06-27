@@ -798,6 +798,10 @@
   }
   .track .mid { color: var(--verm); }
 
+
+  /* universal clickable contact/repo links — inherit theme color, subtle affordance */
+  a.xlink { color: inherit; text-decoration: none; border-bottom: 0.2mm solid currentColor; opacity: 0.96; }
+  a.xlink:hover { opacity: 0.75; }
 </style>
 </head>
 <body>
@@ -839,9 +843,9 @@
 
       <!-- CAST CHIPS / CONTACT -->
       <div class="cast-chips">
-        <span class="chip"><span class="k">Email</span>prakhar.mnnit.2022@gmail.com</span>
-        <span class="chip"><span class="k">GitHub</span>github.com/praxstack</span>
-        <span class="chip"><span class="k">LinkedIn</span>linkedin.com/in/prakharshekhar</span>
+        <span class="chip"><span class="k">Email</span><a class="xlink" href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></span>
+        <span class="chip"><span class="k">GitHub</span><a class="xlink" href="https://github.com/praxstack">github.com/praxstack</a></span>
+        <span class="chip"><span class="k">LinkedIn</span><a class="xlink" href="https://linkedin.com/in/prakharshekhar">linkedin.com/in/prakharshekhar</a></span>
         <span class="chip"><span class="k">Stage</span>Shahjahanpur, UP · open to relocate</span>
       </div>
 
@@ -1040,7 +1044,7 @@
       <ul class="encores">
           <li>
             <div class="pname">Redis Server — in Java</div>
-            <div class="purl">github.com/praxstack/redis-server-java</div>
+            <div class="purl"><a class="xlink" href="https://github.com/praxstack/redis-server-java">github.com/praxstack/redis-server-java</a></div>
             <div class="pbody">A from-scratch study of the RESP2 protocol, event-loop I/O, and a hand-rolled hashmap engine — built in the evenings, benchmarked in the small hours.</div>
             <div class="pstats">
               <span class="pill">SET <b>154k</b> rps</span>
@@ -1052,7 +1056,7 @@
           </li>
           <li>
             <div class="pname">Markdown Viewer — Pro</div>
-            <div class="purl">github.com/praxstack/markdown-viewer-app</div>
+            <div class="purl"><a class="xlink" href="https://github.com/praxstack/markdown-viewer-app">github.com/praxstack/markdown-viewer-app</a></div>
             <div class="pbody">A zero-config reader with a live plugin architecture and keyboard-first command palette — lean gzipped payload, no runtime baggage.</div>
             <div class="pstats">
               <span class="pill"><b>155+</b> vitest tests</span>

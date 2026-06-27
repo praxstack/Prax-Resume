@@ -629,6 +629,10 @@ body {
 }
 .colophon .r { color: var(--red); font-weight: 700; }
 
+
+  /* universal clickable contact/repo links — inherit theme color, subtle affordance */
+  a.xlink { color: inherit; text-decoration: none; border-bottom: 0.2mm solid currentColor; opacity: 0.96; }
+  a.xlink:hover { opacity: 0.75; }
 </style>
 </head>
 <body>
@@ -696,11 +700,11 @@ body {
 
     <!-- CONTACT -->
     <div class="contact">
-      <span>prakhar.mnnit.2022@gmail.com</span>
+      <span><a class="xlink" href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></span>
       <span class="sep">/</span>
-      <span>github.com/praxstack</span>
+      <span><a class="xlink" href="https://github.com/praxstack">github.com/praxstack</a></span>
       <span class="sep">/</span>
-      <span>linkedin.com/in/prakharshekhar</span>
+      <span><a class="xlink" href="https://linkedin.com/in/prakharshekhar">linkedin.com/in/prakharshekhar</a></span>
       <span class="sep">/</span>
       <span>Shahjahanpur, UP · open to relocate</span>
       <span class="sep">/</span>
@@ -840,7 +844,7 @@ body {
       <div class="proj-grid">
         <div class="proj">
           <div class="pn tight">Redis Server · in Java</div>
-          <div class="pu">github.com/praxstack/redis-server-java</div>
+          <div class="pu"><a class="xlink" href="https://github.com/praxstack/redis-server-java">github.com/praxstack/redis-server-java</a></div>
           <div class="pb">
             Single-binary Redis-wire implementation &mdash; SET / GET / INCR / EXPIRE over RESP, event loop, AOF persistence. Benchmarks on commodity laptop; ~78% of C-Redis on my box.
           </div>
@@ -853,7 +857,7 @@ body {
         </div>
         <div class="proj">
           <div class="pn tight">Markdown Viewer App</div>
-          <div class="pu">github.com/praxstack/markdown-viewer-app</div>
+          <div class="pu"><a class="xlink" href="https://github.com/praxstack/markdown-viewer-app">github.com/praxstack/markdown-viewer-app</a></div>
           <div class="pb">
             Tiny Markdown reader. <b>Zero runtime dependencies.</b> Bundle &lt;100 KB gzipped. Held by <b>155+ Vitest tests</b>; CI gate won't ship below threshold.
           </div>

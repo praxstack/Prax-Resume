@@ -184,6 +184,10 @@
   .erow { font-size: 7.8pt; color: var(--txt2); margin-bottom: 1.6mm; line-height: 1.4; }
   .erow b { color: var(--txt); font-family: var(--disp); font-weight: 700; }
   .gpa { font-family: var(--mono); font-size: 6.2pt; color: #B5471F; }
+
+  /* universal clickable contact/repo links — inherit theme color, subtle affordance */
+  a.xlink { color: inherit; text-decoration: none; border-bottom: 0.2mm solid currentColor; opacity: 0.96; }
+  a.xlink:hover { opacity: 0.75; }
 </style>
 </head>
 <body>
@@ -269,9 +273,9 @@
 
         <div class="card-foot">
           <div class="contact">
-            <div><span class="k">EML</span><span class="v">prakhar.mnnit.2022@gmail.com</span></div>
-            <div><span class="k">GIT</span><span class="v">github.com/praxstack</span></div>
-            <div><span class="k">NET</span><span class="v">linkedin.com/in/prakharshekhar</span></div>
+            <div><span class="k">EML</span><span class="v"><a class="xlink" href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></span></div>
+            <div><span class="k">GIT</span><span class="v"><a class="xlink" href="https://github.com/praxstack">github.com/praxstack</a></span></div>
+            <div><span class="k">NET</span><span class="v"><a class="xlink" href="https://linkedin.com/in/prakharshekhar">linkedin.com/in/prakharshekhar</a></span></div>
             <div><span class="k">LOC</span><span class="v">Shahjahanpur, UP · open to relocate</span></div>
           </div>
           <div class="setmeta"><b>PSP · 001/026</b><br>HOLO RARE · 1 OF 1<br>★★★★★</div>
@@ -308,13 +312,13 @@
           <div class="projs">
             <div class="proj">
               <h4>Redis Server in Java</h4>
-              <div class="repo">github.com/praxstack/redis-server-java</div>
+              <div class="repo"><a class="xlink" href="https://github.com/praxstack/redis-server-java">github.com/praxstack/redis-server-java</a></div>
               <p>RESP2 Redis from scratch — thread-per-client bounded pool, lock-free <code>ConcurrentHashMap</code> reads, hybrid TTL eviction, TCP integration tests.</p>
               <div class="bench"><b>Bench</b> (100 clients): SET 154k · GET 195k · INCR 128k rps · p50 &lt; 0.3ms · <b>42 tests.</b></div>
             </div>
             <div class="proj">
               <h4>Markdown Viewer App</h4>
-              <div class="repo">github.com/praxstack/markdown-viewer-app</div>
+              <div class="repo"><a class="xlink" href="https://github.com/praxstack/markdown-viewer-app">github.com/praxstack/markdown-viewer-app</a></div>
               <p>Real-time markdown viewer — preview, syntax highlight, Mermaid, 10 themes, PDF/HTML export. Vanilla JS, sub-100KB.</p>
               <div class="bench"><b>Metrics</b> 155+ Vitest tests · Mermaid · PDF/HTML.</div>
             </div>
@@ -335,9 +339,9 @@
 
         <div class="card-foot">
           <div class="contact">
-            <div><span class="k">EML</span><span class="v">prakhar.mnnit.2022@gmail.com</span></div>
-            <div><span class="k">GIT</span><span class="v">github.com/praxstack</span></div>
-            <div><span class="k">NET</span><span class="v">linkedin.com/in/prakharshekhar</span></div>
+            <div><span class="k">EML</span><span class="v"><a class="xlink" href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></span></div>
+            <div><span class="k">GIT</span><span class="v"><a class="xlink" href="https://github.com/praxstack">github.com/praxstack</a></span></div>
+            <div><span class="k">NET</span><span class="v"><a class="xlink" href="https://linkedin.com/in/prakharshekhar">linkedin.com/in/prakharshekhar</a></span></div>
             <div><span class="k">LOC</span><span class="v">Shahjahanpur, UP · open to relocate</span></div>
           </div>
           <div class="setmeta"><b>PSP · 002/026</b><br>FULL ART · HOLO<br>★★★★★</div>

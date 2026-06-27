@@ -669,6 +669,10 @@ body {
   .resume-page:last-child { page-break-after: auto; }
 }
 
+
+  /* universal clickable contact/repo links — inherit theme color, subtle affordance */
+  a.xlink { color: inherit; text-decoration: none; border-bottom: 0.2mm solid currentColor; opacity: 0.96; }
+  a.xlink:hover { opacity: 0.75; }
 </style>
 </head>
 <body>
@@ -705,11 +709,11 @@ body {
     </div>
 
     <div class="contact">
-      prakhar.mnnit.2022@gmail.com
+      <a class="xlink" href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a>
       <span class="sep">♪</span>
-      github.com/praxstack
+      <a class="xlink" href="https://github.com/praxstack">github.com/praxstack</a>
       <span class="sep">♪</span>
-      linkedin.com/in/prakharshekhar
+      <a class="xlink" href="https://linkedin.com/in/prakharshekhar">linkedin.com/in/prakharshekhar</a>
       <span class="sep">♪</span>
       Shahjahanpur, UP · open to relocate
     </div>
@@ -932,7 +936,7 @@ body {
         <span class="bt-tk">B-SIDE · BT1</span>
         <div class="ph">
           <div class="name">Redis Server · Java</div>
-          <div class="url">github.com/praxstack/redis-server-java</div>
+          <div class="url"><a class="xlink" href="https://github.com/praxstack/redis-server-java">github.com/praxstack/redis-server-java</a></div>
         </div>
         <p>RESP2 protocol parser over a single-thread event-loop I/O core with a bespoke hashmap engine — structured for O(1) commands and correct expiry semantics.</p>
         <div class="specs">
@@ -947,7 +951,7 @@ body {
         <span class="bt-tk">B-SIDE · BT2</span>
         <div class="ph">
           <div class="name">Markdown Viewer App</div>
-          <div class="url">github.com/praxstack/markdown-viewer-app</div>
+          <div class="url"><a class="xlink" href="https://github.com/praxstack/markdown-viewer-app">github.com/praxstack/markdown-viewer-app</a></div>
         </div>
         <p>Zero-config reader with a plugin architecture — drop-in transforms for diagrams, math, and syntax. Ships tiny and dependency-free.</p>
         <div class="specs">

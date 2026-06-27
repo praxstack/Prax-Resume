@@ -499,6 +499,10 @@
     body { background: #0A0E0A; }
     .resume-page { box-shadow: none; }
   }
+
+  /* universal clickable contact/repo links — inherit theme color, subtle affordance */
+  a.xlink { color: inherit; text-decoration: none; border-bottom: 0.2mm solid currentColor; opacity: 0.96; }
+  a.xlink:hover { opacity: 0.75; }
 </style>
 </head>
 <body>
@@ -539,8 +543,8 @@
         <div class="block-body">
           <dl class="kv">
             <dt>usage</dt><dd><span class="hi">$ psp --fix p90 --scale booking-funnel --on-call</span></dd>
-            <dt>email</dt><dd>prakhar.mnnit.2022@gmail.com</dd>
-            <dt>github</dt><dd>github.com/praxstack &nbsp;·&nbsp; <span class="dim">linkedin.com/in/prakharshekhar</span></dd>
+            <dt>email</dt><dd><a class="xlink" href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></dd>
+            <dt>github</dt><dd><a class="xlink" href="https://github.com/praxstack">github.com/praxstack</a> &nbsp;·&nbsp; <span class="dim"><a class="xlink" href="https://linkedin.com/in/prakharshekhar">linkedin.com/in/prakharshekhar</a></span></dd>
             <dt>host</dt><dd>Shahjahanpur, UP · open to relocate &nbsp;·&nbsp; <span class="amber">[ REDACTED ]</span> &nbsp;<span class="dim">(salary)</span></dd>
           </dl>
         </div>
@@ -711,7 +715,7 @@
         <div class="ex-grid">
           <div class="ex-card">
             <div class="title">redis-server-java</div>
-            <div class="repo">github.com/praxstack/redis-server-java</div>
+            <div class="repo"><a class="xlink" href="https://github.com/praxstack/redis-server-java">github.com/praxstack/redis-server-java</a></div>
             <div class="desc">RESP2 protocol, single-threaded <span class="hi">event-loop</span> reactor, lock-free hashmap core. 42 tests on the protocol surface, clean shutdown, no leaked sockets.</div>
             <div class="bench">$ redis-benchmark -t set,get,incr
   SET   : 154,000 rps
@@ -721,7 +725,7 @@
           </div>
           <div class="ex-card">
             <div class="title">markdown-viewer-app</div>
-            <div class="repo">github.com/praxstack/markdown-viewer-app</div>
+            <div class="repo"><a class="xlink" href="https://github.com/praxstack/markdown-viewer-app">github.com/praxstack/markdown-viewer-app</a></div>
             <div class="desc">Plugin-first architecture with command palette, <span class="hi">155+ Vitest</span> assertions, zero runtime deps, strict budget on bundle size.</div>
             <div class="bench">$ du -sh dist/
   &lt; 100 KB gz
@@ -758,7 +762,7 @@
         <div class="section-head">
           <span class="tag">## BUGS</span>
           <span class="rule"></span>
-          <span class="meta">report to: prakhar.mnnit.2022@gmail.com</span>
+          <span class="meta">report to: <a class="xlink" href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></span>
         </div>
         <div class="bugs">
           <span class="tag">KNOWN-ISSUE:</span> occasionally over-indexes on p90 graphs when p99 is the actual thing on fire. &nbsp; <span class="tag">WONTFIX:</span> writes runbooks before writing the Slack update. &nbsp; <span class="tag">FEATURE:</span> bias toward idempotency &mdash; will push back on "just retry it." &nbsp; <span class="tag">NOTE:</span> this résumé compiles on A4 with <span class="amber">zero warnings</span>.

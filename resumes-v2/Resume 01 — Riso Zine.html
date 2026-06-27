@@ -881,6 +881,10 @@ body {
     break-after: auto;
   }
 }
+
+  /* universal clickable contact/repo links — inherit theme color, subtle affordance */
+  a.xlink { color: inherit; text-decoration: none; border-bottom: 0.2mm solid currentColor; opacity: 0.96; }
+  a.xlink:hover { opacity: 0.75; }
 </style>
 </head>
 <body>
@@ -944,9 +948,9 @@ body {
 
       <div class="contact">
         <span class="chip hot">open to SR. SWE roles</span>
-        <span class="chip">prakhar.mnnit.2022@gmail.com</span>
-        <span class="chip">github.com/praxstack</span>
-        <span class="chip">linkedin.com/in/prakharshekhar</span>
+        <span class="chip"><a class="xlink" href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></span>
+        <span class="chip"><a class="xlink" href="https://github.com/praxstack">github.com/praxstack</a></span>
+        <span class="chip"><a class="xlink" href="https://linkedin.com/in/prakharshekhar">linkedin.com/in/prakharshekhar</a></span>
         <span class="chip">Shahjahanpur, UP · open to relocate</span>
         <span class="chip">bengaluru · in</span>
       </div>
@@ -1133,7 +1137,7 @@ body {
         <article class="proj">
           <div class="num">P1</div>
           <h3>Redis Server · in Java</h3>
-          <div class="repo">github.com/praxstack/redis-server-java</div>
+          <div class="repo"><a class="xlink" href="https://github.com/praxstack/redis-server-java">github.com/praxstack/redis-server-java</a></div>
           <p>From-scratch implementation of the RESP2 wire protocol, event-loop I/O,
           and a tiny hashmap engine. Runs SET / GET / INCR fast enough to blush next
           to the C implementation.</p>
@@ -1148,7 +1152,7 @@ body {
         <article class="proj">
           <div class="num">P2</div>
           <h3>Markdown Viewer App</h3>
-          <div class="repo">github.com/praxstack/markdown-viewer-app</div>
+          <div class="repo"><a class="xlink" href="https://github.com/praxstack/markdown-viewer-app">github.com/praxstack/markdown-viewer-app</a></div>
           <p>A zero-config markdown reader with live plugin architecture,
           a keyboard-first command palette, and a test suite that makes
           refactors feel routine.</p>
