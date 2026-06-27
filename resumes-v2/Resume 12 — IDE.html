@@ -130,6 +130,9 @@
   .deck { gap: 0 !important; padding: 0 !important; }
   body { background: #fff !important; }
 }
+
+  .tree a.row { text-decoration: none; color: inherit; cursor: pointer; }
+  .tree a.row:hover { filter: brightness(1.25); }
 </style>
 </head>
 <body>
@@ -155,11 +158,11 @@
         <div class="sb-title">Explorer</div>
         <div class="tree">
           <div class="row dir"><span class="chev">▾</span> PRAKHAR-SP</div>
-          <div class="row file ind active"><span>📄</span> resume.json</div>
-          <div class="row file ind"><span class="gd">📄</span> experience.ts <span class="gm">M</span></div>
-          <div class="row file ind"><span>📄</span> skills.yaml</div>
-          <div class="row file ind"><span>📄</span> projects.go</div>
-          <div class="row file ind"><span class="gd">📄</span> education.md</div>
+          <a class="row file ind active" href="#ed-resume"><span>📄</span> resume.json</a>
+          <a class="row file ind" href="#ed-experience"><span class="gd">📄</span> experience.ts <span class="gm">M</span></a>
+          <a class="row file ind" href="#ed-skills"><span>📄</span> skills.yaml</a>
+          <a class="row file ind" href="#ed-projects"><span>📄</span> projects.go</a>
+          <a class="row file ind" href="#ed-education"><span class="gd">📄</span> education.md</a>
         </div>
 
         <div class="sb-sec">
@@ -184,7 +187,7 @@
       </aside>
 
       <!-- editor -->
-      <div class="editor">
+      <div class="editor" id="ed-resume"><span id="ed-experience"></span>
         <div class="tabs">
           <div class="tab active"><span class="d"></span> resume.json</div>
           <div class="tab"><span class="d"></span> experience.ts</div>
@@ -290,7 +293,7 @@
         </div>
       </aside>
 
-      <div class="editor">
+      <div class="editor" id="ed-skills"><span id="ed-projects"></span><span id="ed-education"></span>
         <div class="tabs">
           <div class="tab"><span class="d"></span> resume.json</div>
           <div class="tab active"><span class="d"></span> skills.yaml</div>
