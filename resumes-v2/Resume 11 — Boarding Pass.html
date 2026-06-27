@@ -77,8 +77,8 @@
     border-bottom: 0.4mm solid rgba(255,255,255,0.25);
     padding-bottom: 2.4mm; margin-bottom: 4mm;
   }
-  .pass-brand .logo { display: flex; align-items: center; gap: 2.4mm; color: #fff; font-weight: 700; }
-  .pass-brand .logo svg { width: 5.5mm; height: 5.5mm; }
+  .pass-brand .logo { display: flex; align-items: center; gap: 2.4mm; color: #fff; font-weight: 700; text-decoration: none; }
+  .pass-brand .logo svg { width: 5mm; height: 5mm; }
   .pass-class { color: var(--accent); font-weight: 700; letter-spacing: 0.18em; }
 
   .route { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 5mm; }
@@ -99,6 +99,9 @@
   .pax .name-wrap .lbl { font-family: var(--mono); font-size: 6pt; letter-spacing: 0.18em; color: rgba(255,255,255,0.7); text-transform: uppercase; }
   .pax .name { font-family: var(--cond); font-weight: 700; font-size: 23pt; line-height: 1; letter-spacing: 0.01em; margin-top: 1mm; }
   .pax .role { font-family: var(--mono); font-size: 7pt; letter-spacing: 0.08em; color: var(--accent); margin-top: 1.6mm; text-transform: uppercase; }
+  .pax .seatmap { flex: none; text-align: center; }
+  .pax .seatmap svg { width: 22mm; height: auto; display: block; }
+  .pax .seat-cap { display: block; font-family: var(--mono); font-size: 5.6pt; letter-spacing: 0.16em; color: rgba(255,255,255,0.7); margin-top: 1.4mm; }
 
   /* ===================== INFO STRIP (gate/seat = metrics) ===================== */
   .infostrip {
@@ -156,7 +159,8 @@
   .projs { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
   .proj { border: 0.4mm solid var(--rule); border-radius: 2mm; padding: 3mm 3.4mm; background: var(--card); }
   .proj h4 { font-family: var(--cond); font-weight: 700; font-size: 9.6pt; color: var(--ink); }
-  .proj .repo { font-family: var(--mono); font-size: 6.2pt; color: var(--sky); margin: 0.8mm 0 1.8mm; }
+  .proj .repo { display: inline-block; font-family: var(--mono); font-size: 6.2pt; color: var(--sky); margin: 0.8mm 0 1.8mm; text-decoration: none; }
+  .proj .repo:hover { text-decoration: underline; }
   .proj p { font-size: 7.4pt; line-height: 1.36; color: var(--ink2); }
   .proj .bench { font-family: var(--mono); font-size: 6.6pt; color: var(--accent2); margin-top: 1.8mm; padding-top: 1.6mm; border-top: 0.3mm dashed var(--rule); }
   .proj .bench b { color: var(--ink); }
@@ -182,7 +186,8 @@
   .stub .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2mm 5mm; font-family: var(--mono); font-size: 6.8pt; }
   .stub .contact .row { display: flex; gap: 2mm; }
   .stub .contact .k { color: var(--accent); font-weight: 700; letter-spacing: 0.08em; }
-  .stub .contact .val { color: rgba(255,255,255,0.92); }
+  .stub .contact .val { color: rgba(255,255,255,0.92); text-decoration: none; }
+  .stub .contact a.val:hover { text-decoration: underline; }
   .barcode { display: flex; flex-direction: column; align-items: center; gap: 1.5mm; }
   .barcode .bars {
     height: 13mm; width: 46mm;
@@ -208,10 +213,10 @@
 
       <header class="pass-top">
         <div class="pass-brand">
-          <span class="logo">
-            <svg viewBox="0 0 24 24" fill="#fff"><path d="M2 16l20-7-9 13-2-5-9-1z" opacity="0.95"/></svg>
-            PRAXAIR · BOARDING PASS
-          </span>
+          <a class="logo" href="#top">
+            <svg viewBox="0 0 64 64" fill="#fff" aria-label="airline"><path d="M61 33.4c.7-1.2.3-2.7-.9-3.4L44 20.6V9.8c0-2.4-1.6-4.6-3.9-5.2-1.5-.4-3 .3-3.8 1.6-.5.9-.7 1.9-.7 2.9v15.2L20 16.9V11c0-1.1-.9-2-2-2s-2 .9-2 2v8.2L5.9 13.4c-1-.6-2.2-.4-3 .4-1 1-1 2.7.1 3.6L16 30.3v9.4l-6.4 2.3c-.9.3-1.6 1.2-1.6 2.2V48c0 .8.7 1.4 1.5 1.2l8.5-2.2 8.5 5c.3 1 .6 5.6.6 5.6 0 .8.7 1.4 1.4 1.2l3-.8c.6-.2 1-.7 1-1.3l.3-5.2 16.4-9.6c1.2-.7 1.6-2.2.9-3.4-.5-.9-1.5-1.3-2.5-1.1L44 39.6V30l15.6 4.4c1 .3 2-.1 2.5-1z"/></svg>
+            <span>PRAXAIR · BOARDING PASS</span>
+          </a>
           <span><span class="pass-class">CLASS</span> &nbsp;SR · SWE</span>
         </div>
 
@@ -222,7 +227,7 @@
           </div>
           <div class="route-mid">
             <div class="line"></div>
-            <div class="plane"><svg viewBox="0 0 24 24"><path d="M2 16l20-7-9 13-2-5-9-1z"/></svg></div>
+            <div class="plane"><svg viewBox="0 0 64 64" fill="#fff"><path d="M61 33.4c.7-1.2.3-2.7-.9-3.4L44 20.6V9.8c0-2.4-1.6-4.6-3.9-5.2-1.5-.4-3 .3-3.8 1.6-.5.9-.7 1.9-.7 2.9v15.2L20 16.9V11c0-1.1-.9-2-2-2s-2 .9-2 2v8.2L5.9 13.4c-1-.6-2.2-.4-3 .4-1 1-1 2.7.1 3.6L16 30.3v9.4l-6.4 2.3c-.9.3-1.6 1.2-1.6 2.2V48c0 .8.7 1.4 1.5 1.2l8.5-2.2 8.5 5c.3 1 .6 5.6.6 5.6 0 .8.7 1.4 1.4 1.2l3-.8c.6-.2 1-.7 1-1.3l.3-5.2 16.4-9.6c1.2-.7 1.6-2.2.9-3.4-.5-.9-1.5-1.3-2.5-1.1L44 39.6V30l15.6 4.4c1 .3 2-.1 2.5-1z"/></svg></div>
             <div class="label">3 YRS · JAVA · DISTRIBUTED · AWS</div>
           </div>
           <div class="port">
@@ -231,11 +236,29 @@
           </div>
         </div>
 
-        <div class="pax">
+        <div class="pax" id="top">
           <div class="name-wrap">
             <div class="lbl">Passenger</div>
             <div class="name">PRAKHAR SHEKHAR PARTHASARTHI</div>
             <div class="role">Full-Stack Software Engineer · ex-Amazon</div>
+          </div>
+          <div class="seatmap" aria-label="seat map">
+            <svg viewBox="0 0 70 46">
+              <rect x="1" y="1" width="68" height="44" rx="6" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+              <g fill="rgba(255,255,255,0.25)">
+                <rect x="8" y="8" width="7" height="7" rx="1.5"/><rect x="17" y="8" width="7" height="7" rx="1.5"/>
+                <rect x="33" y="8" width="7" height="7" rx="1.5"/><rect x="42" y="8" width="7" height="7" rx="1.5"/>
+                <rect x="8" y="19" width="7" height="7" rx="1.5"/><rect x="17" y="19" width="7" height="7" rx="1.5"/>
+                <rect x="33" y="19" width="7" height="7" rx="1.5"/><rect x="42" y="19" width="7" height="7" rx="1.5"/>
+                <rect x="8" y="30" width="7" height="7" rx="1.5"/><rect x="17" y="30" width="7" height="7" rx="1.5"/>
+                <rect x="33" y="30" width="7" height="7" rx="1.5"/><rect x="42" y="30" width="7" height="7" rx="1.5"/>
+              </g>
+              <!-- selected seat 1A highlighted -->
+              <rect x="8" y="8" width="7" height="7" rx="1.5" fill="#E8612C"/>
+              <text x="58" y="12" fill="rgba(255,255,255,0.55)" font-family="monospace" font-size="6">1A</text>
+              <text x="58" y="40" fill="rgba(255,255,255,0.4)" font-family="monospace" font-size="5">SR</text>
+            </svg>
+            <span class="seat-cap">SEAT 1A</span>
           </div>
         </div>
       </header>
@@ -291,9 +314,9 @@
       <!-- barcode stub footer -->
       <div class="stub">
         <div class="contact">
-          <div class="row"><span class="k">EML</span><span class="val">prakhar.mnnit.2022@gmail.com</span></div>
-          <div class="row"><span class="k">GIT</span><span class="val">github.com/praxstack</span></div>
-          <div class="row"><span class="k">NET</span><span class="val">linkedin.com/in/prakharshekhar</span></div>
+          <div class="row"><span class="k">EML</span><a class="val" href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></div>
+          <div class="row"><span class="k">GIT</span><a class="val" href="https://github.com/praxstack">github.com/praxstack</a></div>
+          <div class="row"><span class="k">NET</span><a class="val" href="https://linkedin.com/in/prakharshekhar">linkedin.com/in/prakharshekhar</a></div>
           <div class="row"><span class="k">LOC</span><span class="val">Shahjahanpur, UP · open to relocate</span></div>
         </div>
         <div class="barcode">
@@ -311,7 +334,7 @@
       <header class="pass-top p2">
         <div class="pass-brand">
           <span class="logo">
-            <svg viewBox="0 0 24 24" fill="#fff"><path d="M2 16l20-7-9 13-2-5-9-1z" opacity="0.95"/></svg>
+            <svg viewBox="0 0 64 64" fill="#fff"><path d="M61 33.4c.7-1.2.3-2.7-.9-3.4L44 20.6V9.8c0-2.4-1.6-4.6-3.9-5.2-1.5-.4-3 .3-3.8 1.6-.5.9-.7 1.9-.7 2.9v15.2L20 16.9V11c0-1.1-.9-2-2-2s-2 .9-2 2v8.2L5.9 13.4c-1-.6-2.2-.4-3 .4-1 1-1 2.7.1 3.6L16 30.3v9.4l-6.4 2.3c-.9.3-1.6 1.2-1.6 2.2V48c0 .8.7 1.4 1.5 1.2l8.5-2.2 8.5 5c.3 1 .6 5.6.6 5.6 0 .8.7 1.4 1.4 1.2l3-.8c.6-.2 1-.7 1-1.3l.3-5.2 16.4-9.6c1.2-.7 1.6-2.2.9-3.4-.5-.9-1.5-1.3-2.5-1.1L44 39.6V30l15.6 4.4c1 .3 2-.1 2.5-1z"/></svg>
             PRAXAIR · BOARDING PASS
           </span>
           <span class="cont-note">CONNECTING FLIGHT · PG 2 / 2</span>
@@ -336,13 +359,13 @@
           <div class="projs">
             <div class="proj">
               <h4>Redis Server in Java</h4>
-              <div class="repo">github.com/praxstack/redis-server-java</div>
+              <a class="repo" href="https://github.com/praxstack/redis-server-java">github.com/praxstack/redis-server-java</a>
               <p>RESP2-compatible Redis from scratch. Thread-per-client on a bounded <code>ExecutorService</code>; lock-free reads via <code>ConcurrentHashMap</code>; hybrid TTL eviction; graceful shutdown; TCP integration tests.</p>
               <div class="bench"><b>Bench</b> (100 clients): SET 154k · GET 195k · INCR 128k rps · p50 &lt; 0.3ms · <b>42 tests, 100%.</b></div>
             </div>
             <div class="proj">
               <h4>Markdown Viewer App</h4>
-              <div class="repo">github.com/praxstack/markdown-viewer-app</div>
+              <a class="repo" href="https://github.com/praxstack/markdown-viewer-app">github.com/praxstack/markdown-viewer-app</a>
               <p>Production markdown viewer — real-time preview, syntax highlighting, Mermaid diagrams, 10 themes, PDF/HTML export. Modular vanilla JS, sub-100 KB bundle.</p>
               <div class="bench"><b>Metrics</b> 155+ Vitest tests · Mermaid · PDF/HTML export.</div>
             </div>
@@ -370,9 +393,9 @@
 
       <div class="stub">
         <div class="contact">
-          <div class="row"><span class="k">EML</span><span class="val">prakhar.mnnit.2022@gmail.com</span></div>
-          <div class="row"><span class="k">GIT</span><span class="val">github.com/praxstack</span></div>
-          <div class="row"><span class="k">NET</span><span class="val">linkedin.com/in/prakharshekhar</span></div>
+          <div class="row"><span class="k">EML</span><a class="val" href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></div>
+          <div class="row"><span class="k">GIT</span><a class="val" href="https://github.com/praxstack">github.com/praxstack</a></div>
+          <div class="row"><span class="k">NET</span><a class="val" href="https://linkedin.com/in/prakharshekhar">linkedin.com/in/prakharshekhar</a></div>
           <div class="row"><span class="k">LOC</span><span class="val">Shahjahanpur, UP · open to relocate</span></div>
         </div>
         <div class="barcode">
