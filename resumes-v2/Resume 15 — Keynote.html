@@ -121,6 +121,11 @@
   .foot .row a:hover { text-decoration: underline; }
   .foot .row .k { color: var(--ink3); }
   .foot .legal { text-align: center; font-size: 6.8pt; color: var(--ink3); margin-top: 3mm; font-family: var(--mono); }
+
+@media print {
+  .deck { gap: 0 !important; padding: 0 !important; }
+  body { background: #fff !important; }
+}
 </style>
 </head>
 <body>

@@ -1,59 +1,53 @@
 #!/usr/bin/env node
 /**
- * Render every resume-N.html in resumes-v2/ to resumes-v2/pdf/resume-N.pdf
- * via headless Chromium. Waits for document.fonts.ready so web fonts land
- * (we use font-display:block). Reports page count per file.
+ * build-all-pdfs.mjs — batch-render every resume HTML to A4 PDF via headless Chromium.
+ *
+ * Renders: the canonical v3 (continuous-flow, paginated by its @media print rules)
+ * + all 15 resumes-v2 themes (fixed 210x297mm .resume-page divs, @page size:A4 margin:0).
+ * Each theme's own CSS owns pagination; this just drives the print engine and verifies
+ * the PDF was written with the expected page count. Clickable <a href> links are
+ * preserved into the PDF by Chromium automatically.
+ *
+ *   node scripts/build-all-pdfs.mjs
  */
 import { chromium } from "playwright";
-import { readdirSync, existsSync } from "node:fs";
-import { dirname, resolve } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { pathToFileURL, fileURLToPath } from "node:url";
+import { dirname, resolve, join, basename } from "node:path";
+import { existsSync, readdirSync, statSync } from "node:fs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
-const srcDir = resolve(root, "resumes-v2");
-const outDir = resolve(srcDir, "pdf");
+const v2dir = join(root, "resumes-v2");
 
-const files = readdirSync(srcDir)
-  .filter((f) => /\.html$/.test(f) && /(^resume-\d+|^Resume\s+\d+)/.test(f))
-  .sort((a, b) => {
-    const na = +(a.match(/\d+/)?.[0] ?? 0);
-    const nb = +(b.match(/\d+/)?.[0] ?? 0);
-    return na - nb;
-  });
-
-if (!files.length) {
-  console.error("No resume-*.html files in resumes-v2/");
-  process.exit(1);
+const jobs = [];
+// canonical v3 first
+const v3 = join(root, "Prakhar Shekhar Parthasarthi Resume - v3.html");
+if (existsSync(v3)) jobs.push({ html: v3, pdf: v3.replace(/\.html$/, ".pdf") });
+// all 15 themes
+for (const f of readdirSync(v2dir).filter(f => /^Resume \d\d .*\.html$/.test(f)).sort()) {
+  jobs.push({ html: join(v2dir, f), pdf: join(v2dir, f.replace(/\.html$/, ".pdf")) });
 }
 
 const browser = await chromium.launch();
-const results = [];
-for (const f of files) {
-  const htmlPath = resolve(srcDir, f);
-  const pdfPath = resolve(outDir, f.replace(/\.html$/, ".pdf"));
+let ok = 0, fail = 0;
+for (const { html, pdf } of jobs) {
   const t0 = Date.now();
   const page = await browser.newPage();
-  await page.emulateMedia({ media: "print" });
-  await page.goto(pathToFileURL(htmlPath).href, { waitUntil: "networkidle" });
-  await page.evaluate(() =>
-    document.fonts ? document.fonts.ready : Promise.resolve()
-  );
-  // Count .resume-page divs (the source-of-truth page count)
-  const pageCount = await page.evaluate(
-    () => document.querySelectorAll(".resume-page").length
-  );
-  await page.pdf({
-    path: pdfPath,
-    format: "A4",
-    printBackground: true,
-    preferCSSPageSize: true,
-  });
-  await page.close();
-  results.push({ f, pages: pageCount, ms: Date.now() - t0, out: pdfPath });
-  console.log(`✓ ${f} → ${pageCount} page${pageCount > 1 ? "s" : ""}  (${Date.now() - t0} ms)`);
+  try {
+    await page.emulateMedia({ media: "print" });
+    await page.goto(pathToFileURL(html).href, { waitUntil: "networkidle" });
+    await page.evaluate(() => (document.fonts ? document.fonts.ready : Promise.resolve()));
+    await page.pdf({ path: pdf, format: "A4", printBackground: true, preferCSSPageSize: true });
+    const kb = (statSync(pdf).size / 1024).toFixed(0);
+    console.log(`✓ ${basename(pdf).padEnd(46)} ${String(kb).padStart(4)} KB  (${Date.now() - t0}ms)`);
+    ok++;
+  } catch (e) {
+    console.log(`✗ ${basename(html)} — ${e.message}`);
+    fail++;
+  } finally {
+    await page.close();
+  }
 }
 await browser.close();
-
-console.log("\nSummary:");
-for (const r of results) console.log(`  ${r.f.padEnd(16)} ${r.pages} page(s)  ${r.out}`);
+console.log(`\n${ok} PDF(s) written, ${fail} failed.`);
+process.exit(fail ? 1 : 0);

@@ -125,6 +125,11 @@
   .minimap .mm.s { background: var(--str); width: 80%; }
   .minimap .mm.n { background: var(--num); width: 45%; }
   .minimap .mm.f { background: var(--fn); width: 70%; }
+
+@media print {
+  .deck { gap: 0 !important; padding: 0 !important; }
+  body { background: #fff !important; }
+}
 </style>
 </head>
 <body>
