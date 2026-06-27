@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Resume 15 · Keynote — Prakhar Shekhar Parthasarthi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=block" rel="stylesheet" />
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FBFBFD;          /* apple near-white */
+    --bg2: #F5F5F7;         /* apple grey panel */
+    --ink: #1D1D1F;         /* apple near-black */
+    --ink2: #424245;
+    --ink3: #6E6E73;
+    --hair: #D2D2D7;
+    --blue: #0066CC;        /* apple link blue */
+    --grad1: #6E5BD0; --grad2: #2D9CDB; --grad3: #2EC5A8;  /* product-hero gradient */
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  html, body { background: #E3E3E8; }
+  body {
+    font-family: var(--sans); color: var(--ink);
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    line-height: 1.47; font-weight: 400;
+  }
+  .deck { display: flex; flex-direction: column; align-items: center; gap: 6mm; padding: 6mm 0; }
+
+  .resume-page {
+    position: relative; width: 210mm; height: 297mm;
+    background: var(--bg); overflow: hidden;
+    box-shadow: 0 1mm 3mm rgba(0,0,0,0.10), 0 10mm 30mm rgba(0,0,0,0.14);
+    display: flex; flex-direction: column;
+  }
+
+  /* nav bar (apple.com style) */
+  .nav {
+    height: 11mm; flex: none; border-bottom: 0.3mm solid var(--hair);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 12mm; font-size: 7.6pt; color: var(--ink2);
+  }
+  .nav .logo { display: flex; align-items: center; gap: 2mm; font-weight: 600; color: var(--ink); }
+  .nav .logo svg { width: 4mm; height: 4mm; fill: var(--ink); }
+  .nav .menu { display: flex; gap: 6mm; color: var(--ink3); }
+  .nav .menu .on { color: var(--ink); }
+
+  /* hero */
+  .hero { text-align: center; padding: 11mm 12mm 7mm; }
+  .hero .eyebrow { font-size: 11pt; font-weight: 600; background: linear-gradient(95deg, var(--grad1), var(--grad2), var(--grad3)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 0.01em; }
+  .hero .name { font-size: 34pt; font-weight: 700; letter-spacing: -0.025em; line-height: 1.02; margin-top: 2mm; }
+  .hero .tagline { font-size: 13pt; font-weight: 500; color: var(--ink2); margin-top: 3mm; letter-spacing: -0.01em; }
+  .hero .avail { font-size: 9pt; color: var(--blue); margin-top: 3mm; font-weight: 500; }
+  .hero .subnote { font-family: var(--mono); font-size: 7pt; color: var(--ink3); margin-top: 4mm; letter-spacing: 0.02em; }
+
+  /* hero metric band — the giant numerals */
+  .specs-hero {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    padding: 0 12mm 8mm; gap: 6mm; text-align: center;
+  }
+  .specs-hero .s .n { font-size: 36pt; font-weight: 700; letter-spacing: -0.03em; line-height: 0.95;
+    background: linear-gradient(135deg, var(--grad1), var(--grad2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .specs-hero .s .n .u { font-size: 17pt; }
+  .specs-hero .s .l { font-size: 7.6pt; color: var(--ink3); margin-top: 1.5mm; font-weight: 500; }
+
+  .section-band { background: var(--bg2); padding: 7mm 12mm; }
+  .band-title { font-size: 17pt; font-weight: 700; letter-spacing: -0.02em; text-align: center; margin-bottom: 5mm; }
+  .band-title .grad { background: linear-gradient(95deg, var(--grad1), var(--grad3)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+  /* overview paragraph */
+  .overview { max-width: 150mm; margin: 0 auto; text-align: center; font-size: 10.5pt; line-height: 1.5; color: var(--ink2); font-weight: 400; }
+  .overview b { color: var(--ink); font-weight: 600; }
+  code { font-family: var(--mono); font-size: 8.4pt; color: var(--ink); background: #ECECEF; padding: 0.3mm 1.2mm; border-radius: 1mm; }
+
+  .body { padding: 7mm 12mm; }
+  .feature { margin-bottom: 6mm; }
+  .feature:last-child { margin-bottom: 0; }
+  .feature-h { display: flex; align-items: baseline; justify-content: space-between; gap: 4mm; margin-bottom: 1mm; padding-bottom: 2mm; border-bottom: 0.3mm solid var(--hair); }
+  .feature-h .t { font-size: 13pt; font-weight: 600; letter-spacing: -0.01em; }
+  .feature-h .meta { font-family: var(--mono); font-size: 7.4pt; color: var(--ink3); white-space: nowrap; }
+  .feature ul { list-style: none; margin-top: 2.4mm; }
+  .feature li { position: relative; padding-left: 6mm; font-size: 9pt; line-height: 1.5; color: var(--ink2); margin-bottom: 2mm; }
+  .feature li::before { content: ""; position: absolute; left: 0; top: 1.6mm; width: 2.4mm; height: 2.4mm; border-radius: 50%; background: linear-gradient(135deg, var(--grad1), var(--grad2)); }
+  .feature li b { color: var(--ink); font-weight: 600; }
+  .feature li .m { font-weight: 600; color: var(--grad1); }
+
+  /* spec-sheet table (page 2) */
+  .spectable { width: 100%; border-collapse: collapse; }
+  .spectable tr { border-bottom: 0.3mm solid var(--hair); }
+  .spectable tr:last-child { border-bottom: 0; }
+  .spectable th { text-align: left; font-size: 9pt; font-weight: 600; color: var(--ink); padding: 2.5mm 4mm 2.5mm 0; vertical-align: top; width: 36mm; }
+  .spectable td { font-size: 8.8pt; color: var(--ink2); padding: 2.5mm 0; line-height: 1.45; }
+  .spectable td code { font-size: 8pt; }
+  .spectable td b { color: var(--ink); font-weight: 600; }
+
+  /* project "product cards" */
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+  .pcard { background: var(--bg2); border-radius: 4mm; padding: 5mm; }
+  .pcard h4 { font-size: 11.5pt; font-weight: 600; letter-spacing: -0.01em; }
+  .pcard .link { font-size: 8pt; color: var(--blue); margin: 1mm 0 2.6mm; }
+  .pcard p { font-size: 8.4pt; line-height: 1.45; color: var(--ink2); }
+  .pcard .bench { font-family: var(--mono); font-size: 7.2pt; color: var(--ink3); margin-top: 2.6mm; padding-top: 2.4mm; border-top: 0.3mm solid var(--hair); }
+  .pcard .bench b { color: var(--grad1); }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+  .mini-h { font-size: 10pt; font-weight: 600; margin-bottom: 2.6mm; letter-spacing: -0.01em; }
+  .mini-row { font-size: 8.8pt; color: var(--ink2); line-height: 1.5; margin-bottom: 2.4mm; }
+  .mini-row b { color: var(--ink); font-weight: 600; }
+  .gpa { color: var(--grad1); font-weight: 600; font-size: 8pt; }
+
+  /* footer (apple grey) */
+  .foot { margin-top: auto; background: var(--bg2); border-top: 0.3mm solid var(--hair); padding: 5mm 12mm; }
+  .foot .row { display: flex; justify-content: center; gap: 7mm; flex-wrap: wrap; font-size: 8pt; color: var(--ink2); }
+  .foot .row a, .foot .row span { color: var(--ink2); }
+  .foot .row .k { color: var(--ink3); }
+  .foot .legal { text-align: center; font-size: 6.8pt; color: var(--ink3); margin-top: 3mm; font-family: var(--mono); }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- ============================ PAGE 1 ============================ -->
+  <article class="resume-page">
+    <nav class="nav">
+      <span class="logo"><svg viewBox="0 0 24 24"><path d="M16 2c0 1.6-.6 3-1.6 4-1 1.1-2.5 1.9-3.9 1.8-.2-1.5.5-3 1.4-4C12.9 2.7 14.6 2 16 2zM20 17.2c-.6 1.5-1 2.1-1.8 3.4-1.2 1.8-2.8 4-4.8 4-1.8 0-2.3-1.2-4.7-1.1-2.4 0-3 1.2-4.8 1.1-2 0-3.5-2-4.7-3.8C-.3 17.3-.6 11.4 1.9 8.4 3 7 4.7 6 6.4 6c1.9 0 3 1.1 4.6 1.1 1.5 0 2.4-1.1 4.6-1.1 1.5 0 3.2.8 4.3 2.2-3.8 2.1-3.2 7.5.1 9z"/></svg> PSP</span>
+      <span class="menu"><span class="on">Overview</span><span>Experience</span><span>Stack</span><span>Projects</span><span>Contact</span></span>
+    </nav>
+
+    <div class="hero">
+      <div class="eyebrow">Software Engineer</div>
+      <div class="name">Prakhar Shekhar Parthasarthi</div>
+      <div class="tagline">Full-stack. Java-deep. Reliability-first.</div>
+      <div class="avail">Available now — open to Senior SWE roles ›</div>
+      <div class="subnote">ex-Amazon · 3+ years · Java / Spring Boot / AWS / React</div>
+    </div>
+
+    <div class="specs-hero">
+      <div class="s"><div class="n">47<span class="u">%</span></div><div class="l">p90 latency cut</div></div>
+      <div class="s"><div class="n">+33<span class="u">%</span></div><div class="l">conversion lift</div></div>
+      <div class="s"><div class="n">195<span class="u">k</span></div><div class="l">Redis GET rps</div></div>
+      <div class="s"><div class="n">20<span class="u">→5</span></div><div class="l">on-call / shift</div></div>
+    </div>
+
+    <div class="section-band">
+      <div class="band-title">Engineered for <span class="grad">scale and quiet pagers.</span></div>
+      <p class="overview">
+        Full-stack engineer with <b>3+ years at Amazon</b> (Payments &amp; Travel) — <b>owned 4 microservices end-to-end</b>.
+        Java-heavy backend (<b>Java 17 / Spring Boot</b>, <code>CompletableFuture</code>, bounded <code>ExecutorService</code>),
+        idempotent event-driven systems over <b>SQS + Step Functions</b>, typed infrastructure in <b>AWS CDK (Java)</b>,
+        paired with <b>React (SSR &amp; CSR) + Redux</b>.
+      </p>
+    </div>
+
+    <div class="body">
+      <div class="feature">
+        <div class="feature-h"><span class="t">Software Development Engineer</span><span class="meta">Amazon · Travel · Jul 2022 – Sep 2025 · Bengaluru</span></div>
+        <ul>
+          <li><b>Owned 4 customer-facing microservices</b> (search, listing, room, review) on Spring Boot/MVC — REST + <code>@Repository</code> DynamoDB DAOs via Spring DI.</li>
+          <li><b>Concurrency.</b> <code>CompletableFuture.allOf()</code> on a bounded pool, 6 partner APIs parallelised — p90 <span class="m">1.1s → 0.59s (−47%)</span>, conversion <span class="m">+33%</span>.</li>
+          <li><b>Event-driven.</b> Idempotent flight-schedule webhook — SQS + DynamoDB dedup, Step Functions state machine — <span class="m">−43 bps CPT</span>.</li>
+          <li><b>Infrastructure.</b> All service IaC in <b>AWS CDK (Java)</b>; migrated 2 services off CloudFormation — <span class="m">halved</span> rollbacks; on-call <span class="m">20+ → ~5/shift</span>, <span class="m">80%+</span> coverage.</li>
+        </ul>
+      </div>
+      <div class="feature">
+        <div class="feature-h"><span class="t">Software Development Engineer, Intern</span><span class="meta">Amazon · 2021 · 2022 · Bengaluru</span></div>
+        <ul>
+          <li>Migrated legacy <b>GraphQL resolvers → Java</b> (API Gateway + Lambda); shipped <b>One-Click Renewal</b> (async Java); Guice DI, <span class="m">90%+</span> coverage.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot">
+      <div class="row">
+        <span><span class="k">Email</span> &nbsp;prakhar.mnnit.2022@gmail.com</span>
+        <span><span class="k">GitHub</span> &nbsp;github.com/praxstack</span>
+        <span><span class="k">LinkedIn</span> &nbsp;linkedin.com/in/prakharshekhar</span>
+        <span><span class="k">Location</span> &nbsp;Shahjahanpur, UP · open to relocate</span>
+      </div>
+      <div class="legal">Designed by Prakhar in Bengaluru. Built on Java, AWS &amp; a very quiet pager. &nbsp;·&nbsp; Continued ›</div>
+    </div>
+  </article>
+
+  <!-- ============================ PAGE 2 ============================ -->
+  <article class="resume-page">
+    <nav class="nav">
+      <span class="logo"><svg viewBox="0 0 24 24"><path d="M16 2c0 1.6-.6 3-1.6 4-1 1.1-2.5 1.9-3.9 1.8-.2-1.5.5-3 1.4-4C12.9 2.7 14.6 2 16 2zM20 17.2c-.6 1.5-1 2.1-1.8 3.4-1.2 1.8-2.8 4-4.8 4-1.8 0-2.3-1.2-4.7-1.1-2.4 0-3 1.2-4.8 1.1-2 0-3.5-2-4.7-3.8C-.3 17.3-.6 11.4 1.9 8.4 3 7 4.7 6 6.4 6c1.9 0 3 1.1 4.6 1.1 1.5 0 2.4-1.1 4.6-1.1 1.5 0 3.2.8 4.3 2.2-3.8 2.1-3.2 7.5.1 9z"/></svg> PSP</span>
+      <span class="menu"><span>Overview</span><span>Experience</span><span class="on">Stack</span><span>Projects</span><span>Contact</span></span>
+    </nav>
+
+    <div class="hero" style="padding:6mm 12mm 3.5mm;">
+      <div class="eyebrow">Tech Specs</div>
+      <div class="name" style="font-size:23pt;">The complete stack.</div>
+      <div class="tagline" style="font-size:10.5pt;">Every tool, on the record.</div>
+    </div>
+
+    <div class="body" style="padding-top:1mm; padding-bottom:4mm;">
+      <table class="spectable">
+        <tr><th>Java &amp; JVM</th><td><b>Java 17</b>, Spring Boot, Spring MVC, Spring DI, Google Guice, JUnit 5, Mockito, SLF4J, Lombok, Maven, Gradle · <code>CompletableFuture</code>, <code>ExecutorService</code>, <code>ConcurrentHashMap</code>, thread-pool tuning, JVM profiling, GC analysis</td></tr>
+        <tr><th>Distributed Systems</th><td>Microservices, REST, GraphQL, event-driven architecture, idempotency &amp; dedup keys, state machines, retry with exponential backoff, DLQ handling, at-least-once semantics, TDD</td></tr>
+        <tr><th>AWS</th><td>Lambda (Java), DynamoDB, SQS, Step Functions, API Gateway, AppSync, CloudWatch, ECS, <b>CDK (Java)</b> — typed IaC for all service infrastructure</td></tr>
+        <tr><th>Front-End</th><td><b>React.js (SSR &amp; CSR)</b>, Redux (1.5 yrs production), HTML / CSS, JavaScript / TypeScript</td></tr>
+        <tr><th>Data &amp; Storage</th><td>DynamoDB, Redis, NoSQL modelling, SQL, caching strategies</td></tr>
+        <tr><th>Other Languages</th><td>Python, C++, VTL</td></tr>
+        <tr><th>Tooling &amp; Process</th><td>Git, GitHub, CI/CD, Gradle JaCoCo coverage gates, Agile / Scrum, on-call, code review, incident response</td></tr>
+      </table>
+    </div>
+
+    <div class="section-band" style="padding:5mm 12mm;">
+      <div class="band-title" style="font-size:14pt; margin-bottom:4mm;">Also shipped.</div>
+      <div class="cards">
+        <div class="pcard">
+          <h4>Redis Server in Java</h4>
+          <div class="link">github.com/praxstack/redis-server-java</div>
+          <p>RESP2-compatible Redis from scratch — thread-per-client on a bounded <code>ExecutorService</code>, lock-free reads, hybrid TTL eviction, TCP integration tests.</p>
+          <div class="bench"><b>SET 154k · GET 195k · INCR 128k rps</b> · p50 &lt; 0.3ms · 42 tests, 100%</div>
+        </div>
+        <div class="pcard">
+          <h4>Markdown Viewer App</h4>
+          <div class="link">github.com/praxstack/markdown-viewer-app</div>
+          <p>Real-time markdown viewer — preview, syntax highlighting, Mermaid diagrams, 10 themes, PDF/HTML export. Modular vanilla JS, sub-100KB bundle.</p>
+          <div class="bench"><b>155+ Vitest tests</b> · Mermaid · PDF/HTML export</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="body" style="padding-top:4mm; padding-bottom:2mm;">
+      <div class="two">
+        <div>
+          <div class="mini-h">Education</div>
+          <div class="mini-row"><b>M.C.A., Computer Science</b><br>MNNIT Prayagraj <span class="gpa">GPA 9.25</span> · 2019–2022</div>
+          <div class="mini-row"><b>B.Sc. (Hons), Computer Science</b><br>University of Delhi · 2015–2018</div>
+        </div>
+        <div>
+          <div class="mini-h">Recognition</div>
+          <div class="mini-row"><b>Amazon Pay Merchants Categories Champion</b> (2023)<br>100+ hotel trust-buster bugs; on-call <span class="gpa">20+ → ~5</span> per shift.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <div class="row">
+        <span><span class="k">Email</span> &nbsp;prakhar.mnnit.2022@gmail.com</span>
+        <span><span class="k">GitHub</span> &nbsp;github.com/praxstack</span>
+        <span><span class="k">LinkedIn</span> &nbsp;linkedin.com/in/prakharshekhar</span>
+        <span><span class="k">Location</span> &nbsp;Shahjahanpur, UP · open to relocate</span>
+      </div>
+      <div class="legal">Designed by Prakhar. Open to Senior SWE roles. &nbsp;·&nbsp; © MMXXVI</div>
+    </div>
+  </article>
+
+</div>
+</body>
+</html>
