@@ -125,6 +125,13 @@
 @media print {
   .deck { gap: 0 !important; padding: 0 !important; }
   body { background: #fff !important; }
+  .resume-page { box-shadow: none !important; }
+  /* Quartz/Preview breaks background-clip:text → solid block. Fall back to solid color in print. */
+  .hero .eyebrow, .s .n, .band-title .grad {
+    -webkit-text-fill-color: var(--blue) !important;
+    background: none !important;
+    color: var(--blue) !important;
+  }
 }
 </style>
 </head>
