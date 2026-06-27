@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 240" role="img" aria-labelledby="heroTitle heroDesc" preserveAspectRatio="xMidYMid slice">
+  <title id="heroTitle">Resume hero texture</title>
+  <desc id="heroDesc">Warm paper-toned hero band with an isometric engineering lattice, event-flow nodes, and a soft clay gradient wash — evokes distributed-systems architecture.</desc>
+  <defs>
+    <!-- Anthropic-clay warm wash -->
+    <linearGradient id="heroWash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"   stop-color="#FAF7F2"/>
+      <stop offset="0.55" stop-color="#F4ECE0"/>
+      <stop offset="1"   stop-color="#EADBC8"/>
+    </linearGradient>
+    <!-- subtle clay glow under the nodes -->
+    <radialGradient id="heroGlow" cx="0.82" cy="0.3" r="0.7">
+      <stop offset="0"   stop-color="#D4A27F" stop-opacity="0.35"/>
+      <stop offset="1"   stop-color="#D4A27F" stop-opacity="0"/>
+    </radialGradient>
+    <!-- fine engineering grid -->
+    <pattern id="heroGrid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M34 0 H0 V34" fill="none" stroke="#C9B79E" stroke-width="0.6" stroke-opacity="0.5"/>
+    </pattern>
+    <linearGradient id="nodeStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8C2B12"/>
+      <stop offset="1" stop-color="#C2502E"/>
+    </linearGradient>
+    <!-- left-only fade so the masthead text (left ~42%) sits on near-solid paper,
+         while the node lattice on the right (x>720) stays fully visible -->
+    <linearGradient id="legibilityFade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"    stop-color="#FAF7F2" stop-opacity="0.90"/>
+      <stop offset="0.30" stop-color="#FAF7F2" stop-opacity="0.55"/>
+      <stop offset="0.52" stop-color="#FAF7F2" stop-opacity="0"/>
+      <stop offset="1"    stop-color="#FAF7F2" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2.4" flood-color="#8C2B12" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="240" fill="url(#heroWash)"/>
+  <rect width="1200" height="240" fill="url(#heroGrid)"/>
+  <rect width="1200" height="240" fill="url(#heroGlow)"/>
+
+  <!-- event-flow lattice on the right: nodes + idempotent-retry edges (the architecture motif) -->
+  <g opacity="1" stroke-linecap="round">
+    <!-- edges -->
+    <path d="M760 70 H880" fill="none" stroke="url(#nodeStroke)" stroke-width="2.4" stroke-opacity="0.85"/>
+    <path d="M880 70 C 940 70 940 150 1000 150" fill="none" stroke="url(#nodeStroke)" stroke-width="2.4" stroke-opacity="0.85"/>
+    <path d="M760 70 C 820 70 820 150 880 150" fill="none" stroke="url(#nodeStroke)" stroke-width="2.4" stroke-opacity="0.6"/>
+    <path d="M880 150 H1000" fill="none" stroke="url(#nodeStroke)" stroke-width="2.4" stroke-opacity="0.85"/>
+    <path d="M1000 150 C 1060 150 1060 70 1110 70" fill="none" stroke="url(#nodeStroke)" stroke-width="2.4" stroke-opacity="0.6"/>
+    <!-- retry loop: a clear self-loop arrow on the lower-center node (idempotent retry) -->
+    <path d="M880 164 c -16 6 -16 22 0 22 c 14 0 16 -12 6 -18" fill="none" stroke="#8C2B12" stroke-width="1.8" stroke-opacity="0.7" stroke-dasharray="3 3"/>
+    <path d="M886 168 l5 1 l-1 -5" fill="none" stroke="#8C2B12" stroke-width="1.8" stroke-opacity="0.7" stroke-linejoin="round"/>
+    <!-- nodes (queues / services) -->
+    <g filter="url(#softShadow)">
+      <rect x="744" y="56" width="32" height="28" rx="5" fill="#FFFFFF" stroke="url(#nodeStroke)" stroke-width="1.8"/>
+      <rect x="864" y="56" width="32" height="28" rx="5" fill="#FFFFFF" stroke="url(#nodeStroke)" stroke-width="1.8"/>
+      <circle cx="1000" cy="150" r="17" fill="#FFFFFF" stroke="url(#nodeStroke)" stroke-width="1.8"/>
+      <rect x="864" y="136" width="32" height="28" rx="5" fill="#FFF6EF" stroke="url(#nodeStroke)" stroke-width="1.8"/>
+      <circle cx="1110" cy="70" r="15" fill="#FFFFFF" stroke="url(#nodeStroke)" stroke-width="1.8"/>
+    </g>
+    <!-- node glyphs: tiny stacked lines = queue depth -->
+    <g stroke="#8C2B12" stroke-width="1.4" stroke-opacity="0.7">
+      <path d="M752 64 h16 M752 70 h16 M752 76 h11"/>
+      <path d="M872 64 h16 M872 70 h16 M872 76 h11"/>
+      <path d="M872 144 h16 M872 150 h16 M872 156 h11"/>
+    </g>
+    <!-- checkmark in the terminal node (idempotent success) -->
+    <path d="M993 150 l4 5 l8 -10" fill="none" stroke="#8C2B12" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+
+  <!-- legibility fade so the masthead text (left) sits on near-solid paper -->
+  <rect width="1200" height="240" fill="url(#legibilityFade)"/>
+</svg>

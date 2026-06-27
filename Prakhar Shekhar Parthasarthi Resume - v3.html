@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prakhar Shekhar Parthasarthi — Full-Stack Software Engineer</title>
+  <meta name="description" content="Resume of Prakhar Shekhar Parthasarthi — Full-Stack Software Engineer (ex-Amazon, 3+ years). Java / Spring Boot backend, React front-end, event-driven AWS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ============ Reset ============ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+    h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dd,figure { margin: 0; padding: 0; }
+    ul,ol { list-style: none; }
+    a { color: inherit; text-decoration: none; }
+    img,svg { display: block; max-width: 100%; }
+
+    /* ============ Tokens (Anthropic-inspired warm system) ============ */
+    :root {
+      --paper:       #FFFFFF;
+      --paper-soft:  #FAF7F2;   /* warm cream page bg */
+      --paper-warm:  #F4ECE0;   /* hero / card warm tone */
+      --paper-chip:  #F2E9DC;
+      --ink:         #191919;   /* Anthropic near-black */
+      --ink-body:    #36352F;   /* warm charcoal body */
+      --ink-muted:   #6B6557;
+      --ink-subtle:  #9A9281;
+      --rule:        #E2D8C6;
+      --rule-hair:   #ECE3D3;
+      --clay:        #D4A27F;   /* Anthropic clay/tan */
+      --clay-deep:   #B97F56;
+      --rust:        #8C2B12;   /* primary accent */
+      --rust-bright: #C2502E;
+      --rust-soft:   #F3E2D8;
+      --serif:  "Lora", Georgia, "Times New Roman", serif;
+      --grotesk:"Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono:   "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px;
+    }
+
+    html { background: var(--paper-soft); }
+    body {
+      background: var(--paper-soft);
+      color: var(--ink-body);
+      font-family: var(--serif);
+      font-size: 10pt;
+      line-height: 1.5;
+      font-variant-numeric: tabular-nums;
+    }
+
+    @media screen {
+      body { padding: 32px 16px; }
+      .page {
+        max-width: 210mm; margin: 0 auto; padding: 0 0 16mm;
+        background: var(--paper);
+        box-shadow: 0 1px 2px rgba(25,25,25,.05), 0 22px 60px rgba(140,43,18,.10);
+        border-radius: 3px; overflow: hidden;
+      }
+    }
+
+    /* ============ Hero masthead (inlined SVG background) ============ */
+    .masthead { position: relative; padding: 0; margin-bottom: var(--s-6); }
+    .masthead__bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+    .masthead__bg svg { width: 100%; height: 100%; }
+    .masthead__inner { position: relative; z-index: 1; padding: 26px 18mm 22px; }
+    .name {
+      font-family: var(--grotesk);
+      font-weight: 600; font-size: 28pt; line-height: 1.0;
+      letter-spacing: -0.025em; color: var(--ink); margin-bottom: var(--s-2);
+    }
+    .tagline {
+      font-family: var(--grotesk); font-size: 10.5pt; font-weight: 500;
+      color: var(--ink-body); letter-spacing: -0.01em; margin-bottom: var(--s-3);
+    }
+    .tagline .pipe { color: var(--clay-deep); margin: 0 6px; font-weight: 400; }
+    .contact { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 0;
+      font-family: var(--mono); font-size: 8.2pt; letter-spacing: 0.01em; color: var(--ink-muted); }
+    .contact li { display: inline-flex; align-items: center; gap: 5px; }
+    .contact li:not(:last-child)::after { content: "·"; color: var(--clay); margin: 0 10px; }
+    .contact a { color: var(--ink-body); border-bottom: 1px solid transparent; transition: color .15s, border-color .15s; }
+    .contact a:hover { color: var(--rust); border-bottom-color: var(--rust); }
+    .contact .ico { width: 12px; height: 12px; color: var(--clay-deep); flex: none; }
+
+    /* ============ Body wrap ============ */
+    .body-wrap { padding: 0 18mm; }
+
+    /* ============ Metric strip (data viz — the headline numbers) ============ */
+    .metrics-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-3);
+      margin-bottom: var(--s-6);
+    }
+    .stat {
+      position: relative; padding: 12px 14px 11px;
+      background: linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%);
+      border: 1px solid var(--rule); border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 2px 8px rgba(140,43,18,.05);
+      overflow: hidden;
+    }
+    .stat::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background: linear-gradient(180deg, var(--rust), var(--clay)); }
+    .stat__num { font-family: var(--grotesk); font-weight: 700; font-size: 17pt; line-height: 1; color: var(--rust); letter-spacing: -0.02em; }
+    .stat__num .unit { font-size: 10pt; color: var(--clay-deep); }
+    .stat__label { font-family: var(--mono); font-size: 6.8pt; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-top: 5px; line-height: 1.3; }
+
+    /* ============ Block / section ============ */
+    .block { margin-bottom: var(--s-6); position: relative; }
+    .block:last-child { margin-bottom: 0; }
+    /* faint oversized glyph watermark — sits behind a section, ≤6% opacity, clay, never over body text columns */
+    .wm {
+      position: absolute; z-index: 0; pointer-events: none; user-select: none;
+      font-family: var(--mono); font-weight: 500; color: var(--clay-deep);
+      opacity: 0.05; line-height: 1; letter-spacing: 0.05em;
+    }
+    .wm--summary { top: -12px; right: 2px; font-size: 64pt; opacity: 0.045; }
+    .wm--projects { top: -20px; right: 4px; font-size: 60pt; }
+    .block > *:not(.wm) { position: relative; z-index: 1; }
+    .block__title {
+      display: flex; align-items: center; gap: var(--s-3);
+      font-family: var(--grotesk); font-weight: 600; font-size: 10.5pt;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink);
+      margin-bottom: var(--s-4);
+    }
+    .block__title::before { content:""; width: 18px; height: 18px; flex: none;
+      background: var(--ink); border-radius: 5px;
+      -webkit-mask: var(--icon) center/12px no-repeat; mask: var(--icon) center/12px no-repeat; }
+    .block__title::after { content:""; flex: 1; height: 2px; border-radius: 2px;
+      background: linear-gradient(90deg, var(--clay) 0%, var(--rule) 45%, transparent 100%); }
+
+    /* ============ Summary ============ */
+    .summary { font-size: 10pt; line-height: 1.58; color: var(--ink-body); }
+    .summary strong { color: var(--ink); font-weight: 600; }
+    code {
+      font-family: var(--mono); font-size: 8pt; background: var(--paper-chip);
+      color: var(--rust); padding: 0.5px 4px; border-radius: 3px; border: 1px solid var(--rule-hair);
+    }
+    .metric { font-family: var(--mono); font-weight: 600; font-size: 8.6pt;
+      color: var(--rust); background: var(--rust-soft); padding: 0.5px 5px; border-radius: 3px; white-space: nowrap; }
+
+    /* ============ Skills (iconified rows) ============ */
+    .skills { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3) var(--s-5); }
+    .skill { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; }
+    .skill__ico { width: 28px; height: 28px; border-radius: 7px;
+      background: linear-gradient(180deg, var(--rust) 0%, var(--rust-bright) 100%);
+      display: flex; align-items: center; justify-content: center; flex: none; margin-top: 1px;
+      box-shadow: 0 2px 5px rgba(140,43,18,.25); }
+    .skill__ico svg { width: 16px; height: 16px; color: #FFFFFF; }
+    .skill__cat { font-family: var(--grotesk); font-weight: 600; font-size: 8.4pt;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink); margin-bottom: 2px; }
+    .skill__val { font-size: 8.8pt; line-height: 1.45; color: var(--ink-body); }
+    .skill__val strong { color: var(--ink); font-weight: 600; }
+    .skill__val code { font-size: 7.4pt; }
+
+    /* ============ Experience ============ */
+    .role { margin-bottom: var(--s-5); }
+    .role:last-child { margin-bottom: 0; }
+    .role__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-4); }
+    .role__title { font-family: var(--grotesk); font-weight: 600; font-size: 12pt; color: var(--ink); letter-spacing: -0.01em; }
+    .role__dates { font-family: var(--mono); font-size: 8.2pt; font-weight: 500; color: var(--rust); white-space: nowrap; }
+    .role__company { display: flex; align-items: center; gap: 8px; font-family: var(--grotesk);
+      font-size: 9.4pt; font-weight: 500; color: var(--clay-deep); margin: 3px 0 10px; }
+    .role__company .co-ico { width: 18px; height: 18px; color: var(--clay-deep); flex: none; }
+    .role__loc { color: var(--ink-subtle); font-weight: 400; }
+    .bullets li { position: relative; padding-left: 16px; margin-bottom: 7px; font-size: 9.4pt; line-height: 1.5; color: var(--ink-body); }
+    .bullets li::before { content:""; position: absolute; left: 0; top: 0.6em; width: 5px; height: 5px;
+      background: var(--clay); border-radius: 1.5px; transform: rotate(45deg); }
+    .bullet-label { font-family: var(--grotesk); font-weight: 600; color: var(--ink); font-size: 9pt; }
+    .bullets strong { color: var(--ink); font-weight: 600; }
+
+    /* ============ Projects ============ */
+    .projects { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5); }
+    .project { position: relative; padding: 14px 16px; background: var(--paper-warm);
+      border: 1px solid var(--rule); border-radius: 10px; }
+    .project__title { font-family: var(--grotesk); font-weight: 600; font-size: 11pt; color: var(--ink); margin-bottom: 3px; }
+    .project__repo { font-family: var(--mono); font-size: 7.4pt; margin-bottom: 8px; }
+    .project__repo a { color: var(--rust); }
+    .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+    .chips li { font-family: var(--mono); font-size: 6.8pt; color: var(--ink-muted);
+      background: var(--paper); border: 1px solid var(--rule); padding: 1px 6px; border-radius: 4px; }
+    .project__desc { font-size: 8.6pt; line-height: 1.45; color: var(--ink-body); margin-bottom: 8px; }
+    .project__desc code { font-size: 7.2pt; }
+    .project__metrics { font-size: 8.2pt; line-height: 1.5; color: var(--ink-body);
+      padding-top: 8px; border-top: 1px dashed var(--rule); }
+    .project__metrics strong { color: var(--ink); font-family: var(--grotesk); font-weight: 600; }
+
+    /* ============ Education / Awards rows ============ */
+    .row { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-4); margin-bottom: 9px; }
+    .row:last-child { margin-bottom: 0; }
+    .row__left { font-size: 9.4pt; line-height: 1.45; color: var(--ink-body); }
+    .row__left strong { color: var(--ink); font-family: var(--grotesk); font-weight: 600; }
+    .row__right { font-family: var(--mono); font-size: 8.2pt; color: var(--rust); white-space: nowrap; }
+    .gpa { font-family: var(--mono); font-size: 7.4pt; color: var(--clay-deep);
+      background: var(--paper-chip); padding: 1px 6px; border-radius: 4px; margin-left: 6px; }
+    .award { display: grid; grid-template-columns: 26px 1fr auto; gap: 10px; align-items: start; }
+    .award__ico { width: 26px; height: 26px; flex: none; }
+
+    /* ============ Print — A4 multipage with section-aware pagination ============
+       Math: A4 = 297mm tall; @page margin 12mm top+bottom => 273mm (~1032px @96dpi)
+       printable height per page. We do NOT blindly avoid-break every section (a block
+       taller than one page would then overflow). Instead:
+         - atomic units (role, project, stat, edu row, award, skill) never split internally
+         - a section header is never orphaned from its first content (break-after: avoid)
+         - short blocks (summary/skills/edu/awards) stay whole (break-inside: avoid)
+         - the tall block (experience) MAY break, but only BETWEEN role articles
+         - paragraphs keep >=2 lines together (orphans/widows)
+    */
+    @page { size: A4; margin: 12mm 0; }
+    @media print {
+      html, body { background: #fff; }
+      body { padding: 0; font-size: 9.4pt; }
+      .page { max-width: none; margin: 0; box-shadow: none; border-radius: 0; }
+      .body-wrap, .masthead__inner { padding-left: 14mm; padding-right: 14mm; }
+      .name { font-size: 24pt; }
+      a { color: var(--rust); }
+
+      /* section headers glue to the content that follows them */
+      .block__title { break-after: avoid-page; page-break-after: avoid; }
+
+      /* short, self-contained sections never split across a page boundary */
+      .block { margin-bottom: 14px; }
+      section[aria-labelledby="summary-h"],
+      section[aria-labelledby="skills-h"],
+      section[aria-labelledby="education-h"],
+      section[aria-labelledby="awards-h"],
+      .metrics-strip { break-inside: avoid; page-break-inside: avoid; }
+
+      /* the tall Experience block may flow across pages, but only between roles */
+      section[aria-labelledby="experience-h"] { break-inside: auto; }
+      .role { break-inside: avoid; page-break-inside: avoid; }
+      .role + .role { break-before: auto; }
+
+      /* every other atomic unit stays whole */
+      .stat, .project, .skill, .award, .row { break-inside: avoid; page-break-inside: avoid; }
+
+      /* no single-line stragglers */
+      p, .summary, .skill__val, .bullets li { orphans: 2; widows: 2; }
+      .bullets li { break-inside: avoid; }
+
+      /* watermarks are decorative — never let them force a page break or bleed */
+      .wm { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ Inline icon sprites (reusable; mirror of assets/svg/) ============ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="ico-java" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 11h11v4a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3z"/><path d="M16 12h1.5a2 2 0 0 1 0 4H16"/><path d="M8.5 7c.8-1 .2-1.8-.2-2.6M11.5 7c.8-1 .2-1.8-.2-2.6"/>
+    </symbol>
+    <symbol id="ico-dist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.8 7.4 10.6 16M16.2 7.4 13.4 16M8.2 6h7.6"/>
+    </symbol>
+    <symbol id="ico-aws" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 15a3.2 3.2 0 0 1 .3-6.4 4.2 4.2 0 0 1 8 .9A2.9 2.9 0 0 1 15 15z"/><path d="M8 18.5h8M9.5 21h5"/>
+    </symbol>
+    <symbol id="ico-fe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M3.5 8.5h17"/><path d="M9.5 12.5 8 14l1.5 1.5M14.5 12.5 16 14l-1.5 1.5"/>
+    </symbol>
+    <symbol id="ico-data" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="12" cy="6" rx="7" ry="2.6"/><path d="M5 6v12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6"/><path d="M5 12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6"/>
+    </symbol>
+    <symbol id="ico-lang" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M7 9l3 2.5L7 14M12.5 14.5h4.5"/>
+    </symbol>
+    <symbol id="ico-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/><path d="M12 4.5v2M12 17.5v2M4.5 12h2M17.5 12h2M6.7 6.7l1.4 1.4M15.9 15.9l1.4 1.4M17.3 6.7l-1.4 1.4M8.1 15.9l-1.4 1.4"/>
+    </symbol>
+    <symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></symbol>
+    <symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 0 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+    <symbol id="ic-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2A9.8 9.8 0 0 0 8.9 21.3c.49.09.67-.21.67-.47v-1.8c-2.73.59-3.3-1.16-3.3-1.16-.45-1.13-1.1-1.43-1.1-1.43-.9-.61.07-.6.07-.6 1 .07 1.52 1.02 1.52 1.02.88 1.52 2.31 1.08 2.88.83.09-.64.35-1.08.63-1.33-2.18-.25-4.47-1.09-4.47-4.85 0-1.07.38-1.95 1.02-2.64-.1-.25-.45-1.25.1-2.6 0 0 .83-.27 2.72 1a9.4 9.4 0 0 1 4.96 0c1.89-1.27 2.72-1 2.72-1 .55 1.35.2 2.35.1 2.6.64.69 1.02 1.57 1.02 2.64 0 3.77-2.3 4.6-4.49 4.84.36.31.67.92.67 1.85v2.74c0 .27.18.57.68.47A9.8 9.8 0 0 0 12 2.2z"/></symbol>
+    <symbol id="ic-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.3c0-1.27-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.8V21H9z"/></symbol>
+    <symbol id="co-amazon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11.5h6.5M8.25 11.5v6"/><path d="M5 19.5c4.2 2.6 12.3 2.6 17.5-.4"/><path d="M20.5 18.2c.9-.9 1.4-2 1.5-3.4"/></symbol>
+    <symbol id="award-trophy" viewBox="0 0 28 28" fill="none" stroke="#8C2B12" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h10v4a5 5 0 0 1-10 0z"/><path d="M9 6H6.5a2.5 2.5 0 0 0 2.7 4M19 6h2.5a2.5 2.5 0 0 1-2.7 4"/><path d="M14 14v4M10.5 22h7M11 18h6l.6 4h-7.2z"/></symbol>
+  </svg>
+
+  <main class="page" role="main">
+
+    <header class="masthead">
+      <div class="masthead__bg" aria-hidden="true">
+        <!-- inlined hero-bg.svg -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="heroWash" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FAF7F2"/><stop offset="0.55" stop-color="#F4ECE0"/><stop offset="1" stop-color="#EADBC8"/></linearGradient>
+            <radialGradient id="heroGlow" cx="0.82" cy="0.3" r="0.7"><stop offset="0" stop-color="#D4A27F" stop-opacity="0.35"/><stop offset="1" stop-color="#D4A27F" stop-opacity="0"/></radialGradient>
+            <pattern id="heroGrid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0 H0 V34" fill="none" stroke="#C9B79E" stroke-width="0.6" stroke-opacity="0.5"/></pattern>
+            <linearGradient id="nodeStroke" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8C2B12"/><stop offset="1" stop-color="#C2502E"/></linearGradient>
+            <linearGradient id="legibilityFade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FAF7F2" stop-opacity="0.92"/><stop offset="0.3" stop-color="#FAF7F2" stop-opacity="0.58"/><stop offset="0.54" stop-color="#FAF7F2" stop-opacity="0"/><stop offset="1" stop-color="#FAF7F2" stop-opacity="0"/></linearGradient>
+            <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.4" flood-color="#8C2B12" flood-opacity="0.18"/></filter>
+          </defs>
+          <rect width="1200" height="240" fill="url(#heroWash)"/>
+          <rect width="1200" height="240" fill="url(#heroGrid)"/>
+          <rect width="1200" height="240" fill="url(#heroGlow)"/>
+          <!-- WATERMARK node lattice: faint warm-clay texture, pushed to far right corner,
+               sits BEHIND text as a whisper (opacity 0.10, no white fills, no shadow) -->
+          <g stroke-linecap="round" transform="translate(150, 40)" opacity="0.10">
+            <path d="M760 60 H880" fill="none" stroke="#B97F56" stroke-width="2"/>
+            <path d="M880 60 C 940 60 940 140 1000 140" fill="none" stroke="#B97F56" stroke-width="2"/>
+            <path d="M880 140 H1000" fill="none" stroke="#B97F56" stroke-width="2"/>
+            <path d="M1000 140 C 1060 140 1060 60 1110 60" fill="none" stroke="#B97F56" stroke-width="2"/>
+            <path d="M880 154 c -14 5 -14 20 0 20 c 12 0 14 -10 5 -16" fill="none" stroke="#B97F56" stroke-width="1.6" stroke-dasharray="3 3"/>
+            <rect x="744" y="46" width="32" height="28" rx="5" fill="none" stroke="#B97F56" stroke-width="1.6"/>
+            <rect x="864" y="46" width="32" height="28" rx="5" fill="none" stroke="#B97F56" stroke-width="1.6"/>
+            <circle cx="1000" cy="140" r="16" fill="none" stroke="#B97F56" stroke-width="1.6"/>
+            <rect x="864" y="126" width="32" height="28" rx="5" fill="none" stroke="#B97F56" stroke-width="1.6"/>
+            <circle cx="1110" cy="60" r="14" fill="none" stroke="#B97F56" stroke-width="1.6"/>
+            <g stroke="#B97F56" stroke-width="1.2"><path d="M752 54 h16 M752 60 h16 M752 66 h11"/><path d="M872 54 h16 M872 60 h16 M872 66 h11"/><path d="M872 134 h16 M872 140 h16 M872 146 h11"/></g>
+            <path d="M993 140 l4 5 l8 -10" fill="none" stroke="#B97F56" stroke-width="1.8" stroke-linejoin="round"/>
+          </g>
+          <rect width="1200" height="240" fill="url(#legibilityFade)"/>
+        </svg>
+      </div>
+      <div class="masthead__inner">
+        <h1 class="name">Prakhar Shekhar Parthasarthi</h1>
+        <p class="tagline">Full-Stack Software Engineer<span class="pipe">/</span>Java &amp; Spring Boot Backend<span class="pipe">/</span>React Front-End<span class="pipe">/</span>AWS</p>
+        <ul class="contact" aria-label="Contact information">
+          <li><svg class="ico"><use href="#ic-mail"/></svg><a href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></li>
+          <li><svg class="ico"><use href="#ic-pin"/></svg>Shahjahanpur, UP · open to relocate</li>
+          <li><svg class="ico"><use href="#ic-github"/></svg><a href="https://github.com/praxstack" rel="noopener">github.com/praxstack</a></li>
+          <li><svg class="ico"><use href="#ic-linkedin"/></svg><a href="https://www.linkedin.com/in/prakharshekhar" rel="noopener">linkedin.com/in/prakharshekhar</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="body-wrap">
+
+      <!-- ===== Metric strip: the headline numbers, visualized ===== -->
+      <section class="metrics-strip" aria-label="Impact highlights">
+        <div class="stat"><div class="stat__num">47<span class="unit">%</span></div><div class="stat__label">p90 latency cut · booking surfaces</div></div>
+        <div class="stat"><div class="stat__num">+33<span class="unit">%</span></div><div class="stat__label">conversion lift</div></div>
+        <div class="stat"><div class="stat__num">195<span class="unit">k rps</span></div><div class="stat__label">GET · Java Redis from scratch</div></div>
+        <div class="stat"><div class="stat__num">20<span class="unit">→5</span></div><div class="stat__label">on-call tickets / shift</div></div>
+      </section>
+
+      <section class="block" aria-labelledby="summary-h">
+        <span class="wm wm--summary" aria-hidden="true">{ }</span>
+        <h2 id="summary-h" class="block__title" style="--icon:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;2.4&quot; stroke-linecap=&quot;round&quot;&gt;&lt;path d=&quot;M4 6h16M4 12h16M4 18h11&quot;/&gt;&lt;/svg&gt;');">Summary</h2>
+        <p class="summary">
+          Full-stack software engineer with <strong>3+ years at Amazon</strong> across Payments and Travel —
+          <strong>owned 4 microservices end-to-end</strong> through design, build, deploy, and on-call.
+          Java-heavy backend (<strong>Java 17 / Spring Boot</strong>, JVM concurrency with <code>CompletableFuture</code>,
+          bounded <code>ExecutorService</code>, <code>ConcurrentHashMap</code>), idempotent event-driven architecture over
+          <strong>SQS + Step Functions</strong>, and typed infrastructure in <strong>AWS CDK (Java)</strong> —
+          paired with <strong>React (SSR &amp; CSR) + Redux</strong> for customer-facing flows.
+          Customer-facing impact: <span class="metric">47% p90</span> reduction on booking surfaces,
+          <span class="metric">33% conversion</span> lift, <span class="metric">43 bps CPT</span> reduction via
+          idempotent schedule-change automation, on-call tickets cut <span class="metric">20+ to ~5</span> per shift.
+        </p>
+      </section>
+
+      <section class="block" aria-labelledby="skills-h">
+        <h2 id="skills-h" class="block__title" style="--icon:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;2.4&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M8 6l-4 6 4 6M16 6l4 6-4 6&quot;/&gt;&lt;/svg&gt;');">Core Technical Stack</h2>
+        <div class="skills">
+          <div class="skill"><div class="skill__ico"><svg><use href="#ico-java"/></svg></div><div><div class="skill__cat">Java &amp; JVM</div><div class="skill__val"><strong>Java 17</strong>, Spring Boot, Spring MVC, Spring DI, Google Guice, JUnit 5, Mockito, SLF4J, Lombok, Maven, Gradle · <code>ExecutorService</code>, <code>CompletableFuture</code>, <code>ConcurrentHashMap</code>, thread-pool tuning, JVM profiling, GC analysis</div></div></div>
+          <div class="skill"><div class="skill__ico"><svg><use href="#ico-dist"/></svg></div><div><div class="skill__cat">Distributed Systems</div><div class="skill__val">Microservices, REST, GraphQL, event-driven architecture, idempotency &amp; dedup keys, state machines, retry with exponential backoff, DLQ handling, at-least-once semantics, TDD</div></div></div>
+          <div class="skill"><div class="skill__ico"><svg><use href="#ico-aws"/></svg></div><div><div class="skill__cat">AWS</div><div class="skill__val">Lambda (Java), DynamoDB, SQS, Step Functions, API Gateway, AppSync, CloudWatch, ECS, <strong>CDK (Java)</strong> — typed IaC for all service infrastructure</div></div></div>
+          <div class="skill"><div class="skill__ico"><svg><use href="#ico-fe"/></svg></div><div><div class="skill__cat">Front-end</div><div class="skill__val"><strong>React.js (SSR &amp; CSR)</strong>, Redux (1.5 yrs production) — customer-facing Amazon flows; HTML / CSS, JavaScript / TypeScript</div></div></div>
+          <div class="skill"><div class="skill__ico"><svg><use href="#ico-data"/></svg></div><div><div class="skill__cat">Data &amp; Storage</div><div class="skill__val">DynamoDB, Redis, NoSQL modelling, SQL, caching strategies</div></div></div>
+          <div class="skill"><div class="skill__ico"><svg><use href="#ico-lang"/></svg></div><div><div class="skill__cat">Other Languages</div><div class="skill__val">Python, C++, VTL</div></div></div>
+          <div class="skill" style="grid-column:1 / -1"><div class="skill__ico"><svg><use href="#ico-tool"/></svg></div><div><div class="skill__cat">Tooling &amp; Process</div><div class="skill__val">Git, GitHub, CI/CD, Gradle JaCoCo coverage gates, Agile / Scrum, on-call, code review, incident response</div></div></div>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="experience-h">
+        <h2 id="experience-h" class="block__title" style="--icon:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;rect x=&quot;3&quot; y=&quot;7&quot; width=&quot;18&quot; height=&quot;13&quot; rx=&quot;2&quot;/&gt;&lt;path d=&quot;M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2&quot;/&gt;&lt;/svg&gt;');">Experience</h2>
+
+        <article class="role">
+          <header class="role__head">
+            <h3 class="role__title">Software Development Engineer</h3>
+            <span class="role__dates">Jul 2022 — Sep 2025</span>
+          </header>
+          <p class="role__company"><svg class="co-ico"><use href="#co-amazon"/></svg>Amazon · Travel (Hotels &amp; Flights)<span class="role__loc">· Bengaluru</span></p>
+          <ul class="bullets">
+            <li><span class="bullet-label">Service ownership — Spring Boot, Spring MVC.</span> Owned <strong>4 customer-facing microservices</strong> powering the hotel booking platform — search, listing, room selection, order review — across design, code review, deploy, and on-call. Built REST controllers, service-layer logic, and <code>@Repository</code> DynamoDB DAOs wired through Spring DI. Shipped Prime-exclusive discount flow and partner-discount integration with tuned cache logic — <span class="metric">~30 bps</span> drop in funnel churn.</li>
+            <li><span class="bullet-label">JVM concurrency — CompletableFuture, bounded executors.</span> Refactored sequential downstream calls into <code>CompletableFuture.allOf()</code> on a bounded <code>ExecutorService</code>; parallelised 6 partner-API lookups — hotel landing p90 cut <span class="metric">47%</span> (<span class="metric">1.1s → 0.59s</span>), conversion up <span class="metric">+33%</span>. GZIP on 150–200 MB catalog payloads cut wire size <span class="metric">95%</span>, eliminating network-timeout failures.</li>
+            <li><span class="bullet-label">Event-driven — SQS + Step Functions.</span> Designed idempotent Java webhook for real-time flight schedule changes (cancellations, date-changes, non-operational flights) — SQS ingestion, DynamoDB-backed dedup keys, audit logging, automated offline modifications — addressing the highest-impact customer-pain category (<span class="metric">43 bps CPT</span>). Orchestrated end-to-end booking state machine (confirm / cancel / retry) on Step Functions with Java Lambda handlers.</li>
+            <li><span class="bullet-label">Infrastructure as code — AWS CDK (Java).</span> Authored all service IaC in <strong>Java CDK</strong> — Lambdas, DynamoDB, SQS, Step Functions, API Gateway, CloudWatch alarms. Migrated 2 services from hand-rolled CloudFormation to typed CDK stacks — compile-time infrastructure checks, <span class="metric">halved</span> rollback incidents.</li>
+            <li><span class="bullet-label">Testing — JUnit 5, Mockito, Spring Boot.</span> Held <span class="metric">80%+</span> line coverage; Mockito argument captors for downstream contract verification; <code>@SpringBootTest</code> integration tests against in-memory DynamoDB. Introduced Gradle JaCoCo coverage gates in CI.</li>
+            <li><span class="bullet-label">Operational excellence &amp; high-bar automation.</span> Dove deep into multi-year on-call corpus — tickets cut from <span class="metric">20+ to ~5 per shift</span> (<span class="metric">~2 SDE-weeks / week</span> reclaimed). Java email-automation service deprecated stale WebLab experiments — config-hygiene incidents from 5–6 to <span class="metric">0</span> per on-call. Resolved <span class="metric">150+</span> production incidents; authored COEs and drove action items to closure. Built auto-insurance purchase flow (Java + React) with milestone persistence and auto-fill — <span class="metric">60%+</span> lift in renewals.</li>
+          </ul>
+        </article>
+
+        <article class="role">
+          <header class="role__head">
+            <h3 class="role__title">Software Development Engineer, Intern</h3>
+            <span class="role__dates">May 2021 – Jul 2021 · Feb 2022 – Jul 2022</span>
+          </header>
+          <p class="role__company"><svg class="co-ico"><use href="#co-amazon"/></svg>Amazon<span class="role__loc">· Bengaluru</span></p>
+          <ul class="bullets">
+            <li>Migrated legacy GraphQL resolvers to <strong>Java</strong> — rebuilt resolver classes, wired them to DynamoDB via Spring-injected DAOs, exposed through API Gateway + Lambda.</li>
+            <li>Shipped <strong>One-Click Renewal</strong> for auto-insurance using past-purchase data — async Java pre-fill workflow that materially simplified the funnel.</li>
+            <li>Applied OO design and <strong>Google Guice DI</strong> throughout; landed a clean, testable codebase with <span class="metric">90%+</span> unit-test coverage (JUnit 5 + Mockito).</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="block" aria-labelledby="projects-h">
+        <span class="wm wm--projects" aria-hidden="true">&lt;/&gt;</span>
+        <h2 id="projects-h" class="block__title" style="--icon:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M12 3l8 4.5v9L12 21l-8-4.5v-9z&quot;/&gt;&lt;path d=&quot;M12 3v18M4 7.5l8 4.5 8-4.5&quot;/&gt;&lt;/svg&gt;');">Selected Projects</h2>
+        <div class="projects">
+          <article class="project">
+            <h3 class="project__title">Redis Server in Java</h3>
+            <p class="project__repo"><a href="https://github.com/praxstack/redis-server-java" rel="noopener">github.com/praxstack/redis-server-java</a></p>
+            <ul class="chips"><li>Java 17</li><li>Maven</li><li>JUnit 5</li><li>Mockito</li><li>ConcurrentHashMap</li><li>ScheduledExecutorService</li></ul>
+            <p class="project__desc">RESP2-compatible Redis server built from scratch. Thread-per-client on a bounded <code>ExecutorService</code>; lock-free reads via <code>ConcurrentHashMap</code>; hybrid TTL eviction (lazy check on <code>GET</code> plus active <code>ScheduledExecutor</code> sweep); graceful shutdown via <code>Runtime.addShutdownHook</code>; integration tests over real TCP sockets.</p>
+            <p class="project__metrics"><strong>Benchmarks</strong> (redis-benchmark, 100 concurrent clients): SET <span class="metric">154k rps</span> · GET <span class="metric">195k rps</span> · INCR <span class="metric">128k rps</span> · p50 &lt; <span class="metric">0.3 ms</span>. <strong>42 tests, 100% pass.</strong></p>
+          </article>
+          <article class="project">
+            <h3 class="project__title">Markdown Viewer App</h3>
+            <p class="project__repo"><a href="https://github.com/praxstack/markdown-viewer-app" rel="noopener">github.com/praxstack/markdown-viewer-app</a></p>
+            <ul class="chips"><li>Vite</li><li>Vanilla JS</li><li>Marked.js</li><li>PrismJS</li><li>Mermaid</li><li>Vitest</li></ul>
+            <p class="project__desc">Production-ready markdown viewer with real-time preview, syntax highlighting, Mermaid diagram rendering, 10 professional themes, and PDF / HTML export. Architected with modular vanilla JavaScript — zero framework overhead, sub-100 KB bundle.</p>
+            <p class="project__metrics"><strong>Metrics:</strong> <span class="metric">155+</span> Vitest tests · real-time preview · Mermaid diagrams · PDF / HTML export.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="education-h">
+        <h2 id="education-h" class="block__title" style="--icon:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M12 4 2 9l10 5 10-5z&quot;/&gt;&lt;path d=&quot;M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5&quot;/&gt;&lt;/svg&gt;');">Education</h2>
+        <div class="row"><p class="row__left"><strong>M.C.A., Computer Science</strong> · Motilal Nehru National Institute of Technology (MNNIT), Prayagraj<span class="gpa">GPA 9.25</span></p><p class="row__right">2019 — 2022</p></div>
+        <div class="row"><p class="row__left"><strong>B.Sc. (Hons), Computer Science</strong> · Bhaskaracharya College of Applied Sciences, University of Delhi</p><p class="row__right">2015 — 2018</p></div>
+      </section>
+
+      <section class="block" aria-labelledby="awards-h">
+        <h2 id="awards-h" class="block__title" style="--icon:url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M8 4h8v5a4 4 0 0 1-8 0z&quot;/&gt;&lt;path d=&quot;M12 13v4M9 20h6&quot;/&gt;&lt;/svg&gt;');">Awards &amp; Recognition</h2>
+        <div class="award">
+          <svg class="award__ico"><use href="#award-trophy"/></svg>
+          <p class="row__left"><strong>Amazon Pay Merchants Categories Champion</strong> — 100+ hotel trust-buster bugs resolved; on-call tickets cut <span class="metric">20+ to ~5</span> per shift.</p>
+          <p class="row__right">2023</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</body>
+</html>

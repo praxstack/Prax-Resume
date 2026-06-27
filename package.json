@@ -2,14 +2,20 @@
   "name": "prax-resume",
   "version": "1.1.0",
   "private": true,
-  "description": "Resume — Prakhar Shekhar Parthasarthi. Static HTML + CSS with headless PDF export. Ships both a signed resume and an anonymized Ex-SDE variant.",
+  "description": "Resume \u2014 Prakhar Shekhar Parthasarthi. Static HTML + CSS with headless PDF export. Ships both a signed resume and an anonymized Ex-SDE variant.",
   "scripts": {
     "pdf": "node scripts/build-pdf.mjs \"Prakhar Shekhar Parthasarthi Resume Apr 2026.html\" \"Prakhar Shekhar Parthasarthi Resume Apr 2026.pdf\"",
     "pdf:anon": "node scripts/build-pdf.mjs \"Ex-SDE Resume.html\" \"Ex-SDE Resume.pdf\"",
     "pdf:all": "npm run pdf && npm run pdf:anon",
     "pdf:v2": "node scripts/build-all-pdfs.mjs",
+    "pdf:single": "node scripts/build-single-page-pdf.mjs \"Prakhar Shekhar Parthasarthi Resume.html\" \"Prakhar Shekhar Parthasarthi Resume.pdf\"",
+    "verify": "node scripts/verify-single-page-pdf.mjs \"Prakhar Shekhar Parthasarthi Resume.html\" \"Prakhar Shekhar Parthasarthi Resume.pdf\"",
+    "build:single": "npm run pdf:single && npm run verify",
     "audit:v2": "node scripts/audit-overflow.mjs",
-    "serve": "python3 -m http.server 5173"
+    "serve": "python3 -m http.server 5173",
+    "verify:resume": "node scripts/verify-resume.mjs",
+    "test": "bash scripts/run-tests.sh",
+    "pdf:resume": "node scripts/build-resume-pdf.mjs \"Prakhar Shekhar Parthasarthi Resume - v3.html\" \"Prakhar Shekhar Parthasarthi Resume - v3.pdf\""
   },
   "devDependencies": {
     "playwright": "^1.48.0"
