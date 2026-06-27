@@ -98,6 +98,9 @@
   .lines { padding-right: 11mm; }
   .ln { white-space: pre-wrap; }
   .c-key { color: var(--key); } .c-str { color: var(--str); } .c-num { color: var(--num); }
+  .codelink { color: inherit; text-decoration: none; border-bottom: 0.3mm dotted currentColor; }
+  .codelink:hover { opacity: 0.8; }
+  .codelink.cm { color: var(--txt3); }
   .c-fn { color: var(--fn); } .c-prop { color: var(--prop); } .c-cm { color: var(--txt3); font-style: italic; }
   .c-tag { color: var(--tag); } .c-pun { color: var(--txt2); } .c-y { color: var(--yellow); }
   .ind1 { padding-left: 4mm; } .ind2 { padding-left: 8mm; } .ind3 { padding-left: 12mm; }
@@ -167,9 +170,9 @@
         <div class="sb-sec">
           <div class="sb-title">Contact · package.json</div>
           <div class="tree" style="font-size:6.6pt; line-height:1.7;">
-            <div class="row"><span class="c-prop" style="color:var(--prop)">"email"</span>: <span class="c-str" style="color:var(--str)">…2022@gmail.com</span></div>
-            <div class="row"><span class="c-prop" style="color:var(--prop)">"github"</span>: <span class="c-str" style="color:var(--str)">praxstack</span></div>
-            <div class="row"><span class="c-prop" style="color:var(--prop)">"linkedin"</span>: <span class="c-str" style="color:var(--str)">prakharshekhar</span></div>
+            <div class="row"><span class="c-prop" style="color:var(--prop)">"email"</span>: <a class="c-str codelink" style="color:var(--str)" href="mailto:prakhar.mnnit.2022@gmail.com">…2022@gmail.com</a></div>
+            <div class="row"><span class="c-prop" style="color:var(--prop)">"github"</span>: <a class="c-str codelink" style="color:var(--str)" href="https://github.com/praxstack">praxstack</a></div>
+            <div class="row"><span class="c-prop" style="color:var(--prop)">"linkedin"</span>: <a class="c-str codelink" style="color:var(--str)" href="https://linkedin.com/in/prakharshekhar">prakharshekhar</a></div>
             <div class="row"><span class="c-prop" style="color:var(--prop)">"loc"</span>: <span class="c-str" style="color:var(--str)">Shahjahanpur, UP</span></div>
           </div>
         </div>
@@ -218,9 +221,9 @@
 <div class="ln ind2"><span class="c-pun">]</span></div>
 <div class="ln ind1"><span class="c-pun">}]</span><span class="c-pun">,</span></div>
 <div class="ln ind1"><span class="c-prop">"links"</span><span class="c-pun">:</span> <span class="c-pun">{</span></div>
-<div class="ln ind2"><span class="c-prop">"email"</span><span class="c-pun">:</span> <span class="c-str">"prakhar.mnnit.2022@gmail.com"</span><span class="c-pun">,</span></div>
-<div class="ln ind2"><span class="c-prop">"github"</span><span class="c-pun">:</span> <span class="c-str">"github.com/praxstack"</span><span class="c-pun">,</span></div>
-<div class="ln ind2"><span class="c-prop">"linkedin"</span><span class="c-pun">:</span> <span class="c-str">"linkedin.com/in/prakharshekhar"</span><span class="c-pun">,</span></div>
+<div class="ln ind2"><span class="c-prop">"email"</span><span class="c-pun">:</span> <span class="c-str">"<a class="codelink" href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a>"</span><span class="c-pun">,</span></div>
+<div class="ln ind2"><span class="c-prop">"github"</span><span class="c-pun">:</span> <span class="c-str">"<a class="codelink" href="https://github.com/praxstack">github.com/praxstack</a>"</span><span class="c-pun">,</span></div>
+<div class="ln ind2"><span class="c-prop">"linkedin"</span><span class="c-pun">:</span> <span class="c-str">"<a class="codelink" href="https://linkedin.com/in/prakharshekhar">linkedin.com/in/prakharshekhar</a>"</span><span class="c-pun">,</span></div>
 <div class="ln ind2"><span class="c-prop">"location"</span><span class="c-pun">:</span> <span class="c-str">"Shahjahanpur, UP · open to relocate"</span></div>
 <div class="ln ind1"><span class="c-pun">},</span></div>
 <div class="ln ind1"><span class="c-prop">"open_to"</span><span class="c-pun">:</span> <span class="c-str">"Senior SWE"</span><span class="c-pun">,</span> <span class="c-prop">"available"</span><span class="c-pun">:</span> <span class="c-key">true</span></div>
@@ -303,12 +306,12 @@
 <div class="ln"><span class="c-tag">other</span><span class="c-pun">:</span>        <span class="c-str">Python, C++, VTL · Git, CI/CD, Agile, on-call</span></div>
 <div class="ln">&nbsp;</div>
 <div class="ln"><span class="c-cm">// ───────────── projects.go ─────────────</span></div>
-<div class="ln"><span class="c-key">func</span> <span class="c-fn">RedisServerJava</span><span class="c-pun">()</span> <span class="c-pun">{</span> <span class="c-cm">// github.com/praxstack/redis-server-java</span></div>
+<div class="ln"><span class="c-key">func</span> <span class="c-fn">RedisServerJava</span><span class="c-pun">()</span> <span class="c-pun">{</span> <span class="c-cm">// <a class="codelink cm" href="https://github.com/praxstack/redis-server-java">github.com/praxstack/redis-server-java</a></span></div>
 <div class="ln ind1"><span class="c-cm">// RESP2 from scratch · bounded ExecutorService · lock-free reads</span></div>
 <div class="ln ind1"><span class="c-prop">bench</span> <span class="c-pun">:=</span> <span class="c-str">"SET 154k · GET 195k · INCR 128k rps · p50&lt;0.3ms"</span></div>
 <div class="ln ind1"><span class="c-key">return</span> <span class="c-str">"42 tests, 100% pass"</span></div>
 <div class="ln"><span class="c-pun">}</span></div>
-<div class="ln"><span class="c-key">func</span> <span class="c-fn">MarkdownViewerApp</span><span class="c-pun">()</span> <span class="c-pun">{</span> <span class="c-cm">// github.com/praxstack/markdown-viewer-app</span></div>
+<div class="ln"><span class="c-key">func</span> <span class="c-fn">MarkdownViewerApp</span><span class="c-pun">()</span> <span class="c-pun">{</span> <span class="c-cm">// <a class="codelink cm" href="https://github.com/praxstack/markdown-viewer-app">github.com/praxstack/markdown-viewer-app</a></span></div>
 <div class="ln ind1"><span class="c-cm">// real-time preview · Mermaid · 10 themes · PDF/HTML export</span></div>
 <div class="ln ind1"><span class="c-key">return</span> <span class="c-str">"155+ Vitest tests · sub-100KB vanilla JS bundle"</span></div>
 <div class="ln"><span class="c-pun">}</span></div>
