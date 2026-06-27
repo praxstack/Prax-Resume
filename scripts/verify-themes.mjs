@@ -22,6 +22,8 @@ const results = [];
 
 for (const f of files) {
   const html = readFileSync(resolve(dir, f), "utf8");
+  // tag-stripped text — catches forbidden names split across inline tags (e.g. "Viewer <em>· Pro</em>")
+  const text = html.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ");
   const checks = {
     "canonical email":        html.includes("prakhar.mnnit.2022@gmail.com"),
     "no forbidden email":     !html.includes("prax.sr.sde"),
@@ -31,7 +33,7 @@ for (const f of files) {
     "redis repo":             html.includes("redis-server-java"),
     "md repo = app":          html.includes("markdown-viewer-app"),
     "no md-pro slug":         !html.includes("markdown-viewer-pro"),
-    "no 'Pro' display title": !/[Mm]arkdown[\s·]+[Vv]iewer[\s·]+[Pp]ro\b/.test(html) && !/MARKDOWN[\s·]+VIEWER[\s·]+PRO\b/.test(html),
+    "no 'Pro' display title": !/[Mm]arkdown[\s·]+[Vv]iewer[\s·]+[Pp]ro\b/i.test(text),
   };
   const fails = Object.entries(checks).filter(([, v]) => !v).map(([k]) => k);
   totalFail += fails.length;
