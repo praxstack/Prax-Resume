@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Resume 14 · The Daily Engineer — Prakhar Shekhar Parthasarthi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,600&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@500;700&display=block" rel="stylesheet" />
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #F4F1E8;       /* newsprint */
+    --paper2: #EDE9DC;
+    --ink: #1A1814;         /* newsprint black */
+    --ink2: #3A352C;
+    --ink3: #6E6656;
+    --rule: #B8AF98;
+    --rule2: #D6CFBC;
+    --accent: #8A1414;      /* masthead red */
+    --serif-d: "Playfair Display", Georgia, serif;
+    --serif-b: "Source Serif 4", Georgia, serif;
+    --serif-o: "Old Standard TT", Georgia, serif;
+    --mono: "JetBrains Mono", monospace;
+  }
+  html, body { background: #C9C2AE; }
+  body {
+    font-family: var(--serif-b); color: var(--ink);
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; line-height: 1.4;
+  }
+  .deck { display: flex; flex-direction: column; align-items: center; gap: 6mm; padding: 6mm 0; }
+
+  .resume-page {
+    position: relative;
+    width: 210mm; height: 297mm;
+    background: var(--paper);
+    overflow: hidden;
+    box-shadow: 0 1mm 3mm rgba(0,0,0,0.28), 0 10mm 30mm rgba(0,0,0,0.30);
+    padding: 9mm 11mm 8mm;
+    display: flex; flex-direction: column;
+    /* faint newsprint texture */
+    background-image: radial-gradient(circle, rgba(26,24,20,0.018) 0.5px, transparent 0.6px);
+    background-size: 3px 3px;
+  }
+
+  /* ===================== MASTHEAD ===================== */
+  .masthead { text-align: center; border-bottom: 1.2mm solid var(--ink); padding-bottom: 2.6mm; }
+  .mh-top { display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 6pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink2); border-bottom: 0.3mm solid var(--rule); padding-bottom: 1.6mm; margin-bottom: 2mm; }
+  .mh-title { font-family: var(--serif-d); font-weight: 900; font-size: 38pt; line-height: 0.95; letter-spacing: -0.01em; }
+  .mh-sub { font-family: var(--serif-o); font-style: italic; font-size: 8.5pt; color: var(--ink2); margin-top: 1.4mm; letter-spacing: 0.02em; }
+  .mh-meta { display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 6pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink2); margin-top: 2.4mm; padding-top: 1.6mm; border-top: 0.3mm solid var(--rule); }
+  .mh-meta .ed { color: var(--accent); font-weight: 700; }
+
+  /* ===================== HEADLINE / LEDE ===================== */
+  .lead { padding: 3.5mm 0 3mm; border-bottom: 0.6mm solid var(--ink); }
+  .kicker { font-family: var(--mono); font-size: 6.4pt; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); text-align: center; margin-bottom: 1.6mm; }
+  .headline { font-family: var(--serif-d); font-weight: 800; font-size: 25pt; line-height: 1.02; text-align: center; letter-spacing: -0.01em; }
+  .subhead { font-family: var(--serif-o); font-style: italic; font-size: 9.5pt; color: var(--ink2); text-align: center; margin-top: 2mm; line-height: 1.35; }
+  .byline { font-family: var(--mono); font-size: 6pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); text-align: center; margin-top: 2.4mm; }
+
+  /* ===================== STAT BANNER (the "by the numbers" box) ===================== */
+  .numbers { display: grid; grid-template-columns: repeat(4,1fr); border: 0.6mm solid var(--ink); margin: 3mm 0; background: var(--paper2); }
+  .num { padding: 2.6mm 2mm; text-align: center; border-right: 0.3mm solid var(--rule); }
+  .num:last-child { border-right: 0; }
+  .num .v { font-family: var(--serif-d); font-weight: 800; font-size: 17pt; line-height: 1; color: var(--accent); }
+  .num .k { font-family: var(--mono); font-size: 5.4pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink2); margin-top: 1.4mm; line-height: 1.3; }
+
+  /* ===================== COLUMNS ===================== */
+  .cols { flex: 1; column-count: 3; column-gap: 5mm; column-rule: 0.3mm solid var(--rule); padding-top: 3mm; column-fill: balance; }
+  .cols.p2 { column-count: 2; }
+  .cols.p2 > .flow > p, .cols.p2 .secrule { line-height: 1.7; }
+  .cols.p2 > .flow > p { font-size: 8.7pt; margin-bottom: 2.4mm; }
+  .cols.p2 .secrule { font-size: 9.4pt; margin-top: 3.6mm; padding: 1.5mm 0; }
+  .cols.p2 .pullquote { font-size: 11pt; padding: 3mm 0; margin: 3.6mm 0; }
+  .cols.p2 .tl { font-size: 8pt; line-height: 1.55; margin-bottom: 2mm; }
+  .art-head { font-family: var(--serif-d); font-weight: 800; font-size: 11.5pt; line-height: 1.05; margin-bottom: 1.4mm; break-after: avoid; }
+  .art-sub { font-family: var(--mono); font-size: 5.6pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 2mm; }
+  .art { break-inside: avoid; margin-bottom: 3.5mm; }
+  /* page-2: let sections flow + balance across columns instead of 3 rigid blocks */
+  .flow { display: contents; }
+  .cols .flow > .secrule { break-before: auto; }
+  .cols .flow > p { break-inside: avoid; margin-bottom: 1.4mm; }
+  .art p, .cols .flow > p { font-size: 7.9pt; line-height: 1.46; color: var(--ink2); text-align: justify; hyphens: auto; }
+  .art p + p { margin-top: 1.4mm; }
+  .art p .dropcap { float: left; font-family: var(--serif-d); font-weight: 800; font-size: 24pt; line-height: 0.78; padding: 0.5mm 1.4mm 0 0; color: var(--ink); }
+  .art b { color: var(--ink); font-weight: 700; }
+  .art .m { font-family: var(--mono); font-size: 6.6pt; color: var(--accent); font-weight: 700; }
+  code { font-family: var(--mono); font-size: 6.6pt; color: var(--ink); background: var(--paper2); padding: 0 0.6mm; }
+
+  .secrule { font-family: var(--serif-d); font-weight: 800; font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.06em; border-top: 0.6mm solid var(--ink); border-bottom: 0.3mm solid var(--ink); padding: 1mm 0; margin: 0 0 2mm; break-after: avoid; }
+
+  .job { break-inside: avoid; margin-bottom: 3mm; }
+  .job-h { font-family: var(--serif-d); font-weight: 700; font-size: 9pt; line-height: 1.1; }
+  .job-meta { font-family: var(--mono); font-size: 5.6pt; letter-spacing: 0.06em; color: var(--ink3); text-transform: uppercase; margin: 0.6mm 0 1.4mm; }
+  .job ul { list-style: none; }
+  .job li { position: relative; padding-left: 3mm; font-size: 7.6pt; line-height: 1.4; color: var(--ink2); margin-bottom: 1mm; }
+  .job li::before { content: "▪"; position: absolute; left: 0; top: 0.1mm; color: var(--accent); font-size: 5pt; }
+  .job li b { color: var(--ink); font-weight: 700; }
+  .job .m { font-family: var(--mono); font-size: 6.4pt; color: var(--accent); font-weight: 700; }
+
+  .classified { break-inside: avoid; border: 0.4mm solid var(--ink); padding: 2.2mm 2.6mm; margin-bottom: 3mm; background: var(--paper2); }
+  .classified h5 { font-family: var(--serif-d); font-weight: 800; font-size: 8pt; }
+  .classified .repo { font-family: var(--mono); font-size: 5.6pt; color: var(--accent); margin: 0.6mm 0 1.2mm; }
+  .classified p { font-size: 7pt; line-height: 1.38; color: var(--ink2); }
+  .classified .bench { font-family: var(--mono); font-size: 5.8pt; color: var(--ink); margin-top: 1.2mm; }
+  .classified .bench b { color: var(--accent); }
+
+  .edu-item { break-inside: avoid; font-size: 7.6pt; line-height: 1.4; color: var(--ink2); margin-bottom: 1.6mm; }
+  .edu-item b { color: var(--ink); font-family: var(--serif-d); font-weight: 700; font-size: 8pt; }
+  .gpa { font-family: var(--mono); font-size: 6pt; color: var(--accent); }
+  .pullquote { break-inside: avoid; font-family: var(--serif-d); font-style: italic; font-weight: 600; font-size: 10pt; line-height: 1.3; color: var(--ink); border-top: 0.6mm solid var(--ink); border-bottom: 0.6mm solid var(--ink); padding: 2.4mm 0; margin: 3mm 0; text-align: center; }
+  .pullquote code { font-style: normal; font-size: 8pt; }
+  .timeline { break-inside: avoid; }
+  .tl { font-size: 7.4pt; line-height: 1.38; color: var(--ink2); margin-bottom: 1.4mm; padding-left: 11mm; position: relative; }
+  .tl .ty { position: absolute; left: 0; font-family: var(--serif-d); font-weight: 800; font-size: 7.6pt; color: var(--accent); }
+
+  /* ===================== FOOTER ===================== */
+  .news-foot { border-top: 1.2mm solid var(--ink); margin-top: 3mm; padding-top: 2.2mm; display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 6.2pt; letter-spacing: 0.06em; color: var(--ink2); }
+  .news-foot .contact { display: flex; gap: 4mm; flex-wrap: wrap; }
+  .news-foot .contact b { color: var(--accent); }
+  .news-foot .price { font-family: var(--serif-o); font-style: italic; }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- ============================ PAGE 1 ============================ -->
+  <article class="resume-page">
+    <!-- masthead -->
+    <div class="masthead">
+      <div class="mh-top">
+        <span>VOL. XXVI · NO. 26</span>
+        <span>EST. MMXXII · INDEPENDENT</span>
+        <span>★★★★★</span>
+      </div>
+      <div class="mh-title">The Daily Engineer</div>
+      <div class="mh-sub">"All the Commits Fit to Ship" — Reliability, Latency &amp; the Quiet Pager</div>
+      <div class="mh-meta">
+        <span>BENGALURU EDITION · APR 2026</span>
+        <span class="ed">CANDIDATE: PRAKHAR SHEKHAR PARTHASARTHI</span>
+        <span>FULL-STACK SWE</span>
+      </div>
+    </div>
+
+    <!-- lead headline -->
+    <div class="lead">
+      <div class="kicker">★ Breaking · Career Desk ★</div>
+      <h1 class="headline">Ex-Amazon Engineer Ships Four Microservices, Cuts Latency 47%</h1>
+      <p class="subhead">Three years on the Travel desk: idempotent event-driven systems, Java-CDK infrastructure, and an on-call queue brought from 20+ tickets a shift to roughly five.</p>
+      <div class="byline">By the Newsroom · Java · Spring Boot · AWS · React · Distributed Systems</div>
+    </div>
+
+    <!-- by the numbers -->
+    <div class="numbers">
+      <div class="num"><div class="v">47%</div><div class="k">p90 latency cut</div></div>
+      <div class="num"><div class="v">+33%</div><div class="k">conversion lift</div></div>
+      <div class="num"><div class="v">195k</div><div class="k">redis GET rps</div></div>
+      <div class="num"><div class="v">20→5</div><div class="k">on-call / shift</div></div>
+    </div>
+
+    <!-- columns -->
+    <div class="cols">
+      <div class="art">
+        <div class="art-head">The Lead Story</div>
+        <div class="art-sub">Profile · From the Career Desk</div>
+        <p><span class="dropcap">A</span> full-stack software engineer with <b>3+ years at Amazon</b> across Payments and Travel, the candidate <b>owned 4 customer-facing microservices end-to-end</b> — design, build, deploy, and on-call.</p>
+        <p>The backend is Java-heavy: <b>Java 17 / Spring Boot</b>, JVM concurrency with <code>CompletableFuture</code> and bounded <code>ExecutorService</code>, idempotent event-driven architecture over <b>SQS + Step Functions</b>, and typed infrastructure authored entirely in <b>AWS CDK (Java)</b> — paired with <b>React (SSR &amp; CSR) + Redux</b> on customer-facing flows.</p>
+      </div>
+
+      <div class="art">
+        <div class="secrule">Career · Experience</div>
+        <div class="job">
+          <div class="job-h">Software Development Engineer</div>
+          <div class="job-meta">Amazon · Travel (Hotels &amp; Flights) · Jul 2022 – Sep 2025 · Bengaluru</div>
+          <ul>
+            <li><b>Owned 4 microservices</b> (search, listing, room, review) on Spring Boot/MVC — REST + <code>@Repository</code> DynamoDB DAOs via Spring DI.</li>
+            <li><b>JVM concurrency:</b> <code>CompletableFuture.allOf()</code> on a bounded pool; 6 partner APIs parallelised — p90 <span class="m">1.1s→0.59s (−47%)</span>, conversion <span class="m">+33%</span>.</li>
+            <li><b>Event-driven:</b> idempotent flight-schedule webhook — SQS + DynamoDB dedup + audit; Step Functions state machine, <span class="m">−43 bps CPT</span>.</li>
+            <li><b>IaC in AWS CDK (Java);</b> migrated 2 services off CloudFormation — <span class="m">halved</span> rollbacks.</li>
+            <li><b>On-call</b> mined to <span class="m">20+→~5/shift</span>; <span class="m">150+</span> incidents; <span class="m">80%+</span> coverage.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <div class="job-h">SDE, Intern</div>
+          <div class="job-meta">Amazon · 2021 · 2022 · Bengaluru</div>
+          <ul>
+            <li>Migrated <b>GraphQL resolvers → Java</b> (API Gateway + Lambda); shipped <b>One-Click Renewal</b> (async Java); Guice DI, <span class="m">90%+</span> coverage.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="art">
+        <div class="secrule">Classifieds · Projects</div>
+        <div class="classified">
+          <h5>Redis Server in Java</h5>
+          <div class="repo">github.com/praxstack/redis-server-java</div>
+          <p>RESP2 Redis built from scratch — bounded <code>ExecutorService</code>, lock-free reads, hybrid TTL eviction, TCP integration tests.</p>
+          <div class="bench"><b>SET 154k · GET 195k · INCR 128k rps</b> · p50 &lt; 0.3ms · 42 tests</div>
+        </div>
+        <div class="classified">
+          <h5>Markdown Viewer App</h5>
+          <div class="repo">github.com/praxstack/markdown-viewer-app</div>
+          <p>Real-time markdown viewer — preview, syntax highlight, Mermaid, 10 themes, PDF/HTML export. Vanilla JS, sub-100KB.</p>
+          <div class="bench"><b>155+ Vitest tests</b> · Mermaid · export</div>
+        </div>
+
+        <div class="secrule">Records · Education</div>
+        <div class="edu-item"><b>M.C.A., Computer Science</b><br>MNNIT Prayagraj <span class="gpa">GPA 9.25</span> · 2019–2022</div>
+        <div class="edu-item"><b>B.Sc. (Hons), CS</b><br>University of Delhi · 2015–2018</div>
+        <div class="edu-item"><b>Honors:</b> Amazon Pay Merchants Categories Champion (2023) — 100+ trust-buster bugs.</div>
+      </div>
+    </div>
+
+    <div class="news-foot">
+      <div class="contact">
+        <span><b>✉</b> prakhar.mnnit.2022@gmail.com</span>
+        <span><b>⌨</b> github.com/praxstack</span>
+        <span><b>in</b> linkedin.com/in/prakharshekhar</span>
+        <span><b>⌂</b> Shahjahanpur, UP · open to relocate</span>
+      </div>
+      <div class="price">Cont'd on Pg. II →</div>
+    </div>
+  </article>
+
+  <!-- ============================ PAGE 2 ============================ -->
+  <article class="resume-page">
+    <div class="masthead">
+      <div class="mh-top">
+        <span>VOL. XXVI · NO. 26</span>
+        <span>SECTION B · THE TECHNICAL REVIEW</span>
+        <span>PG. II</span>
+      </div>
+      <div class="mh-title" style="font-size:26pt;">The Technical Review</div>
+      <div class="mh-sub">Full Stack, Tooling &amp; the Engineering Method — Continued</div>
+    </div>
+
+    <div class="lead" style="border-bottom:0.6mm solid var(--ink); padding:3mm 0 2.4mm;">
+      <div class="kicker">★ Section B · The Toolbench ★</div>
+      <h1 class="headline" style="font-size:18pt;">The Complete Stack, On the Record</h1>
+    </div>
+
+    <div class="cols p2">
+      <div class="flow">
+        <div class="secrule">Java &amp; JVM</div>
+        <p><b>Java 17</b>, Spring Boot, Spring MVC, Spring DI, Google Guice, JUnit 5, Mockito, SLF4J, Lombok, Maven, Gradle. Concurrency: <code>CompletableFuture</code>, <code>ExecutorService</code>, <code>ConcurrentHashMap</code>, thread-pool tuning, JVM profiling, GC analysis.</p>
+        <div class="secrule" style="margin-top:3mm;">Distributed Systems</div>
+        <p>Microservices, REST, GraphQL, event-driven architecture, idempotency &amp; dedup keys, state machines, retry with exponential backoff, DLQ handling, at-least-once semantics, TDD.</p>
+        <div class="secrule" style="margin-top:3mm;">AWS</div>
+        <p>Lambda (Java), DynamoDB, SQS, Step Functions, API Gateway, AppSync, CloudWatch, ECS, <b>CDK (Java)</b> — typed IaC for all service infrastructure.</p>
+      </div>
+
+      <div class="flow">
+        <div class="secrule">Front-End</div>
+        <p><b>React.js (SSR &amp; CSR)</b>, Redux (1.5 yrs production) on customer-facing Amazon flows; HTML / CSS, JavaScript / TypeScript.</p>
+        <div class="secrule" style="margin-top:3mm;">Data &amp; Storage</div>
+        <p>DynamoDB, Redis, NoSQL modelling, SQL, caching strategies.</p>
+        <div class="secrule" style="margin-top:3mm;">Other Languages</div>
+        <p>Python, C++, VTL.</p>
+        <div class="secrule" style="margin-top:3mm;">Tooling &amp; Process</div>
+        <p>Git, GitHub, CI/CD, Gradle JaCoCo coverage gates, Agile / Scrum, on-call, code review, incident response.</p>
+      </div>
+
+      <div class="flow">
+        <div class="secrule">Editorial · The Method</div>
+        <p><span class="dropcap">"</span>The shift you don't notice is the best one." The candidate's record favors <b>idempotency over "just retry it,"</b> writes the runbook before the Slack update, and treats the on-call corpus as a backlog to automate — reclaiming roughly <span class="m">2 SDE-weeks per week</span>.</p>
+        <p>Additional dispatches on the record: GZIP on 150–200 MB catalog payloads cut wire size <span class="m">95%</span>, eliminating network-timeout failures; an auto-insurance purchase flow lifted renewals <span class="m">60%+</span>.</p>
+        <div class="secrule" style="margin-top:3mm;">Op-Ed · Availability</div>
+        <p><b>Open to Senior SWE roles.</b> Java / distributed systems / AWS. Reliability-first, ownership-minded, ships quiet.</p>
+
+        <div class="pullquote">"Refactored sequential downstream calls into <code>CompletableFuture.allOf()</code> — hotel landing p90 fell from 1.1s to 0.59s."</div>
+
+        <div class="secrule" style="margin-top:3mm;">Timeline · On the Record</div>
+        <div class="timeline">
+          <div class="tl"><span class="ty">2025</span> Closed out Travel tenure — 4 services, 150+ incidents resolved.</div>
+          <div class="tl"><span class="ty">2024</span> Idempotent flight-webhook shipped; −43 bps CPT.</div>
+          <div class="tl"><span class="ty">2023</span> Concurrency refactor: −47% p90, +33% conversion · Merchants Champion.</div>
+          <div class="tl"><span class="ty">2022</span> Promoted to SDE; owned hotel booking microservices.</div>
+          <div class="tl"><span class="ty">2021</span> SDE Intern — GraphQL→Java migration.</div>
+          <div class="tl"><span class="ty">2019</span> Began M.C.A. at MNNIT Prayagraj (GPA 9.25).</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-foot">
+      <div class="contact">
+        <span><b>✉</b> prakhar.mnnit.2022@gmail.com</span>
+        <span><b>⌨</b> github.com/praxstack</span>
+        <span><b>in</b> linkedin.com/in/prakharshekhar</span>
+        <span><b>⌂</b> Shahjahanpur, UP · open to relocate</span>
+      </div>
+      <div class="price">— 30 —</div>
+    </div>
+  </article>
+
+</div>
+</body>
+</html>
