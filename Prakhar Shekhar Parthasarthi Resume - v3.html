@@ -83,6 +83,13 @@
     .contact a { color: var(--ink-body); border-bottom: 1px solid transparent; transition: color .15s, border-color .15s; }
     .contact a:hover { color: var(--rust); border-bottom-color: var(--rust); }
     .contact .ico { width: 12px; height: 12px; color: var(--clay-deep); flex: none; }
+    /* Subtle highlight on the portfolio link — rust-tinted pill, reads as a deliberate CTA without shouting */
+    .contact li.portfolio { background: rgba(140,43,18,0.07); border: 1px solid rgba(140,43,18,0.22);
+      border-radius: 999px; padding: 2px 10px 2px 8px; }
+    .contact li.portfolio::after { content: none; }
+    .contact li.portfolio .ico { color: var(--rust); }
+    .contact li.portfolio a { color: var(--rust); font-weight: 600; border-bottom: none; }
+    .contact li.portfolio a:hover { color: var(--clay-deep); }
 
     /* ============ Body wrap ============ */
     .body-wrap { padding: 0 18mm; }
@@ -170,7 +177,7 @@
 
     /* ============ Projects ============ */
     .projects { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5); }
-    .project { position: relative; padding: 14px 16px; background: var(--paper-warm);
+    .project { position: relative; padding: 12px 16px; background: var(--paper-warm);
       border: 1px solid var(--rule); border-radius: 10px; }
     .project__title { font-family: var(--grotesk); font-weight: 600; font-size: 11pt; color: var(--ink); margin-bottom: 3px; }
     .project__repo { font-family: var(--mono); font-size: 7.4pt; margin-bottom: 8px; }
@@ -186,7 +193,7 @@
 
     /* OSS contributions sub-block */
     .oss__heading { font-family: var(--grotesk); font-weight: 600; font-size: 10pt; color: var(--ink);
-      margin: 14px 0 6px; padding-top: 12px; border-top: 1px solid var(--rule); }
+      margin: 9px 0 6px; padding-top: 9px; border-top: 1px solid var(--rule); }
     .oss__intro { font-size: 8.6pt; line-height: 1.5; color: var(--ink-body); margin-bottom: 5px; }
     .oss__intro a { color: var(--rust); }
     .oss__intro strong { color: var(--ink); font-family: var(--grotesk); font-weight: 600; }
@@ -287,7 +294,7 @@
     <symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 0 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
     <symbol id="ic-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2A9.8 9.8 0 0 0 8.9 21.3c.49.09.67-.21.67-.47v-1.8c-2.73.59-3.3-1.16-3.3-1.16-.45-1.13-1.1-1.43-1.1-1.43-.9-.61.07-.6.07-.6 1 .07 1.52 1.02 1.52 1.02.88 1.52 2.31 1.08 2.88.83.09-.64.35-1.08.63-1.33-2.18-.25-4.47-1.09-4.47-4.85 0-1.07.38-1.95 1.02-2.64-.1-.25-.45-1.25.1-2.6 0 0 .83-.27 2.72 1a9.4 9.4 0 0 1 4.96 0c1.89-1.27 2.72-1 2.72-1 .55 1.35.2 2.35.1 2.6.64.69 1.02 1.57 1.02 2.64 0 3.77-2.3 4.6-4.49 4.84.36.31.67.92.67 1.85v2.74c0 .27.18.57.68.47A9.8 9.8 0 0 0 12 2.2z"/></symbol>
     <symbol id="ic-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.3c0-1.27-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.8V21H9z"/></symbol>
-    <symbol id="ic-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></symbol>
+    <symbol id="ic-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5c3 3.2 3 15.8 0 19M12 2.5c-3 3.2-3 15.8 0 19"/><path d="M4.5 6.5c4.5 2.6 10.5 2.6 15 0M4.5 17.5c4.5-2.6 10.5-2.6 15 0"/></symbol>
     <symbol id="co-amazon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11.5h6.5M8.25 11.5v6"/><path d="M5 19.5c4.2 2.6 12.3 2.6 17.5-.4"/><path d="M20.5 18.2c.9-.9 1.4-2 1.5-3.4"/></symbol>
     <symbol id="award-trophy" viewBox="0 0 28 28" fill="none" stroke="#8C2B12" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h10v4a5 5 0 0 1-10 0z"/><path d="M9 6H6.5a2.5 2.5 0 0 0 2.7 4M19 6h2.5a2.5 2.5 0 0 1-2.7 4"/><path d="M14 14v4M10.5 22h7M11 18h6l.6 4h-7.2z"/></symbol>
   </svg>
@@ -336,7 +343,7 @@
           <li><svg class="ico"><use href="#ic-pin"/></svg>Shahjahanpur, UP · open to relocate</li>
           <li><svg class="ico"><use href="#ic-github"/></svg><a href="https://github.com/praxstack" rel="noopener">github.com/praxstack</a></li>
           <li><svg class="ico"><use href="#ic-linkedin"/></svg><a href="https://www.linkedin.com/in/prakharshekhar" rel="noopener">linkedin.com/in/prakharshekhar</a></li>
-          <li><svg class="ico"><use href="#ic-globe"/></svg><a href="https://prax-portfolio-one.vercel.app" rel="noopener">prax-portfolio-one.vercel.app</a></li>
+          <li class="portfolio"><svg class="ico"><use href="#ic-globe"/></svg><a href="https://prax-portfolio-one.vercel.app" rel="noopener">Portfolio · prax-portfolio-one.vercel.app</a></li>
         </ul>
       </div>
     </header>
@@ -439,11 +446,11 @@
             <p class="project__metrics"><strong>Metrics:</strong> <span class="metric">155+</span> Vitest tests · real-time preview · Mermaid diagrams · PDF / HTML export.</p>
           </article>
           <article class="project">
-            <h3 class="project__title">Warp BYOK — Bedrock Proxy</h3>
-            <p class="project__repo"><a href="https://github.com/praxstack/warp-byok-proxy" rel="noopener">github.com/praxstack/warp-byok-proxy</a></p>
-            <ul class="chips"><li>Rust</li><li>Tokio</li><li>AWS Bedrock</li><li>SigV4</li><li>HTTP Proxy</li></ul>
-            <p class="project__desc">A local single-binary proxy in <strong>Rust</strong> that routes Warp Terminal's AI calls to a personal AWS Bedrock account (bring-your-own-key), re-signing requests with SigV4 / bearer-token auth — a low-overhead on-device gateway with no third-party data egress.</p>
-            <p class="project__metrics"><strong>Stack:</strong> async Rust (Tokio) · on-device · AGPL-3.0.</p>
+            <h3 class="project__title">Coach Atlas</h3>
+            <p class="project__repo"><a href="https://github.com/praxstack/coach-atlas" rel="noopener">github.com/praxstack/coach-atlas</a></p>
+            <ul class="chips"><li>React</li><li>TypeScript</li><li>Vite</li><li>Bedrock</li><li>Mermaid</li><li>KaTeX</li></ul>
+            <p class="project__desc">An AI technical-interview mentor and content studio — Socratic interview prep, production-grade tutorial generation, and Mermaid / KaTeX / code rendering. Multi-provider (OpenAI, Anthropic, Gemini, AWS Bedrock) with a BYOK design: keys live in the browser, never on a server.</p>
+            <p class="project__metrics"><strong>Stack:</strong> React + TypeScript · multi-provider BYOK · deployed on Vercel.</p>
           </article>
         </div>
 

@@ -37,7 +37,7 @@ assert(/linkedin\.com\/in\/prakharshekhar/.test(html), "linkedin profile present
 assert(!/tailored for/i.test(html), "no 'Tailored for' recruiter tag");
 // only the real, verified projects may appear as praxstack repos
 const repos = [...html.matchAll(/github\.com\/praxstack\/([a-z0-9-]+)/g)].map(m => m[1]);
-const allowed = new Set(["redis-server-java", "markdown-viewer-app", "ai-visual-code-review", "warp-byok-proxy"]);
+const allowed = new Set(["redis-server-java", "markdown-viewer-app", "ai-visual-code-review", "coach-atlas", "warp-byok-proxy"]);
 const bogus = repos.filter(r => !allowed.has(r));
 assert(bogus.length === 0, `only verified projects linked${bogus.length ? " (bogus: " + bogus.join(",") + ")" : ""}`);
 
