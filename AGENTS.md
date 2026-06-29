@@ -55,10 +55,16 @@
 
 ### 2.2 · Real projects on this owner
 
-- `praxstack/redis-server-java` — RESP2 Redis server in Java, real, on GitHub.
+- `praxstack/redis-server-java` — RESP2-compatible Redis server in Java 17 (bounded thread pool, lock-free `ConcurrentHashMap`, hybrid TTL eviction, 150k+ ops/sec, 42 tests). Real, MIT, on GitHub.
 - `praxstack/ai-visual-code-review` — npm-published `ai-visual-code-review@2.4.1`, MIT, JS+TS+VS Code extension. Real.
-- `praxstack/markdown-viewer-pro` — Vite + Vanilla JS markdown editor with PDF/HTML export. Real.
+- `praxstack/markdown-viewer-app` — Vite + Vanilla JS markdown viewer (real-time preview, Mermaid, 10 themes, PDF/HTML export), live at `praxstack.github.io/markdown-viewer-app/`. Real. **(NOTE: `markdown-viewer-pro` is a DEAD repo — 404, deleted. Never link it; use `markdown-viewer-app`.)**
+- `praxstack/warp-byok-proxy` — Rust local proxy routing Warp Terminal AI calls to AWS Bedrock (BYOK, SigV4/bearer). Real, AGPL-3.0.
+- **Open-source contributions (external repos, verified):** 3 PRs **merged** into `danielmiessler/Fabric` (42k★ Go) — #2044 Bedrock bearer-token auth, #2052 dynamic region fetching, #2061 streaming-deadlock fix. Open/under-review PRs: `bytedance/deer-flow` #3790, `thedotmack/claude-mem` #2710, `refactoringhq/tolaria` #912. Only claim merged PRs as "contributed"; label open ones "under review". NEVER claim a closed-unmerged PR.
 - Anything else: ASK before adding to a resume.
+
+### 2.4 · Portfolio link
+
+- Canonical portfolio URL: `https://prax-portfolio-one.vercel.app` (also reachable at `prax-portfolio.vercel.app`). This link MAY appear in the contact/header area of resumes. Source repo: `github.com/praxstack/prax-portfolio`.
 
 ### 2.3 · No tagging the artifact
 
