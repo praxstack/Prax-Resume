@@ -24,9 +24,10 @@
       --paper: #FFFFFF;
       --ink: #000000;
       --body: #1A1A1A;
-      --muted: #444444;
-      --rule: #BBBBBB;
-      --rule-light: #DDDDDD;
+      --muted: #4A4A4A;
+      --rule: #C8C8C8;
+      --rule-light: #E4E4E4;
+      --surface: #F7F7F7;
       --serif: "Libre Baskerville", "Times New Roman", Times, serif;
       --sans: "Source Sans 3", Helvetica, Arial, sans-serif;
       --mono: "JetBrains Mono", "Courier New", monospace;
@@ -54,14 +55,13 @@
       height: 297mm;
       overflow: hidden;
       background: var(--paper);
-      padding: 12mm 14mm 11mm;
+      padding: 12mm 14mm 10mm;
       page-break-after: always;
       box-shadow: 0 2px 24px rgba(0,0,0,.12);
       position: relative;
     }
     .resume-page:last-of-type { page-break-after: auto; }
 
-    /* ── Title block ── */
     .titleblock {
       text-align: center;
       margin-bottom: 8pt;
@@ -91,11 +91,11 @@
       font-size: 7.2pt;
       color: var(--muted);
       margin-top: 6pt;
+      line-height: 1.5;
     }
     .contact li:not(:last-child)::after { content: "·"; margin: 0 8pt; color: var(--rule); }
     .contact a { border-bottom: 0.4pt solid var(--rule-light); }
 
-    /* ── Metrics (KaTeX-style) ── */
     .metrics {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -106,6 +106,7 @@
       text-align: center;
       padding: 6pt 4pt;
       border: 0.5pt solid var(--rule);
+      background: var(--surface);
     }
     .stat-num {
       font-family: var(--serif);
@@ -131,18 +132,25 @@
       font-weight: 700;
       font-size: 8pt;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       color: var(--ink);
       margin: 9pt 0 5pt;
       padding-bottom: 2pt;
       border-bottom: 0.5pt solid var(--ink);
     }
+    .sect--cont {
+      font-size: 7.4pt;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      border-bottom-color: var(--rule);
+    }
+
     .summary { font-size: 9pt; line-height: 1.48; text-align: justify; hyphens: auto; }
     .summary strong { font-weight: 700; }
     .tt {
       font-family: var(--mono);
       font-size: 7.6pt;
-      background: #F4F4F4;
+      background: var(--surface);
       border: 0.4pt solid var(--rule-light);
       padding: 0 3pt;
     }
@@ -155,8 +163,8 @@
 
     .skills {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4pt 12pt;
+      grid-template-columns: 100pt 1fr;
+      gap: 3pt 10pt;
       font-size: 8.2pt;
       line-height: 1.4;
     }
@@ -165,15 +173,15 @@
       font-weight: 600;
       font-size: 7.4pt;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
     }
-    .skill-val code, .skill-val .tt { font-size: 7pt; }
 
     .role { margin-bottom: 7pt; }
     .role-head { display: flex; justify-content: space-between; align-items: baseline; }
     .role-title { font-family: var(--sans); font-weight: 700; font-size: 10pt; color: var(--ink); }
     .role-dates { font-family: var(--mono); font-size: 7.4pt; color: var(--muted); white-space: nowrap; }
     .role-co { font-family: var(--sans); font-size: 8.4pt; color: var(--muted); margin: 2pt 0 5pt; }
+    .role-co--cont { font-size: 7.8pt; margin-top: 0; margin-bottom: 4pt; }
     .bullets li {
       position: relative;
       padding-left: 10pt;
@@ -189,6 +197,7 @@
     .proj {
       padding: 7pt 8pt;
       border: 0.5pt solid var(--rule-light);
+      background: var(--paper);
     }
     .proj-title { font-family: var(--sans); font-weight: 700; font-size: 9pt; margin-bottom: 2pt; }
     .proj-repo { font-family: var(--mono); font-size: 6.6pt; color: var(--muted); margin-bottom: 4pt; }
@@ -198,14 +207,17 @@
       font-size: 6pt;
       border: 0.4pt solid var(--rule);
       padding: 0 4pt;
+      background: var(--surface);
     }
     .proj-desc { font-size: 7.8pt; line-height: 1.38; }
     .proj-metrics { font-size: 7.6pt; margin-top: 4pt; padding-top: 4pt; border-top: 0.4pt dashed var(--rule-light); }
 
-    .oss-title { font-family: var(--sans); font-weight: 600; font-size: 8.6pt; margin: 6pt 0 4pt; }
+    .oss-block { margin-top: 6pt; }
+    .oss-title { font-family: var(--sans); font-weight: 600; font-size: 8.4pt; margin-bottom: 4pt; }
     .oss-list li { font-size: 7.8pt; margin-bottom: 3pt; padding-left: 8pt; text-indent: -8pt; }
     .oss-list a { font-family: var(--mono); font-size: 7.2pt; font-weight: 600; }
     .oss-diff { font-family: var(--mono); font-size: 6.6pt; color: var(--muted); }
+    .oss-open { margin-top: 4pt; font-size: 7.6pt; color: var(--muted); }
 
     .row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4pt; font-size: 8.4pt; }
     .row strong { font-family: var(--sans); font-weight: 600; }
@@ -214,20 +226,19 @@
 
     .page-num {
       position: absolute;
-      bottom: 8mm;
+      bottom: 7mm;
       right: 14mm;
       font-family: var(--mono);
-      font-size: 6.5pt;
-      color: #999;
+      font-size: 6pt;
+      color: #AAA;
     }
-    .page-num::before { content: "— "; }
-    .page-num::after { content: " —"; }
 
     @page { size: A4; margin: 0; }
     @media print {
       html, body { background: #fff; }
       .deck { gap: 0; padding: 0; }
       .resume-page { box-shadow: none; }
+      .stat { background: #fff; }
       a { color: var(--ink); border: none !important; }
       .role, .proj, .stat { break-inside: avoid; }
       .sect { break-after: avoid; }
@@ -240,7 +251,6 @@
 <body>
   <div class="deck">
 
-    <!-- ═══════════════ PAGE 1 ═══════════════ -->
     <section class="resume-page" aria-label="Page 1">
 
       <header class="titleblock">
@@ -271,9 +281,6 @@
           bounded <span class="tt">ExecutorService</span>, <span class="tt">ConcurrentHashMap</span>), idempotent event-driven architecture over
           <strong>SQS + Step Functions</strong>, and typed infrastructure in <strong>AWS CDK (Java)</strong> —
           paired with <strong>React (SSR &amp; CSR) + Redux</strong> for customer-facing flows.
-          Customer-facing impact: <span class="metric">47% p90</span> reduction on booking surfaces,
-          <span class="metric">33% conversion</span> lift, <span class="metric">43 bps CPT</span> reduction via
-          idempotent schedule-change automation, on-call tickets cut <span class="metric">20+ to ~5</span> per shift.
         </p>
       </section>
 
@@ -315,22 +322,16 @@
       <span class="page-num" aria-hidden="true">1 / 2</span>
     </section>
 
-    <!-- ═══════════════ PAGE 2 ═══════════════ -->
     <section class="resume-page" aria-label="Page 2">
 
       <section aria-labelledby="p2-exp">
-        <h2 id="p2-exp" class="sect">Experience (continued)</h2>
-        <article class="role">
-          <div class="role-head">
-            <h3 class="role-title">Software Development Engineer</h3>
-            <span class="role-dates">Jul 2022 — Sep 2025</span>
-          </div>
-          <p class="role-co">Amazon · Travel · Bengaluru</p>
-          <ul class="bullets">
-            <li><span class="lbl">Testing — JUnit 5, Mockito, Spring Boot.</span> Held <span class="metric">80%+</span> line coverage; Mockito argument captors for downstream contract verification; <span class="tt">@SpringBootTest</span> integration tests against in-memory DynamoDB. Introduced Gradle JaCoCo coverage gates in CI.</li>
-            <li><span class="lbl">Operational excellence.</span> On-call tickets cut from <span class="metric">20+ to ~5 per shift</span> (<span class="metric">~2 SDE-weeks/week</span> reclaimed). Java email-automation deprecated stale WebLab experiments — config-hygiene incidents from 5–6 to <span class="metric">0</span>. Resolved <span class="metric">150+</span> production incidents; authored COEs. Built auto-insurance purchase flow (Java + React) — <span class="metric">60%+</span> renewal lift.</li>
-          </ul>
-        </article>
+        <h2 id="p2-exp" class="sect sect--cont">Experience · Amazon SDE (continued)</h2>
+        <p class="role-co role-co--cont">Jul 2022 — Sep 2025 · Travel (Hotels &amp; Flights) · Bengaluru</p>
+        <ul class="bullets">
+          <li><span class="lbl">Testing — JUnit 5, Mockito, Spring Boot.</span> Held <span class="metric">80%+</span> line coverage; Mockito argument captors for downstream contract verification; <span class="tt">@SpringBootTest</span> integration tests against in-memory DynamoDB. Introduced Gradle JaCoCo coverage gates in CI.</li>
+          <li><span class="lbl">Operational excellence.</span> On-call tickets cut from <span class="metric">20+ to ~5 per shift</span> (<span class="metric">~2 SDE-weeks/week</span> reclaimed). Java email-automation deprecated stale WebLab experiments — config-hygiene incidents from 5–6 to <span class="metric">0</span>. Resolved <span class="metric">150+</span> production incidents; authored COEs. Built auto-insurance purchase flow (Java + React) — <span class="metric">60%+</span> renewal lift.</li>
+        </ul>
+
         <article class="role">
           <div class="role-head">
             <h3 class="role-title">Software Development Engineer, Intern</h3>
@@ -378,14 +379,16 @@
           </article>
         </div>
 
-        <h3 class="oss-title">Open-Source Contributions</h3>
-        <p class="proj-desc"><strong>Merged into <a href="https://github.com/danielmiessler/Fabric" rel="noopener">danielmiessler/Fabric</a></strong> (Go, 42k★):</p>
-        <ul class="oss-list">
-          <li><a href="https://github.com/danielmiessler/Fabric/pull/2044" rel="noopener">#2044</a> — AWS Bedrock bearer-token (ABSK) auth + guided <span class="tt">--setup</span>. <span class="oss-diff">+882 / −83</span></li>
-          <li><a href="https://github.com/danielmiessler/Fabric/pull/2052" rel="noopener">#2052</a> — dynamic Bedrock region fetching (40+ regions). <span class="oss-diff">+252 / −15</span></li>
-          <li><a href="https://github.com/danielmiessler/Fabric/pull/2061" rel="noopener">#2061</a> — streaming-goroutine deadlock fix in <span class="tt">Chatter.Send</span>. <span class="oss-diff">+494 / −42</span></li>
-        </ul>
-        <p class="proj-desc" style="margin-top:4pt;font-size:7.6pt;color:var(--muted)">Under review: <a href="https://github.com/bytedance/deer-flow/pull/3790" rel="noopener">deer-flow</a>, <a href="https://github.com/thedotmack/claude-mem/pull/2710" rel="noopener">claude-mem</a>, <a href="https://github.com/refactoringhq/tolaria/pull/912" rel="noopener">tolaria</a>.</p>
+        <div class="oss-block">
+          <h3 class="oss-title">Open-Source Contributions</h3>
+          <p class="proj-desc"><strong>Merged into <a href="https://github.com/danielmiessler/Fabric" rel="noopener">danielmiessler/Fabric</a></strong> (Go, 42k★):</p>
+          <ul class="oss-list">
+            <li><a href="https://github.com/danielmiessler/Fabric/pull/2044" rel="noopener">#2044</a> — AWS Bedrock bearer-token (ABSK) auth + guided <span class="tt">--setup</span>. <span class="oss-diff">+882 / −83</span></li>
+            <li><a href="https://github.com/danielmiessler/Fabric/pull/2052" rel="noopener">#2052</a> — dynamic Bedrock region fetching (40+ regions). <span class="oss-diff">+252 / −15</span></li>
+            <li><a href="https://github.com/danielmiessler/Fabric/pull/2061" rel="noopener">#2061</a> — streaming-goroutine deadlock fix in <span class="tt">Chatter.Send</span>. <span class="oss-diff">+494 / −42</span></li>
+          </ul>
+          <p class="oss-open">Under review: <a href="https://github.com/bytedance/deer-flow/pull/3790" rel="noopener">deer-flow</a>, <a href="https://github.com/thedotmack/claude-mem/pull/2710" rel="noopener">claude-mem</a>, <a href="https://github.com/refactoringhq/tolaria/pull/912" rel="noopener">tolaria</a>.</p>
+        </div>
       </section>
 
       <section aria-labelledby="p2-edu">
