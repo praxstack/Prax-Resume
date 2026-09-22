@@ -239,8 +239,12 @@
 
     @page { size: A4 portrait; margin: 0; }
     @media print {
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
       html, body { background: #fff; margin: 0; padding: 0; }
-      .deck { gap: 0; padding: 0; }
+      .deck { gap: 0; padding: 0; background: #fff; }
       .resume-page {
         width: var(--a4-w);
         height: var(--a4-h);
@@ -249,7 +253,6 @@
         page-break-after: always;
       }
       .resume-page:last-of-type { page-break-after: auto; }
-      .stat { background: #fff; }
       a { color: var(--ink); border: none !important; }
       .role, .proj, .stat { break-inside: avoid; }
       .sect { break-after: avoid; }
