@@ -21,6 +21,10 @@
     a { color: inherit; text-decoration: none; }
 
     :root {
+      --a4-w: 210mm;
+      --a4-h: 297mm;
+      --page-pad-v: 12mm;
+      --page-pad-h: 14mm;
       --paper: #FFFFFF;
       --ink: #000000;
       --body: #1A1A1A;
@@ -51,11 +55,11 @@
     }
 
     .resume-page {
-      width: 210mm;
-      height: 297mm;
+      width: var(--a4-w);
+      height: var(--a4-h);
       overflow: hidden;
       background: var(--paper);
-      padding: 12mm 14mm 10mm;
+      padding: var(--page-pad-v) var(--page-pad-h);
       page-break-after: always;
       box-shadow: 0 2px 24px rgba(0,0,0,.12);
       position: relative;
@@ -233,11 +237,18 @@
       color: #AAA;
     }
 
-    @page { size: A4; margin: 0; }
+    @page { size: A4 portrait; margin: 0; }
     @media print {
-      html, body { background: #fff; }
+      html, body { background: #fff; margin: 0; padding: 0; }
       .deck { gap: 0; padding: 0; }
-      .resume-page { box-shadow: none; }
+      .resume-page {
+        width: var(--a4-w);
+        height: var(--a4-h);
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+      .resume-page:last-of-type { page-break-after: auto; }
       .stat { background: #fff; }
       a { color: var(--ink); border: none !important; }
       .role, .proj, .stat { break-inside: avoid; }
