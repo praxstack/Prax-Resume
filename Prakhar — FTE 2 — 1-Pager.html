@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prakhar Shekhar Parthasarthi — Software Engineer</title>
-  <meta name="description" content="Resume of Prakhar Shekhar Parthasarthi — Full-Stack Software Engineer (ex-Amazon). Professional one-page résumé.">
+  <meta name="description" content="Resume of Prakhar Shekhar Parthasarthi, full-stack software engineer (ex-Amazon SDE). Emphasis on end-to-end delivery, React, and production ownership.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -287,129 +287,118 @@
     @media screen {
       .resume-page { margin: 0 auto; }
     }
+  
+    /* Role 1-pagers: use the slack under the last line without crowding the edge. */
+    body { font-size: 9.05pt; }
+    .summary { font-size: 8.7pt; }
+    .bullets li { margin-bottom: 3.4pt; }
+    .sect { margin: 7pt 0 3.5pt; }
+    .skills { gap: 2.6pt 8pt; }
+    .metrics { margin: 7pt 0 8pt; }
+    .projects { gap: 6pt 8pt; }
   </style>
 </head>
 <body>
   <div class="deck">
-  <main class="resume-page" role="main">
-
+    <main class="resume-page" role="main">
     <header class="titleblock">
       <h1 class="name">Prakhar Shekhar Parthasarthi</h1>
-      <p class="subtitle">Full-Stack Software Engineer · Java / Spring Boot · React · AWS</p>
+      <p class="subtitle">Software Engineer · Full-stack delivery · Java, React, AWS</p>
       <ul class="contact" aria-label="Contact">
         <li><a href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></li>
         <li>Shahjahanpur, UP · open to relocate</li>
         <li><a href="https://github.com/praxstack" rel="noopener">github.com/praxstack</a> | <a href="https://www.linkedin.com/in/prakharshekhar" rel="noopener">linkedin.com/in/prakharshekhar</a> | <a href="https://prax-portfolio-one.vercel.app" rel="noopener">prax-portfolio-one.vercel.app</a></li>
       </ul>
     </header>
-
-    <div class="metrics" aria-label="Impact highlights">
-      <div class="stat"><div class="stat-num"><span class="mathrm">47</span>%</div><div class="stat-label">p90 latency cut</div></div>
-      <div class="stat"><div class="stat-num">+<span class="mathrm">33</span>%</div><div class="stat-label">conversion lift</div></div>
-      <div class="stat"><div class="stat-num"><span class="mathrm">195</span>k</div><div class="stat-label">GET rps · Java Redis</div></div>
-      <div class="stat"><div class="stat-num">20<span class="mathrm">→</span>5</div><div class="stat-label">on-call / shift</div></div>
-    </div>
-
-    <section aria-labelledby="sum-h">
-      <h2 id="sum-h" class="sect">Summary</h2>
-      <p class="summary">
-        Full-stack engineer with <strong>3+ years at Amazon</strong> (Travel — Hotels &amp; Flights); owned <strong>4 microservices</strong> end-to-end through design, deploy, and on-call.
-        Backend-heavy: <strong>Java 17 / Spring Boot</strong>, JVM concurrency (<span class="tt">CompletableFuture</span>, bounded <span class="tt">ExecutorService</span>),
-        idempotent event-driven flows over <strong>SQS + Step Functions</strong>, IaC in <strong>AWS CDK (Java)</strong>;
-        front-end: <strong>React (SSR &amp; CSR) + Redux</strong> on customer-facing booking surfaces.
-      </p>
-    </section>
-
-    <section aria-labelledby="skills-h">
-      <h2 id="skills-h" class="sect">Skills</h2>
-      <div class="skills">
-        <div class="skill-cat">Java &amp; JVM</div>
-        <div class="skill-val">Java 17, Spring Boot/MVC, Guice, JUnit 5, Mockito, Maven · concurrency, GC profiling</div>
-        <div class="skill-cat">Distributed</div>
-        <div class="skill-val">Microservices, REST, GraphQL, idempotency, state machines, DLQ, at-least-once, TDD</div>
-        <div class="skill-cat">AWS</div>
-        <div class="skill-val">Lambda, DynamoDB, SQS, Step Functions, API Gateway, CloudWatch, ECS, CDK (Java)</div>
-        <div class="skill-cat">Front-end</div>
-        <div class="skill-val">React (SSR &amp; CSR), Redux, HTML/CSS, TypeScript</div>
-        <div class="skill-cat">Data</div>
-        <div class="skill-val">DynamoDB, Redis, NoSQL modelling, SQL, caching</div>
-        <div class="skill-cat">Tooling</div>
-        <div class="skill-val">Git, CI/CD, JaCoCo gates, Agile, on-call, incident response · Python, C++</div>
+      <div class="metrics" aria-label="Impact highlights">
+        <div class="stat"><div class="stat-num"><span class="mathrm">47</span>%</div><div class="stat-label">p90 latency cut</div></div>
+        <div class="stat"><div class="stat-num">+<span class="mathrm">33</span>%</div><div class="stat-label">conversion lift</div></div>
+        <div class="stat"><div class="stat-num"><span class="mathrm">60</span>%+</div><div class="stat-label">renewal lift</div></div>
+        <div class="stat"><div class="stat-num">20<span class="mathrm">→</span>5</div><div class="stat-label">on-call / shift</div></div>
       </div>
-    </section>
-
-    <section aria-labelledby="exp-h">
-      <h2 id="exp-h" class="sect">Experience</h2>
-
-      <article class="role">
-        <div class="role-head">
-          <h3 class="role-title">Software Development Engineer, Jul 2022 — Sep 2025</h3>
+      <section aria-labelledby="sum-h">
+        <h2 id="sum-h" class="sect">Summary</h2>
+        <p class="summary">Full-stack engineer, intern then full-time Software Development Engineer at Amazon (<strong>3+ years</strong>, Travel). Owned <strong>4 microservices</strong> in <strong>Java 17 / Spring Boot</strong> and shipped <strong>React</strong> booking and insurance flows — p90 cut <span class="metric">47%</span> (<span class="metric">1.1s → 0.59s</span>), conversion <span class="metric">+33%</span>, renewals <span class="metric">60%+</span>.</p>
+      </section>
+      <section aria-labelledby="skills-h">
+        <h2 id="skills-h" class="sect">Skills</h2>
+        <div class="skills">
+          <div class="skill-cat">Front-end</div>
+          <div class="skill-val">React (SSR &amp; CSR), Redux, HTML/CSS, TypeScript</div>
+          <div class="skill-cat">Java &amp; JVM</div>
+          <div class="skill-val">Java 17, Spring Boot/MVC, Guice, JUnit 5, Mockito, Maven · concurrency, GC profiling</div>
+          <div class="skill-cat">AWS</div>
+          <div class="skill-val">Lambda, DynamoDB, SQS, Step Functions, API Gateway, CloudWatch, ECS, CDK (Java)</div>
+          <div class="skill-cat">Distributed</div>
+          <div class="skill-val">Microservices, REST, GraphQL, idempotency, state machines, DLQ, at-least-once, TDD</div>
+          <div class="skill-cat">Data</div>
+          <div class="skill-val">DynamoDB, Redis, NoSQL modelling, SQL, caching</div>
+          <div class="skill-cat">Tooling</div>
+          <div class="skill-val">Git, CI/CD, JaCoCo gates, Agile, on-call, incident response · Python, C++</div>
         </div>
-        <p class="role-co"><strong>Amazon</strong> · Travel (Hotels &amp; Flights) · Bengaluru</p>
-        <ul class="bullets">
-          <li><span class="lbl">Ownership.</span> Owned <strong>4 customer-facing microservices</strong> (search → order review); Spring Boot REST, DynamoDB DAOs, Prime/partner discount flows — <span class="metric">~30 bps</span> funnel churn drop.</li>
-          <li><span class="lbl">Concurrency.</span> Parallelised 6 partner APIs via <span class="tt">CompletableFuture.allOf()</span> — p90 <span class="metric">47%</span> (<span class="metric">1.1s→0.59s</span>), conversion <span class="metric">+33%</span>; GZIP cut wire size <span class="metric">95%</span>.</li>
-          <li><span class="lbl">Event-driven.</span> Designed an idempotent flight schedule-change webhook (SQS, dedup keys) — <span class="metric">43 bps CPT</span>; Step Functions booking state machine with Java Lambdas.</li>
-          <li><span class="lbl">IaC &amp; ops.</span> All service infra in <strong>Java CDK</strong>; migrated 2 services from CloudFormation — rollback incidents <span class="metric">halved</span>. On-call <span class="metric">20+→~5</span>/shift; resolved <span class="metric">150+</span> incidents.</li>
-          <li><span class="lbl">Testing.</span> Held <span class="metric">80%+</span> line coverage; <span class="tt">@SpringBootTest</span> + in-memory DynamoDB; introduced Gradle JaCoCo gates in CI.</li>
-        </ul>
-      </article>
-
-      <article class="role">
-        <div class="role-head">
-          <h3 class="role-title">Software Development Engineer, Intern, 2021 — 2022</h3>
-        </div>
-        <p class="role-co"><strong>Amazon</strong> · Bengaluru</p>
-        <ul class="bullets">
-          <li>Migrated GraphQL resolvers to Java + DynamoDB; shipped <strong>One-Click Renewal</strong> for auto-insurance; <span class="metric">90%+</span> unit-test coverage (JUnit 5 + Mockito).</li>
-        </ul>
-      </article>
-    </section>
-
-    <section aria-labelledby="proj-h">
-      <h2 id="proj-h" class="sect">Selected Projects</h2>
-      <div class="projects">
-        <article class="proj">
+      </section>
+      <section aria-labelledby="exp-h">
+        <h2 id="exp-h" class="sect">Experience</h2>
+        <article class="role">
+          <div class="role-head">
+            <h3 class="role-title">Software Development Engineer, Jul 2022 — Sep 2025</h3>
+          </div>
+          <p class="role-co"><strong>Amazon</strong> · Travel (Hotels &amp; Flights) · Bengaluru</p>
+          <ul class="bullets">
+            <li><span class="lbl">Ownership.</span> Owned <strong>4 customer-facing microservices</strong> (search → order review); Spring Boot REST, DynamoDB DAOs, Prime and partner discount flows — <span class="metric">~30 bps</span> funnel churn drop.</li>
+            <li><span class="lbl">Concurrency.</span> Parallelised 6 partner APIs via <span class="tt">CompletableFuture.allOf()</span> — p90 <span class="metric">47%</span> (<span class="metric">1.1s→0.59s</span>), conversion <span class="metric">+33%</span>; GZIP cut wire size <span class="metric">95%</span>.</li>
+            <li><span class="lbl">Customer delivery.</span> Built the auto-insurance purchase flow (Java + React) — <span class="metric">60%+</span> renewal lift, owned through deploy and on-call.</li>
+            <li><span class="lbl">Testing.</span> Held <span class="metric">80%+</span> line coverage; <span class="tt">@SpringBootTest</span> + in-memory DynamoDB; introduced Gradle JaCoCo gates in CI.</li>
+            <li><span class="lbl">Event-driven.</span> Designed an idempotent flight schedule-change webhook (SQS, dedup keys) — <span class="metric">43 bps CPT</span>; Step Functions booking state machine with Java Lambdas.</li>
+          </ul>
+        </article>
+        <article class="role">
+          <div class="role-head">
+            <h3 class="role-title">Software Development Engineer, Intern, May 2021 – Jul 2021 · Feb 2022 – Jul 2022</h3>
+          </div>
+          <p class="role-co"><strong>Amazon</strong> · Bengaluru</p>
+          <ul class="bullets">
+            <li>Shipped <strong>One-Click Renewal</strong> for auto-insurance; migrated GraphQL resolvers to Java + DynamoDB; <span class="metric">90%+</span> unit-test coverage (JUnit 5 + Mockito, Guice DI).</li>
+          </ul>
+        </article>
+      </section>
+      <section aria-labelledby="proj-h">
+        <h2 id="proj-h" class="sect">Projects</h2>
+        <div class="projects">
+          <article class="proj">
           <h3 class="proj-title">AI Visual Code Review</h3>
           <p class="proj-repo"><a href="https://github.com/praxstack/ai-visual-code-review" rel="noopener">github.com/praxstack/ai-visual-code-review</a> · npm v2.4.1</p>
           <p class="proj-desc">Visual diff review + VS Code extension; TypeScript, Jest, command-injection hardening, AI markdown exports.</p>
         </article>
-        <article class="proj">
-          <h3 class="proj-title">Redis Server in Java</h3>
-          <p class="proj-repo"><a href="https://github.com/praxstack/redis-server-java" rel="noopener">github.com/praxstack/redis-server-java</a></p>
-          <p class="proj-desc">RESP2 from scratch; bounded thread pool, <span class="tt">ConcurrentHashMap</span>, hybrid TTL. GET <span class="metric">195k rps</span>, SET <span class="metric">154k rps</span>; 42 tests.</p>
-        </article>
-        <article class="proj">
+          <article class="proj">
           <h3 class="proj-title">Coach Atlas</h3>
           <p class="proj-repo"><a href="https://github.com/praxstack/coach-atlas" rel="noopener">github.com/praxstack/coach-atlas</a></p>
           <p class="proj-desc">AI interview mentor + tutorial studio; React/TS, Mermaid/KaTeX rendering, multi-provider BYOK (keys in browser).</p>
         </article>
-        <article class="proj">
+          <article class="proj">
+          <h3 class="proj-title">Redis Server in Java</h3>
+          <p class="proj-repo"><a href="https://github.com/praxstack/redis-server-java" rel="noopener">github.com/praxstack/redis-server-java</a></p>
+          <p class="proj-desc">RESP2 from scratch; bounded thread pool, <span class="tt">ConcurrentHashMap</span>, hybrid TTL. GET <span class="metric">195k rps</span>, SET <span class="metric">154k rps</span>, p50 &lt; <span class="metric">0.3 ms</span>; 42 tests.</p>
+        </article>
+          <article class="proj">
           <h3 class="proj-title">Open Source — Fabric (42k stars)</h3>
-          <p class="proj-repo"><a href="https://github.com/danielmiessler/Fabric" rel="noopener">danielmiessler/Fabric</a></p>
+          <p class="proj-repo"><a href="https://github.com/danielmiessler/Fabric" rel="noopener">danielmiessler/Fabric</a> · Go</p>
           <p class="proj-desc">3 merged PRs: Bedrock bearer auth (#2044), dynamic regions (#2052), streaming deadlock fix (#2061).</p>
         </article>
-      </div>
-    </section>
-
-    <section aria-labelledby="edu-h">
-      <h2 id="edu-h" class="sect">Education</h2>
-      <div class="row">
-        <p><strong>Master of Computer Applications (M.C.A.), Computer Science</strong> · MNNIT, Prayagraj · GPA 9.25 · 2019 — 2022</p>
-      </div>
-      <div class="row">
-        <p><strong>Bachelor of Science (B.Sc. Hons), Computer Science</strong> · University of Delhi · 2015 — 2018</p>
-      </div>
-    </section>
-
-    <section aria-labelledby="awards-h">
-      <h2 id="awards-h" class="sect">Awards</h2>
-      <div class="row">
-        <p><strong>Amazon Pay Merchants Categories Champion</strong> — 100+ trust-buster bugs; on-call <span class="metric">20+→~5</span>/shift · 2023</p>
-      </div>
-    </section>
-
-  </main>
+        </div>
+      </section>
+      <section aria-labelledby="edu-h">
+        <h2 id="edu-h" class="sect">Education</h2>
+        <div class="row"><p><strong>Master of Computer Applications (M.C.A.), Computer Science</strong> · MNNIT, Prayagraj · GPA 9.25 · 2019 — 2022</p></div>
+        <div class="row"><p><strong>Bachelor of Science (B.Sc. Hons), Computer Science</strong> · University of Delhi · 2015 — 2018</p></div>
+      </section>
+      <section aria-labelledby="awards-h">
+        <h2 id="awards-h" class="sect">Awards</h2>
+        <div class="row">
+          <p><strong>Amazon Pay Merchants Categories Champion</strong> — 100+ hotel trust-buster bugs; on-call <span class="metric">20+ to ~5</span> per shift · 2023</p>
+        </div>
+      </section>
+    </main>
   </div>
 </body>
 </html>

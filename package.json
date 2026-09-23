@@ -12,6 +12,8 @@
     "verify": "node scripts/verify-single-page-pdf.mjs \"Prakhar Shekhar Parthasarthi Resume.html\" \"Prakhar Shekhar Parthasarthi Resume.pdf\"",
     "build:single": "npm run pdf:single && npm run verify",
     "audit:v2": "node scripts/audit-overflow.mjs",
+    "audit:content": "node scripts/audit-resume-content.mjs",
+    "build:roles": "node scripts/build-role-resumes.mjs",
     "serve": "python3 -m http.server 5173",
     "verify:resume": "node scripts/verify-resume.mjs",
     "test": "bash scripts/run-tests.sh",
