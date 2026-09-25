@@ -30,10 +30,25 @@ node scripts/verify-themes.mjs
 RC2=$?
 
 echo
-if [ "$RC" -eq 0 ] && [ "$RC2" -eq 0 ]; then
-  echo "ALL PASS — canonical resume + all themes meet AGENTS.md data contracts"
+echo "=== KaTeX role resumes — content audit ==="
+node scripts/audit-resume-content.mjs
+RC3=$?
+
+echo
+echo "=== KaTeX role resumes — print layout ==="
+node scripts/audit-katex-layout.mjs
+RC4=$?
+
+echo
+echo "=== KaTeX role resumes — generator snapshot ==="
+node scripts/build-role-resumes.mjs --check-html
+RC5=$?
+
+echo
+if [ "$RC" -eq 0 ] && [ "$RC2" -eq 0 ] && [ "$RC3" -eq 0 ] && [ "$RC4" -eq 0 ] && [ "$RC5" -eq 0 ]; then
+  echo "ALL PASS — canonical resume + themes + KaTeX role pack"
   exit 0
 else
-  echo "FAIL — see violations above (canonical RC=$RC, themes RC=$RC2)"
+  echo "FAIL — see violations above (canonical RC=$RC, themes RC=$RC2, content RC=$RC3, layout RC=$RC4, snapshot RC=$RC5)"
   exit 1
 fi

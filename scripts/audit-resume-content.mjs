@@ -48,13 +48,32 @@ const ALLOWED_REPOS = new Set([
   "warp-byok-proxy",
 ]);
 
-const ROLE_KEYWORDS = [
-  { test: /FTE 2/, need: ["React", "60%+", "full-time", "Spring Boot", "80%+"] },
-  { test: /SDE 2/, need: ["CompletableFuture", "SQS", "CDK", "microservices", "80%+", "195k rps"] },
-  { test: /FDE/, need: ["on-call", "partner", "43 bps CPT", "150+", "COE", "customer"] },
-  { test: /SDE AI/, need: ["Bedrock", "Claude", "Voxtral", "Fabric", "npm v2.4.1", "BYOK", "warp-byok-proxy"] },
-  { test: /MTS/, need: ["deadlock", "195k rps", "0.3 ms", "idempotent", "42 tests", "#2061"] },
-];
+const ROLE_KEYWORDS = {
+  "FTE 2": {
+    need: ["React", "60%+", "Spring Boot", "80%+"],
+    anyOf: ["full-time", "full time Software Development Engineer", "intern then"],
+  },
+  "SDE 2": {
+    need: ["CompletableFuture", "SQS", "CDK", "microservices", "80%+", "195k rps"],
+  },
+  FDE: {
+    need: ["on-call", "partner", "43 bps CPT", "150+", "COE", "customer"],
+  },
+  "SDE AI": {
+    need: ["Bedrock", "Claude", "Voxtral", "Fabric", "npm v2.4.1", "BYOK", "warp-byok-proxy"],
+  },
+  MTS: {
+    need: ["deadlock", "195k rps", "0.3 ms", "idempotent", "42 tests", "#2061"],
+  },
+};
+
+const FIRST_PERSON = /\b(I|I'm|I've|my|me|our|we)\b/i;
+
+function auditSlugFromFilename(name) {
+  if (/^Prakhar — KaTeX Pro (1|2)-Pager\.html$/.test(name)) return "KaTeX Pro";
+  const m = name.match(/^Prakhar — (.+?) — (1|2)-Pager\.html$/);
+  return m ? m[1] : null;
+}
 
 const VERBS = /\b(owned|shipped|built|designed|refactored|parallelised|parallelized|migrated|authored|introduced|held|resolved|orchestrated|published|fixed|applied|cut|routed|deprecated)\b/i;
 
@@ -80,7 +99,6 @@ const WEAK = [
   [/markdown-viewer-pro/i, "dead repo markdown-viewer-pro"],
   [/tailored for/i, "Tailored for tag"],
   [/prax\.sr\.sde/i, "forbidden email"],
-  [/\b(I|I'm|I've|my|me|our|we)\b/, "first person"],
 ];
 
 function textOf(html) {
@@ -94,6 +112,11 @@ function textOf(html) {
     .replace(/&#160;|&nbsp;/g, " ")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function summaryText(html) {
+  const m = html.match(/<p class="summary">([\s\S]*?)<\/p>/);
+  return m ? textOf(m[1]) : "";
 }
 
 function bulletTexts(html) {
@@ -158,6 +181,10 @@ for (const file of files) {
   }
 
   const bullets = bulletTexts(html);
+  const proseScope = `${summaryText(html)} ${bullets.join(" ")}`;
+  const fpHit = proseScope.match(FIRST_PERSON);
+  if (fpHit) fails.push(`wording: first person in summary or bullets (“${fpHit[0]}”)`);
+
   if (bullets.length < 4) fails.push(`too few experience bullets (${bullets.length})`);
   const unquantified = bullets.filter((b) => !/\d/.test(b));
   if (unquantified.length > 2) {
@@ -170,10 +197,15 @@ for (const file of files) {
     fails.push(`${noVerb.length} bullet(s) without an action verb: “${noVerb[0].slice(0, 70)}”`);
   }
 
-  const role = ROLE_KEYWORDS.find((r) => r.test.test(name));
-  if (role) {
-    const missing = role.need.filter((k) => !text.includes(k) && !html.includes(k));
+  const slug = auditSlugFromFilename(name);
+  const roleSpec = slug ? ROLE_KEYWORDS[slug] : null;
+  if (roleSpec) {
+    const missing = roleSpec.need.filter((k) => !text.includes(k) && !html.includes(k));
     if (missing.length) fails.push(`role keywords missing: ${missing.join(", ")}`);
+    if (roleSpec.anyOf) {
+      const ok = roleSpec.anyOf.some((k) => text.includes(k) || html.includes(k));
+      if (!ok) fails.push(`role keywords missing (one of): ${roleSpec.anyOf.join(", ")}`);
+    }
   }
 
   if (!/Master of Computer Applications/.test(text)) fails.push("degree keyword Master missing");

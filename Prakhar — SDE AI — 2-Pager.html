@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
       -webkit-font-smoothing: antialiased;
@@ -259,8 +259,9 @@
     @media screen {
       .resume-page { margin: 0 auto; }
     }
-  
-    /* Role 2-pagers: base KaTeX type left a large empty band on both sheets. */
+
+
+    /* Role 2-pagers: fill A4 without clipping. */
     body { font-size: 10.2pt; line-height: 1.46; }
     .name { font-size: 21pt; }
     .subtitle { font-size: 10.4pt; }
@@ -281,6 +282,7 @@
     .resume-page:first-of-type .metrics { margin: 12pt 0 13pt; }
     .resume-page:first-of-type .titleblock { margin-bottom: 10pt; padding-bottom: 9pt; }
     .resume-page:first-of-type .role-co { margin-bottom: 7pt; }
+
   </style>
 </head>
 <body>

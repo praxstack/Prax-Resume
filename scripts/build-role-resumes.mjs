@@ -6,55 +6,39 @@
  *
  *   node scripts/build-role-resumes.mjs
  */
-import { readFileSync, writeFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { readFileSync, writeFileSync, mkdtempSync, rmSync } from "node:fs";
+import { resolve, basename } from "node:path";
+import { tmpdir } from "node:os";
 import { chromium } from "playwright";
 import { pathToFileURL } from "node:url";
+import { createHash } from "node:crypto";
+import { katexStyleBlock, katexProStyleBlock } from "./load-katex-styles.mjs";
+import { assertLayoutOk, measureResumePages } from "./katex-layout.mjs";
 
 const root = resolve(import.meta.dirname, "..");
-const style1 = readFileSync(resolve(root, "Prakhar — KaTeX Pro 1-Pager.html"), "utf8")
-  .match(/<style>[\s\S]*?<\/style>/)[0]
-  .replace(
-    "</style>",
-    `
-    /* Role 1-pagers: use the slack under the last line without crowding the edge. */
-    body { font-size: 9.05pt; }
-    .summary { font-size: 8.7pt; }
-    .bullets li { margin-bottom: 3.4pt; }
-    .sect { margin: 7pt 0 3.5pt; }
-    .skills { gap: 2.6pt 8pt; }
-    .metrics { margin: 7pt 0 8pt; }
-    .projects { gap: 6pt 8pt; }
-  </style>`
-  );
-const style2 = readFileSync(resolve(root, "Prakhar — KaTeX Pro 2-Pager.html"), "utf8")
-  .match(/<style>[\s\S]*?<\/style>/)[0]
-  .replace(
-    "</style>",
-    `
-    /* Role 2-pagers: base KaTeX type left a large empty band on both sheets. */
-    body { font-size: 10.2pt; line-height: 1.46; }
-    .name { font-size: 21pt; }
-    .subtitle { font-size: 10.4pt; }
-    .summary { font-size: 10pt; line-height: 1.5; }
-    .bullets li { font-size: 9.4pt; margin-bottom: 5pt; line-height: 1.45; }
-    .sect { margin: 10pt 0 6pt; font-size: 8.4pt; }
-    .skills { font-size: 9pt; }
-    .proj-desc { font-size: 8.5pt; }
-    .proj { padding: 8pt 9pt; }
-    .projects { gap: 9pt 12pt; }
-    .metrics { margin: 10pt 0 10pt; }
-    .stat { padding: 8pt 5pt; }
-    .stat-num { font-size: 15pt; }
-    .role-title { font-size: 11pt; }
-    .resume-page:first-of-type .bullets li { margin-bottom: 9pt; line-height: 1.48; }
-    .resume-page:first-of-type .skills { gap: 7pt 10pt; font-size: 9.2pt; }
-    .resume-page:first-of-type .sect { margin: 13pt 0 8pt; }
-    .resume-page:first-of-type .metrics { margin: 12pt 0 13pt; }
-    .resume-page:first-of-type .titleblock { margin-bottom: 10pt; padding-bottom: 9pt; }
-    .resume-page:first-of-type .role-co { margin-bottom: 7pt; }
-  </style>`
-  );
+const CHECK_HTML = process.argv.includes("--check-html");
+const style1 = katexStyleBlock(1);
+const style2 = katexStyleBlock(2);
+const stylePro1 = katexProStyleBlock(1);
+const stylePro2 = katexProStyleBlock(2);
+
+function escapeAttr(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;");
+}
+
+function sha256(text) {
+  return createHash("sha256").update(text, "utf8").digest("hex");
+}
+
+function outputPath(role, pagesLabel) {
+  if (role.fileBase) {
+    return resolve(root, `${role.fileBase} ${pagesLabel}.html`);
+  }
+  return resolve(root, `Prakhar — ${role.slug} — ${pagesLabel}.html`);
+}
 
 const FONT = `https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap`;
 
@@ -65,7 +49,7 @@ function doc({ description, style, body }) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prakhar Shekhar Parthasarthi — Software Engineer</title>
-  <meta name="description" content="${description}">
+  <meta name="description" content="${escapeAttr(description)}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="${FONT}" rel="stylesheet">
@@ -133,6 +117,7 @@ const AMAZON_INTERN = `<strong>Amazon</strong> · Bengaluru`;
 const TITLE = `Software Development Engineer, Jul 2022 — Sep 2025`;
 const INTERN_TITLE = `Software Development Engineer, Intern, May 2021 – Jul 2021 · Feb 2022 – Jul 2022`;
 const INTERN_TITLE_SHORT = `Software Development Engineer, Intern, May 2021 – Jul 2021 · Feb 2022 – Jul 2022`;
+const INTERN_TITLE_1P = `Software Development Engineer, Intern, 2021 — 2022`;
 
 const OWN_L = `<span class="lbl">Service ownership — Spring Boot, Spring MVC.</span> Owned <strong>4 customer-facing microservices</strong> powering the hotel booking platform — search, listing, room selection, order review — across design, code review, deploy, and on-call. REST controllers, service-layer logic, <span class="tt">@Repository</span> DynamoDB DAOs via Spring DI. Prime-exclusive discount and partner-discount integration — <span class="metric">~30 bps</span> funnel churn drop.`;
 const CONC_L = `<span class="lbl">JVM concurrency — CompletableFuture, bounded executors.</span> Refactored sequential downstream calls into <span class="tt">CompletableFuture.allOf()</span> on a bounded <span class="tt">ExecutorService</span>; parallelised 6 partner-API lookups — hotel landing p90 cut <span class="metric">47%</span> (<span class="metric">1.1s → 0.59s</span>), conversion up <span class="metric">+33%</span>. GZIP on 150–200 MB catalog payloads cut wire size <span class="metric">95%</span>.`;
@@ -151,6 +136,14 @@ const IAC_S = `<span class="lbl">IaC.</span> Authored service infra in <strong>J
 const TEST_S = `<span class="lbl">Testing.</span> Held <span class="metric">80%+</span> line coverage; <span class="tt">@SpringBootTest</span> + in-memory DynamoDB; introduced Gradle JaCoCo gates in CI.`;
 const OPS_S = `<span class="lbl">Operations.</span> On-call <span class="metric">20+→~5</span>/shift (<span class="metric">~2 SDE-weeks/week</span>); resolved <span class="metric">150+</span> incidents and authored COEs; config-hygiene incidents to <span class="metric">0</span>.`;
 const CUST_S = `<span class="lbl">Customer delivery.</span> Built the auto-insurance purchase flow (Java + React) — <span class="metric">60%+</span> renewal lift, owned through deploy and on-call.`;
+
+const KATEX_B1 = [
+  OWN_S,
+  CONC_S,
+  EVT_S,
+  `<span class="lbl">IaC &amp; ops.</span> All service infra in <strong>Java CDK</strong>; migrated 2 services from CloudFormation — rollback incidents <span class="metric">halved</span>. On-call <span class="metric">20+→~5</span>/shift; resolved <span class="metric">150+</span> incidents.`,
+  TEST_S,
+];
 
 const INTERN_GQL = `Migrated legacy GraphQL resolvers to <strong>Java</strong> — DynamoDB via Spring-injected DAOs, API Gateway + Lambda.`;
 const INTERN_OCR = `Shipped <strong>One-Click Renewal</strong> for auto-insurance using past-purchase data — async Java pre-fill workflow.`;
@@ -322,6 +315,44 @@ function summary(id, html) {
 }
 
 const ROLES = [
+  {
+    slug: "KaTeX Pro",
+    fileBase: "Prakhar — KaTeX Pro",
+    auditSlug: "KaTeX Pro",
+    subtitle: "Full-Stack Software Engineer · Java &amp; Spring Boot · React · AWS",
+    description:
+      "Resume of Prakhar Shekhar Parthasarthi — Full-Stack Software Engineer (ex-Amazon). Professional KaTeX Pro résumé.",
+    stats: [S47, S33, S195, S20],
+    summary2: `Full-stack software engineer with <strong>3+ years at Amazon</strong> across Payments and Travel — <strong>owned 4 microservices end-to-end</strong> through design, build, deploy, and on-call. Java-heavy backend (<strong>Java 17 / Spring Boot</strong>, JVM concurrency with <span class="tt">CompletableFuture</span>, bounded <span class="tt">ExecutorService</span>, <span class="tt">ConcurrentHashMap</span>), idempotent event-driven architecture over <strong>SQS + Step Functions</strong>, and typed infrastructure in <strong>AWS CDK (Java)</strong> — paired with <strong>React (SSR &amp; CSR) + Redux</strong> for customer-facing flows.`,
+    summary1: `Full-stack engineer with <strong>3+ years at Amazon</strong> (Travel — Hotels &amp; Flights); owned <strong>4 microservices</strong> end-to-end through design, deploy, and on-call. Backend-heavy: <strong>Java 17 / Spring Boot</strong>, JVM concurrency (<span class="tt">CompletableFuture</span>, bounded <span class="tt">ExecutorService</span>), idempotent event-driven flows over <strong>SQS + Step Functions</strong>, IaC in <strong>AWS CDK (Java)</strong>; front-end: <strong>React (SSR &amp; CSR) + Redux</strong> on customer-facing booking surfaces.`,
+    skills2: [
+      ["Java &amp; JVM", SK_JAVA],
+      ["Distributed Systems", SK_DIST],
+      ["AWS", SK_AWS],
+      ["Front-end", SK_FE],
+      ["Data &amp; Storage", SK_DATA],
+      ["Tooling &amp; Process", SK_TOOL],
+    ],
+    skills1: [
+      ["Java &amp; JVM", SK_JAVA_S],
+      ["Distributed", SK_DIST_S],
+      ["AWS", SK_AWS_S],
+      ["Front-end", SK_FE_S],
+      ["Data", SK_DATA_S],
+      ["Tooling", SK_TOOL_S],
+    ],
+    p1: [OWN_L, CONC_L, EVT_L, IAC_L],
+    p2: [TEST_L, OPS_L],
+    b1: KATEX_B1,
+    intern2: [INTERN_GQL, INTERN_OCR, INTERN_DI],
+    intern1: `Migrated GraphQL resolvers to Java + DynamoDB; shipped <strong>One-Click Renewal</strong> for auto-insurance; <span class="metric">90%+</span> unit-test coverage (JUnit 5 + Mockito).`,
+    internTitle1: INTERN_TITLE_1P,
+    proj2: ["ai", "redis", "audio", "coach"],
+    proj1: ["ai", "redis", "coach", "fabric"],
+    oss: [2044, 2052, 2061],
+    style1: stylePro1,
+    style2: stylePro2,
+  },
   {
     slug: "FTE 2",
     subtitle: "Software Engineer · Full-stack delivery · Java, React, AWS",
@@ -535,82 +566,84 @@ ${awards()}
     </section>`;
 }
 
-const written = [];
-for (const role of ROLES) {
-  for (const [pages, style, body] of [
-    ["1-Pager", style1, page1(role)],
-    ["2-Pager", style2, page2(role)],
-  ]) {
-    const filename = `Prakhar — ${role.slug} — ${pages}.html`;
-    const html = doc({ description: role.description, style, body });
-    writeFileSync(resolve(root, filename), html);
-    written.push(filename);
-    console.log(`wrote ${filename}`);
+function styleFor(role, pagesLabel) {
+  if (pagesLabel === "1-Pager") {
+    return role.style1 ?? style1;
   }
+  return role.style2 ?? style2;
 }
 
 const MM = 25.4 / 96;
-const browser = await chromium.launch();
-let overflow = false;
-for (const filename of written) {
-  const page = await browser.newPage({
-    viewport: { width: Math.round(210 / MM), height: Math.round(297 / MM) },
-  });
-  await page.emulateMedia({ media: "print" });
-  await page.goto(pathToFileURL(resolve(root, filename)).href, { waitUntil: "networkidle", timeout: 60000 });
-  await page.evaluate(() => (document.fonts ? document.fonts.ready : Promise.resolve()));
-  const report = await page.evaluate(() => {
-    const mmToPx = (mm) => mm * (96 / 25.4);
-    const SAFETY = mmToPx(2);
-    const pages = [...document.querySelectorAll(".resume-page")];
-    const issues = [];
-    const gaps = [];
-    pages.forEach((p, i) => {
-      const pr = p.getBoundingClientRect();
-      const bottom = pr.bottom - SAFETY;
-      let lowest = pr.top;
-      for (const el of p.querySelectorAll("*")) {
-        const cs = getComputedStyle(el);
-        if (cs.position === "absolute") continue;
-        const r = el.getBoundingClientRect();
-        if (r.height === 0 || r.width === 0) continue;
-        if (Math.abs(r.height - (pr.bottom - pr.top)) < mmToPx(1)) continue;
-        if (r.bottom > lowest) lowest = r.bottom;
-        if (r.bottom > bottom + 0.5) {
-          const childOverflow = [...el.children].some((c) => c.getBoundingClientRect().bottom > bottom + 0.5);
-          if (!childOverflow) {
-            issues.push({
-              page: i + 1,
-              overflowMm: +(((r.bottom - pr.bottom) * 25.4) / 96).toFixed(1),
-              text: (el.innerText || "").slice(0, 70).replace(/\s+/g, " "),
-            });
-          }
-        }
-      }
-      gaps.push(+(((pr.bottom - lowest) * 25.4) / 96).toFixed(1));
+const A4_W = Math.round(210 / MM);
+const A4_H = Math.round(297 / MM);
+
+const outputs = [];
+let htmlMismatch = 0;
+
+for (const role of ROLES) {
+  for (const pagesLabel of ["1-Pager", "2-Pager"]) {
+    const out = outputPath(role, pagesLabel);
+    const name = basename(out);
+    const html = doc({
+      description: role.description,
+      style: styleFor(role, pagesLabel),
+      body: pagesLabel === "1-Pager" ? page1(role) : page2(role),
     });
-    return { pages: pages.length, gaps, issues: issues.slice(0, 8) };
-  });
-  const pdfName = filename.replace(/\.html$/, ".pdf");
+
+    if (CHECK_HTML) {
+      const onDisk = readFileSync(out, "utf8");
+      if (sha256(onDisk) !== sha256(html)) {
+        console.error(`MISMATCH  ${name}  (re-run npm run build:roles)`);
+        htmlMismatch++;
+      } else {
+        console.log(`ok      ${name}`);
+      }
+    } else {
+      writeFileSync(out, html);
+      console.log(`wrote   ${name}`);
+    }
+    outputs.push(out);
+  }
+}
+
+if (CHECK_HTML) {
+  process.exit(htmlMismatch ? 1 : 0);
+}
+
+const browser = await chromium.launch();
+let layoutFail = 0;
+
+for (const htmlPath of outputs) {
+  const name = basename(htmlPath);
+  const page = await browser.newPage({ viewport: { width: A4_W, height: A4_H } });
+  await page.emulateMedia({ media: "print" });
+  await page.goto(pathToFileURL(htmlPath).href, { waitUntil: "networkidle", timeout: 60000 });
+  await page.evaluate(() => (document.fonts ? document.fonts.ready : Promise.resolve()));
+
+  const report = await measureResumePages(page);
+  const layoutIssues = assertLayoutOk(report, name);
+  if (layoutIssues.length) {
+    layoutFail++;
+    console.log(`FAIL    ${name}`);
+    for (const msg of layoutIssues) console.log(`  ${msg}`);
+  } else {
+    const gaps = report.pages.map((p) => `p${p.page}:${p.gapMm}mm`).join(", ");
+    console.log(`ok      ${name}  pages=${report.pageCount}  ${gaps}`);
+  }
+
+  const pdfPath = htmlPath.replace(/\.html$/, ".pdf");
   await page.addStyleTag({
     content: `*, *::before, *::after { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
       @media print { .deck { gap: 0 !important; padding: 0 !important; background: #fff !important; } .resume-page { box-shadow: none !important; } }`,
   });
   await page.pdf({
-    path: resolve(root, pdfName),
+    path: pdfPath,
     printBackground: true,
     preferCSSPageSize: true,
     scale: 1,
   });
-  const sparse = report.gaps.some((g) => g > 36);
-  const tight = report.gaps.some((g) => g < 8);
-  const flag = report.issues.length || tight ? "OVERFLOW" : sparse ? "SPARSE" : "ok";
-  if (report.issues.length || tight || sparse) overflow = true;
-  console.log(`${flag}  ${filename}  pages=${report.pages}  gapMm=${report.gaps.join(",")}`);
-  for (const issue of report.issues) {
-    console.log(`    p${issue.page} +${issue.overflowMm}mm  ${issue.text}`);
-  }
   await page.close();
 }
+
 await browser.close();
-if (overflow) process.exit(1);
+process.exit(layoutFail ? 1 : 0);

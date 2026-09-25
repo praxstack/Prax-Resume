@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Prakhar Shekhar Parthasarthi — Software Engineer (2 pages)</title>
-  <meta name="description" content="Resume of Prakhar Shekhar Parthasarthi — Full-Stack Software Engineer (ex-Amazon). Professional two-page résumé.">
+  <title>Prakhar Shekhar Parthasarthi — Software Engineer</title>
+  <meta name="description" content="Resume of Prakhar Shekhar Parthasarthi — Full-Stack Software Engineer (ex-Amazon). Professional KaTeX Pro résumé.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
       -webkit-font-smoothing: antialiased;
@@ -259,42 +259,54 @@
     @media screen {
       .resume-page { margin: 0 auto; }
     }
+
+
+    /* Role 2-pagers: fill A4 without clipping. */
+    body { font-size: 10.2pt; line-height: 1.46; }
+    .name { font-size: 21pt; }
+    .subtitle { font-size: 10.4pt; }
+    .summary { font-size: 10pt; line-height: 1.5; }
+    .bullets li { font-size: 9.4pt; margin-bottom: 5pt; line-height: 1.45; }
+    .sect { margin: 10pt 0 6pt; font-size: 8.4pt; }
+    .skills { font-size: 9pt; }
+    .proj-desc { font-size: 8.5pt; }
+    .proj { padding: 8pt 9pt; }
+    .projects { gap: 9pt 12pt; }
+    .metrics { margin: 10pt 0 10pt; }
+    .stat { padding: 8pt 5pt; }
+    .stat-num { font-size: 15pt; }
+    .role-title { font-size: 11pt; }
+    .resume-page:first-of-type .bullets li { margin-bottom: 9pt; line-height: 1.48; }
+    .resume-page:first-of-type .skills { gap: 7pt 10pt; font-size: 9.2pt; }
+    .resume-page:first-of-type .sect { margin: 13pt 0 8pt; }
+    .resume-page:first-of-type .metrics { margin: 12pt 0 13pt; }
+    .resume-page:first-of-type .titleblock { margin-bottom: 10pt; padding-bottom: 9pt; }
+    .resume-page:first-of-type .role-co { margin-bottom: 7pt; }
+
   </style>
 </head>
 <body>
   <div class="deck">
-
     <section class="resume-page" aria-label="Page 1">
-
-      <header class="titleblock">
-        <h1 class="name">Prakhar Shekhar Parthasarthi</h1>
-        <p class="subtitle">Full-Stack Software Engineer · Java &amp; Spring Boot · React · AWS</p>
-        <ul class="contact" aria-label="Contact">
-          <li><a href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></li>
-          <li>Shahjahanpur, UP · open to relocate</li>
-          <li><a href="https://github.com/praxstack" rel="noopener">github.com/praxstack</a> | <a href="https://www.linkedin.com/in/prakharshekhar" rel="noopener">linkedin.com/in/prakharshekhar</a> | <a href="https://prax-portfolio-one.vercel.app" rel="noopener">prax-portfolio-one.vercel.app</a></li>
-        </ul>
-      </header>
-
+    <header class="titleblock">
+      <h1 class="name">Prakhar Shekhar Parthasarthi</h1>
+      <p class="subtitle">Full-Stack Software Engineer · Java &amp; Spring Boot · React · AWS</p>
+      <ul class="contact" aria-label="Contact">
+        <li><a href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></li>
+        <li>Shahjahanpur, UP · open to relocate</li>
+        <li><a href="https://github.com/praxstack" rel="noopener">github.com/praxstack</a> | <a href="https://www.linkedin.com/in/prakharshekhar" rel="noopener">linkedin.com/in/prakharshekhar</a> | <a href="https://prax-portfolio-one.vercel.app" rel="noopener">prax-portfolio-one.vercel.app</a></li>
+      </ul>
+    </header>
       <div class="metrics" aria-label="Impact highlights">
         <div class="stat"><div class="stat-num"><span class="mathrm">47</span>%</div><div class="stat-label">p90 latency cut</div></div>
         <div class="stat"><div class="stat-num">+<span class="mathrm">33</span>%</div><div class="stat-label">conversion lift</div></div>
         <div class="stat"><div class="stat-num"><span class="mathrm">195</span>k</div><div class="stat-label">GET rps · Java Redis</div></div>
         <div class="stat"><div class="stat-num">20<span class="mathrm">→</span>5</div><div class="stat-label">on-call / shift</div></div>
       </div>
-
       <section aria-labelledby="p1-sum">
         <h2 id="p1-sum" class="sect">Summary</h2>
-        <p class="summary">
-          Full-stack software engineer with <strong>3+ years at Amazon</strong> across Payments and Travel —
-          <strong>owned 4 microservices end-to-end</strong> through design, build, deploy, and on-call.
-          Java-heavy backend (<strong>Java 17 / Spring Boot</strong>, JVM concurrency with <span class="tt">CompletableFuture</span>,
-          bounded <span class="tt">ExecutorService</span>, <span class="tt">ConcurrentHashMap</span>), idempotent event-driven architecture over
-          <strong>SQS + Step Functions</strong>, and typed infrastructure in <strong>AWS CDK (Java)</strong> —
-          paired with <strong>React (SSR &amp; CSR) + Redux</strong> for customer-facing flows.
-        </p>
+        <p class="summary">Full-stack software engineer with <strong>3+ years at Amazon</strong> across Payments and Travel — <strong>owned 4 microservices end-to-end</strong> through design, build, deploy, and on-call. Java-heavy backend (<strong>Java 17 / Spring Boot</strong>, JVM concurrency with <span class="tt">CompletableFuture</span>, bounded <span class="tt">ExecutorService</span>, <span class="tt">ConcurrentHashMap</span>), idempotent event-driven architecture over <strong>SQS + Step Functions</strong>, and typed infrastructure in <strong>AWS CDK (Java)</strong> — paired with <strong>React (SSR &amp; CSR) + Redux</strong> for customer-facing flows.</p>
       </section>
-
       <section aria-labelledby="p1-skills">
         <h2 id="p1-skills" class="sect">Skills</h2>
         <div class="skills">
@@ -312,7 +324,6 @@
           <div class="skill-val">Git, GitHub, CI/CD, Gradle JaCoCo coverage gates, Agile/Scrum, on-call, code review, incident response · Python, C++</div>
         </div>
       </section>
-
       <section aria-labelledby="p1-exp">
         <h2 id="p1-exp" class="sect">Experience</h2>
         <article class="role">
@@ -328,20 +339,17 @@
           </ul>
         </article>
       </section>
-
       <span class="page-num" aria-hidden="true">1 / 2</span>
     </section>
 
     <section class="resume-page" aria-label="Page 2">
-
       <section aria-labelledby="p2-exp">
         <h2 id="p2-exp" class="sect sect--cont">Experience · Amazon SDE (continued)</h2>
         <p class="role-co role-co--cont">Jul 2022 — Sep 2025 · Travel (Hotels &amp; Flights) · Bengaluru</p>
-        <ul class="bullets">
-          <li><span class="lbl">Testing — JUnit 5, Mockito, Spring Boot.</span> Held <span class="metric">80%+</span> line coverage; Mockito argument captors for downstream contract verification; <span class="tt">@SpringBootTest</span> integration tests against in-memory DynamoDB. Introduced Gradle JaCoCo coverage gates in CI.</li>
-          <li><span class="lbl">Operational excellence.</span> On-call tickets cut from <span class="metric">20+ to ~5 per shift</span> (<span class="metric">~2 SDE-weeks/week</span> reclaimed). Java email-automation deprecated stale WebLab experiments — config-hygiene incidents from 5–6 to <span class="metric">0</span>. Resolved <span class="metric">150+</span> production incidents; authored COEs. Built auto-insurance purchase flow (Java + React) — <span class="metric">60%+</span> renewal lift.</li>
-        </ul>
-
+          <ul class="bullets">
+            <li><span class="lbl">Testing — JUnit 5, Mockito, Spring Boot.</span> Held <span class="metric">80%+</span> line coverage; Mockito argument captors for downstream contract verification; <span class="tt">@SpringBootTest</span> integration tests against in-memory DynamoDB. Introduced Gradle JaCoCo coverage gates in CI.</li>
+            <li><span class="lbl">Operational excellence.</span> On-call tickets cut from <span class="metric">20+ to ~5 per shift</span> (<span class="metric">~2 SDE-weeks/week</span> reclaimed). Java email-automation deprecated stale WebLab experiments — config-hygiene incidents from 5–6 to <span class="metric">0</span>. Resolved <span class="metric">150+</span> production incidents; authored COEs. Built auto-insurance purchase flow (Java + React) — <span class="metric">60%+</span> renewal lift.</li>
+          </ul>
         <article class="role">
           <div class="role-head">
             <h3 class="role-title">Software Development Engineer, Intern, May 2021 – Jul 2021 · Feb 2022 – Jul 2022</h3>
@@ -354,9 +362,8 @@
           </ul>
         </article>
       </section>
-
       <section aria-labelledby="p2-proj">
-        <h2 id="p2-proj" class="sect">Selected Projects</h2>
+        <h2 id="p2-proj" class="sect">Projects</h2>
         <div class="projects">
           <article class="proj">
             <h3 class="proj-title">AI Visual Code Review</h3>
@@ -387,7 +394,6 @@
             <p class="proj-metrics">React + TypeScript · deployed on Vercel.</p>
           </article>
         </div>
-
         <div class="oss-block">
           <h3 class="oss-title">Open-Source Contributions</h3>
           <p class="proj-desc"><strong>Merged into <a href="https://github.com/danielmiessler/Fabric" rel="noopener">danielmiessler/Fabric</a></strong> (Go, 42k stars):</p>
@@ -399,23 +405,19 @@
           <p class="oss-open">Under review: <a href="https://github.com/bytedance/deer-flow/pull/3790" rel="noopener">deer-flow</a>, <a href="https://github.com/thedotmack/claude-mem/pull/2710" rel="noopener">claude-mem</a>, <a href="https://github.com/refactoringhq/tolaria/pull/912" rel="noopener">tolaria</a>.</p>
         </div>
       </section>
-
-      <section aria-labelledby="p2-edu">
-        <h2 id="p2-edu" class="sect">Education</h2>
+      <section aria-labelledby="edu-h">
+        <h2 id="edu-h" class="sect">Education</h2>
         <div class="row"><p><strong>Master of Computer Applications (M.C.A.), Computer Science</strong> · MNNIT, Prayagraj · GPA 9.25 · 2019 — 2022</p></div>
         <div class="row"><p><strong>Bachelor of Science (B.Sc. Hons), Computer Science</strong> · Bhaskaracharya College, University of Delhi · 2015 — 2018</p></div>
       </section>
-
-      <section aria-labelledby="p2-awards">
-        <h2 id="p2-awards" class="sect">Awards</h2>
+      <section aria-labelledby="awards-h">
+        <h2 id="awards-h" class="sect">Awards</h2>
         <div class="row">
           <p><strong>Amazon Pay Merchants Categories Champion</strong> — 100+ hotel trust-buster bugs; on-call <span class="metric">20+ to ~5</span> per shift · 2023</p>
         </div>
       </section>
-
       <span class="page-num" aria-hidden="true">2 / 2</span>
     </section>
-
   </div>
 </body>
 </html>
