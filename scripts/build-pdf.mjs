@@ -28,21 +28,41 @@ if (!existsSync(htmlPath)) {
   process.exit(1);
 }
 
+const MM_PER_PX = 25.4 / 96;
+const A4_WIDTH_PX = Math.round(210 / MM_PER_PX);
+const A4_HEIGHT_PX = Math.round(297 / MM_PER_PX);
+
 const started = Date.now();
 const browser = await chromium.launch();
 const page = await browser.newPage();
 
+// Match A4 viewport before layout so mm-based sheets render 1:1 in PDF.
+await page.setViewportSize({ width: A4_WIDTH_PX, height: A4_HEIGHT_PX });
 await page.emulateMedia({ media: "print" });
-await page.goto(pathToFileURL(htmlPath).href, { waitUntil: "networkidle" });
+await page.goto(pathToFileURL(htmlPath).href, { waitUntil: "networkidle", timeout: 60000 });
 await page.evaluate(() =>
   document.fonts ? document.fonts.ready : Promise.resolve()
 );
 
+// Preserve backgrounds, borders, and fills exactly as authored.
+await page.addStyleTag({
+  content: `
+    *, *::before, *::after {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    @media print {
+      .deck { gap: 0 !important; padding: 0 !important; background: #fff !important; }
+      .resume-page { box-shadow: none !important; }
+    }
+  `,
+});
+
 await page.pdf({
   path: outPath,
-  format: "A4",
   printBackground: true,
   preferCSSPageSize: true,
+  scale: 1,
 });
 
 await browser.close();

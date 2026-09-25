@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prakhar Shekhar Parthasarthi — Software Engineer</title>
+  <meta name="description" content="Resume of Prakhar Shekhar Parthasarthi, software engineer (ex-Amazon SDE). Emphasis on Java services, concurrency, and event-driven AWS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      font-variant-numeric: tabular-nums;
+    }
+    h1,h2,h3,h4,p,ul,ol { margin: 0; padding: 0; }
+    ul { list-style: none; }
+    a { color: inherit; text-decoration: none; }
+
+    :root {
+      --a4-w: 210mm;
+      --a4-h: 297mm;
+      --page-pad-v: 12mm;
+      --page-pad-h: 14mm;
+      --paper: #FFFFFF;
+      --ink: #000000;
+      --body: #1A1A1A;
+      --muted: #4A4A4A;
+      --rule: #C8C8C8;
+      --rule-light: #E4E4E4;
+      --surface: #F7F7F7;
+      --serif: "Libre Baskerville", "Times New Roman", Times, serif;
+      --sans: "Source Sans 3", Helvetica, Arial, sans-serif;
+      --mono: "JetBrains Mono", "Courier New", monospace;
+    }
+
+    html { background: #E8E8E8; }
+    body {
+      background: #E8E8E8;
+      color: var(--body);
+      font-family: var(--serif);
+      font-size: 8.8pt;
+      line-height: 1.4;
+    }
+
+    .deck {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8mm;
+      padding: 8mm 0;
+    }
+
+    .resume-page {
+      width: var(--a4-w);
+      height: var(--a4-h);
+      overflow: hidden;
+      background: var(--paper);
+      padding: var(--page-pad-v) var(--page-pad-h);
+      page-break-after: always;
+      box-shadow: 0 2px 24px rgba(0,0,0,.12);
+      position: relative;
+    }
+    .resume-page:last-of-type { page-break-after: auto; }
+
+    .titleblock {
+      text-align: center;
+      margin-bottom: 8pt;
+      padding-bottom: 7pt;
+      border-bottom: 0.6pt solid var(--ink);
+    }
+    .name {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 17.5pt;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.05;
+    }
+    .subtitle {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 9.4pt;
+      color: var(--muted);
+      margin-top: 3pt;
+    }
+    .contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1pt;
+      font-family: var(--mono);
+      font-size: 7pt;
+      color: var(--muted);
+      margin-top: 4pt;
+      line-height: 1.35;
+    }
+    .contact li { display: block; }
+    .contact a { border-bottom: 0.4pt solid var(--rule-light); }
+    .contact a:hover { border-color: var(--ink); color: var(--ink); }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5pt;
+      margin: 7pt 0 8pt;
+    }
+    .stat {
+      text-align: center;
+      padding: 5pt 3pt;
+      border: 0.5pt solid var(--rule);
+      background: var(--surface);
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 12pt;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .stat-num .mathrm { font-style: normal; font-family: var(--sans); }
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 6.2pt;
+      letter-spacing: 0.01em;
+      color: var(--muted);
+      margin-top: 3pt;
+      line-height: 1.2;
+    }
+
+    .sect {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 7.6pt;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      margin: 7pt 0 4pt;
+      padding-bottom: 2pt;
+      border-bottom: 0.5pt solid var(--ink);
+    }
+
+    .summary {
+      font-size: 8.6pt;
+      line-height: 1.44;
+      text-align: justify;
+      hyphens: auto;
+    }
+    .summary strong { font-weight: 700; color: var(--ink); }
+    .tt {
+      font-family: var(--mono);
+      font-size: 7.2pt;
+      background: var(--surface);
+      border: 0.4pt solid var(--rule-light);
+      padding: 0 3pt;
+    }
+    .metric {
+      font-family: var(--mono);
+      font-weight: 600;
+      font-size: 7.4pt;
+      white-space: nowrap;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: 88pt 1fr;
+      gap: 2pt 8pt;
+      font-size: 7.9pt;
+      line-height: 1.36;
+    }
+    .skill-cat {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 7pt;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+    }
+
+    .role { margin-bottom: 5pt; }
+    .role-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8pt;
+    }
+    .role-title {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 9.2pt;
+      color: var(--ink);
+    }
+    .role-dates {
+      font-family: var(--mono);
+      font-size: 7pt;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .role-co {
+      font-family: var(--sans);
+      font-size: 7.8pt;
+      font-weight: 500;
+      color: var(--muted);
+      margin: 1pt 0 3pt;
+    }
+    .bullets li {
+      position: relative;
+      padding-left: 9pt;
+      margin-bottom: 2.8pt;
+      font-size: 8.1pt;
+      line-height: 1.38;
+      text-align: justify;
+    }
+    .bullets li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 7pt;
+    }
+    .bullets strong { font-weight: 700; color: var(--ink); }
+    .lbl { font-family: var(--sans); font-weight: 600; font-size: 7.4pt; }
+
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5pt 7pt;
+    }
+    .proj {
+      padding: 5pt 6pt;
+      border: 0.5pt solid var(--rule-light);
+      background: var(--paper);
+    }
+    .proj-title {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 8.2pt;
+      color: var(--ink);
+      margin-bottom: 1pt;
+    }
+    .proj-repo {
+      font-family: var(--mono);
+      font-size: 6.2pt;
+      color: var(--muted);
+      margin-bottom: 2pt;
+    }
+    .proj-repo a { border-bottom: 0.3pt solid var(--rule-light); }
+    .proj-desc { font-size: 7.5pt; line-height: 1.34; }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8pt;
+      margin-bottom: 2.5pt;
+      font-size: 7.9pt;
+    }
+    .row strong { font-family: var(--sans); font-weight: 600; }
+    .row-dates { font-family: var(--mono); font-size: 7pt; color: var(--muted); white-space: nowrap; }
+    .gpa { font-family: var(--mono); font-size: 6.8pt; color: var(--muted); margin-left: 4pt; }
+
+    @page { size: A4 portrait; margin: 0; }
+    @media print {
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      html, body { background: #fff; margin: 0; padding: 0; }
+      body { font-size: 8.4pt; }
+      .deck { gap: 0; padding: 0; background: #fff; }
+      .resume-page {
+        width: var(--a4-w);
+        height: var(--a4-h);
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+      .resume-page:last-of-type { page-break-after: auto; }
+      a { color: var(--ink); border-bottom: none !important; }
+      .sect { break-after: avoid; }
+      .role, .proj { break-inside: avoid; }
+    }
+    @media screen {
+      .resume-page { margin: 0 auto; }
+    }
+  
+    /* Role 1-pagers: use the slack under the last line without crowding the edge. */
+    body { font-size: 9.05pt; }
+    .summary { font-size: 8.7pt; }
+    .bullets li { margin-bottom: 3.4pt; }
+    .sect { margin: 7pt 0 3.5pt; }
+    .skills { gap: 2.6pt 8pt; }
+    .metrics { margin: 7pt 0 8pt; }
+    .projects { gap: 6pt 8pt; }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <main class="resume-page" role="main">
+    <header class="titleblock">
+      <h1 class="name">Prakhar Shekhar Parthasarthi</h1>
+      <p class="subtitle">Software Engineer · Distributed systems · Java 17 · AWS</p>
+      <ul class="contact" aria-label="Contact">
+        <li><a href="mailto:prakhar.mnnit.2022@gmail.com">prakhar.mnnit.2022@gmail.com</a></li>
+        <li>Shahjahanpur, UP · open to relocate</li>
+        <li><a href="https://github.com/praxstack" rel="noopener">github.com/praxstack</a> | <a href="https://www.linkedin.com/in/prakharshekhar" rel="noopener">linkedin.com/in/prakharshekhar</a> | <a href="https://prax-portfolio-one.vercel.app" rel="noopener">prax-portfolio-one.vercel.app</a></li>
+      </ul>
+    </header>
+      <div class="metrics" aria-label="Impact highlights">
+        <div class="stat"><div class="stat-num"><span class="mathrm">47</span>%</div><div class="stat-label">p90 latency cut</div></div>
+        <div class="stat"><div class="stat-num"><span class="mathrm">195</span>k</div><div class="stat-label">GET rps · Java Redis</div></div>
+        <div class="stat"><div class="stat-num"><span class="mathrm">4</span></div><div class="stat-label">services owned</div></div>
+        <div class="stat"><div class="stat-num"><span class="mathrm">80</span>%+</div><div class="stat-label">line coverage</div></div>
+      </div>
+      <section aria-labelledby="sum-h">
+        <h2 id="sum-h" class="sect">Summary</h2>
+        <p class="summary">Software Development Engineer, <strong>3+ years at Amazon</strong> Travel. Owned <strong>4 microservices</strong> in <strong>Java 17 / Spring Boot</strong>: <span class="tt">CompletableFuture</span> fan-out, idempotent <strong>SQS</strong> (<span class="metric">43 bps CPT</span>), and <strong>CDK (Java)</strong>. p90 cut <span class="metric">47%</span> (<span class="metric">1.1s → 0.59s</span>), conversion <span class="metric">+33%</span>, coverage <span class="metric">80%+</span>.</p>
+      </section>
+      <section aria-labelledby="skills-h">
+        <h2 id="skills-h" class="sect">Skills</h2>
+        <div class="skills">
+          <div class="skill-cat">Java &amp; JVM</div>
+          <div class="skill-val">Java 17, Spring Boot/MVC, Guice, JUnit 5, Mockito, Maven · concurrency, GC profiling</div>
+          <div class="skill-cat">Distributed</div>
+          <div class="skill-val">Microservices, REST, GraphQL, idempotency, state machines, DLQ, at-least-once, TDD</div>
+          <div class="skill-cat">AWS</div>
+          <div class="skill-val">Lambda, DynamoDB, SQS, Step Functions, API Gateway, CloudWatch, ECS, CDK (Java)</div>
+          <div class="skill-cat">Data</div>
+          <div class="skill-val">DynamoDB, Redis, NoSQL modelling, SQL, caching</div>
+          <div class="skill-cat">Front-end</div>
+          <div class="skill-val">React (SSR &amp; CSR), Redux, HTML/CSS, TypeScript</div>
+          <div class="skill-cat">Tooling</div>
+          <div class="skill-val">Git, CI/CD, JaCoCo gates, Agile, on-call, incident response · Python, C++</div>
+        </div>
+      </section>
+      <section aria-labelledby="exp-h">
+        <h2 id="exp-h" class="sect">Experience</h2>
+        <article class="role">
+          <div class="role-head">
+            <h3 class="role-title">Software Development Engineer, Jul 2022 — Sep 2025</h3>
+          </div>
+          <p class="role-co"><strong>Amazon</strong> · Travel (Hotels &amp; Flights) · Bengaluru</p>
+          <ul class="bullets">
+            <li><span class="lbl">Ownership.</span> Owned <strong>4 customer-facing microservices</strong> (search → order review); Spring Boot REST, DynamoDB DAOs, Prime and partner discount flows — <span class="metric">~30 bps</span> funnel churn drop.</li>
+            <li><span class="lbl">Concurrency.</span> Parallelised 6 partner APIs via <span class="tt">CompletableFuture.allOf()</span> — p90 <span class="metric">47%</span> (<span class="metric">1.1s→0.59s</span>), conversion <span class="metric">+33%</span>; GZIP cut wire size <span class="metric">95%</span>.</li>
+            <li><span class="lbl">Event-driven.</span> Designed an idempotent flight schedule-change webhook (SQS, dedup keys) — <span class="metric">43 bps CPT</span>; Step Functions booking state machine with Java Lambdas.</li>
+            <li><span class="lbl">IaC.</span> Authored service infra in <strong>Java CDK</strong>; migrated 2 services from CloudFormation — rollback incidents <span class="metric">halved</span>.</li>
+            <li><span class="lbl">Testing.</span> Held <span class="metric">80%+</span> line coverage; <span class="tt">@SpringBootTest</span> + in-memory DynamoDB; introduced Gradle JaCoCo gates in CI.</li>
+          </ul>
+        </article>
+        <article class="role">
+          <div class="role-head">
+            <h3 class="role-title">Software Development Engineer, Intern, May 2021 – Jul 2021 · Feb 2022 – Jul 2022</h3>
+          </div>
+          <p class="role-co"><strong>Amazon</strong> · Bengaluru</p>
+          <ul class="bullets">
+            <li>Migrated GraphQL resolvers to Java + DynamoDB (API Gateway + Lambda); shipped <strong>One-Click Renewal</strong>; <span class="metric">90%+</span> unit-test coverage (JUnit 5 + Mockito).</li>
+          </ul>
+        </article>
+      </section>
+      <section aria-labelledby="proj-h">
+        <h2 id="proj-h" class="sect">Projects</h2>
+        <div class="projects">
+          <article class="proj">
+          <h3 class="proj-title">Redis Server in Java</h3>
+          <p class="proj-repo"><a href="https://github.com/praxstack/redis-server-java" rel="noopener">github.com/praxstack/redis-server-java</a></p>
+          <p class="proj-desc">RESP2 from scratch; bounded thread pool, <span class="tt">ConcurrentHashMap</span>, hybrid TTL. GET <span class="metric">195k rps</span>, SET <span class="metric">154k rps</span>, p50 &lt; <span class="metric">0.3 ms</span>; 42 tests.</p>
+        </article>
+          <article class="proj">
+          <h3 class="proj-title">Open Source — Fabric (42k stars)</h3>
+          <p class="proj-repo"><a href="https://github.com/danielmiessler/Fabric" rel="noopener">danielmiessler/Fabric</a> · Go</p>
+          <p class="proj-desc">3 merged PRs: Bedrock bearer auth (#2044), dynamic regions (#2052), streaming deadlock fix (#2061).</p>
+        </article>
+          <article class="proj">
+          <h3 class="proj-title">AI Visual Code Review</h3>
+          <p class="proj-repo"><a href="https://github.com/praxstack/ai-visual-code-review" rel="noopener">github.com/praxstack/ai-visual-code-review</a> · npm v2.4.1</p>
+          <p class="proj-desc">Visual diff review + VS Code extension; TypeScript, Jest, command-injection hardening, AI markdown exports.</p>
+        </article>
+          <article class="proj">
+          <h3 class="proj-title">Audio Transcription Pipeline</h3>
+          <p class="proj-repo"><a href="https://github.com/praxstack/audio-transcription-pipeline" rel="noopener">github.com/praxstack/audio-transcription-pipeline</a></p>
+          <p class="proj-desc">Six-stage audio/video → speaker-labelled Markdown. Bedrock Voxtral ASR + Claude repair. 63 tests.</p>
+        </article>
+        </div>
+      </section>
+      <section aria-labelledby="edu-h">
+        <h2 id="edu-h" class="sect">Education</h2>
+        <div class="row"><p><strong>Master of Computer Applications (M.C.A.), Computer Science</strong> · MNNIT, Prayagraj · GPA 9.25 · 2019 — 2022</p></div>
+        <div class="row"><p><strong>Bachelor of Science (B.Sc. Hons), Computer Science</strong> · University of Delhi · 2015 — 2018</p></div>
+      </section>
+      <section aria-labelledby="awards-h">
+        <h2 id="awards-h" class="sect">Awards</h2>
+        <div class="row">
+          <p><strong>Amazon Pay Merchants Categories Champion</strong> — 100+ hotel trust-buster bugs; on-call <span class="metric">20+ to ~5</span> per shift · 2023</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
