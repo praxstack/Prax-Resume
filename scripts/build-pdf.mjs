@@ -10,7 +10,8 @@
 import { chromium } from "playwright";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { dirname, resolve, basename, extname } from "node:path";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
+import { assertLayoutOk, measureResumePages } from "./katex-layout.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
@@ -31,12 +32,12 @@ if (!existsSync(htmlPath)) {
 const MM_PER_PX = 25.4 / 96;
 const A4_WIDTH_PX = Math.round(210 / MM_PER_PX);
 const A4_HEIGHT_PX = Math.round(297 / MM_PER_PX);
+const isKaTeXResume = readFileSync(htmlPath, "utf8").includes('class="resume-page"');
 
 const started = Date.now();
 const browser = await chromium.launch();
 const page = await browser.newPage();
 
-// Match A4 viewport before layout so mm-based sheets render 1:1 in PDF.
 await page.setViewportSize({ width: A4_WIDTH_PX, height: A4_HEIGHT_PX });
 await page.emulateMedia({ media: "print" });
 await page.goto(pathToFileURL(htmlPath).href, { waitUntil: "networkidle", timeout: 60000 });
@@ -44,7 +45,17 @@ await page.evaluate(() =>
   document.fonts ? document.fonts.ready : Promise.resolve()
 );
 
-// Preserve backgrounds, borders, and fills exactly as authored.
+if (isKaTeXResume) {
+  const report = await measureResumePages(page);
+  const layoutIssues = assertLayoutOk(report, basename(htmlPath));
+  if (layoutIssues.length) {
+    console.error(`✗ layout check failed for ${basename(htmlPath)}`);
+    for (const msg of layoutIssues) console.error(`  ${msg}`);
+    await browser.close();
+    process.exit(1);
+  }
+}
+
 await page.addStyleTag({
   content: `
     *, *::before, *::after {

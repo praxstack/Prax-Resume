@@ -2,7 +2,24 @@
 
 Personal resume of **Prakhar Shekhar Parthasarthi** — Software Engineer (Java / JVM / Distributed Systems).
 
-Static HTML + CSS. No build step.
+Static HTML + CSS. Headless Chromium exports PDFs for upload-ready artifacts.
+
+## KaTeX Pro + role variants
+
+Twelve **KaTeX Pro B&amp;W A4** résumés live in the repo root (`Prakhar — KaTeX Pro …`, `Prakhar — FTE 2 …`, etc.). **HTML and PDF are build artifacts** — prose and metrics come from `scripts/build-role-resumes.mjs` (single source of truth). CSS templates sit in `templates/katex-1-pager.css` and `templates/katex-2-pager.css`.
+
+Regenerate HTML + PDF after editing bullets:
+
+```sh
+npm install
+npx playwright install chromium   # first time only
+npm run build:roles               # writes all 12 HTML + 12 PDF, layout-gated
+npm run check:roles               # fail if committed HTML ≠ generator (CI)
+npm run audit:content             # PII, honesty, role keywords
+npm run audit:katex-layout        # clip + minimum bottom gap (no sparse fail)
+```
+
+`npm test` runs the canonical v3 contract, theme checks, and all KaTeX audits above.
 
 ## Structure
 
