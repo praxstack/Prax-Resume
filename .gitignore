@@ -4,3 +4,6 @@ Thumbs.db
 .idea/
 *.log
 node_modules/
+
+# Local one-off PDF exports (not part of KaTeX role pack)
+Prakhar Shekhar Parthasarthi Resume Apr 2026.pdf

@@ -56,7 +56,7 @@ export function katexStyleBlock(which, { roleOverrides = true } = {}) {
   return `<style>\n${base}\n${extra}\n  </style>`;
 }
 
-/** KaTeX Pro general 2-pager uses base template typography only (no role stretch overrides). */
+/** KaTeX Pro 1-pager: base template only; 2-pager: base + shared role stretch overrides. */
 export function katexProStyleBlock(which) {
   const base = readCss(which === 1 ? "katex-1-pager.css" : "katex-2-pager.css");
   if (which === 2) {
