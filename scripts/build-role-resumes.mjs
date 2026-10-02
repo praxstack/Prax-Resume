@@ -6,9 +6,8 @@
  *
  *   node scripts/build-role-resumes.mjs
  */
-import { readFileSync, writeFileSync, mkdtempSync, rmSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { resolve, basename } from "node:path";
-import { tmpdir } from "node:os";
 import { chromium } from "playwright";
 import { pathToFileURL } from "node:url";
 import { createHash } from "node:crypto";
@@ -591,6 +590,11 @@ for (const role of ROLES) {
     });
 
     if (CHECK_HTML) {
+      if (!existsSync(out)) {
+        console.error(`MISSING  ${name}  (run npm run build:roles)`);
+        htmlMismatch++;
+        continue;
+      }
       const onDisk = readFileSync(out, "utf8");
       if (sha256(onDisk) !== sha256(html)) {
         console.error(`MISMATCH  ${name}  (re-run npm run build:roles)`);
@@ -626,10 +630,12 @@ for (const htmlPath of outputs) {
     layoutFail++;
     console.log(`FAIL    ${name}`);
     for (const msg of layoutIssues) console.log(`  ${msg}`);
-  } else {
-    const gaps = report.pages.map((p) => `p${p.page}:${p.gapMm}mm`).join(", ");
-    console.log(`ok      ${name}  pages=${report.pageCount}  ${gaps}`);
+    await page.close();
+    continue;
   }
+
+  const gaps = report.pages.map((p) => `p${p.page}:${p.gapMm}mm`).join(", ");
+  console.log(`ok      ${name}  pages=${report.pageCount}  ${gaps}`);
 
   const pdfPath = htmlPath.replace(/\.html$/, ".pdf");
   await page.addStyleTag({
