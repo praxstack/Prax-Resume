@@ -1,8 +1,8 @@
 {
   "name": "prax-resume",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
-  "description": "Resume \u2014 Prakhar Shekhar Parthasarthi. Static HTML + CSS with headless PDF export. Ships both a signed resume and an anonymized Ex-SDE variant.",
+  "description": "Resume — Prakhar Shekhar Parthasarthi. Static HTML + CSS with headless PDF export. Ships both a signed resume and an anonymized Ex-SDE variant.",
   "scripts": {
     "pdf": "node scripts/build-pdf.mjs \"Prakhar Shekhar Parthasarthi Resume Apr 2026.html\" \"Prakhar Shekhar Parthasarthi Resume Apr 2026.pdf\"",
     "pdf:anon": "node scripts/build-pdf.mjs \"Ex-SDE Resume.html\" \"Ex-SDE Resume.pdf\"",
@@ -14,6 +14,7 @@
     "audit:v2": "node scripts/audit-overflow.mjs",
     "audit:content": "node scripts/audit-resume-content.mjs",
     "audit:katex-layout": "node scripts/audit-katex-layout.mjs",
+    "audit:ats": "node scripts/run-ats-benchmarks.mjs",
     "build:roles": "node scripts/build-role-resumes.mjs",
     "check:roles": "node scripts/build-role-resumes.mjs --check-html",
     "serve": "python3 -m http.server 5173",
@@ -22,6 +23,7 @@
     "pdf:resume": "node scripts/build-resume-pdf.mjs \"Prakhar Shekhar Parthasarthi Resume - v3.html\" \"Prakhar Shekhar Parthasarthi Resume - v3.pdf\""
   },
   "devDependencies": {
-    "playwright": "^1.48.0"
+    "playwright": "^1.48.0",
+    "resume-parser-ats": "^1.2.3"
   }
 }

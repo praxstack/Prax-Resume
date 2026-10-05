@@ -16,7 +16,7 @@ npx playwright install chromium   # first time only
 npm run build:roles               # writes all 12 HTML + 12 PDF, layout-gated
 npm run check:roles               # fail if committed HTML ≠ generator (CI)
 npm run audit:content             # PII, honesty, role keywords
-npm run audit:katex-layout        # clip + minimum bottom gap (no sparse fail)
+npm run audit:ats             # resume-parser-ats (PDF) + content audit (GenAI LLM default)
 ```
 
 `npm test` runs the canonical v3 contract, theme checks, and all KaTeX audits above.

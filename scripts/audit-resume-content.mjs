@@ -16,7 +16,7 @@ const args = process.argv.slice(2);
 const files = (args.length
   ? args.map((f) => resolve(root, f))
   : readdirSync(root)
-      .filter((f) => /^Prakhar — (KaTeX Pro|FTE 2|SDE 2|FDE|SDE AI|MTS)/.test(f) && f.endsWith(".html"))
+      .filter((f) => /^Prakhar — (KaTeX Pro|FTE 2|SDE 2|FDE|SDE AI|GenAI LLM|MTS)/.test(f) && f.endsWith(".html"))
       .sort()
       .map((f) => resolve(root, f))
 );
@@ -61,6 +61,19 @@ const ROLE_KEYWORDS = {
   },
   "SDE AI": {
     need: ["Bedrock", "Claude", "Voxtral", "Fabric", "npm v2.4.1", "BYOK", "warp-byok-proxy"],
+  },
+  "GenAI LLM": {
+    need: [
+      "generative",
+      "LLM",
+      "Bedrock",
+      "Claude",
+      "streaming",
+      "Fabric",
+      "npm v2.4.1",
+      "Voxtral",
+      "BYOK",
+    ],
   },
   MTS: {
     need: ["deadlock", "195k rps", "0.3 ms", "idempotent", "42 tests", "#2061"],

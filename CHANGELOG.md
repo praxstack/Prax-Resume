@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0 — 2026-10-05
+
+### GenAI / LLM targeting
+
+- New KaTeX variants: **`Prakhar — GenAI LLM — 1-Pager`** and **`2-Pager`** (generative AI, LLMs, Bedrock, Fabric, Voxtral, npm tool).
+- **`npm run audit:ats`** — `resume-parser-ats` strict PDF analyze + content audit (default: GenAI LLM pair).
+
 ## 1.2.0 — 2026-10-02
 
 ### KaTeX Pro role pack

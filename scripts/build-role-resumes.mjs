@@ -165,6 +165,8 @@ const SK_TOOL = `Git, GitHub, CI/CD, Gradle JaCoCo coverage gates, Agile/Scrum, 
 const SK_TOOL_S = `Git, CI/CD, JaCoCo gates, Agile, on-call, incident response · Python, C++`;
 const SK_AI = `AWS Bedrock, Claude (transcript repair), Voxtral (ASR), bearer-token auth, multi-provider BYOK`;
 const SK_AI_S = `AWS Bedrock, Claude, Voxtral, bearer-token auth, multi-provider BYOK`;
+const SK_GENAI = `Generative AI &amp; LLMs: AWS Bedrock Converse/streaming, Claude repair, Voxtral ASR, structured AI markdown exports, multi-provider routing, bearer-token (ABSK) auth, BYOK proxies`;
+const SK_GENAI_S = `Generative AI, LLMs, Bedrock streaming, Claude, Voxtral, BYOK, bearer-token auth`;
 
 function stat(num, label) {
   return { num, label };
@@ -479,6 +481,39 @@ const ROLES = [
     proj2: ["audio", "warp", "ai", "redis"],
     proj1: ["audio", "warp", "ai", "redis"],
     oss: [2044, 2052, 2061],
+  },
+  {
+    slug: "GenAI LLM",
+    subtitle: "Software Engineer · Generative AI · LLMs · AWS Bedrock · Java backends",
+    description:
+      "Resume of Prakhar Shekhar Parthasarthi — software engineer (ex-Amazon) building generative-AI and LLM-integrated systems on AWS Bedrock and production Java services.",
+    stats: [S3PR, S63, SNPM, S47],
+    summary2: `Software engineer shipping <strong>generative AI and LLM integrations</strong> on Java/AWS backends. Amazon Travel: owned <strong>4 microservices</strong> — p90 cut <span class="metric">47%</span> (<span class="metric">1.1s → 0.59s</span>), conversion up <span class="metric">+33%</span>, webhook at <span class="metric">43 bps CPT</span>. Three merged <strong>Fabric</strong> Bedrock PRs (42k stars), <strong>Voxtral + Claude</strong> pipeline (63 tests), and <span class="metric">npm v2.4.1</span>.`,
+    summary1: `Software engineer focused on <strong>generative AI and LLM integrations</strong> on Java/AWS backends. Amazon: 4 microservices, p90 <span class="metric">47%</span>, conversion <span class="metric">+33%</span>. Shipped Bedrock bearer auth + streaming fixes in Fabric (42k★), Voxtral + Claude pipeline (63 tests), <span class="metric">npm v2.4.1</span> AI review tool, Rust Warp BYOK proxy, Coach Atlas multi-provider LLM studio.`,
+    skills2: [
+      ["Generative AI &amp; LLMs", SK_GENAI],
+      ["Java &amp; JVM", SK_JAVA],
+      ["AWS", SK_AWS],
+      ["Distributed Systems", SK_DIST],
+      ["Front-end", `${SK_FE}, Mermaid, KaTeX, BYOK UI`],
+      ["Tooling &amp; Process", SK_TOOL],
+    ],
+    skills1: [
+      ["Generative AI &amp; LLMs", SK_GENAI_S],
+      ["Java &amp; JVM", SK_JAVA_S],
+      ["AWS", SK_AWS_S],
+      ["Distributed", SK_DIST_S],
+      ["Front-end", `React, TypeScript, Mermaid, KaTeX, BYOK`],
+      ["Tooling", SK_TOOL_S],
+    ],
+    p1: [OWN_L, CONC_L, EVT_L, TEST_L],
+    p2: [IAC_L, OPS_L],
+    b1: [EVT_S, OWN_S, CONC_S, IAC_S, TEST_S],
+    intern2: [INTERN_GQL, INTERN_OCR, INTERN_DI],
+    intern1: INTERN_S_SDE,
+    proj2: ["audio", "warp", "ai", "redis"],
+    proj1: ["ai", "audio", "redis", "warp"],
+    oss: [2044, 2061, 2052],
   },
   {
     slug: "MTS",
