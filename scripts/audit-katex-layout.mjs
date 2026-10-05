@@ -15,7 +15,7 @@ const args = process.argv.slice(2);
 const files = (args.length
   ? args.map((f) => resolve(root, f))
   : readdirSync(root)
-      .filter((f) => /^Prakhar — (KaTeX Pro|FTE 2|SDE 2|FDE|SDE AI|MTS)/.test(f) && f.endsWith(".html"))
+      .filter((f) => /^Prakhar — (KaTeX Pro|FTE 2|SDE 2|FDE|SDE AI|GenAI LLM|MTS)/.test(f) && f.endsWith(".html"))
       .sort()
       .map((f) => resolve(root, f)));
 
