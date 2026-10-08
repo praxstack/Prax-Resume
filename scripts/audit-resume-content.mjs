@@ -10,6 +10,7 @@
  */
 import { readFileSync, readdirSync } from "node:fs";
 import { resolve, basename } from "node:path";
+import { prClaimViolations } from "./pr-claims.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const args = process.argv.slice(2);
@@ -223,16 +224,8 @@ for (const file of files) {
 
   if (!/Master of Computer Applications/.test(text)) fails.push("degree keyword Master missing");
   if (!/Bachelor of Science/.test(text)) fails.push("degree keyword Bachelor missing");
-  // PR states verified via gh: deer-flow #3790 MERGED; claude-mem #2710 and tolaria #912 CLOSED unmerged.
-  if (/claude-mem|tolaria/i.test(text) || /claude-mem\/pull\/2710|tolaria\/pull\/912/.test(html)) {
-    fails.push("closed-unmerged PR (claude-mem #2710 / tolaria #912) must not be listed");
-  }
-  if (/Under review[^.]*deer-flow/i.test(text)) {
-    fails.push("deer-flow #3790 is merged, not under review");
-  }
-  if (/contributed to deer-flow|merged into claude-mem|merged into tolaria/i.test(text)) {
-    fails.push("closed PR described as contributed/merged");
-  }
+  // Shared with verify-resume.mjs (canonical v3); PR states live in pr-claims.mjs.
+  fails.push(...prClaimViolations(html));
 
   warns.push("phone intentionally absent — strict ATS phone points stay at 0");
   if (/grid-template-columns:\s*1fr 1fr/.test(html)) {

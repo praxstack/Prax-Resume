@@ -50,10 +50,15 @@ node scripts/audit-themes-layout.mjs
 RC6=$?
 
 echo
-if [ "$RC" -eq 0 ] && [ "$RC2" -eq 0 ] && [ "$RC3" -eq 0 ] && [ "$RC4" -eq 0 ] && [ "$RC5" -eq 0 ] && [ "$RC6" -eq 0 ]; then
+echo "=== open-source PR claims — shared rule (v3 + role pack) ==="
+node scripts/test-pr-claims.mjs
+RC7=$?
+
+echo
+if [ "$RC" -eq 0 ] && [ "$RC2" -eq 0 ] && [ "$RC3" -eq 0 ] && [ "$RC4" -eq 0 ] && [ "$RC5" -eq 0 ] && [ "$RC6" -eq 0 ] && [ "$RC7" -eq 0 ]; then
   echo "ALL PASS — canonical resume + themes + KaTeX role pack"
   exit 0
 else
-  echo "FAIL — see violations above (canonical RC=$RC, themes RC=$RC2, content RC=$RC3, layout RC=$RC4, snapshot RC=$RC5, theme clip RC=$RC6)"
+  echo "FAIL — see violations above (canonical RC=$RC, themes RC=$RC2, content RC=$RC3, layout RC=$RC4, snapshot RC=$RC5, theme clip RC=$RC6, PR claims RC=$RC7)"
   exit 1
 fi
