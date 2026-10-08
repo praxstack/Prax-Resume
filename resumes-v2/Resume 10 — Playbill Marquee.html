@@ -808,6 +808,20 @@
   .deck { gap: 0 !important; padding: 0 !important; }
   body { background: #fff !important; }
 }
+
+/* RES-021: tighten page 2 so nothing clips under overflow:hidden */
+@media print, screen {
+.encores{grid-template-columns:1fr 1fr 1fr!important;gap:3mm!important}
+.encores li .purl{overflow-wrap:anywhere}
+.curtain{margin-top:3mm}
+.sect-head{margin-top:3mm}
+.ensemble{gap:1mm 4mm;margin-top:1.4mm}
+.encores{margin-top:1.4mm}
+.encores li{padding:2mm 2.6mm 2mm 4mm}
+.credits{margin-top:3mm}
+.curtain-call .end{font-size:12pt;margin-top:1mm}
+.curtain-call{padding-top:2mm}
+}
 </style>
 </head>
 <body>

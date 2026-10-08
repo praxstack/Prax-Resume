@@ -678,6 +678,13 @@ body {
   .deck { gap: 0 !important; padding: 0 !important; }
   body { background: #fff !important; }
 }
+
+/* RES-021: tighten page 2 so nothing clips under overflow:hidden */
+@media print, screen {
+.bonus{grid-template-columns:1fr 1fr 1fr;gap:3mm}
+.bt{padding:3mm 2.6mm}
+.bt .ph{flex-wrap:wrap}.bt .url{overflow-wrap:anywhere}
+}
 </style>
 </head>
 <body>

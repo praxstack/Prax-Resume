@@ -9,6 +9,7 @@
  * Exit 0 = all contracts pass, 1 = any violation.
  */
 import { readFileSync } from "node:fs";
+import { prClaimViolations } from "./pr-claims.mjs";
 
 const file = process.argv[2];
 if (!file) { console.error("usage: verify-resume.mjs <file.html>"); process.exit(2); }
@@ -40,6 +41,9 @@ const repos = [...html.matchAll(/github\.com\/praxstack\/([a-z0-9-]+)/g)].map(m 
 const allowed = new Set(["redis-server-java", "markdown-viewer-app", "ai-visual-code-review", "coach-atlas", "audio-transcription-pipeline", "warp-byok-proxy"]);
 const bogus = repos.filter(r => !allowed.has(r));
 assert(bogus.length === 0, `only verified projects linked${bogus.length ? " (bogus: " + bogus.join(",") + ")" : ""}`);
+// only merged external PRs may be claimed (closed-unmerged ones must not come back)
+const prIssues = prClaimViolations(html);
+assert(prIssues.length === 0, `open-source PR claims honest${prIssues.length ? " (" + prIssues.join("; ") + ")" : ""}`);
 
 // ── Standalone contract (AGENTS.md §3.1) ──
 assert(!/href=["']css\//.test(html) && !/href=["']\.\/css\//.test(html), "no external local CSS dependency");
