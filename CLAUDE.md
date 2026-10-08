@@ -59,7 +59,7 @@
 - `praxstack/ai-visual-code-review` — npm-published `ai-visual-code-review@2.4.1`, MIT, JS+TS+VS Code extension. Real.
 - `praxstack/markdown-viewer-app` — Vite + Vanilla JS markdown viewer (real-time preview, Mermaid, 10 themes, PDF/HTML export), live at `praxstack.github.io/markdown-viewer-app/`. Real. **(NOTE: `markdown-viewer-pro` is a DEAD repo — 404, deleted. Never link it; use `markdown-viewer-app`.)**
 - `praxstack/warp-byok-proxy` — Rust local proxy routing Warp Terminal AI calls to AWS Bedrock (BYOK, SigV4/bearer). Real, AGPL-3.0.
-- **Open-source contributions (external repos, verified):** 3 PRs **merged** into `danielmiessler/Fabric` (42k★ Go) — #2044 Bedrock bearer-token auth, #2052 dynamic region fetching, #2061 streaming-deadlock fix. Open/under-review PRs: `bytedance/deer-flow` #3790, `thedotmack/claude-mem` #2710, `refactoringhq/tolaria` #912. Only claim merged PRs as "contributed"; label open ones "under review". NEVER claim a closed-unmerged PR.
+- **Open-source contributions (external repos, verified):** 3 PRs **merged** into `danielmiessler/Fabric` (42k★ Go) — #2044 Bedrock bearer-token auth, #2052 dynamic region fetching, #2061 streaming-deadlock fix. Also merged: `bytedance/deer-flow` #3790. `thedotmack/claude-mem` #2710 and `refactoringhq/tolaria` #912 are closed unmerged: do not list them. Only claim merged PRs as "contributed"; label open ones "under review". NEVER claim a closed-unmerged PR.
 - Anything else: ASK before adding to a resume.
 
 ### 2.4 · Portfolio link

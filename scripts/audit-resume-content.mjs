@@ -223,11 +223,15 @@ for (const file of files) {
 
   if (!/Master of Computer Applications/.test(text)) fails.push("degree keyword Master missing");
   if (!/Bachelor of Science/.test(text)) fails.push("degree keyword Bachelor missing");
-  if ((text.match(/Under review/g) || []).length < 1 && /deer-flow|claude-mem|tolaria/.test(text)) {
-    fails.push("open PRs must be labeled Under review");
+  // PR states verified via gh: deer-flow #3790 MERGED; claude-mem #2710 and tolaria #912 CLOSED unmerged.
+  if (/claude-mem|tolaria/i.test(text) || /claude-mem\/pull\/2710|tolaria\/pull\/912/.test(html)) {
+    fails.push("closed-unmerged PR (claude-mem #2710 / tolaria #912) must not be listed");
   }
-  if (/contributed to deer-flow|merged into deer-flow|merged into claude-mem|merged into tolaria/i.test(text)) {
-    fails.push("open PR described as merged");
+  if (/Under review[^.]*deer-flow/i.test(text)) {
+    fails.push("deer-flow #3790 is merged, not under review");
+  }
+  if (/contributed to deer-flow|merged into claude-mem|merged into tolaria/i.test(text)) {
+    fails.push("closed PR described as contributed/merged");
   }
 
   warns.push("phone intentionally absent — strict ATS phone points stay at 0");
