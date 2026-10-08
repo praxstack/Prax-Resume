@@ -895,6 +895,16 @@ body {
   .deck { gap: 0 !important; padding: 0 !important; }
   body { background: #fff !important; }
 }
+
+/* RES-021: tighten page 2 so nothing clips under overflow:hidden */
+@media print, screen {
+.frame{padding:9mm 13mm 8mm 13mm}
+.p2-hero{padding-bottom:2mm}.p2-hero .pg{font-size:30pt}
+.sec-head{margin-top:3.2mm;margin-bottom:1.8mm}
+.role.sm{margin-top:2.4mm;padding:3mm 4mm 2.4mm}
+.proj-pair{grid-template-columns:1fr 1fr 1fr;gap:3mm}.proj{padding:3mm 3mm 2.4mm}.proj .repo{font-size:5.4pt;overflow-wrap:anywhere}
+.the-end{margin-top:2mm}
+}
 </style>
 </head>
 <body>

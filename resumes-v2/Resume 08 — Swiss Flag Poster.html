@@ -638,6 +638,24 @@ body {
   /* universal clickable contact/repo links — inherit theme color, subtle affordance */
   a.xlink { color: inherit; text-decoration: none; border-bottom: 0.2mm solid currentColor; opacity: 0.96; }
   a.xlink:hover { opacity: 0.75; }
+
+/* RES-021: tighten page 2 so nothing clips under overflow:hidden */
+@media print, screen {
+.proj-grid{grid-template-columns:1fr 1fr 1fr;column-gap:5mm;margin-top:3mm}
+.proj + .proj{padding-left:5mm}
+.proj .pu{overflow-wrap:anywhere;font-size:5.6pt}
+.projects{margin-top:4mm}
+.sheet{padding-top:11mm}
+.p2-title-block{margin-top:2mm;padding-bottom:2.5mm}
+.p2-title-block .num02{font-size:44pt}
+.p2-title-block .meta{padding-top:2mm}
+.prior{margin-top:3.5mm;padding-bottom:3mm}
+.prior .r .s{margin-top:2mm}
+.stack-section,.projects{margin-top:3.5mm}
+.stack-grid{margin-top:2mm;row-gap:2.2mm}
+.bottom-row{margin-top:3.5mm}
+.colophon{margin-top:2mm;font-size:6pt;letter-spacing:.1em}
+}
 </style>
 </head>
 <body>

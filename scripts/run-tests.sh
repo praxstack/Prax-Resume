@@ -45,10 +45,15 @@ node scripts/build-role-resumes.mjs --check-html
 RC5=$?
 
 echo
-if [ "$RC" -eq 0 ] && [ "$RC2" -eq 0 ] && [ "$RC3" -eq 0 ] && [ "$RC4" -eq 0 ] && [ "$RC5" -eq 0 ]; then
+echo "=== resumes-v2 themes — A4 clip gate ==="
+node scripts/audit-themes-layout.mjs
+RC6=$?
+
+echo
+if [ "$RC" -eq 0 ] && [ "$RC2" -eq 0 ] && [ "$RC3" -eq 0 ] && [ "$RC4" -eq 0 ] && [ "$RC5" -eq 0 ] && [ "$RC6" -eq 0 ]; then
   echo "ALL PASS — canonical resume + themes + KaTeX role pack"
   exit 0
 else
-  echo "FAIL — see violations above (canonical RC=$RC, themes RC=$RC2, content RC=$RC3, layout RC=$RC4, snapshot RC=$RC5)"
+  echo "FAIL — see violations above (canonical RC=$RC, themes RC=$RC2, content RC=$RC3, layout RC=$RC4, snapshot RC=$RC5, theme clip RC=$RC6)"
   exit 1
 fi
