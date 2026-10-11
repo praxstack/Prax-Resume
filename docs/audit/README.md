@@ -1,0 +1,3 @@
+# Audit reports (2026-10)
+
+These files come from a repository audit run from 2026-10-02 to 2026-10-11 and accompany PR #5 (`fix/audit-2026-10`). `UNDERSTANDING.md` describes the repo's purpose, structure and risks as found at audit time; `SETUP.md` gives the verified install, test and run steps; `GRAPH_REPORT.md` is the generated code/document knowledge-graph summary; `FIXES.md` records what the PR fixed and how it was tested; `REVIEW.md` is the independent review of those fixes. This repository is public, so security details (security reports, raw findings and owner notes) are kept privately by the owner and are not included here.

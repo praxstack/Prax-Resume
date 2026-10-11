@@ -133,6 +133,11 @@
     color: var(--blue) !important;
   }
 }
+
+/* RES-021: tighten page 2 so nothing clips under overflow:hidden */
+@media print, screen {
+.cards{grid-template-columns:1fr 1fr 1fr;gap:3.5mm}.pcard{padding:4mm 3.5mm}.pcard .link{overflow-wrap:anywhere;font-size:7pt}
+}
 </style>
 </head>
 <body>

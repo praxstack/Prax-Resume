@@ -278,7 +278,7 @@ function oss(order) {
           <ul class="oss-list">
             ${order.map((n) => PRS[n]).join("\n            ")}
           </ul>
-          <p class="oss-open">Under review: <a href="https://github.com/bytedance/deer-flow/pull/3790" rel="noopener">deer-flow</a>, <a href="https://github.com/thedotmack/claude-mem/pull/2710" rel="noopener">claude-mem</a>, <a href="https://github.com/refactoringhq/tolaria/pull/912" rel="noopener">tolaria</a>.</p>
+          <p class="oss-open">Also merged: <a href="https://github.com/bytedance/deer-flow/pull/3790" rel="noopener">deer-flow</a> (model-config normalization).</p>
         </div>`;
 }
 
